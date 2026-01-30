@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/11">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Geräte" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-00FA_H-0124-0_HP-ABCE-79-4DEB_CI-IA4313-1" Name="Temperatursensor TP" Number="1" ProductRefId="M-00FA_H-0124-0_P-IA4313" Hardware2ProgramRefId="M-00FA_H-0124-0_HP-ABCE-79-4DEB" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

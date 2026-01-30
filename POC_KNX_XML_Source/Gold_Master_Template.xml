@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════════╗
+  ║                    KNX SOURCE XML - GOLD MASTER TEMPLATE                     ║
+  ║                                                                              ║
+  ║  Template này được tạo từ việc phân tích trực tiếp source code của           ║
+  ║  Kaenx Creator (ImportHelper.cs, CheckHelper.cs, datapoints.xml)             ║
+  ║                                                                              ║
+  ║  MỌI ATTRIBUTE VÀ VALUE trong file này đều đã được verify với code.         ║
+  ╚══════════════════════════════════════════════════════════════════════════════╝
+
+  QUICK REFERENCE:
+  - DatapointType: CHỈDÙNG "DPST-x-y" hoặc "DPT-x" (KHÔNG dùng "1.001")
+  - ObjectSize: CHỈDÙNG "X Bit" hoặc "X Byte(s)"
+  - TypeNumber.Type: CHỈDÙNG "unsignedInt" hoặc "signedInt"
+  - Flags: CHỈDÙNG "Enabled" hoặc "Disabled"
+-->
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     CreatedBy="KNX MT" 
+     ToolVersion="5.6.407.2675" 
+     xmlns="http://knx.org/xml/project/20">
+
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <!-- CATALOG SECTION                                                     -->
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem 
+            Id="M-00FA_H-0001-0_HP-0001-00-0000_CI-001" 
+            Name="Template Device" 
+            Number="1" 
+            ProductRefId="M-00FA_H-0001-0_P-DEV01" 
+            Hardware2ProgramRefId="M-00FA_H-0001-0_HP-0001-00-0000" 
+            DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <!-- APPLICATION PROGRAM                                                 -->
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <ApplicationPrograms>
+        <ApplicationProgram 
+          Id="M-00FA_A-0001-00-0000" 
+          ApplicationNumber="1" 
+          ApplicationVersion="0" 
+          ProgramType="ApplicationProgram" 
+          MaskVersion="MV-07B0" 
+          Name="Template Application" 
+          LoadProcedureStyle="MergedProcedure" 
+          PeiType="0" 
+          DefaultLanguage="en-US" 
+          DynamicTableManagement="false" 
+          Linkable="false" 
+          MinEtsVersion="4.0">
+
+          <Static>
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- MEMORY SEGMENTS (Code)                                        -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <Code>
+              <!-- RelativeSegment cho MV-07B0 (System B)
+                   LsmIdx:
+                   - 1 = AddressTable
+                   - 2 = AssociationTable
+                   - 3 = GroupObjectTable
+                   - 4 = Application Memory (Parameters)
+              -->
+              <RelativeSegment 
+                Id="M-00FA_A-0001-00-0000_RS-04-00000" 
+                Name="Parameters" 
+                Offset="0" 
+                Size="256" 
+                LoadStateMachine="4" />
+            </Code>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- PARAMETER TYPES                                               -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <ParameterTypes>
+              
+              <!-- TypeNumber: unsignedInt (8-bit) -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-UInt8" Name="UInt8">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
+              </ParameterType>
+
+              <!-- TypeNumber: unsignedInt với UIHint -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Percent" Name="Percent">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="100" UIHint="Slider" />
+              </ParameterType>
+
+              <!-- TypeNumber: signedInt (16-bit) -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Int16" Name="Int16">
+                <TypeNumber SizeInBit="16" Type="signedInt" minInclusive="-32768" maxInclusive="32767" />
+              </ParameterType>
+
+              <!-- TypeRestriction (Enum) -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-OnOff" Name="OnOff">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-OnOff_EN-0" Text="Off" Value="0" />
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-OnOff_EN-1" Text="On" Value="1" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <!-- TypeRestriction (Multi-option Enum) -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Mode" Name="OperatingMode">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-Mode_EN-0" Text="Auto" Value="0" />
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-Mode_EN-1" Text="Manual" Value="1" />
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-Mode_EN-2" Text="Timer" Value="2" />
+                  <Enumeration Id="M-00FA_A-0001-00-0000_PT-Mode_EN-3" Text="Scene" Value="3" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <!-- TypeFloat: DPT 9 (2-byte float) -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Temperature" Name="Temperature">
+                <TypeFloat Encoding="DPT 9" minInclusive="-273" maxInclusive="670760" />
+              </ParameterType>
+
+              <!-- TypeText -->
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Text16" Name="Text16">
+                <TypeText SizeInBit="128" />
+              </ParameterType>
+
+            </ParameterTypes>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- PARAMETERS                                                    -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <Parameters>
+              
+              <!-- Parameter với Memory mapping -->
+              <Parameter 
+                Id="M-00FA_A-0001-00-0000_P-1" 
+                Name="EnableOutput" 
+                ParameterType="M-00FA_A-0001-00-0000_PT-OnOff" 
+                Text="Enable Output" 
+                Value="1">
+                <Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="0" BitOffset="0" />
+              </Parameter>
+
+              <Parameter 
+                Id="M-00FA_A-0001-00-0000_P-2" 
+                Name="OperatingMode" 
+                ParameterType="M-00FA_A-0001-00-0000_PT-Mode" 
+                Text="Operating Mode" 
+                Value="0">
+                <Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="1" BitOffset="0" />
+              </Parameter>
+
+              <Parameter 
+                Id="M-00FA_A-0001-00-0000_P-3" 
+                Name="Brightness" 
+                ParameterType="M-00FA_A-0001-00-0000_PT-Percent" 
+                Text="Default Brightness" 
+                Value="100"
+                Access="ReadWrite">
+                <Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="2" BitOffset="0" />
+              </Parameter>
+
+            </Parameters>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- PARAMETER REFS                                                -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <ParameterRefs>
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-1_R-1" RefId="M-00FA_A-0001-00-0000_P-1" />
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-2_R-1" RefId="M-00FA_A-0001-00-0000_P-2" />
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-3_R-1" RefId="M-00FA_A-0001-00-0000_P-3" />
+            </ParameterRefs>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- COM OBJECTS                                                   -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <ComObjectTable>
+              
+              <!-- 1-bit Switch Object -->
+              <ComObject 
+                Id="M-00FA_A-0001-00-0000_O-1" 
+                Name="Switch" 
+                Text="Switching" 
+                Number="1" 
+                FunctionText="Switch On/Off" 
+                ObjectSize="1 Bit" 
+                ReadFlag="Disabled" 
+                WriteFlag="Enabled" 
+                CommunicationFlag="Enabled" 
+                TransmitFlag="Disabled" 
+                UpdateFlag="Disabled" 
+                ReadOnInitFlag="Disabled" 
+                DatapointType="DPST-1-1" />
+
+              <!-- 1-bit Status Feedback -->
+              <ComObject 
+                Id="M-00FA_A-0001-00-0000_O-2" 
+                Name="SwitchStatus" 
+                Text="Switch Status" 
+                Number="2" 
+                FunctionText="Status Feedback" 
+                ObjectSize="1 Bit" 
+                ReadFlag="Enabled" 
+                WriteFlag="Disabled" 
+                CommunicationFlag="Enabled" 
+                TransmitFlag="Enabled" 
+                UpdateFlag="Disabled" 
+                ReadOnInitFlag="Disabled" 
+                DatapointType="DPST-1-1" />
+
+              <!-- 1-byte Dimming Value -->
+              <ComObject 
+                Id="M-00FA_A-0001-00-0000_O-3" 
+                Name="DimValue" 
+                Text="Dimming Value" 
+                Number="3" 
+                FunctionText="Brightness 0-100%" 
+                ObjectSize="1 Byte" 
+                ReadFlag="Disabled" 
+                WriteFlag="Enabled" 
+                CommunicationFlag="Enabled" 
+                TransmitFlag="Disabled" 
+                UpdateFlag="Disabled" 
+                ReadOnInitFlag="Disabled" 
+                DatapointType="DPST-5-1" />
+
+              <!-- 2-byte Temperature Sensor -->
+              <ComObject 
+                Id="M-00FA_A-0001-00-0000_O-4" 
+                Name="Temperature" 
+                Text="Temperature" 
+                Number="4" 
+                FunctionText="Temperature (°C)" 
+                ObjectSize="2 Bytes" 
+                ReadFlag="Enabled" 
+                WriteFlag="Disabled" 
+                CommunicationFlag="Enabled" 
+                TransmitFlag="Enabled" 
+                UpdateFlag="Disabled" 
+                ReadOnInitFlag="Enabled" 
+                DatapointType="DPST-9-1" />
+
+            </ComObjectTable>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- COM OBJECT REFS                                               -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <ComObjectRefs>
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-1_R-1" RefId="M-00FA_A-0001-00-0000_O-1" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-2_R-1" RefId="M-00FA_A-0001-00-0000_O-2" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-3_R-1" RefId="M-00FA_A-0001-00-0000_O-3" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-4_R-1" RefId="M-00FA_A-0001-00-0000_O-4" />
+            </ComObjectRefs>
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- TABLES                                                        -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <AddressTable MaxEntries="65535" />
+            <AssociationTable MaxEntries="65535" />
+
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <!-- LOAD PROCEDURES (for MV-07B0)                                 -->
+            <!-- ════════════════════════════════════════════════════════════ -->
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="256" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="256" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options />
+
+          </Static>
+
+          <!-- ════════════════════════════════════════════════════════════ -->
+          <!-- DYNAMIC SECTION                                               -->
+          <!-- ════════════════════════════════════════════════════════════ -->
+          <Dynamic>
+            <ChannelIndependentBlock>
+              
+              <!-- General Settings Block -->
+              <ParameterBlock 
+                Id="M-00FA_A-0001-00-0000_PB-1" 
+                Name="General" 
+                Text="General Settings">
+                
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-1_R-1" />
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-2_R-1" />
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-3_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-1_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-2_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-3_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-4_R-1" />
+                
+              </ParameterBlock>
+
+            </ChannelIndependentBlock>
+          </Dynamic>
+
+
+        </ApplicationProgram>
+      </ApplicationPrograms>
+
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <!-- HARDWARE                                                            -->
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <Hardware>
+        <Hardware 
+          Id="M-00FA_H-0001-0" 
+          Name="Template Hardware" 
+          SerialNumber="0001" 
+          VersionNumber="1" 
+          BusCurrent="10" 
+          HasIndividualAddress="true" 
+          HasApplicationProgram="true">
+          
+          <Products>
+            <Product 
+              Id="M-00FA_H-0001-0_P-DEV01" 
+              Text="Template Device" 
+              OrderNumber="TMPL-001" 
+              IsRailMounted="false" 
+              DefaultLanguage="en-US" />
+          </Products>
+          
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-0001-0_HP-0001-00-0000" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-00FA_A-0001-00-0000" />
+            </Hardware2Program>
+          </Hardware2Programs>
+          
+        </Hardware>
+      </Hardware>
+
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

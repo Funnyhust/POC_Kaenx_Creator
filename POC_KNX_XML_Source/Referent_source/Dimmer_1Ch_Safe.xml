@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.6.407.2675" xmlns="http://knx.org/xml/project/11">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Dimming Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-00FA_H-0001-0_HP-0001-00-0000_CI-DIM1CH" Name="Dimmer Actuator 1-Channel" Number="1" ProductRefId="M-00FA_H-0001-0_P-DIM1CH" Hardware2ProgramRefId="M-00FA_H-0001-0_HP-0001-00-0000" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-00FA_A-0001-00-0000" ApplicationNumber="1" ApplicationVersion="0" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Dimmer 1CH App" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-00FA_A-0001-00-0000_RS-04-00000" Name="Parameters" Offset="0" Size="2" LoadStateMachine="4" />
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-DimTime" Name="DimTime">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="1s" Value="0" Id="M-00FA_A-0001-00-0000_PT-DimTime_EN-0" />
+                  <Enumeration Text="2s" Value="1" Id="M-00FA_A-0001-00-0000_PT-DimTime_EN-1" />
+                  <Enumeration Text="5s" Value="2" Id="M-00FA_A-0001-00-0000_PT-DimTime_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-00FA_A-0001-00-0000_P-1" Name="FadeTime" ParameterType="M-00FA_A-0001-00-0000_PT-DimTime" Text="Dimming Speed" Value="0">
+                <Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="0" BitOffset="0" />
+              </Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-1_R-1" RefId="M-00FA_A-0001-00-0000_P-1" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <ComObject Id="M-00FA_A-0001-00-0000_O-1" Name="Switch" Text="Switch On/Off" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-2" Name="Dimming" Text="Relative Dimming" Number="2" FunctionText="Dimming" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-3" Name="Value" Text="Absolute Value" Number="3" FunctionText="Set Value" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-1_R-1" RefId="M-00FA_A-0001-00-0000_O-1" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-2_R-2" RefId="M-00FA_A-0001-00-0000_O-2" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-3_R-3" RefId="M-00FA_A-0001-00-0000_O-3" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65000" />
+            <AssociationTable MaxEntries="65000" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="2" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="2" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options />
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-00FA_A-0001-00-0000_PB-1" Name="General" Text="General Settings">
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-1_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-1_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-2_R-2" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-3_R-3" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Hardware>
+        <Hardware Id="M-00FA_H-0001-0" Name="Dimmer Hardware" SerialNumber="0001" VersionNumber="0" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products>
+            <Product Id="M-00FA_H-0001-0_P-DIM1CH" Text="Dimmer Actuator 1-Channel" OrderNumber="DIM1CH" IsRailMounted="true" DefaultLanguage="en-US" />
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-0001-0_HP-0001-00-0000" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-00FA_A-0001-00-0000" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

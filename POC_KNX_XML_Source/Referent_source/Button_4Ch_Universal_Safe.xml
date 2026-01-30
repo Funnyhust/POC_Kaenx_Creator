@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.6.407.2675" xmlns="http://knx.org/xml/project/11">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Universal Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-00FA_H-0001-0_HP-0001-00-0000_CI-BTN4CH" Name="Universal Button 4-Fold" Number="1" ProductRefId="M-00FA_H-0001-0_P-BTN4CH" Hardware2ProgramRefId="M-00FA_H-0001-0_HP-0001-00-0000" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-00FA_A-0001-00-0000" ApplicationNumber="1" ApplicationVersion="0" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Button 4CH Universal" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-00FA_A-0001-00-0000_RS-04-00000" Name="Parameters" Offset="0" Size="4" LoadStateMachine="4" />
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-00FA_A-0001-00-0000_PT-Function" Name="FunctionSelect">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Toggle" Value="0" Id="M-00FA_A-0001-00-0000_PT-Function_EN-0" />
+                  <Enumeration Text="Dimming" Value="1" Id="M-00FA_A-0001-00-0000_PT-Function_EN-1" />
+                  <Enumeration Text="Shutter" Value="2" Id="M-00FA_A-0001-00-0000_PT-Function_EN-2" />
+                  <Enumeration Text="Scene" Value="3" Id="M-00FA_A-0001-00-0000_PT-Function_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <!-- Function Selection for 4 Channels -->
+              <Parameter Id="M-00FA_A-0001-00-0000_P-1" Name="Ch1Func" ParameterType="M-00FA_A-0001-00-0000_PT-Function" Text="Channel 1 Function" Value="0"><Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-00FA_A-0001-00-0000_P-2" Name="Ch2Func" ParameterType="M-00FA_A-0001-00-0000_PT-Function" Text="Channel 2 Function" Value="1"><Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-00FA_A-0001-00-0000_P-3" Name="Ch3Func" ParameterType="M-00FA_A-0001-00-0000_PT-Function" Text="Channel 3 Function" Value="2"><Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="2" BitOffset="0" /></Parameter>
+              <Parameter Id="M-00FA_A-0001-00-0000_P-4" Name="Ch4Func" ParameterType="M-00FA_A-0001-00-0000_PT-Function" Text="Channel 4 Function" Value="3"><Memory CodeSegment="M-00FA_A-0001-00-0000_RS-04-00000" Offset="3" BitOffset="0" /></Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-1_R-1" RefId="M-00FA_A-0001-00-0000_P-1" />
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-2_R-2" RefId="M-00FA_A-0001-00-0000_P-2" />
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-3_R-3" RefId="M-00FA_A-0001-00-0000_P-3" />
+              <ParameterRef Id="M-00FA_A-0001-00-0000_P-4_R-4" RefId="M-00FA_A-0001-00-0000_P-4" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <!-- Channel 1: Toggle/Dimming/Shutter/Scene -->
+              <ComObject Id="M-00FA_A-0001-00-0000_O-1" Name="Ch1 Switch" Text="Ch1 Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-2" Name="Ch1 Dim Rel" Text="Ch1 Dimming Relative" Number="2" FunctionText="Dimming" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-3" Name="Ch1 Shutter" Text="Ch1 Move" Number="3" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-4" Name="Ch1 Scene" Text="Ch1 Scene" Number="4" FunctionText="Recall" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-17-1" />
+              
+              <!-- Channel 2 -->
+              <ComObject Id="M-00FA_A-0001-00-0000_O-11" Name="Ch2 Switch" Text="Ch2 Switch" Number="11" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-12" Name="Ch2 Dim Rel" Text="Ch2 Dimming Relative" Number="12" FunctionText="Dimming" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-13" Name="Ch2 Shutter" Text="Ch2 Move" Number="13" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-14" Name="Ch2 Scene" Text="Ch2 Scene" Number="14" FunctionText="Recall" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-17-1" />
+
+              <!-- Channel 3 -->
+              <ComObject Id="M-00FA_A-0001-00-0000_O-21" Name="Ch3 Switch" Text="Ch3 Switch" Number="21" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-22" Name="Ch3 Dim Rel" Text="Ch3 Dimming Relative" Number="22" FunctionText="Dimming" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-23" Name="Ch3 Shutter" Text="Ch3 Move" Number="23" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-24" Name="Ch3 Scene" Text="Ch3 Scene" Number="24" FunctionText="Recall" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-17-1" />
+
+              <!-- Channel 4 -->
+              <ComObject Id="M-00FA_A-0001-00-0000_O-31" Name="Ch4 Switch" Text="Ch4 Switch" Number="31" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-32" Name="Ch4 Dim Rel" Text="Ch4 Dimming Relative" Number="32" FunctionText="Dimming" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-33" Name="Ch4 Shutter" Text="Ch4 Move" Number="33" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-00FA_A-0001-00-0000_O-34" Name="Ch4 Scene" Text="Ch4 Scene" Number="34" FunctionText="Recall" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-17-1" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-1_R-1" RefId="M-00FA_A-0001-00-0000_O-1" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-2_R-2" RefId="M-00FA_A-0001-00-0000_O-2" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-3_R-3" RefId="M-00FA_A-0001-00-0000_O-3" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-4_R-4" RefId="M-00FA_A-0001-00-0000_O-4" />
+              
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-11_R-11" RefId="M-00FA_A-0001-00-0000_O-11" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-12_R-12" RefId="M-00FA_A-0001-00-0000_O-12" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-13_R-13" RefId="M-00FA_A-0001-00-0000_O-13" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-14_R-14" RefId="M-00FA_A-0001-00-0000_O-14" />
+
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-21_R-21" RefId="M-00FA_A-0001-00-0000_O-21" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-22_R-22" RefId="M-00FA_A-0001-00-0000_O-22" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-23_R-23" RefId="M-00FA_A-0001-00-0000_O-23" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-24_R-24" RefId="M-00FA_A-0001-00-0000_O-24" />
+
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-31_R-31" RefId="M-00FA_A-0001-00-0000_O-31" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-32_R-32" RefId="M-00FA_A-0001-00-0000_O-32" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-33_R-33" RefId="M-00FA_A-0001-00-0000_O-33" />
+              <ComObjectRef Id="M-00FA_A-0001-00-0000_O-34_R-34" RefId="M-00FA_A-0001-00-0000_O-34" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65000" />
+            <AssociationTable MaxEntries="65000" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="4" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="4" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options />
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-00FA_A-0001-00-0000_PB-1" Name="Ch1" Text="Channel 1">
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-1_R-1" />
+                <!-- Objects for Ch1 -->
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-1_R-1" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-2_R-2" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-3_R-3" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-4_R-4" />
+              </ParameterBlock>
+              <ParameterBlock Id="M-00FA_A-0001-00-0000_PB-2" Name="Ch2" Text="Channel 2">
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-2_R-2" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-11_R-11" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-12_R-12" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-13_R-13" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-14_R-14" />
+              </ParameterBlock>
+              <ParameterBlock Id="M-00FA_A-0001-00-0000_PB-3" Name="Ch3" Text="Channel 3">
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-3_R-3" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-21_R-21" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-22_R-22" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-23_R-23" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-24_R-24" />
+              </ParameterBlock>
+              <ParameterBlock Id="M-00FA_A-0001-00-0000_PB-4" Name="Ch4" Text="Channel 4">
+                <ParameterRefRef RefId="M-00FA_A-0001-00-0000_P-4_R-4" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-31_R-31" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-32_R-32" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-33_R-33" />
+                <ComObjectRefRef RefId="M-00FA_A-0001-00-0000_O-34_R-34" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Hardware>
+        <Hardware Id="M-00FA_H-0001-0" Name="Universal Button Hardware" SerialNumber="0001" VersionNumber="0" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products>
+            <Product Id="M-00FA_H-0001-0_P-BTN4CH" Text="Universal Button 4-Fold" OrderNumber="BTN4CH" IsRailMounted="false" DefaultLanguage="en-US" />
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-0001-0_HP-0001-00-0000" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-00FA_A-0001-00-0000" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

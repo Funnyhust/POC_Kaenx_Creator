@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-00FA_H-2026-3_HP-2026-03-00003_CI-KNXBTNV3" Name="KNX Hybrid Button V3" Number="1" ProductRefId="M-00FA_H-2026-3_P-KNX-BTN-V3" Hardware2ProgramRefId="M-00FA_H-2026-3_HP-2026-03-00003" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <Hardware>
+        <Hardware Id="M-00FA_H-2026-3" Name="KNX Hybrid Button Hardware V3" SerialNumber="KNX-BTN-003" VersionNumber="3" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products>
+            <Product Id="M-00FA_H-2026-3_P-KNX-BTN-V3" Text="KNX Hybrid Button V3" OrderNumber="KNXBTNV3" IsRailMounted="false" DefaultLanguage="en-US" />
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-2026-3_HP-2026-03-00003" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-00FA_A-2026-01-0003" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-00FA_A-2026-01-0003" ApplicationNumber="2026" ApplicationVersion="3" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX Hybrid Button App v3" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0" MaxSecurityIndividualAddressEntries="32" MaxSecurityGroupKeyTableEntries="50">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-00FA_A-2026-01-0003_RS-04-00000" Name="Parameters" Size="10" LoadStateMachine="4" Offset="0" />
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-00FA_A-2026-01-0003_PT-1" Name="Button Mode">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Disabled" Value="0" Id="M-00FA_A-2026-01-0003_PT-1_EN-0" />
+                  <Enumeration Text="Switch" Value="1" Id="M-00FA_A-2026-01-0003_PT-1_EN-1" />
+                  <Enumeration Text="Dimming" Value="2" Id="M-00FA_A-2026-01-0003_PT-1_EN-2" />
+                  <Enumeration Text="Shutter" Value="3" Id="M-00FA_A-2026-01-0003_PT-1_EN-3" />
+                  <Enumeration Text="Scene" Value="4" Id="M-00FA_A-2026-01-0003_PT-1_EN-4" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-2026-01-0003_PT-2" Name="Switch Behavior">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Toggle" Value="0" Id="M-00FA_A-2026-01-0003_PT-2_EN-0" />
+                  <Enumeration Text="Press=ON, Release=OFF" Value="1" Id="M-00FA_A-2026-01-0003_PT-2_EN-1" />
+                  <Enumeration Text="Press=OFF, Release=ON" Value="2" Id="M-00FA_A-2026-01-0003_PT-2_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-1" Name="Btn1_Mode" ParameterType="M-00FA_A-2026-01-0003_PT-1" Text="Button 1 Function" Value="1">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="0" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-2" Name="Btn1_Sub" ParameterType="M-00FA_A-2026-01-0003_PT-2" Text="Button 1 Action" Value="0">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="1" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-3" Name="Btn2_Mode" ParameterType="M-00FA_A-2026-01-0003_PT-1" Text="Button 2 Function" Value="1">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="2" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-4" Name="Btn2_Sub" ParameterType="M-00FA_A-2026-01-0003_PT-2" Text="Button 2 Action" Value="0">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="3" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-5" Name="Btn3_Mode" ParameterType="M-00FA_A-2026-01-0003_PT-1" Text="Button 3 Function" Value="1">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="4" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-6" Name="Btn3_Sub" ParameterType="M-00FA_A-2026-01-0003_PT-2" Text="Button 3 Action" Value="0">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="5" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-7" Name="Btn4_Mode" ParameterType="M-00FA_A-2026-01-0003_PT-1" Text="Button 4 Function" Value="1">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="6" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-00FA_A-2026-01-0003_P-8" Name="Btn4_Sub" ParameterType="M-00FA_A-2026-01-0003_PT-2" Text="Button 4 Action" Value="0">
+                <Memory CodeSegment="M-00FA_A-2026-01-0003_RS-04-00000" Offset="7" BitOffset="0" />
+              </Parameter>
+            </Parameters>
+            
+            <ParameterRefs>
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-1_R-1" RefId="M-00FA_A-2026-01-0003_P-1" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-2_R-2" RefId="M-00FA_A-2026-01-0003_P-2" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-3_R-3" RefId="M-00FA_A-2026-01-0003_P-3" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-4_R-4" RefId="M-00FA_A-2026-01-0003_P-4" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-5_R-5" RefId="M-00FA_A-2026-01-0003_P-5" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-6_R-6" RefId="M-00FA_A-2026-01-0003_P-6" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-7_R-7" RefId="M-00FA_A-2026-01-0003_P-7" />
+              <ParameterRef Id="M-00FA_A-2026-01-0003_P-8_R-8" RefId="M-00FA_A-2026-01-0003_P-8" />
+            </ParameterRefs>
+            
+            <ComObjectTable>
+              <ComObject Id="M-00FA_A-2026-01-0003_O-1" Name="Btn1_Sw" Text="Button 1 Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-2" Name="Btn1_Dim" Text="Button 1 Dimming" Number="2" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-3" Name="Btn2_Sw" Text="Button 2 Switch" Number="3" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-4" Name="Btn2_Dim" Text="Button 2 Dimming" Number="4" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-5" Name="Btn3_Sw" Text="Button 3 Switch" Number="5" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-6" Name="Btn3_Dim" Text="Button 3 Dimming" Number="6" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-7" Name="Btn4_Sw" Text="Button 4 Switch" Number="7" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-8" Name="Btn4_Dim" Text="Button 4 Dimming" Number="8" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-11" Name="Led1" Text="LED 1 Feedback" Number="11" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-12" Name="Led2" Text="LED 2 Feedback" Number="12" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-13" Name="Led3" Text="LED 3 Feedback" Number="13" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-2026-01-0003_O-14" Name="Led4" Text="LED 4 Feedback" Number="14" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+            </ComObjectTable>
+
+            <ComObjectRefs>
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-1_R-1" RefId="M-00FA_A-2026-01-0003_O-1" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-2_R-2" RefId="M-00FA_A-2026-01-0003_O-2" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-3_R-3" RefId="M-00FA_A-2026-01-0003_O-3" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-4_R-4" RefId="M-00FA_A-2026-01-0003_O-4" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-5_R-5" RefId="M-00FA_A-2026-01-0003_O-5" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-6_R-6" RefId="M-00FA_A-2026-01-0003_O-6" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-7_R-7" RefId="M-00FA_A-2026-01-0003_O-7" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-8_R-8" RefId="M-00FA_A-2026-01-0003_O-8" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-11_R-11" RefId="M-00FA_A-2026-01-0003_O-11" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-12_R-12" RefId="M-00FA_A-2026-01-0003_O-12" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-13_R-13" RefId="M-00FA_A-2026-01-0003_O-13" />
+              <ComObjectRef Id="M-00FA_A-2026-01-0003_O-14_R-14" RefId="M-00FA_A-2026-01-0003_O-14" />
+            </ComObjectRefs>
+
+            <AddressTable MaxEntries="65000" />
+            <AssociationTable MaxEntries="65000" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="10" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="10" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+          </Static>
+          
+          <Dynamic>
+            <Channel Name="Button 1" Number="1">
+              <ParameterBlock Id="PB-1" Name="Btn1_Param" Text="Button 1 Configuration">
+                <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-1_R-1" />
+                
+                <choose ParamRefId="M-00FA_A-2026-01-0003_P-1_R-1">
+                  <when test="1">
+                    <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-2_R-2" /> <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-1_R-1" />  <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-11_R-11" /> </when>
+                  
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-1_R-1" />  <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-2_R-2" />  <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-11_R-11" /> </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Button 2" Number="2">
+              <ParameterBlock Id="PB-2" Name="Btn2_Param" Text="Button 2 Configuration">
+                <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-3_R-3" />
+                <choose ParamRefId="M-00FA_A-2026-01-0003_P-3_R-3">
+                  <when test="1">
+                    <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-4_R-4" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-3_R-3" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-12_R-12" /> </when>
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-3_R-3" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-4_R-4" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-12_R-12" /> </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Button 3" Number="3">
+              <ParameterBlock Id="PB-3" Name="Btn3_Param" Text="Button 3 Configuration">
+                <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-5_R-5" />
+                <choose ParamRefId="M-00FA_A-2026-01-0003_P-5_R-5">
+                  <when test="1">
+                    <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-6_R-6" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-5_R-5" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-13_R-13" /> </when>
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-5_R-5" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-6_R-6" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-13_R-13" /> </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Button 4" Number="4">
+              <ParameterBlock Id="PB-4" Name="Btn4_Param" Text="Button 4 Configuration">
+                <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-7_R-7" />
+                <choose ParamRefId="M-00FA_A-2026-01-0003_P-7_R-7">
+                  <when test="1">
+                    <ParameterRefRef RefId="M-00FA_A-2026-01-0003_P-8_R-8" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-7_R-7" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-14_R-14" /> </when>
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-7_R-7" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-8_R-8" />
+                    <ComObjectRefRef RefId="M-00FA_A-2026-01-0003_O-14_R-14" /> </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
