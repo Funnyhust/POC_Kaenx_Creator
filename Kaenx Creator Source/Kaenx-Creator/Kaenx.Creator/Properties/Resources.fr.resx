@@ -1,0 +1,1412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="menu_impo" xml:space="preserve">
+    <value>Importer</value>
+    <comment/>
+  </data>
+  <data name="menu_impo_ets" xml:space="preserve">
+    <value>Base de données produit</value>
+    <comment/>
+  </data>
+  <data name="menu_lang" xml:space="preserve">
+    <value>Langue</value>
+    <comment/>
+  </data>
+  <data name="menu_lang_default" xml:space="preserve">
+    <value>Paramètres système</value>
+    <comment/>
+  </data>
+  <data name="menu_proj" xml:space="preserve">
+    <value>Projet</value>
+    <comment/>
+  </data>
+  <data name="menu_proj_close" xml:space="preserve">
+    <value>Fermer</value>
+    <comment/>
+  </data>
+  <data name="menu_proj_new" xml:space="preserve">
+    <value>Nouveau</value>
+    <comment/>
+  </data>
+  <data name="menu_proj_open" xml:space="preserve">
+    <value>Ouvrir</value>
+    <comment/>
+  </data>
+  <data name="menu_proj_save" xml:space="preserve">
+    <value>Enregistrer</value>
+    <comment/>
+  </data>
+  <data name="tabs_apps" xml:space="preserve">
+    <value>Applications</value>
+    <comment/>
+  </data>
+  <data name="tabs_cat" xml:space="preserve">
+    <value>Catalogue</value>
+    <comment/>
+  </data>
+  <data name="tabs_gen" xml:space="preserve">
+    <value>Paramètres généraux</value>
+    <comment/>
+  </data>
+  <data name="tabs_hard" xml:space="preserve">
+    <value>Hardware</value>
+    <comment/>
+  </data>
+  <data name="tabs_app" xml:space="preserve">
+    <value>Application</value>
+    <comment/>
+  </data>
+  <data name="tabs_pub" xml:space="preserve">
+    <value>Publier</value>
+    <comment/>
+  </data>
+  <data name="tabs_bagg" xml:space="preserve">
+    <value>Fichiers complémentaires</value>
+    <comment/>
+  </data>
+  <data name="menu_impo_xml" xml:space="preserve">
+    <value>KnxProd XML</value>
+    <comment/>
+  </data>
+  <data name="menu_save_template" xml:space="preserve">
+    <value>Enregistrez comme nouveau modèle</value>
+    <comment/>
+  </data>
+  <data name="menu_save_as" xml:space="preserve">
+    <value>Enregistrer sous</value>
+    <comment/>
+  </data>
+  <data name="menu_save" xml:space="preserve">
+    <value>Enregistrer</value>
+    <comment/>
+  </data>
+  <data name="menu_temp_empty" xml:space="preserve">
+    <value>Vide</value>
+    <comment/>
+  </data>
+  <data name="menu_info_vers" xml:space="preserve">
+    <value>Afficher la version</value>
+    <comment/>
+  </data>
+  <data name="tgen_manu" xml:space="preserve">
+    <value>ID Fabricant</value>
+    <comment/>
+  </data>
+  <data name="tgen_name" xml:space="preserve">
+    <value>Nom du projet</value>
+    <comment/>
+  </data>
+  <data name="gen_edit" xml:space="preserve">
+    <value>Editer</value>
+    <comment/>
+  </data>
+  <data name="gen_add" xml:space="preserve">
+    <value>Ajouter</value>
+    <comment/>
+  </data>
+  <data name="gen_remove" xml:space="preserve">
+    <value>Supprimer</value>
+    <comment/>
+  </data>
+  <data name="tgen_lang_def" xml:space="preserve">
+    <value>Langue par défaut</value>
+    <comment/>
+  </data>
+  <data name="tcat_add_sub" xml:space="preserve">
+    <value>Ajouter une sous-catégorie</value>
+    <comment/>
+  </data>
+  <data name="prop_name" xml:space="preserve">
+    <value>Nom</value>
+    <comment/>
+  </data>
+  <data name="prop_number" xml:space="preserve">
+    <value>Numéro</value>
+    <comment/>
+  </data>
+  <data name="tcat_iscat" xml:space="preserve">
+    <value>Cet élément est une catégorie</value>
+    <comment/>
+  </data>
+  <data name="gen_text" xml:space="preserve">
+    <value>Texte</value>
+    <comment/>
+  </data>
+  <data name="gen_lang" xml:space="preserve">
+    <value>Langue</value>
+    <comment/>
+  </data>
+  <data name="gen_hard" xml:space="preserve">
+    <value>Matériel</value>
+    <comment/>
+  </data>
+  <data name="gen_gen" xml:space="preserve">
+    <value>Général</value>
+    <comment/>
+  </data>
+  <data name="prop_serial" xml:space="preserve">
+    <value>N ° de série</value>
+    <comment/>
+  </data>
+  <data name="prop_vers" xml:space="preserve">
+    <value>Version</value>
+    <comment/>
+  </data>
+  <data name="prop_buscurrent" xml:space="preserve">
+    <value>Courant consommé</value>
+    <comment/>
+  </data>
+  <data name="prop_haspa" xml:space="preserve">
+    <value>Ce matériel possède une adresse physique</value>
+    <comment/>
+  </data>
+  <data name="prop_ispower" xml:space="preserve">
+    <value>Ce matériel possède une alimentation interne</value>
+    <comment/>
+  </data>
+  <data name="prop_iscoupler" xml:space="preserve">
+    <value>Ce matériel est un coupleur de bus</value>
+    <comment/>
+  </data>
+  <data name="prop_ip" xml:space="preserve">
+    <value>Ce matériel utilise KNX/IPnet</value>
+    <comment/>
+  </data>
+  <data name="prop_hasapp" xml:space="preserve">
+    <value>Ce matériel possède une application</value>
+    <comment/>
+  </data>
+  <data name="prop_hasapp2" xml:space="preserve">
+    <value>Ce matériel possède une application secondaire</value>
+    <comment/>
+  </data>
+  <data name="prop_ordernumber" xml:space="preserve">
+    <value>Numéro de commande</value>
+    <comment/>
+  </data>
+  <data name="prop_isreg" xml:space="preserve">
+    <value>Montage sur rail DIN</value>
+    <comment/>
+  </data>
+  <data name="gen_desc" xml:space="preserve">
+    <value>Description</value>
+    <comment/>
+  </data>
+  <data name="gen_import" xml:space="preserve">
+    <value>Importer</value>
+    <comment/>
+  </data>
+  <data name="gen_export" xml:space="preserve">
+    <value>Exporter</value>
+    <comment/>
+  </data>
+  <data name="bagg_error" xml:space="preserve">
+    <value>Fichier complémentaire non utilisé par un ParameterType</value>
+    <comment/>
+  </data>
+  <data name="bagg_targetpath" xml:space="preserve">
+    <value>Chemin de destination</value>
+    <comment/>
+  </data>
+  <data name="bagg_file" xml:space="preserve">
+    <value>Changer le fichier</value>
+    <comment/>
+  </data>
+  <data name="bagg_timestamp" xml:space="preserve">
+    <value>Horodatage</value>
+    <comment/>
+  </data>
+  <data name="gen_uid" xml:space="preserve">
+    <value>UID</value>
+    <comment/>
+  </data>
+  <data name="prop_bcu" xml:space="preserve">
+    <value>Coupleur de bus (BCU)</value>
+    <comment/>
+  </data>
+  <data name="tapps_info" xml:space="preserve">
+    <value>Plus d'info sur la numérotation des versions</value>
+    <comment/>
+  </data>
+  <data name="tapps_memory" xml:space="preserve">
+    <value>Type de mémoire:</value>
+    <comment/>
+  </data>
+  <data name="tapps_loadp" xml:space="preserve">
+    <value>Procédure de chargement:</value>
+    <comment/>
+  </data>
+  <data name="gen_copy" xml:space="preserve">
+    <value>Copier</value>
+    <comment/>
+  </data>
+  <data name="tapps_openv" xml:space="preserve">
+    <value>Ouvrir dans ProdViewer</value>
+    <comment/>
+  </data>
+  <data name="tver_addrmem" xml:space="preserve">
+    <value>Table d'occupation mémoire :</value>
+    <comment/>
+  </data>
+  <data name="tver_addroff" xml:space="preserve">
+    <value>Offset mémoire :</value>
+    <comment/>
+  </data>
+  <data name="tver_addrmax" xml:space="preserve">
+    <value>Nombre d'entrées mémoire max :</value>
+    <comment/>
+  </data>
+  <data name="tver_assomem" xml:space="preserve">
+    <value>Table d'association mémoire :</value>
+    <comment/>
+  </data>
+  <data name="tver_assooff" xml:space="preserve">
+    <value>Offset de la table d'association mémoire :</value>
+    <comment/>
+  </data>
+  <data name="tver_assomax" xml:space="preserve">
+    <value>Nombre d'entrées max de la table d'association :</value>
+    <comment/>
+  </data>
+  <data name="tver_commem" xml:space="preserve">
+    <value>Mémoire des ComObjects :</value>
+    <comment/>
+  </data>
+  <data name="tver_comoff" xml:space="preserve">
+    <value>Offset mémoire des ComObjects :</value>
+    <comment/>
+  </data>
+  <data name="prop_versreplace" xml:space="preserve">
+    <value>Remplace les versions suivantes :</value>
+    <comment/>
+  </data>
+  <data name="prop_ns" xml:space="preserve">
+    <value>Version du Namespace</value>
+    <comment/>
+  </data>
+  <data name="gen_langs" xml:space="preserve">
+    <value>Langue</value>
+    <comment/>
+  </data>
+  <data name="tabs_check" xml:space="preserve">
+    <value>Vérifier</value>
+    <comment/>
+  </data>
+  <data name="tabs_mem" xml:space="preserve">
+    <value>Mémoire</value>
+    <comment/>
+  </data>
+  <data name="vgen_autopara" xml:space="preserve">
+    <value>Générer automatiquement les ParamterRefs</value>
+    <comment/>
+  </data>
+  <data name="vgen_autocom" xml:space="preserve">
+    <value>Générer automatiquement les ComObjectRefs</value>
+    <comment/>
+  </data>
+  <data name="vgen_union" xml:space="preserve">
+    <value>Activer l'usage des Unions</value>
+    <comment/>
+  </data>
+  <data name="vgen_mods" xml:space="preserve">
+    <value>Activer l'usage des Modules</value>
+    <comment/>
+  </data>
+  <data name="vgen_msg" xml:space="preserve">
+    <value>Activer l'usage des Messages</value>
+    <comment/>
+  </data>
+  <data name="prop_address" xml:space="preserve">
+    <value>Adresse</value>
+    <comment/>
+  </data>
+  <data name="prop_size" xml:space="preserve">
+    <value>Taille</value>
+    <comment/>
+  </data>
+  <data name="vgen_autosize" xml:space="preserve">
+    <value>Ajuster la taille automatiquement</value>
+    <comment/>
+  </data>
+  <data name="prop_offset" xml:space="preserve">
+    <value>Offset</value>
+    <comment/>
+  </data>
+  <data name="vgen_mautopara" xml:space="preserve">
+    <value>Organise automatiquement les Paramètres/Unions/Modules</value>
+    <comment/>
+  </data>
+  <data name="vgen_mautoorder" xml:space="preserve">
+    <value>Organise automatiquement même s'ils possèdent une adresse</value>
+    <comment/>
+  </data>
+  <data name="vgen_heatmap" xml:space="preserve">
+    <value>Construire la représentation mémoire</value>
+    <comment/>
+  </data>
+  <data name="tabs_parat" xml:space="preserve">
+    <value>ParameterTypes</value>
+    <comment/>
+  </data>
+  <data name="tabs_union" xml:space="preserve">
+    <value>Unions</value>
+    <comment/>
+  </data>
+  <data name="tabs_module" xml:space="preserve">
+    <value>Modules</value>
+    <comment/>
+  </data>
+  <data name="gen_reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+    <comment/>
+  </data>
+  <data name="gen_id" xml:space="preserve">
+    <value>ID:</value>
+    <comment/>
+  </data>
+  <data name="tabs_paras" xml:space="preserve">
+    <value>Paramètres</value>
+    <comment/>
+  </data>
+  <data name="tabs_pararefs" xml:space="preserve">
+    <value>ParameterRefs</value>
+    <comment/>
+  </data>
+  <data name="tabs_coms" xml:space="preserve">
+    <value>ComObjects</value>
+    <comment/>
+  </data>
+  <data name="tabs_comrefs" xml:space="preserve">
+    <value>ComObjectRefs</value>
+    <comment/>
+  </data>
+  <data name="tabs_loadp" xml:space="preserve">
+    <value>Procédure de chargement</value>
+    <comment/>
+  </data>
+  <data name="tabs_dyn" xml:space="preserve">
+    <value>Vue Dynamic</value>
+    <comment/>
+  </data>
+  <data name="tabs_msg" xml:space="preserve">
+    <value>Messages</value>
+    <comment/>
+  </data>
+  <data name="tabs_arg" xml:space="preserve">
+    <value>Arguments</value>
+    <comment/>
+  </data>
+  <data name="tmod_pbo" xml:space="preserve">
+    <value>Offset de base des paramètres :</value>
+    <comment/>
+  </data>
+  <data name="tmod_cbn" xml:space="preserve">
+    <value>Numéro de ComObject:</value>
+    <comment/>
+  </data>
+  <data name="tmod_autocbn" xml:space="preserve">
+    <value>Numéros de ComObject calculés automotiquement</value>
+    <comment/>
+  </data>
+  <data name="gen_filter" xml:space="preserve">
+    <value>Filtre ID :</value>
+    <comment/>
+  </data>
+  <data name="parat_error" xml:space="preserve">
+    <value>Ce ParameterType n'est pas utilisé par un Parameter</value>
+    <comment/>
+  </data>
+  <data name="prop_type" xml:space="preserve">
+    <value>Type</value>
+    <comment/>
+  </data>
+  <data name="parat_mansize" xml:space="preserve">
+    <value>Saisie manuelle de la taille en bits</value>
+    <comment/>
+  </data>
+  <data name="prop_value" xml:space="preserve">
+    <value>Valeur</value>
+    <comment/>
+  </data>
+  <data name="prop_trans" xml:space="preserve">
+    <value>Traduire</value>
+    <comment/>
+  </data>
+  <data name="parat_add" xml:space="preserve">
+    <value>Ajouter un élément</value>
+    <comment/>
+  </data>
+  <data name="parat_min" xml:space="preserve">
+    <value>Min</value>
+    <comment/>
+  </data>
+  <data name="parat_max" xml:space="preserve">
+    <value>Max</value>
+    <comment/>
+  </data>
+  <data name="parat_increment" xml:space="preserve">
+    <value>Incrément</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint" xml:space="preserve">
+    <value>UIHint</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_none" xml:space="preserve">
+    <value>Aucun</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_slider" xml:space="preserve">
+    <value>Curseur</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_check" xml:space="preserve">
+    <value>Case à cocher</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_prog" xml:space="preserve">
+    <value>Barre d'avancement</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ha" xml:space="preserve">
+    <value>Adresse machine</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ga" xml:space="preserve">
+    <value>Adresse de passerelle</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ua" xml:space="preserve">
+    <value>Adresse Unicast</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ba" xml:space="preserve">
+    <value>Adresse de diffusion</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ma" xml:space="preserve">
+    <value>Adfesse Multicast</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_sm" xml:space="preserve">
+    <value>Masque de sous réseau</value>
+    <comment/>
+  </data>
+  <data name="uni_error" xml:space="preserve">
+    <value>Cette union n'est pas utilisée par un ParameterType</value>
+    <comment/>
+  </data>
+  <data name="prop_sizebit" xml:space="preserve">
+    <value>Taille en bits</value>
+    <comment/>
+  </data>
+  <data name="prop_savepath" xml:space="preserve">
+    <value>Enregistrer dans</value>
+    <comment/>
+  </data>
+  <data name="prop_mem" xml:space="preserve">
+    <value>Sélectionner la mémoire utilisée</value>
+    <comment/>
+  </data>
+  <data name="prop_offsetbit" xml:space="preserve">
+    <value>Bit de décalage</value>
+    <comment/>
+  </data>
+  <data name="uni_error2" xml:space="preserve">
+    <value>Propriétés pas encore supportées</value>
+    <comment/>
+  </data>
+  <data name="uni_addrauto" xml:space="preserve">
+    <value>Adresse configurée automatiquement</value>
+    <comment/>
+  </data>
+  <data name="prodv_text" xml:space="preserve">
+    <value>Texte</value>
+    <comment/>
+  </data>
+  <data name="prodv_settings" xml:space="preserve">
+    <value>Réglages</value>
+    <comment/>
+  </data>
+  <data name="prodv_value" xml:space="preserve">
+    <value>Valeur</value>
+    <comment/>
+  </data>
+  <data name="prodv_id" xml:space="preserve">
+    <value>ID</value>
+    <comment/>
+  </data>
+  <data name="prop_function" xml:space="preserve">
+    <value>Fonction</value>
+    <comment/>
+  </data>
+  <data name="prodv_getval" xml:space="preserve">
+    <value>Obtenir la valeur du paramètre</value>
+    <comment/>
+  </data>
+  <data name="menu_info_debug" xml:space="preserve">
+    <value>Activer le mode Debug</value>
+    <comment/>
+  </data>
+  <data name="tcheck_tooltip" xml:space="preserve">
+    <value>Aller directement à l'élément</value>
+    <comment/>
+  </data>
+  <data name="tcheck_check" xml:space="preserve">
+    <value>Vérifier</value>
+    <comment/>
+  </data>
+  <data name="tcheck_clean1" xml:space="preserve">
+    <value>Identifier les éléments non utilisés</value>
+    <comment/>
+  </data>
+  <data name="tcheck_clean2" xml:space="preserve">
+    <value>Supprimer les éléments non utilisés</value>
+    <comment/>
+  </data>
+  <data name="gen_clone" xml:space="preserve">
+    <value>Cloner</value>
+    <comment/>
+  </data>
+  <data name="gen_id_man" xml:space="preserve">
+    <value>Manuel</value>
+    <comment/>
+  </data>
+  <data name="gen_id_auto" xml:space="preserve">
+    <value>Automatique</value>
+    <comment/>
+  </data>
+  <data name="gen_id_reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+    <comment/>
+  </data>
+  <data name="tpara_error" xml:space="preserve">
+    <value>Ce ParameterType n'est pas utilisé par un ParameterRef</value>
+    <comment/>
+  </data>
+  <data name="prop_suffix" xml:space="preserve">
+    <value>Suffixe</value>
+    <comment/>
+  </data>
+  <data name="prop_access" xml:space="preserve">
+    <value>Accès</value>
+    <comment/>
+  </data>
+  <data name="gen_bit" xml:space="preserve">
+    <value>Bit</value>
+    <comment/>
+  </data>
+  <data name="tpara_union" xml:space="preserve">
+    <value>Affiliation d'Union</value>
+    <comment/>
+  </data>
+  <data name="gen_union" xml:space="preserve">
+    <value>Union</value>
+    <comment/>
+  </data>
+  <data name="tpara_infoauto" xml:space="preserve">
+    <value>Adresse configurée automatiquement</value>
+    <comment/>
+  </data>
+  <data name="prop_propid" xml:space="preserve">
+    <value>PropertyId</value>
+    <comment/>
+  </data>
+  <data name="prop_objectindex" xml:space="preserve">
+    <value>ObjectType</value>
+    <comment/>
+  </data>
+  <data name="gen_onlydeflang" xml:space="preserve">
+    <value>Exporte seulement la langue par défaut</value>
+    <comment/>
+  </data>
+  <data name="tpara_error2" xml:space="preserve">
+    <value>Ce ParameterRef n'est pas utilisé dans la vue Dynamic</value>
+    <comment/>
+  </data>
+  <data name="prop_para" xml:space="preserve">
+    <value>Paramètre</value>
+    <comment/>
+  </data>
+  <data name="prop_order" xml:space="preserve">
+    <value>Ordre d'affichage</value>
+    <comment/>
+  </data>
+  <data name="tcom_error" xml:space="preserve">
+    <value>Ce ComObject n'est pas référencé par un ComObjectRef</value>
+    <comment/>
+  </data>
+  <data name="tcom_para" xml:space="preserve">
+    <value>Paramètre du texte</value>
+    <comment/>
+  </data>
+  <data name="tcom_func" xml:space="preserve">
+    <value>Texte de la fonction</value>
+    <comment/>
+  </data>
+  <data name="tcom_dpt" xml:space="preserve">
+    <value>DataPointType</value>
+    <comment/>
+  </data>
+  <data name="tcom_dpst" xml:space="preserve">
+    <value>DataPointSubType</value>
+    <comment/>
+  </data>
+  <data name="tcom_size" xml:space="preserve">
+    <value>Taille de l'objet</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_com" xml:space="preserve">
+    <value>Indicateurs de communication</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_read" xml:space="preserve">
+    <value>Lecture (read)</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_write" xml:space="preserve">
+    <value>Écriture (write)</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_trans" xml:space="preserve">
+    <value>Transmission</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_update" xml:space="preserve">
+    <value>Actualisation (update)</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_oninit" xml:space="preserve">
+    <value>Initialisation</value>
+    <comment/>
+  </data>
+  <data name="tcom_error2" xml:space="preserve">
+    <value>Ce ComObjectRef n'est pas utilisé dans la vue Dynamic</value>
+    <comment/>
+  </data>
+  <data name="prop_como" xml:space="preserve">
+    <value>Objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tmain" xml:space="preserve">
+    <value>Ce point de départ ne sera pas exporté et ne peut être édité ou supprimé.</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tindchan" xml:space="preserve">
+    <value>Un Independant-Channel n'est pas affiché. Les ParamterBlocs sont affichables sans Channel.</value>
+    <comment/>
+  </data>
+  <data name="tdyn_troot" xml:space="preserve">
+    <value>Racine</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pararef" xml:space="preserve">
+    <value>Référence du paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_paraname" xml:space="preserve">
+    <value>Nom du paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_paracell" xml:space="preserve">
+    <value>Case (seulement pour placement en grille/table)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_paratext" xml:space="preserve">
+    <value>Texte du paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_parareftext" xml:space="preserve">
+    <value>Texte de la référence du paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_mods" xml:space="preserve">
+    <value>Modules</value>
+    <comment/>
+  </data>
+  <data name="tdyn_args" xml:space="preserve">
+    <value>Arguments</value>
+    <comment/>
+  </data>
+  <data name="tdyn_type" xml:space="preserve">
+    <value>Type</value>
+    <comment/>
+  </data>
+  <data name="tdyn_comref" xml:space="preserve">
+    <value>Référence de l'objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_comname" xml:space="preserve">
+    <value>Nom de l'objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_comtext" xml:space="preserve">
+    <value>Texte de l'objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_comreftext" xml:space="preserve">
+    <value>Texte de la référence de l'objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_showtree" xml:space="preserve">
+    <value>Affiche l'arbre des objets de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_inline" xml:space="preserve">
+    <value>En ligne</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_layout" xml:space="preserve">
+    <value>Disposition</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_cells" xml:space="preserve">
+    <value>Colonnes</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_rows" xml:space="preserve">
+    <value>Lignes</value>
+    <comment/>
+  </data>
+  <data name="tdyn_id" xml:space="preserve">
+    <value>ID</value>
+    <comment/>
+  </data>
+  <data name="tdyn_pb_width" xml:space="preserve">
+    <value>Largeur (%)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_textpara" xml:space="preserve">
+    <value>Paramètre du texte</value>
+    <comment/>
+  </data>
+  <data name="tdyn_uihint" xml:space="preserve">
+    <value>UIHint</value>
+    <comment/>
+  </data>
+  <data name="tdyn_cond" xml:space="preserve">
+    <value>Condition</value>
+    <comment/>
+  </data>
+  <data name="tdyn_ass_target" xml:space="preserve">
+    <value>ParameterRef cible</value>
+    <comment/>
+  </data>
+  <data name="tdyn_ass_source" xml:space="preserve">
+    <value>ParameterRef source</value>
+    <comment/>
+  </data>
+  <data name="tdyn_ass_value" xml:space="preserve">
+    <value>Valeur Source</value>
+    <comment/>
+  </data>
+  <data name="tdyn_ass_warnign1" xml:space="preserve">
+    <value>Attention ! Choisissez soit une valeur OU un ParameterRef comme source.</value>
+    <comment/>
+  </data>
+  <data name="tdyn_ass_warning2" xml:space="preserve">
+    <value>Si la valeur est vide, celle du ParameterRef source sera exporté</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tchan" xml:space="preserve">
+    <value>Channel</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tblock" xml:space="preserve">
+    <value>Bloc</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tseparator" xml:space="preserve">
+    <value>Séparateur</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tassign" xml:space="preserve">
+    <value>Affectation (Assign)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tmod" xml:space="preserve">
+    <value>Modules</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tselection" xml:space="preserve">
+    <value>Sélection</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tcond" xml:space="preserve">
+    <value>Condition</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tpara" xml:space="preserve">
+    <value>Paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tcom" xml:space="preserve">
+    <value>ComObject</value>
+    <comment/>
+  </data>
+  <data name="gen_cut" xml:space="preserve">
+    <value>Couper</value>
+    <comment/>
+  </data>
+  <data name="gen_put" xml:space="preserve">
+    <value>Insérer</value>
+    <comment/>
+  </data>
+  <data name="gen_unfold" xml:space="preserve">
+    <value>Développer</value>
+    <comment/>
+  </data>
+  <data name="gen_collapse" xml:space="preserve">
+    <value>Refermer</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_ichan" xml:space="preserve">
+    <value>Ajouter un nouveau Channel indépendant</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_chan" xml:space="preserve">
+    <value>Ajouter un Channel</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_block" xml:space="preserve">
+    <value>Ajouter un bloc</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_mod" xml:space="preserve">
+    <value>Ajouter Module</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_choose" xml:space="preserve">
+    <value>Ajouter une condition</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_para" xml:space="preserve">
+    <value>Ajouter un paramètre</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_com" xml:space="preserve">
+    <value>Ajouter un objet de communication</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_sepa" xml:space="preserve">
+    <value>Ajouter un séparateur</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_assign" xml:space="preserve">
+    <value>Ajouter d'une affectation</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_btn" xml:space="preserve">
+    <value>Ajouter un bouton</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when_def" xml:space="preserve">
+    <value>Montrer uniquement si les autres conditions échoues</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when1" xml:space="preserve">
+    <value>Égale : les valeurs sont les mêmes (Exemple : =4)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when2" xml:space="preserve">
+    <value>Différente : Mettre un point d'exclamation (Exemple : !=4)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when3" xml:space="preserve">
+    <value>Liste : Valeurs séparées par des espaces (Exemple : 1 2 3)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when4" xml:space="preserve">
+    <value>Plus grand que : &gt; or &gt;= (Exemple: &gt;5)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_when5" xml:space="preserve">
+    <value>Plus petit que : &lt; or &lt;= (Exemple: &lt;=8)</value>
+    <comment/>
+  </data>
+  <data name="vgen_ets4" xml:space="preserve">
+    <value>Format PreETS4</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_cond" xml:space="preserve">
+    <value>Ajouter une condition</value>
+    <comment/>
+  </data>
+  <data name="vgen_help" xml:space="preserve">
+    <value>Activer l'aide</value>
+    <comment/>
+  </data>
+  <data name="tdyn_help" xml:space="preserve">
+    <value>Texte d'aide</value>
+    <comment/>
+  </data>
+  <data name="tabs_help" xml:space="preserve">
+    <value>Textes d'aide</value>
+    <comment/>
+  </data>
+  <data name="help_edit" xml:space="preserve">
+    <value>Éditer le texte d'aide</value>
+    <comment/>
+  </data>
+  <data name="help_preview" xml:space="preserve">
+    <value>Prévisualiser le texte d'aide</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_rgb" xml:space="preserve">
+    <value>RGB</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_rgbw" xml:space="preserve">
+    <value>RGB+W</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_hsv" xml:space="preserve">
+    <value>HSV</value>
+    <comment/>
+  </data>
+  <data name="tapps_medium" xml:space="preserve">
+    <value>Média :</value>
+    <comment/>
+  </data>
+  <data name="menu_info_help" xml:space="preserve">
+    <value>Aide</value>
+    <comment/>
+  </data>
+  <data name="vgen_autoload" xml:space="preserve">
+    <value>Ajouter la taille automatiquement dans la procédure de chargement</value>
+    <comment/>
+  </data>
+  <data name="tdyn_add_repeat" xml:space="preserve">
+    <value>Répéter</value>
+    <comment/>
+  </data>
+  <data name="tdyn_trepe" xml:space="preserve">
+    <value>Répéter</value>
+    <comment/>
+  </data>
+  <data name="prop_count" xml:space="preserve">
+    <value>Nombre</value>
+    <comment/>
+  </data>
+  <data name="prop_start" xml:space="preserve">
+    <value>Début</value>
+    <comment/>
+  </data>
+  <data name="prop_max" xml:space="preserve">
+    <value>Maximum</value>
+    <comment/>
+  </data>
+  <data name="tabs_alloc" xml:space="preserve">
+    <value>Allocation (Allocator)</value>
+    <comment/>
+  </data>
+  <data name="tdyn_usealloc" xml:space="preserve">
+    <value>Utiliser une allocation (Allocator)</value>
+    <comment/>
+  </data>
+  <data name="tabs_icon" xml:space="preserve">
+    <value>Icônes</value>
+    <comment/>
+  </data>
+  <data name="parat_year" xml:space="preserve">
+    <value>Afficher l'année</value>
+    <comment/>
+  </data>
+  <data name="parat_date" xml:space="preserve">
+    <value>Encodage</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ipv4" xml:space="preserve">
+    <value>IPv4</value>
+    <comment/>
+  </data>
+  <data name="parat_uihint_ipv6" xml:space="preserve">
+    <value>IPv6</value>
+    <comment/>
+  </data>
+  <data name="prop_icon" xml:space="preserve">
+    <value>Icône</value>
+    <comment/>
+  </data>
+  <data name="menu_info_check" xml:space="preserve">
+    <value>Rechercher les mises à jour</value>
+    <comment/>
+  </data>
+  <data name="menu_info_auto" xml:space="preserve">
+    <value>Vérifier automatiquement les mises à jour au démarrage.</value>
+    <comment/>
+  </data>
+  <data name="tdyn_tbutton" xml:space="preserve">
+    <value>Bouton</value>
+    <comment/>
+  </data>
+  <data name="prop_handlerparas" xml:space="preserve">
+    <value>Paramètres du gestionnaire d'événements</value>
+    <comment/>
+  </data>
+  <data name="prop_offline" xml:space="preserve">
+    <value>Déconnecté</value>
+    <comment/>
+  </data>
+  <data name="prop_connless" xml:space="preserve">
+    <value>Sans connexion</value>
+    <comment/>
+  </data>
+  <data name="prop_connoriented" xml:space="preserve">
+    <value>Connexion orientée</value>
+    <comment/>
+  </data>
+  <data name="prop_online" xml:space="preserve">
+    <value>Type de connexion</value>
+    <comment/>
+  </data>
+  <data name="parat_doffset" xml:space="preserve">
+    <value>Décalage d'affichage</value>
+    <comment/>
+  </data>
+  <data name="parat_dfactor" xml:space="preserve">
+    <value>Facteur d'affichage</value>
+    <comment/>
+  </data>
+  <data name="tgen_guid" xml:space="preserve">
+    <value>GUID actuel</value>
+    <comment/>
+  </data>
+  <data name="tgen_openknxid" xml:space="preserve">
+    <value>OpenKnxId</value>
+    <comment/>
+  </data>
+  <data name="bagg_changed" xml:space="preserve">
+    <value>Dernière modification à:</value>
+    <comment/>
+  </data>
+  <data name="vgen_businterface" xml:space="preserve">
+    <value>Interface bus activée</value>
+    <comment/>
+  </data>
+  <data name="vgen_busrouter" xml:space="preserve">
+    <value>Mode routeur activé</value>
+    <comment/>
+  </data>
+  <data name="vmem_mod" xml:space="preserve">
+    <value>C'est un Module. Pour avoir plus d'info à propos de la partie mémoire allez dans la partie paramètres des modules.</value>
+    <comment/>
+  </data>
+  <data name="vmem_gat" xml:space="preserve">
+    <value>Ici la table des adresses de groupes.</value>
+    <comment/>
+  </data>
+  <data name="vmem_cot" xml:space="preserve">
+    <value>Ici la table des objets de communication.</value>
+    <comment/>
+  </data>
+  <data name="vmem_ast" xml:space="preserve">
+    <value>Table des associations.</value>
+    <comment/>
+  </data>
+  <data name="submod_open" xml:space="preserve">
+    <value>Editer le sous module</value>
+    <comment/>
+  </data>
+  <data name="tpub_filename" xml:space="preserve">
+    <value>Nom de fichier :</value>
+    <comment/>
+  </data>
+  <data name="main_l1" xml:space="preserve">
+    <value>Bienvenue à Kaenx-Creator!</value>
+    <comment/>
+  </data>
+  <data name="main_l2" xml:space="preserve">
+    <value>Pour démarrer, créez un nouveau projet ou ouvrez en un existant</value>
+    <comment/>
+  </data>
+  <data name="main_l3" xml:space="preserve">
+    <value>Sélectionner 'Projet'' dans le menu principal.</value>
+    <comment/>
+  </data>
+  <data name="main_l4" xml:space="preserve">
+    <value>Kaenx-Creator fait partie de OpenKNX.</value>
+    <comment/>
+  </data>
+  <data name="main_l5" xml:space="preserve">
+    <value>Trouvez plus d'informations ici </value>
+    <comment/>
+  </data>
+  <data name="menu_info" xml:space="preserve">
+    <value>Information</value>
+    <comment/>
+  </data>
+  <data name="editor_save" xml:space="preserve">
+    <value>Enregistrer</value>
+    <comment/>
+  </data>
+  <data name="editor_cancel" xml:space="preserve">
+    <value>Annuler</value>
+    <comment/>
+  </data>
+  <data name="tprod_own" xml:space="preserve">
+    <value>Votre propre procédure</value>
+    <comment/>
+  </data>
+  <data name="tprod_mask" xml:space="preserve">
+    <value>Masques des procédures</value>
+    <comment/>
+  </data>
+  <data name="tprod_edit" xml:space="preserve">
+    <value>Éditer la procédure</value>
+    <comment/>
+  </data>
+  <data name="tmem_settings" xml:space="preserve">
+    <value>Paramètres</value>
+    <comment/>
+  </data>
+  <data name="tmem_heatmap" xml:space="preserve">
+    <value>Utilisation de la mémoire</value>
+    <comment/>
+  </data>
+  <data name="prop_allocs" xml:space="preserve">
+    <value>Alloué</value>
+    <comment/>
+  </data>
+  <data name="tabs_sm" xml:space="preserve">
+    <value>Sous module</value>
+    <comment/>
+  </data>
+  <data name="mem_para" xml:space="preserve">
+    <value>Paramètre</value>
+    <comment/>
+  </data>
+  <data name="mem_union" xml:space="preserve">
+    <value>Unions</value>
+    <comment/>
+  </data>
+  <data name="mem_module" xml:space="preserve">
+    <value>C'est un Module. Pour plus d'info à propos de la partie mémoire allez dans la partie paramètres des modules.</value>
+    <comment/>
+  </data>
+  <data name="mem_gat" xml:space="preserve">
+    <value>Ici la table des adresses de groupes.</value>
+    <comment/>
+  </data>
+  <data name="mem_cot" xml:space="preserve">
+    <value>Ici la table des objets de communication.</value>
+    <comment/>
+  </data>
+  <data name="mem_ast" xml:space="preserve">
+    <value>Table des associations.</value>
+    <comment/>
+  </data>
+  <data name="tmod_prefix" xml:space="preserve">
+    <value>Préfixe</value>
+    <comment/>
+  </data>
+  <data name="topen_url" xml:space="preserve">
+    <value>URL</value>
+    <comment/>
+  </data>
+  <data name="topen_branch" xml:space="preserve">
+    <value>Branche (Commit)</value>
+    <comment/>
+  </data>
+  <data name="topen_commit" xml:space="preserve">
+    <value>Commit</value>
+    <comment/>
+  </data>
+  <data name="topen_numchannels" xml:space="preserve">
+    <value>%N% remplacements</value>
+    <comment/>
+  </data>
+  <data name="topen_update" xml:space="preserve">
+    <value>Mettre à jour</value>
+    <comment/>
+  </data>
+  <data name="topen_haspart" xml:space="preserve">
+    <value>Possède des éléments</value>
+    <comment/>
+  </data>
+  <data name="topen_hasshare" xml:space="preserve">
+    <value>Possède un Share</value>
+    <comment/>
+  </data>
+  <data name="topen_hastempl" xml:space="preserve">
+    <value>Possède un Modèle</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_enable" xml:space="preserve">
+    <value>Activer</value>
+    <comment/>
+  </data>
+  <data name="tcom_flag_disable" xml:space="preserve">
+    <value>Désactiver</value>
+    <comment/>
+  </data>
+  <data name="menu_sign" xml:space="preserve">
+    <value>Signer</value>
+    <comment/>
+  </data>
+  <data name="menu_sign_folder" xml:space="preserve">
+    <value>Répertoire</value>
+    <comment/>
+  </data>
+  <data name="gen_translate" xml:space="preserve">
+    <value>Open Translator</value>
+    <comment/>
+  </data>
+  <data name="menu_options" xml:space="preserve">
+    <value>Options</value>
+    <comment/>
+  </data>
+  <data name="menu_out" xml:space="preserve">
+    <value>KnxProd Output Path</value>
+    <comment/>
+  </data>
+  <data name="menu_out_exe" xml:space="preserve">
+    <value>Path of EXE File</value>
+    <comment/>
+  </data>
+  <data name="menu_out_ae" xml:space="preserve">
+    <value>Path of AE File</value>
+    <comment/>
+  </data>
+  <data name="tuni_settings" xml:space="preserve">
+    <value>Settings</value>
+    <comment/>
+  </data>
+  <data name="tuni_heatmap" xml:space="preserve">
+    <value>Memory Map</value>
+    <comment/>
+  </data>
+  <data name="tabs_proj" xml:space="preserve">
+    <value>Project</value>
+    <comment/>
+  </data>
+  <data name="import_diff_manu" xml:space="preserve">
+    <value>Le fabricant de la base de données produit ne correspond pas au fabricant du projet.\r\nVoulez-vous changer votre ID fabricant de {0} à {1} ?</value>
+    <comment/>
+  </data>
+  <data name="import_diff_manu_title" xml:space="preserve">
+    <value>Incohérence de fabricant</value>
+    <comment/>
+  </data>
+  <data name="vgen_includeoffset" xml:space="preserve">
+    <value>Inclure le décalage KO dans la définition de base</value>
+    <comment/>
+  </data>
+</root>
