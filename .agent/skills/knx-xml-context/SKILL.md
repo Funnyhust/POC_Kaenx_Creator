@@ -37,6 +37,9 @@ Use the quick reference cards below for common validation rules.
 python POC_KNX_XML_Source/Validate_Tool/validate_knx_comprehensive.py <xml_file>
 ```
 
+### Step 4: Consult Strict Rules
+Always check: `POC_KNX_XML_Source/XML_Import_Rule/Rule.md`
+
 ## Quick Reference Cards
 
 ### Critical Crash Points (Must Avoid)
@@ -47,6 +50,8 @@ python POC_KNX_XML_Source/Validate_Tool/validate_knx_comprehensive.py <xml_file>
 | `Hardware2ProgramRefId` suffix | ≥13 chars after `_HP-` | ArgumentOutOfRangeException |
 | All ID suffixes | Must be **numeric only** | FormatException |
 | `Manufacturer.RefId` | ≥3 characters | OutOfRangeException |
+| `RefId` duplicates | **Must be UNIQUE** globally | Import Error (Nicht eindeutig) |
+| OrderNumber | **Alphanumeric only** (no special chars) | Encoding Warning |
 
 ### ID Format Rules
 

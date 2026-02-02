@@ -34,12 +34,24 @@ mkdir -p "d:\Lumi\KNX_Nordic\Kaenx_Creator_Tool\POC_Kaenx_Creator\Output_File\KN
 
 Example: `Output_File/KNX_4_Button_Scene/`
 
-### Step 2: Load Context and Template
+### Step 2: Load Context and Rules
 
 // turbo
 Load the knx-xml-context skill for validation rules:
 ```
 Refer to: .agent/skills/knx-xml-context/SKILL.md
+```
+
+// turbo
+Read the strict import rules:
+```
+Refer to: POC_KNX_XML_Source/XML_Import_Rule/Rule.md
+```
+
+// turbo
+Read the optimization guide:
+```
+Refer to: POC_KNX_XML_Source/KNX_Optimization/KNX_Optimization_Guide.md
 ```
 
 // turbo
@@ -57,15 +69,18 @@ Manufacturer:     M-00FA
 Hardware:         M-00FA_H-<HHHH>-<V>
 Application:      M-00FA_A-<AAAA>-<VV>-<RRRR>
 Parameter:        M-00FA_A-...._P-<N>           (N = numeric)
-ParameterRef:     M-00FA_A-...._P-<N>_R-<M>     (M = numeric)
+ParameterRef:     M-00FA_A-...._P-<N>_R-<M>     (M = numeric + UNIQUE GLOBALLY)
 ComObject:        M-00FA_A-...._O-<N>           (N = numeric)
-ComObjectRef:     M-00FA_A-...._O-<N>_R-<M>     (M = numeric)
+ComObjectRef:     M-00FA_A-...._O-<N>_R-<M>     (M = numeric + UNIQUE GLOBALLY)
 ParameterBlock:   M-00FA_A-...._PB-<N>          (N = numeric)
 Hardware2Program: M-00FA_H-...._HP-<XXXX-XX-XXXXX> (≥13 chars suffix)
 ```
 
 > [!CAUTION]
-> ALL ID suffixes MUST be NUMERIC ONLY (no text like "Btn1", "Mode")
+> **CRITICAL Rules:**
+> 1. **RefId Uniqueness**: `_R-<M>` MUST be globally unique across the entire file (e.g. `R-1`..`R-100`). NEVER reuse `R-1` for different objects.
+> 2. **Clean OrderNumber**: `OrderNumber` must contain **alphanumeric characters only**. Remove all hyphens or special chars (e.g. use "LUMI123" not "LUMI-123") to prevent encoding errors.
+> 3. **Numeric Suffixes**: ALL ID suffixes MUST be NUMERIC ONLY.
 
 ### Step 4: Define ParameterTypes
 
@@ -190,6 +205,8 @@ Before delivery, verify:
 - [ ] All IDs have numeric suffixes only
 - [ ] Hardware.VersionNumber exists (not "Version")
 - [ ] Hardware2ProgramRefId suffix ≥ 13 characters
+- [ ] **RefIds are GLOBALLY UNIQUE** across file (no reuse of R-1)
+- [ ] **OrderNumber is alphanumeric only** (no special chars)
 - [ ] All ParameterRef/ComObjectRef wrapped in `<choose><when>`
 - [ ] DatapointType uses DPST-X-Y or DPT-X format
 - [ ] ObjectSize uses "X Bit(s)" or "X Byte(s)" format
