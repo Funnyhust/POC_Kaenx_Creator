@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>FileLogo.ico</ApplicationIcon>
+    <Version>1.9.6.0</Version>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\Dynamic\Separator.svg" />
+    <None Remove="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+    <PackageReference Include="log4net" Version="2.0.13" />
+    <PackageReference Include="SharpVectors" Version="1.7.7" />
+    <PackageReference Include="MdXaml" Version="1.15.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1462.37" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Dynamic\Assign.svg" />
+    <Resource Include="Assets\Images\Dynamic\Block.svg" />
+    <Resource Include="Assets\Images\Dynamic\Button.svg" />
+    <Resource Include="Assets\Images\Dynamic\Choose.svg" />
+    <Resource Include="Assets\Images\Dynamic\ComObject.svg" />
+    <Resource Include="Assets\Images\Dynamic\Parameter.svg" />
+    <Resource Include="Assets\Images\Dynamic\Separator.svg" />
+    <Resource Include="Assets\Images\Dynamic\When.svg" />
+    <Resource Include="Assets\Images\Menu\New.svg" />
+    <Resource Include="Assets\Images\Menu\Open.svg" />
+    <Resource Include="Assets\Images\Menu\Save.svg" />
+    <Resource Include="Assets\Images\General\PromptDialog.svg" />
+    <Resource Include="Assets\Images\OpenKNX.png" />
+    <Resource Include="Assets\Images\Controls\ArrowUp.png" />
+    <Resource Include="Assets\Images\Controls\ArrowDown.png" />
+    <Resource Include="Assets\Viewer\error.png" />
+    <Resource Include="Assets\Viewer\information.png" />
+
+    <Resource Include="logo.ico" />
+    <None Update="Templates\Minimal.temp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+    <Content Include="Data\Monaco\**"> 
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory> 
+    </Content> 
+    <None Update="Data\datapoints.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\maskversion.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="FileLogo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.en.resx">
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kaenx-Creator-Share\Kaenx.Creator.Share.csproj" />
+  </ItemGroup>
+
+</Project>

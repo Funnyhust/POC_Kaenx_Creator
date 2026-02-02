@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     CreatedBy="KNX MT" 
+     ToolVersion="5.6.407.2675" 
+     xmlns="http://knx.org/xml/project/20">
+
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      
+      <!-- CATALOG -->
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem 
+            Id="M-00FA_H-0002-0_HP-0002-00-00000_CI-LUMIRL4" 
+            Name="4-Channel Relay" 
+            Number="1" 
+            ProductRefId="M-00FA_H-0002-0_P-DEV01" 
+            Hardware2ProgramRefId="M-00FA_H-0002-0_HP-0002-00-00000" 
+            DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+
+      <!-- APPLICATION PROGRAM -->
+      <ApplicationPrograms>
+        <ApplicationProgram 
+          Id="M-00FA_A-0002-00-0000" 
+          ApplicationNumber="2" 
+          ApplicationVersion="1" 
+          ProgramType="ApplicationProgram" 
+          MaskVersion="MV-07B0" 
+          Name="Relay App" 
+          LoadProcedureStyle="MergedProcedure" 
+          PeiType="0" 
+          DefaultLanguage="en-US" 
+          DynamicTableManagement="false" 
+          Linkable="false" 
+          MinEtsVersion="4.0">
+
+          <Static>
+            <Code>
+              <RelativeSegment 
+                Id="M-00FA_A-0002-00-0000_RS-04-00000" 
+                Name="Parameters" 
+                Offset="0" 
+                Size="256" 
+                LoadStateMachine="4" />
+            </Code>
+
+            <ParameterTypes>
+              <ParameterType Id="M-00FA_A-0002-00-0000_PT-Enable" Name="EnableDisable">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Id="M-00FA_A-0002-00-0000_PT-Enable_EN-0" Text="Disabled" Value="0" />
+                  <Enumeration Id="M-00FA_A-0002-00-0000_PT-Enable_EN-1" Text="Enabled" Value="1" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+
+            <Parameters>
+              <!-- Channel 1 Enable -->
+              <Parameter 
+                Id="M-00FA_A-0002-00-0000_P-1" 
+                Name="CH1_Enable" 
+                ParameterType="M-00FA_A-0002-00-0000_PT-Enable" 
+                Text="Channel 1" 
+                Value="1">
+                <Memory CodeSegment="M-00FA_A-0002-00-0000_RS-04-00000" Offset="0" BitOffset="0" />
+              </Parameter>
+
+              <!-- Channel 2 Enable -->
+              <Parameter 
+                Id="M-00FA_A-0002-00-0000_P-2" 
+                Name="CH2_Enable" 
+                ParameterType="M-00FA_A-0002-00-0000_PT-Enable" 
+                Text="Channel 2" 
+                Value="1">
+                <Memory CodeSegment="M-00FA_A-0002-00-0000_RS-04-00000" Offset="0" BitOffset="1" />
+              </Parameter>
+
+              <!-- Channel 3 Enable -->
+              <Parameter 
+                Id="M-00FA_A-0002-00-0000_P-3" 
+                Name="CH3_Enable" 
+                ParameterType="M-00FA_A-0002-00-0000_PT-Enable" 
+                Text="Channel 3" 
+                Value="1">
+                <Memory CodeSegment="M-00FA_A-0002-00-0000_RS-04-00000" Offset="0" BitOffset="2" />
+              </Parameter>
+
+              <!-- Channel 4 Enable -->
+              <Parameter 
+                Id="M-00FA_A-0002-00-0000_P-4" 
+                Name="CH4_Enable" 
+                ParameterType="M-00FA_A-0002-00-0000_PT-Enable" 
+                Text="Channel 4" 
+                Value="1">
+                <Memory CodeSegment="M-00FA_A-0002-00-0000_RS-04-00000" Offset="0" BitOffset="3" />
+              </Parameter>
+            </Parameters>
+
+            <ParameterRefs>
+              <ParameterRef Id="M-00FA_A-0002-00-0000_P-1_R-1" RefId="M-00FA_A-0002-00-0000_P-1" />
+              <ParameterRef Id="M-00FA_A-0002-00-0000_P-2_R-2" RefId="M-00FA_A-0002-00-0000_P-2" />
+              <ParameterRef Id="M-00FA_A-0002-00-0000_P-3_R-3" RefId="M-00FA_A-0002-00-0000_P-3" />
+              <ParameterRef Id="M-00FA_A-0002-00-0000_P-4_R-4" RefId="M-00FA_A-0002-00-0000_P-4" />
+            </ParameterRefs>
+
+            <ComObjectTable>
+              <!-- Channel 1 -->
+              <ComObject Id="M-00FA_A-0002-00-0000_O-1" Name="CH1_Switch" Text="CH1 Switch" Number="1" FunctionText="On/Off" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0002-00-0000_O-2" Name="CH1_Status" Text="CH1 Status" Number="2" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-1" />
+
+              <!-- Channel 2 -->
+              <ComObject Id="M-00FA_A-0002-00-0000_O-3" Name="CH2_Switch" Text="CH2 Switch" Number="3" FunctionText="On/Off" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0002-00-0000_O-4" Name="CH2_Status" Text="CH2 Status" Number="4" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-1" />
+
+              <!-- Channel 3 -->
+              <ComObject Id="M-00FA_A-0002-00-0000_O-5" Name="CH3_Switch" Text="CH3 Switch" Number="5" FunctionText="On/Off" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0002-00-0000_O-6" Name="CH3_Status" Text="CH3 Status" Number="6" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-1" />
+
+              <!-- Channel 4 -->
+              <ComObject Id="M-00FA_A-0002-00-0000_O-7" Name="CH4_Switch" Text="CH4 Switch" Number="7" FunctionText="On/Off" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-00FA_A-0002-00-0000_O-8" Name="CH4_Status" Text="CH4 Status" Number="8" FunctionText="Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-1" />
+            </ComObjectTable>
+
+            <ComObjectRefs>
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-1_R-5" RefId="M-00FA_A-0002-00-0000_O-1" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-2_R-6" RefId="M-00FA_A-0002-00-0000_O-2" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-3_R-7" RefId="M-00FA_A-0002-00-0000_O-3" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-4_R-8" RefId="M-00FA_A-0002-00-0000_O-4" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-5_R-9" RefId="M-00FA_A-0002-00-0000_O-5" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-6_R-10" RefId="M-00FA_A-0002-00-0000_O-6" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-7_R-11" RefId="M-00FA_A-0002-00-0000_O-7" />
+              <ComObjectRef Id="M-00FA_A-0002-00-0000_O-8_R-12" RefId="M-00FA_A-0002-00-0000_O-8" />
+            </ComObjectRefs>
+
+            <AddressTable MaxEntries="65535" />
+            <AssociationTable MaxEntries="65535" />
+
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="256" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="256" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options />
+
+          </Static>
+
+          <Dynamic>
+            <Channel Name="Channel 1" Number="1">
+              <ParameterBlock Id="M-00FA_A-0002-00-0000_PB-1" Name="CH1_Block" Text="Channel 1">
+                <ParameterRefRef RefId="M-00FA_A-0002-00-0000_P-1_R-1" />
+                <choose ParamRefId="M-00FA_A-0002-00-0000_P-1_R-1">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-1_R-5" />
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-2_R-6" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Channel 2" Number="2">
+              <ParameterBlock Id="M-00FA_A-0002-00-0000_PB-2" Name="CH2_Block" Text="Channel 2">
+                <ParameterRefRef RefId="M-00FA_A-0002-00-0000_P-2_R-2" />
+                <choose ParamRefId="M-00FA_A-0002-00-0000_P-2_R-2">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-3_R-7" />
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-4_R-8" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Channel 3" Number="3">
+              <ParameterBlock Id="M-00FA_A-0002-00-0000_PB-3" Name="CH3_Block" Text="Channel 3">
+                <ParameterRefRef RefId="M-00FA_A-0002-00-0000_P-3_R-3" />
+                <choose ParamRefId="M-00FA_A-0002-00-0000_P-3_R-3">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-5_R-9" />
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-6_R-10" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Channel 4" Number="4">
+              <ParameterBlock Id="M-00FA_A-0002-00-0000_PB-4" Name="CH4_Block" Text="Channel 4">
+                <ParameterRefRef RefId="M-00FA_A-0002-00-0000_P-4_R-4" />
+                <choose ParamRefId="M-00FA_A-0002-00-0000_P-4_R-4">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-7_R-11" />
+                    <ComObjectRefRef RefId="M-00FA_A-0002-00-0000_O-8_R-12" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+          </Dynamic>
+
+        </ApplicationProgram>
+      </ApplicationPrograms>
+
+      <Hardware>
+        <Hardware 
+          Id="M-00FA_H-0002-0" 
+          Name="4-Channel Relay Hardware" 
+          SerialNumber="0002" 
+          VersionNumber="1" 
+          BusCurrent="10" 
+          HasIndividualAddress="true" 
+          HasApplicationProgram="true">
+          
+          <Products>
+            <Product 
+              Id="M-00FA_H-0002-0_P-DEV01" 
+              Text="4-Channel Relay Gen 1" 
+              OrderNumber="LUMIRL4" 
+              IsRailMounted="false" 
+              DefaultLanguage="en-US" />
+          </Products>
+          
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-0002-0_HP-0002-00-00000" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-00FA_A-0002-00-0000" />
+            </Hardware2Program>
+          </Hardware2Programs>
+          
+        </Hardware>
+      </Hardware>
+
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
