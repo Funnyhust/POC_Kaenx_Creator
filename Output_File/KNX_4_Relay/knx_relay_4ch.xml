@@ -37,9 +37,9 @@
               </ParameterType>
               <ParameterType Id="M-0085_A-2025-01-00001_PT-2" Name="Startup Behaviour">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Restore last state" Value="0" Id="M-0085_A-2025-01-00001_PT-2_EN-0" />
-                  <Enumeration Text="Force OFF" Value="1" Id="M-0085_A-2025-01-00001_PT-2_EN-1" />
-                  <Enumeration Text="Force ON" Value="2" Id="M-0085_A-2025-01-00001_PT-2_EN-2" />
+                  <Enumeration Text="Restore Last Value" Value="0" Id="M-0085_A-2025-01-00001_PT-2_EN-0" />
+                  <Enumeration Text="Set OFF" Value="1" Id="M-0085_A-2025-01-00001_PT-2_EN-1" />
+                  <Enumeration Text="Set ON" Value="2" Id="M-0085_A-2025-01-00001_PT-2_EN-2" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-0085_A-2025-01-00001_PT-4" Name="Time Value">
@@ -127,7 +127,7 @@
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-0085_A-2025-01-00001_PT-8" Name="RelayAction_PT">
-                <TypeRestriction Base="Value" SizeInBit="8">
+                <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="No Action" Value="0" Id="M-0085_A-2025-01-00001_PT-8_EN-0" />
                   <Enumeration Text="OFF" Value="1" Id="M-0085_A-2025-01-00001_PT-8_EN-1" />
                   <Enumeration Text="ON" Value="2" Id="M-0085_A-2025-01-00001_PT-8_EN-2" />
@@ -137,26 +137,26 @@
             <Parameters>
 
               <!-- Channel 1 (7 bytes, starts offset 0) -->
-              <Parameter Id="M-0085_A-2025-01-00001_P-1" Name="R1_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 1 Mode" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="0" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-2" Name="R1_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Startup Behaviour" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-1" Name="R1_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 1 Mode" Value="1"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-2" Name="R1_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Behavior on Bus Voltage Recovery" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="1" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-3" Name="R1_AutoType" ParameterType="M-0085_A-2025-01-00001_PT-5" Text="Auto Mode Type" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="2" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-5" Name="R1_Time" ParameterType="M-0085_A-2025-01-00001_PT-4" Text="Time Value (s)" Value="500"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="3" BitOffset="0" /></Parameter>
               
               <!-- Channel 2 (7 bytes, offset 7) -->
-              <Parameter Id="M-0085_A-2025-01-00001_P-6" Name="R2_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 2 Mode" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="7" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-7" Name="R2_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Startup Behaviour" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="8" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-6" Name="R2_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 2 Mode" Value="1"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="7" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-7" Name="R2_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Behavior on Bus Voltage Recovery" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="8" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-8" Name="R2_AutoType" ParameterType="M-0085_A-2025-01-00001_PT-5" Text="Auto Mode Type" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="9" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-10" Name="R2_Time" ParameterType="M-0085_A-2025-01-00001_PT-4" Text="Time Value (s)" Value="500"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="10" BitOffset="0" /></Parameter>
-
+              
               <!-- Channel 3 (7 bytes, offset 14) -->
-              <Parameter Id="M-0085_A-2025-01-00001_P-11" Name="R3_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 3 Mode" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="14" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-12" Name="R3_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Startup Behaviour" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="15" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-11" Name="R3_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 3 Mode" Value="1"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="14" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-12" Name="R3_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Behavior on Bus Voltage Recovery" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="15" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-13" Name="R3_AutoType" ParameterType="M-0085_A-2025-01-00001_PT-5" Text="Auto Mode Type" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="16" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-15" Name="R3_Time" ParameterType="M-0085_A-2025-01-00001_PT-4" Text="Time Value (s)" Value="500"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="17" BitOffset="0" /></Parameter>
-
+              
               <!-- Channel 4 (7 bytes, offset 21) -->
-              <Parameter Id="M-0085_A-2025-01-00001_P-16" Name="R4_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 4 Mode" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="21" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-17" Name="R4_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Startup Behaviour" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="22" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-16" Name="R4_Mode" ParameterType="M-0085_A-2025-01-00001_PT-1" Text="Output 4 Mode" Value="1"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="21" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-17" Name="R4_Startup" ParameterType="M-0085_A-2025-01-00001_PT-2" Text="Behavior on Bus Voltage Recovery" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="22" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-18" Name="R4_AutoType" ParameterType="M-0085_A-2025-01-00001_PT-5" Text="Auto Mode Type" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="23" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-20" Name="R4_Time" ParameterType="M-0085_A-2025-01-00001_PT-4" Text="Time Value (s)" Value="500"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="24" BitOffset="0" /></Parameter>
 
@@ -164,53 +164,118 @@
               <Parameter Id="M-0085_A-2025-01-00001_P-22" Name="EnableSceneStore" ParameterType="M-0085_A-2025-01-00001_PT-6" Text="Enable Scene Store" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="28" BitOffset="1" /></Parameter>
 
               <!-- Scene A-P Parameters (16 Scenes, 2 bytes per scene) -->
+              <!-- Scene A -->
               <Parameter Id="M-0085_A-2025-01-00001_P-23" Name="SceneA_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene A Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="29" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-24" Name="SceneA_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene A Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="30" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-24" Name="SceneA_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="30" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-25" Name="SceneA_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="30" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-26" Name="SceneA_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="30" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-27" Name="SceneA_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="30" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-25" Name="SceneB_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene B Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="31" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-26" Name="SceneB_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene B Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="32" BitOffset="0" /></Parameter>
+              <!-- Scene B -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-28" Name="SceneB_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene B Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="31" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-29" Name="SceneB_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="32" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-30" Name="SceneB_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="32" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-31" Name="SceneB_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="32" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-32" Name="SceneB_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="32" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-27" Name="SceneC_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene C Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="33" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-28" Name="SceneC_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene C Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="34" BitOffset="0" /></Parameter>
+              <!-- Tiếp tục Scene C-P theo quy luật tương tự (đã rút gọn để đẩy nhanh) -->
+              <!-- Scene C -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-33" Name="SceneC_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene C Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-34" Name="SceneC_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-35" Name="SceneC_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="34" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-36" Name="SceneC_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="34" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-37" Name="SceneC_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="34" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-29" Name="SceneD_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene D Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="35" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-30" Name="SceneD_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene D Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="36" BitOffset="0" /></Parameter>
+              <!-- Scene D -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-38" Name="SceneD_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene D Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="35" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-39" Name="SceneD_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="36" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-40" Name="SceneD_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="36" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-41" Name="SceneD_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="36" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-42" Name="SceneD_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="36" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-31" Name="SceneE_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene E Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="37" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-32" Name="SceneE_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene E Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="38" BitOffset="0" /></Parameter>
+              <!-- Scene E -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-43" Name="SceneE_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene E Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="37" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-44" Name="SceneE_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="38" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-45" Name="SceneE_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="38" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-46" Name="SceneE_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="38" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-47" Name="SceneE_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="38" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-33" Name="SceneF_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene F Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="39" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-34" Name="SceneF_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene F Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="40" BitOffset="0" /></Parameter>
+              <!-- Scene F -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-48" Name="SceneF_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene F Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="39" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-49" Name="SceneF_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="40" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-50" Name="SceneF_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="40" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-51" Name="SceneF_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="40" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-52" Name="SceneF_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="40" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-35" Name="SceneG_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene G Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="41" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-36" Name="SceneG_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene G Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="42" BitOffset="0" /></Parameter>
+              <!-- Scene G -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-53" Name="SceneG_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene G Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="41" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-54" Name="SceneG_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="42" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-55" Name="SceneG_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="42" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-56" Name="SceneG_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="42" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-57" Name="SceneG_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="42" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-37" Name="SceneH_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene H Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="43" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-38" Name="SceneH_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene H Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="44" BitOffset="0" /></Parameter>
+              <!-- Scene H -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-58" Name="SceneH_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene H Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="43" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-59" Name="SceneH_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="44" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-60" Name="SceneH_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="44" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-61" Name="SceneH_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="44" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-62" Name="SceneH_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="44" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-39" Name="SceneI_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene I Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="45" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-40" Name="SceneI_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene I Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="46" BitOffset="0" /></Parameter>
+              <!-- Scene I -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-63" Name="SceneI_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene I Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="45" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-64" Name="SceneI_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="46" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-65" Name="SceneI_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="46" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-66" Name="SceneI_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="46" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-67" Name="SceneI_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="46" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-41" Name="SceneJ_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene J Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="47" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-42" Name="SceneJ_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene J Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="48" BitOffset="0" /></Parameter>
+              <!-- Scene J -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-68" Name="SceneJ_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene J Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="47" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-69" Name="SceneJ_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="48" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-70" Name="SceneJ_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="48" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-71" Name="SceneJ_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="48" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-72" Name="SceneJ_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="48" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-43" Name="SceneK_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene K Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="49" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-44" Name="SceneK_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene K Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="50" BitOffset="0" /></Parameter>
+              <!-- Scene K -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-73" Name="SceneK_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene K Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="49" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-74" Name="SceneK_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="50" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-75" Name="SceneK_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="50" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-76" Name="SceneK_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="50" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-77" Name="SceneK_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="50" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-45" Name="SceneL_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene L Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="51" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-46" Name="SceneL_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene L Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="52" BitOffset="0" /></Parameter>
+              <!-- Scene L -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-78" Name="SceneL_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene L Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="51" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-79" Name="SceneL_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="52" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-80" Name="SceneL_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="52" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-81" Name="SceneL_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="52" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-82" Name="SceneL_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="52" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-47" Name="SceneM_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene M Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="53" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-48" Name="SceneM_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene M Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="54" BitOffset="0" /></Parameter>
+              <!-- Scene M -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-83" Name="SceneM_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene M Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="53" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-84" Name="SceneM_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="54" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-85" Name="SceneM_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="54" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-86" Name="SceneM_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="54" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-87" Name="SceneM_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="54" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-49" Name="SceneN_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene N Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="55" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-50" Name="SceneN_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene N Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="56" BitOffset="0" /></Parameter>
+              <!-- Scene N -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-88" Name="SceneN_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene N Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="55" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-89" Name="SceneN_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="56" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-90" Name="SceneN_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="56" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-91" Name="SceneN_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="56" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-92" Name="SceneN_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="56" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-51" Name="SceneO_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene O Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="57" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-52" Name="SceneO_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene O Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="58" BitOffset="0" /></Parameter>
+              <!-- Scene O -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-93" Name="SceneO_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene O Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="57" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-94" Name="SceneO_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="58" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-95" Name="SceneO_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="58" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-96" Name="SceneO_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="58" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-97" Name="SceneO_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="58" BitOffset="6" /></Parameter>
 
-              <Parameter Id="M-0085_A-2025-01-00001_P-53" Name="SceneP_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene P Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="59" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2025-01-00001_P-54" Name="SceneP_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene P Relay Actions" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="60" BitOffset="0" /></Parameter>
+              <!-- Scene P -->
+              <Parameter Id="M-0085_A-2025-01-00001_P-98" Name="SceneP_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene P Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="59" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-99" Name="SceneP_R1_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 1 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="60" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-100" Name="SceneP_R2_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 2 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="60" BitOffset="2" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-101" Name="SceneP_R3_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 3 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="60" BitOffset="4" /></Parameter>
+              <Parameter Id="M-0085_A-2025-01-00001_P-102" Name="SceneP_R4_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Output 4 Action" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="60" BitOffset="6" /></Parameter>
             </Parameters>
             <ParameterRefs>
 
@@ -264,16 +329,64 @@
               <ParameterRef Id="M-0085_A-2025-01-00001_P-52_R-52" RefId="M-0085_A-2025-01-00001_P-52" />
               <ParameterRef Id="M-0085_A-2025-01-00001_P-53_R-53" RefId="M-0085_A-2025-01-00001_P-53" />
               <ParameterRef Id="M-0085_A-2025-01-00001_P-54_R-54" RefId="M-0085_A-2025-01-00001_P-54" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-55_R-55" RefId="M-0085_A-2025-01-00001_P-55" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-56_R-56" RefId="M-0085_A-2025-01-00001_P-56" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-57_R-57" RefId="M-0085_A-2025-01-00001_P-57" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-58_R-58" RefId="M-0085_A-2025-01-00001_P-58" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-59_R-59" RefId="M-0085_A-2025-01-00001_P-59" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-60_R-60" RefId="M-0085_A-2025-01-00001_P-60" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-61_R-61" RefId="M-0085_A-2025-01-00001_P-61" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-62_R-62" RefId="M-0085_A-2025-01-00001_P-62" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-63_R-63" RefId="M-0085_A-2025-01-00001_P-63" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-64_R-64" RefId="M-0085_A-2025-01-00001_P-64" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-65_R-65" RefId="M-0085_A-2025-01-00001_P-65" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-66_R-66" RefId="M-0085_A-2025-01-00001_P-66" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-67_R-67" RefId="M-0085_A-2025-01-00001_P-67" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-68_R-68" RefId="M-0085_A-2025-01-00001_P-68" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-69_R-69" RefId="M-0085_A-2025-01-00001_P-69" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-70_R-70" RefId="M-0085_A-2025-01-00001_P-70" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-71_R-71" RefId="M-0085_A-2025-01-00001_P-71" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-72_R-72" RefId="M-0085_A-2025-01-00001_P-72" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-73_R-73" RefId="M-0085_A-2025-01-00001_P-73" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-74_R-74" RefId="M-0085_A-2025-01-00001_P-74" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-75_R-75" RefId="M-0085_A-2025-01-00001_P-75" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-76_R-76" RefId="M-0085_A-2025-01-00001_P-76" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-77_R-77" RefId="M-0085_A-2025-01-00001_P-77" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-78_R-78" RefId="M-0085_A-2025-01-00001_P-78" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-79_R-79" RefId="M-0085_A-2025-01-00001_P-79" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-80_R-80" RefId="M-0085_A-2025-01-00001_P-80" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-81_R-81" RefId="M-0085_A-2025-01-00001_P-81" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-82_R-82" RefId="M-0085_A-2025-01-00001_P-82" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-83_R-83" RefId="M-0085_A-2025-01-00001_P-83" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-84_R-84" RefId="M-0085_A-2025-01-00001_P-84" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-85_R-85" RefId="M-0085_A-2025-01-00001_P-85" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-86_R-86" RefId="M-0085_A-2025-01-00001_P-86" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-87_R-87" RefId="M-0085_A-2025-01-00001_P-87" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-88_R-88" RefId="M-0085_A-2025-01-00001_P-88" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-89_R-89" RefId="M-0085_A-2025-01-00001_P-89" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-90_R-90" RefId="M-0085_A-2025-01-00001_P-90" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-91_R-91" RefId="M-0085_A-2025-01-00001_P-91" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-92_R-92" RefId="M-0085_A-2025-01-00001_P-92" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-93_R-93" RefId="M-0085_A-2025-01-00001_P-93" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-94_R-94" RefId="M-0085_A-2025-01-00001_P-94" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-95_R-95" RefId="M-0085_A-2025-01-00001_P-95" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-96_R-96" RefId="M-0085_A-2025-01-00001_P-96" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-97_R-97" RefId="M-0085_A-2025-01-00001_P-97" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-98_R-98" RefId="M-0085_A-2025-01-00001_P-98" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-99_R-99" RefId="M-0085_A-2025-01-00001_P-99" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-100_R-100" RefId="M-0085_A-2025-01-00001_P-100" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-101_R-101" RefId="M-0085_A-2025-01-00001_P-101" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-102_R-102" RefId="M-0085_A-2025-01-00001_P-102" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="M-0085_A-2025-01-00001_O-1" Name="Output1" Text="Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-2" Name="Output1" Text="Switch status" Number="2" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-3" Name="Output2" Text="Switch" Number="3" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-4" Name="Output2" Text="Switch status" Number="4" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-5" Name="Output3" Text="Switch" Number="5" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-6" Name="Output3" Text="Switch status" Number="6" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-7" Name="Output4" Text="Switch" Number="7" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="M-0085_A-2025-01-00001_O-8" Name="Output4" Text="Switch status" Number="8" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-1" Name="Output 1" Text="Output 1" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-2" Name="Output 1" Text="Output 1" Number="2" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-3" Name="Output 2" Text="Output 2" Number="3" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-4" Name="Output 2" Text="Output 2" Number="4" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-5" Name="Output 3" Text="Output 3" Number="5" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-6" Name="Output 3" Text="Output 3" Number="6" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-7" Name="Output 4" Text="Output 4" Number="7" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-2025-01-00001_O-8" Name="Output 4" Text="Output 4" Number="8" FunctionText="Switch Status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
               <ComObject Id="M-0085_A-2025-01-00001_O-9" Name="Scene" Text="Scene Control" Number="9" FunctionText="Scene Control" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" />
             </ComObjectTable>
             <ComObjectRefs>  
@@ -299,212 +412,293 @@
             </LoadProcedures>
           </Static>
           <Dynamic>
-            <!-- General Section -->
-            <Channel Id="M-0085_A-2025-01-00001_CH-00" Number="0" Text="General">
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-10" Name="Product_Info" Text="Product Information">
-                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-10" Text="Model: Lumi Actuator 4 Relays" />
-                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-20" Text="Firmware: v1.0.0" />
-                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-30" Text="Hardware: v1.0" />
-                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-40" Text="Manufacturer: Lumi" />
-              </ParameterBlock>
-            </Channel>
-
-            <!-- Output Section -->
-            <Channel Id="M-0085_A-2025-01-00001_CH-10" Number="1" Text="Output">
-              <!-- Output 1 -->
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-20" Name="Output1_Config" Text="Output 1">
-                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-1_R-1" />
-                <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1">
-                  <when test="1"> <!-- Switch Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-1_R-1" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-2_R-2" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-2_R-2" />
-                  </when>
-                  <when test="2"> <!-- Auto On/Off Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-1_R-1" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-2_R-2" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-3_R-3" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-5_R-5" />
-                  </when>
-                  <when test="3"> <!-- Momentary Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-1_R-1" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-2_R-2" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-101" Text="Mode: Momentary (Press-Release)" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-102" Text="Device will automatically turn off after 500ms pulse." />
-                  </when>
-                </choose>
-              </ParameterBlock>
-
-              <!-- Output 2 -->
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-30" Name="Output2_Config" Text="Output 2">
-                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-6_R-6" />
-                <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6">
-                  <when test="1">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-3_R-3" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-4_R-4" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-7_R-7" />
-                  </when>
-                  <when test="2">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-3_R-3" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-4_R-4" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-8_R-8" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-10_R-10" />
-                  </when>
-                  <when test="3"> <!-- Momentary Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-3_R-3" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-4_R-4" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-201" Text="Mode: Momentary (Press-Release)" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-202" Text="Device will automatically turn off after 500ms pulse." />
-                  </when>
-                </choose>
-              </ParameterBlock>
-
-              <!-- Output 3 -->
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-40" Name="Output3_Config" Text="Output 3">
-                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-11_R-11" />
-                <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11">
-                  <when test="1">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-5_R-5" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-6_R-6" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-12_R-12" />
-                  </when>
-                  <when test="2">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-5_R-5" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-6_R-6" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-13_R-13" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-15_R-15" />
-                  </when>
-                  <when test="3"> <!-- Momentary Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-5_R-5" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-6_R-6" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-301" Text="Mode: Momentary (Press-Release)" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-302" Text="Device will automatically turn off after 500ms pulse." />
-                  </when>
-                </choose>
-              </ParameterBlock>
-
-              <!-- Output 4 -->
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-50" Name="Output4_Config" Text="Output 4">
-                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-16_R-16" />
-                <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16">
-                  <when test="1">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-7_R-7" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-8_R-8" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-17_R-17" />
-                  </when>
-                  <when test="2">
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-7_R-7" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-8_R-8" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-18_R-18" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-20_R-20" />
-                  </when>
-                  <when test="3"> <!-- Momentary Mode -->
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-7_R-7" />
-                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-8_R-8" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-401" Text="Mode: Momentary (Press-Release)" />
-                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-402" Text="Device will automatically turn off after 500ms pulse." />
-                  </when>
-                </choose>
-              </ParameterBlock>
-
-              <!-- Scene Configuration -->
-              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-60" Name="Scene_General" Text="Scene Control Settings">
-                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-21_R-21" />
+            <ChannelIndependentBlock>
+              <!-- General Settings Block -->
+              <ParameterBlock Id="M-0085_A-2025-01-00001_PB-10" Name="General_Config" Text="General Settings">
+                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-10" Text="Channel Operation Mode" UIHint="Headline" />
+                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-1_R-1" /> <!-- R1 Mode -->
+                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-6_R-6" /> <!-- R2 Mode -->
+                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-11_R-11" /> <!-- R3 Mode -->
+                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-16_R-16" /> <!-- R4 Mode -->
+                
+                <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-20" Text="Global Functions" UIHint="Headline" />
+                <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-21_R-21" /> <!-- Enable Scene -->
                 <choose ParamRefId="M-0085_A-2025-01-00001_P-21_R-21">
                   <when test="1">
                     <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-9_R-9" />
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-22_R-22" />
                   </when>
                 </choose>
               </ParameterBlock>
 
-              <choose ParamRefId="M-0085_A-2025-01-00001_P-21_R-21">
-                <when test="1">
-                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-70" Name="Scene_Assignments" Text="Scene Slots (A-P)">
-                    <!-- Scene A -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-23_R-23" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-23_R-23">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-24_R-24" /></when>
-                    </choose>
-                    <!-- Scene B -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-25_R-25" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-25_R-25">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-26_R-26" /></when>
-                    </choose>
-                    <!-- Scene C -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-27_R-27" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-27_R-27">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-28_R-28" /></when>
-                    </choose>
-                    <!-- Scene D -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-29_R-29" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-29_R-29">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-30_R-30" /></when>
-                    </choose>
-                    <!-- Scene E -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-31_R-31" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-31_R-31">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-32_R-32" /></when>
-                    </choose>
-                    <!-- Scene F -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-33_R-33" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-33_R-33">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-34_R-34" /></when>
-                    </choose>
-                    <!-- Scene G -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-35_R-35" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-35_R-35">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-36_R-36" /></when>
-                    </choose>
-                    <!-- Scene H -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-37_R-37" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-37_R-37">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-38_R-38" /></when>
-                    </choose>
-                    <!-- Scene I -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-39_R-39" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-39_R-39">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-40_R-40" /></when>
-                    </choose>
-                    <!-- Scene J -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-41_R-41" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-41_R-41">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-42_R-42" /></when>
-                    </choose>
-                    <!-- Scene K -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-43_R-43" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-43_R-43">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-44_R-44" /></when>
-                    </choose>
-                    <!-- Scene L -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-45_R-45" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-45_R-45">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-46_R-46" /></when>
-                    </choose>
-                    <!-- Scene M -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-47_R-47" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-47_R-47">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-48_R-48" /></when>
-                    </choose>
-                    <!-- Scene N -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-49_R-49" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-49_R-49">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-50_R-50" /></when>
-                    </choose>
-                    <!-- Scene O -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-51_R-51" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-51_R-51">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-52_R-52" /></when>
-                    </choose>
-                    <!-- Scene P -->
-                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-53_R-53" />
-                    <choose ParamRefId="M-0085_A-2025-01-00001_P-53_R-53">
-                      <when test=">0"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-54_R-54" /></when>
+              <!-- Output A Configuration -->
+              <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1">
+                <when test=">0">
+                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-20" Name="Output1_Config" Text="Output 1">
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-1_R-1" />
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-2_R-2" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-2_R-2" /> <!-- Startup -->
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1">
+                      <when test="2"> <!-- Auto -->
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-3_R-3" />
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-5_R-5" />
+                      </when>
                     </choose>
                   </ParameterBlock>
                 </when>
               </choose>
-            </Channel>
+
+              <!-- Output B Configuration -->
+              <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6">
+                <when test=">0">
+                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-30" Name="Output2_Config" Text="Output 2">
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-3_R-3" />
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-4_R-4" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-7_R-7" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-8_R-8" />
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-10_R-10" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+
+              <!-- Output C Configuration -->
+              <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11">
+                <when test=">0">
+                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-40" Name="Output3_Config" Text="Output 3">
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-5_R-5" />
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-6_R-6" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-12_R-12" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-13_R-13" />
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-15_R-15" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+
+              <!-- Output D Configuration -->
+              <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16">
+                <when test=">0">
+                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-50" Name="Output4_Config" Text="Output 4">
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-7_R-7" />
+                    <ComObjectRefRef RefId="M-0085_A-2025-01-00001_O-8_R-8" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-17_R-17" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-18_R-18" />
+                        <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-20_R-20" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+
+              <!-- Scene Settings Block -->
+              <choose ParamRefId="M-0085_A-2025-01-00001_P-21_R-21">
+                <when test="1">
+                  <ParameterBlock Id="M-0085_A-2025-01-00001_PB-70" Name="Scene_Settings" Text="Scene Settings">
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-22_R-22" /> <!-- Enable Store -->
+                    
+                    <!-- Scene A -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-100" Text="Scene A Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-23_R-23" /> <!-- Num -->
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-23_R-23">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-24_R-24" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-25_R-25" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-26_R-26" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-27_R-27" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene B -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-110" Text="Scene B Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-28_R-28" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-28_R-28">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-29_R-29" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-30_R-30" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-31_R-31" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-32_R-32" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene C -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-120" Text="Scene C Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-33_R-33" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-33_R-33">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-34_R-34" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-35_R-35" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-36_R-36" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-37_R-37" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene D -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-130" Text="Scene D Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-38_R-38" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-38_R-38">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-39_R-39" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-40_R-40" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-41_R-41" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-42_R-42" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene E -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-140" Text="Scene E Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-43_R-43" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-43_R-43">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-44_R-44" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-45_R-45" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-46_R-46" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-47_R-47" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene F -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-150" Text="Scene F Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-48_R-48" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-48_R-48">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-49_R-49" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-50_R-50" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-51_R-51" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-52_R-52" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene G -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-160" Text="Scene G Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-53_R-53" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-53_R-53">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-54_R-54" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-55_R-55" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-56_R-56" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-57_R-57" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene H -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-170" Text="Scene H Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-58_R-58" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-58_R-58">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-59_R-59" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-60_R-60" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-61_R-61" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-62_R-62" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene I -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-180" Text="Scene I Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-63_R-63" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-63_R-63">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-64_R-64" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-65_R-65" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-66_R-66" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-67_R-67" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene J -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-190" Text="Scene J Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-68_R-68" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-68_R-68">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-69_R-69" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-70_R-70" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-71_R-71" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-72_R-72" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene K -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-200" Text="Scene K Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-73_R-73" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-73_R-73">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-74_R-74" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-75_R-75" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-76_R-76" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-77_R-77" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene L -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-210" Text="Scene L Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-78_R-78" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-78_R-78">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-79_R-79" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-80_R-80" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-81_R-81" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-82_R-82" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene M -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-220" Text="Scene M Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-83_R-83" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-83_R-83">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-84_R-84" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-85_R-85" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-86_R-86" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-87_R-87" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene N -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-230" Text="Scene N Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-88_R-88" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-88_R-88">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-89_R-89" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-90_R-90" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-91_R-91" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-92_R-92" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene O -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-240" Text="Scene O Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-93_R-93" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-93_R-93">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-94_R-94" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-95_R-95" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-96_R-96" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-97_R-97" /></when></choose>
+                      </when>
+                    </choose>
+
+                    <!-- Scene P -->
+                    <ParameterSeparator Id="M-0085_A-2025-01-00001_PS-250" Text="Scene P Setting" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-0085_A-2025-01-00001_P-98_R-98" />
+                    <choose ParamRefId="M-0085_A-2025-01-00001_P-98_R-98">
+                      <when test=">0">
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-1_R-1"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-99_R-99" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-6_R-6"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-100_R-100" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-11_R-11"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-101_R-101" /></when></choose>
+                        <choose ParamRefId="M-0085_A-2025-01-00001_P-16_R-16"><when test="1"><ParameterRefRef RefId="M-0085_A-2025-01-00001_P-102_R-102" /></when></choose>
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+            </ChannelIndependentBlock>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
