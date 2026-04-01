@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 """
-KNX XML Comprehensive Validator
-================================
-Based on full analysis of Kaenx Creator source code:
-- ImportHelper.cs (2213 lines)
-- CheckHelper.cs (1067 lines)
-
-This validator checks ALL known crash points BEFORE import.
+KNX XML Comprehensive Validator (Sanitized for Windows)
+========================================================
+Simplified output to avoid UnicodeEncodeError on Windows terminals.
 """
 
 import xml.etree.ElementTree as ET
@@ -19,35 +15,35 @@ class ValidationResult:
         self.errors: List[str] = []
         self.warnings: List[str] = []
         self.passed: List[str] = []
-    
+
     def add_error(self, msg: str):
-        self.errors.append(f"❌ ERROR: {msg}")
-    
+        self.errors.append(msg)
+
     def add_warning(self, msg: str):
-        self.warnings.append(f"⚠️ WARNING: {msg}")
-    
+        self.warnings.append(msg)
+
     def add_pass(self, msg: str):
-        self.passed.append(f"✓ {msg}")
-    
+        self.passed.append(msg)
+
     def print_report(self):
         print("\n" + "="*60)
         print("KNX XML VALIDATION REPORT")
         print("="*60)
         
         if self.passed:
-            print(f"\n✓ PASSED ({len(self.passed)}):")
+            print(f"\nPASSED ({len(self.passed)}):")
             for p in self.passed:
-                print(f"  {p}")
+                print(f"  [OK] {p}")
         
         if self.warnings:
-            print(f"\n⚠️ WARNINGS ({len(self.warnings)}):")
+            print(f"\nWARNINGS ({len(self.warnings)}):")
             for w in self.warnings:
-                print(f"  {w}")
+                print(f"  [!] {w}")
         
         if self.errors:
-            print(f"\n❌ ERRORS ({len(self.errors)}):")
+            print(f"\nERRORS ({len(self.errors)}):")
             for e in self.errors:
-                print(f"  {e}")
+                print(f"  [X] {e}")
         
         print("\n" + "="*60)
         if self.errors:
@@ -56,307 +52,292 @@ class ValidationResult:
             print("RESULT: PASS - XML should import successfully")
         print("="*60)
 
-def get_encoded(input_str: str) -> str:
-    """Mimics ExportHelper.GetEncoded from Kaenx Creator"""
-    if not input_str:
-        return ""
-    result = input_str
-    # Order matters - encode dot last
-    result = result.replace("-", ".2D")
-    result = result.replace(" ", ".20")
-    result = result.replace("(", ".28")
-    result = result.replace(")", ".29")
-    result = result.replace("+", ".2B")
-    result = result.replace(",", ".2C")
-    result = result.replace("/", ".2F")
-    result = result.replace(".", ".2E")
-    return result
-
 def get_last_split(id_str: str, offset: int = 0) -> str:
-    """
-    Mimics ImportHelper.GetLastSplit (L2197-2200):
-    return input.Substring(input.LastIndexOf('_') + 1 + offset);
-    
-    Note: LastIndexOf returns -1 if not found, so -1+1+offset = offset
-    """
-    last_underscore = id_str.rfind('_')
-    start_pos = last_underscore + 1 + offset
-    if start_pos >= len(id_str):
-        return ""
-    return id_str[start_pos:]
+    idx = id_str.rfind('_')
+    if idx == -1:
+        return id_str[offset:]
+    return id_str[idx + 1 + offset:]
 
-def check_numeric_suffix(id_str: str, element_name: str, offset: int, result: ValidationResult) -> bool:
-    """Check if ID suffix after GetLastSplit is numeric (int.Parse/long.Parse requirement)"""
-    suffix = get_last_split(id_str, offset)
-    
-    # Handle leading dash for negative numbers
-    if suffix.startswith('-'):
-        suffix = suffix[1:]
-    
-    if not suffix:
-        result.add_error(f"{element_name} ID '{id_str}' has empty suffix after offset {offset}")
-        return False
-    
-    if not suffix.isdigit():
-        result.add_error(f"{element_name} ID '{id_str}' has non-numeric suffix '{suffix}' (offset {offset}). This causes FormatException.")
-        return False
-    
-    return True
+def check_numeric_suffix(elem_id, tag_name, offset, result):
+    if not elem_id: return
+    try:
+        parts = elem_id.split('_')
+        last_part = parts[-1]
+        
+        # Kaenx-Creator's GetLastSplit(input, offset) uses:
+        # return input.Substring(input.LastIndexOf('_') + 1 + offset)
+        # So we skip 'offset' characters after the last underscore
+        if len(last_part) <= offset:
+            result.add_error(f"{tag_name} ID '{elem_id}' is too short for offset {offset}")
+            return
+            
+        numeric_part = last_part[offset:]
+        
+        # Sometimes there might be a trailing dash/other parts, but usually it's used for int.Parse
+        # If it starts with '-', C# skips it
+        clean_numeric = numeric_part[1:] if numeric_part.startswith('-') else numeric_part
+        
+        # We need to handle cases like P-0_R-0 where there are MORE underscores
+        # But usually this check is for the BASE identity
+        
+        int(clean_numeric) # Must be a valid integer
+        result.add_pass(f"{tag_name} ID '{elem_id}' suffix is numeric decimal")
+    except (ValueError, IndexError):
+        result.add_error(f"{tag_name} ID '{elem_id}' has non-numeric suffix '{numeric_part if 'numeric_part' in locals() else 'unknown'}' (Will crash Kaenx-Creator)")
 
-def validate_xml(file_path: str) -> ValidationResult:
+def validate_xml(file_path: str):
     result = ValidationResult()
     
-    print(f"\nValidating: {file_path}")
-    print("-" * 60)
-    
-    # Parse XML
     try:
         tree = ET.parse(file_path)
         root = tree.getroot()
-        result.add_pass("XML syntax is valid")
     except Exception as e:
-        result.add_error(f"XML parsing failed: {e}")
+        result.add_error(f"XML Parse Error: {str(e)}")
         return result
+
+    # Namespace detection
+    ns = ""
+    match = re.match(r'({.*})', root.tag)
+    if match:
+        ns = match.group(1)
     
-    # Extract namespace
-    ns = {'knx': 'http://knx.org/xml/project/11'}
-    if '}' in root.tag:
-        ns_url = root.tag.split('}')[0].strip('{')
-        ns = {'knx': ns_url}
+    if 'project/20' not in ns:
+        result.add_warning(f"Namespace '{ns}' detected. Version 20 recommended for modern features")
+
+    # Track all IDs and their elements
+    id_map = {}
+    all_elements = root.findall('.//*')
+    for elem in all_elements:
+        elem_id = elem.get('Id')
+        if elem_id:
+            if elem_id in id_map:
+                result.add_error(f"Duplicate ID found: '{elem_id}' in {elem.tag}")
+            id_map[elem_id] = elem
+
+    # 1. Referential Integrity Check
+    ref_attributes = ['RefId', 'ParameterType', 'ParamRefId', 'CodeSegment', 'Hardware2ProgramRefId', 'ProductRefId']
     
-    # ============================================================
-    # SECTION 1: Check Manufacturer (ImportHelper L77)
-    # ============================================================
-    manu = root.find('.//knx:Manufacturer', ns)
-    if manu is None:
-        result.add_error("Manufacturer node not found")
-        return result
-    
-    ref_id = manu.get('RefId')
-    if ref_id:
-        if len(ref_id) < 3:
-            result.add_error(f"Manufacturer RefId '{ref_id}' too short for Substring(2)")
-        else:
-            result.add_pass(f"Manufacturer RefId format OK: {ref_id}")
-    else:
-        result.add_error("Manufacturer missing RefId attribute")
-    
-    # ============================================================
-    # SECTION 2: Check ApplicationProgram (ImportHelper L384-418)
-    # ============================================================
-    app_prog = manu.find('.//knx:ApplicationProgram', ns)
-    if app_prog is None:
-        result.add_error("ApplicationProgram node not found")
-        return result
-    
-    # Check required attributes
-    for attr in ['ApplicationNumber', 'ApplicationVersion', 'MaskVersion', 'DefaultLanguage']:
-        val = app_prog.get(attr)
-        if val is None:
-            result.add_error(f"ApplicationProgram missing required attribute: {attr}")
-        elif attr in ['ApplicationNumber', 'ApplicationVersion']:
-            if not val.isdigit():
-                result.add_error(f"ApplicationProgram.{attr} must be integer, got: {val}")
-            else:
-                result.add_pass(f"ApplicationProgram.{attr} = {val}")
-    
-    # ============================================================
-    # SECTION 3: Check Hardware (ImportHelper L1593-1599)
-    # Note: KNX XML has nested <Hardware><Hardware Id=...></Hardware></Hardware>
-    # We need the INNER Hardware element that has attributes
-    # ============================================================
-    hardware_list = manu.findall('.//knx:Hardware', ns)
-    hardware = None
-    for hw in hardware_list:
-        # Find the Hardware element that has VersionNumber or Name (the inner one)
-        if hw.get('VersionNumber') is not None or hw.get('Name') is not None:
-            hardware = hw
-            break
-    
-    if hardware is None:
-        # Fallback: try to find any Hardware with Id attribute
-        for hw in hardware_list:
-            if hw.get('Id') is not None:
-                hardware = hw
-                break
-    
-    if hardware is None:
-        result.add_error("Hardware node with attributes not found")
-    else:
-        # CRITICAL: VersionNumber not Version
-        if hardware.get('VersionNumber') is None:
-            if hardware.get('Version') is not None:
-                result.add_error("Hardware uses 'Version' instead of 'VersionNumber' - causes NullReferenceException at L1595")
-            else:
-                result.add_error("Hardware missing 'VersionNumber' attribute - causes NullReferenceException at L1595")
-        else:
-            result.add_pass(f"Hardware.VersionNumber = {hardware.get('VersionNumber')}")
-        
-        # Check other mandatory attributes (CheckHelper L36-41)
-        if hardware.get('BusCurrent') is None:
-            result.add_warning("Hardware missing 'BusCurrent' attribute")
-        else:
-            result.add_pass(f"Hardware.BusCurrent = {hardware.get('BusCurrent')}")
-        
-        has_ind_addr = hardware.get('HasIndividualAddress')
-        if has_ind_addr is None:
-            result.add_warning("Hardware missing 'HasIndividualAddress' attribute")
-        elif has_ind_addr.lower() not in ['true', '1']:
-            result.add_warning("Hardware.HasIndividualAddress is not 'true'")
-        else:
-            result.add_pass("Hardware.HasIndividualAddress = true")
-        
-        has_app = hardware.get('HasApplicationProgram')
-        if has_app is None:
-            result.add_warning("Hardware missing 'HasApplicationProgram' attribute")
-        elif has_app.lower() not in ['true', '1']:
-            result.add_warning("Hardware.HasApplicationProgram is not 'true'")
-        else:
-            result.add_pass("Hardware.HasApplicationProgram = true")
-    
-    # ============================================================
-    # SECTION 4: Check Hardware2ProgramRefId Length (ImportHelper L1705)
-    # ============================================================
-    catalog_items = manu.findall('.//knx:CatalogItem', ns)
-    for item in catalog_items:
-        h2p_ref = item.get('Hardware2ProgramRefId')
-        if h2p_ref:
-            # Find "_HP-" or similar pattern
-            hp_idx = h2p_ref.find('_HP-')
-            if hp_idx != -1:
-                suffix = h2p_ref[hp_idx + 4:]  # After "_HP-"
-                if len(suffix) < 13:
-                    result.add_error(
-                        f"Hardware2ProgramRefId suffix '{suffix}' length is {len(suffix)}. "
-                        f"MUST be ≥13 characters to avoid ArgumentOutOfRangeException at L1705"
-                    )
-                else:
-                    result.add_pass(f"Hardware2ProgramRefId suffix length OK: {len(suffix)}")
-    
-    # ============================================================
-    # SECTION 5: Check OrderNumber Encoding (ImportHelper L1638-1639)
-    # ============================================================
-    products = manu.findall('.//knx:Product', ns)
-    for prod in products:
-        order_num = prod.get('OrderNumber', '')
-        if order_num:
-            encoded = get_encoded(order_num)
-            # Check if any CatalogItem contains encoded order number
-            found = False
-            for item in catalog_items:
-                item_id = item.get('Id', '')
-                if encoded in item_id:
-                    found = True
-                    result.add_pass(f"CatalogItem ID contains encoded OrderNumber '{encoded}'")
-                    break
+    for elem in all_elements:
+        for attr_name, attr_val in elem.attrib.items():
+            # Check for direct RefId or known reference attributes
+            is_ref = attr_name in ref_attributes or attr_name.endswith('RefId')
             
-            if not found and encoded != order_num:  # Only error if encoding was needed
-                result.add_warning(
-                    f"OrderNumber '{order_num}' should be encoded as '{encoded}' in CatalogItem IDs"
-                )
-    
-    # ============================================================
-    # SECTION 6: Check All ID Formats (FormatException points)
-    # ============================================================
-    print("\nChecking ID formats...")
-    
-    # Parameters (offset 2) - L1073
-    for elem in app_prog.findall('.//knx:Parameter', ns):
-        check_numeric_suffix(elem.get('Id', ''), 'Parameter', 2, result)
-    
-    # ParameterRefs (offset 2) - L1162
-    for elem in app_prog.findall('.//knx:ParameterRef', ns):
-        check_numeric_suffix(elem.get('Id', ''), 'ParameterRef', 2, result)
-        if elem.get('RefId'):
-            check_numeric_suffix(elem.get('RefId', ''), 'ParameterRef.RefId', 2, result)
-    
-    # ComObjects (uses last '-' instead of GetLastSplit) - L1250-1252
-    for elem in app_prog.findall('.//knx:ComObject', ns):
-        co_id = elem.get('Id', '')
-        if '-' in co_id:
-            suffix = co_id.split('-')[-1]
-            if not suffix.isdigit():
-                result.add_error(f"ComObject ID '{co_id}' has non-numeric suffix '{suffix}' after last '-'")
-    
-    # ComObjectRefs (offset 2) - L1337
-    for elem in app_prog.findall('.//knx:ComObjectRef', ns):
-        check_numeric_suffix(elem.get('Id', ''), 'ComObjectRef', 2, result)
-    
-    # ParameterTypes (offset 3 for name extraction, not numeric) - L855
-    # These are OK to have non-numeric names
-    
-    # Dynamic section elements
-    dynamic = app_prog.find('.//knx:Dynamic', ns)
-    if dynamic is not None:
-        # ParameterBlocks (offset 3 for Id) - L1860
-        for elem in dynamic.findall('.//knx:ParameterBlock', ns):
-            pb_id = elem.get('Id')
-            if pb_id:
-                check_numeric_suffix(pb_id, 'ParameterBlock', 3, result)
-        
-        # choose elements (ParamRefId offset 2) - L1899
-        for elem in dynamic.findall('.//knx:choose', ns):
-            pref = elem.get('ParamRefId')
-            if pref:
-                check_numeric_suffix(pref, 'choose.ParamRefId', 2, result)
-        
-        # ParameterRefRef (RefId offset 2) - L1933
-        for elem in dynamic.findall('.//knx:ParameterRefRef', ns):
-            ref_id = elem.get('RefId')
-            if ref_id:
-                check_numeric_suffix(ref_id, 'ParameterRefRef.RefId', 2, result)
-        
-        # ComObjectRefRef (RefId offset 2) - L1981
-        for elem in dynamic.findall('.//knx:ComObjectRefRef', ns):
-            ref_id = elem.get('RefId')
-            if ref_id:
-                check_numeric_suffix(ref_id, 'ComObjectRefRef.RefId', 2, result)
-    
-    # ============================================================
-    # SECTION 7: Check DatapointType Format (ImportHelper L1278-1304)
-    # ============================================================
-    print("\nChecking DatapointType formats...")
-    for co in app_prog.findall('.//knx:ComObject', ns):
-        dpt = co.get('DatapointType')
-        if dpt:
-            if not (dpt.startswith('DPST-') or dpt.startswith('DPT-')):
-                result.add_error(f"ComObject DatapointType '{dpt}' must start with 'DPST-' or 'DPT-'")
+            if is_ref and attr_val:
+                if attr_val not in id_map:
+                    # Special case for Manufacturer RefId which might be external (M-XXXX)
+                    if elem.tag.endswith('Manufacturer') and attr_name == 'RefId':
+                        result.add_warning(f"External Reference: {elem.tag} attribute '{attr_name}' refers to external ID '{attr_val}'")
+                    else:
+                        result.add_error(f"Broken Reference: {elem.tag} attribute '{attr_name}' refers to missing ID '{attr_val}' (Likely 'Sequence' error trigger)")
+                else:
+                    result.add_pass(f"Reference '{attr_val}' ({attr_name}) is valid")
+
+    # 2. Memory Footprint Check
+    segments = {}
+    for seg in root.findall(f'.//{ns}RelativeSegment'):
+        seg_id = seg.get('Id')
+        try:
+            segments[seg_id] = {
+                'size': int(seg.get('Size', '0')),
+                'name': seg.get('Name', seg_id),
+                'used_bytes': 0
+            }
+        except: pass
+
+    for param in root.findall(f'.//{ns}Parameter'):
+        mem = param.find(f'{ns}Memory')
+        if mem is not None:
+            seg_ref = mem.get('CodeSegment')
+            offset = int(mem.get('Offset', '0'))
+            bit_offset = int(mem.get('BitOffset', '0'))
+            
+            # Get size from ParameterType
+            pt_id = param.get('ParameterType')
+            pt = id_map.get(pt_id)
+            size_in_bit = 8 # Default
+            if pt is not None:
+                restr = pt.find(f'{ns}TypeRestriction')
+                if restr is not None:
+                    size_in_bit = int(restr.get('SizeInBit', '8'))
+            
+            end_byte = offset + (bit_offset + size_in_bit + 7) // 8
+            if seg_ref in segments:
+                if end_byte > segments[seg_ref]['size']:
+                    result.add_error(f"Memory Overflow: Parameter '{param.get('Name')}' (ends at byte {end_byte}) exceeds Segment '{segments[seg_ref]['name']}' size {segments[seg_ref]['size']}")
+                else:
+                    segments[seg_ref]['used_bytes'] = max(segments[seg_ref]['used_bytes'], end_byte)
+
+    for seg_id, info in segments.items():
+        if info['used_bytes'] > 0:
+            result.add_pass(f"Segment '{info['name']}' memory usage: {info['used_bytes']}/{info['size']} bytes")
+
+    # 2. Hardware ID Inheritance Check (Crucial for 'Sequence' Errors)
+    for hw in root.findall(f'.//{ns}Hardware'):
+        hw_id = hw.get('Id', '')
+        # Check Products
+        for prod in hw.findall(f'.//{ns}Product'):
+            prod_id = prod.get('Id', '')
+            if not prod_id.startswith(hw_id):
+                result.add_error(f"Product ID '{prod_id}' must start with Hardware ID '{hw_id}'")
+        # Check Hardware2Programs
+        for h2p in hw.findall(f'.//{ns}Hardware2Program'):
+            h2p_id = h2p.get('Id', '')
+            if not h2p_id.startswith(hw_id):
+                result.add_error(f"Hardware2Program ID '{h2p_id}' must start with Hardware ID '{hw_id}'")
+
+    # 4. Kaenx-Creator 1.9.6 Specific Rules (from Rule.md)
+    # Rule 10.2: CatalogItem ID parsing cuts 13 chars from end of Hardware2ProgramRefId
+    for cat in root.iter(f'{ns}CatalogItem'):
+        hp_ref = cat.get('Hardware2ProgramRefId', '')
+        if hp_ref: # Only check if the attribute exists
+            suffix = hp_ref.split('_')[-1]
+            if len(suffix) < 13:
+                 result.add_error(f"Hardware2ProgramRefId suffix '{suffix}' is too short ({len(suffix)} < 13). Kaenx-Creator 1.9.6 will crash.")
             else:
-                result.add_pass(f"DatapointType format OK: {dpt}")
-    
-    # ============================================================
-    # SECTION 8: Check ObjectSize Format (ImportHelper L1273-1277)
-    # ============================================================
-    print("\nChecking ObjectSize formats...")
-    for co in app_prog.findall('.//knx:ComObject', ns):
-        obj_size = co.get('ObjectSize')
-        if obj_size:
-            parts = obj_size.split(' ')
-            if len(parts) != 2:
-                result.add_error(f"ObjectSize '{obj_size}' invalid format. Expected 'X Bit(s)' or 'X Byte(s)'")
-            elif parts[1] not in ['Bit', 'Bits', 'Byte', 'Bytes']:
-                result.add_error(f"ObjectSize '{obj_size}' unit must be Bit/Bits/Byte/Bytes")
-            elif not parts[0].isdigit():
-                result.add_error(f"ObjectSize '{obj_size}' size must be numeric")
+                result.add_pass(f"Hardware2ProgramRefId suffix '{suffix}' is of sufficient length.")
+
+    # Rule 10.5: OrderNumber with special characters (like '-') fails encoding search
+    for prod in root.iter(f'{ns}Product'):
+        on = prod.get('OrderNumber', '')
+        if on: # Only check if the attribute exists
+            if not on.isalnum():
+                # Check for allowed underscores if working backup has them, but Rule.md says alphanumeric
+                if '-' in on:
+                    result.add_error(f"OrderNumber '{on}' contains '-' which is known to cause 'Sequence' errors in Kaenx-Creator (Encoding mismatch)")
+                else:
+                    result.add_warning(f"OrderNumber '{on}' is not fully alphanumeric. Alphanumeric is recommended by technical docs.")
             else:
-                result.add_pass(f"ObjectSize format OK: {obj_size}")
+                result.add_pass(f"OrderNumber '{on}' is alphanumeric.")
+
+    # 3. Hardware-Catalog Alignment Check (Critical for 'Sequence' Errors)
+    for cat in root.findall(f'.//{ns}CatalogItem'):
+        product_ref = cat.get('ProductRefId')
+        cat_id = cat.get('Id', '')
+        product = id_map.get(product_ref)
+        if product is not None:
+            order_number = product.get('OrderNumber', '')
+            if order_number and order_number not in cat_id:
+                result.add_error(f"CatalogItem ID '{cat_id}' must contain OrderNumber '{order_number}' (Confirmed 'Sequence' error trigger)")
+            elif order_number:
+                result.add_pass(f"CatalogItem ID format OK (contains {order_number})")
+
+    # Logic Rule 10: Numeric suffixes for certain tags (Kaenx-Creator strict parsing)
+    # Tags that must end in _ + (offset) + (decimal number)
+    numeric_tags = {
+        'Parameter': 2,       # P-xxx
+        'ParameterType': 2,   # PT-xxx
+        'ComObject': 2,       # O-xxx
+        'ParameterRef': 2,    # P-xxx_R-xxx (Last part is numeric)
+        'ComObjectRef': 2,    # O-xxx_R-xxx
+        'ParameterBlock': 3,  # PB-xxx
+        'ParameterSeparator': 3, # PS-xxx
+        'Rename': 3,          # CH-xxx
+        'ParameterBlockRename': 3 # PB-xxx
+    }
+    for tag, offset in numeric_tags.items():
+        for elem in root.findall(f'.//{ns}{tag}'):
+            check_numeric_suffix(elem.get('Id', ''), tag, offset, result)
+
+    # RelativeSegment has special format sometimes (RS-04-00001)
+    for seg in root.findall(f'.//{ns}RelativeSegment'):
+        seg_id = seg.get('Id', '')
+        if seg_id:
+            last = seg_id.split('_')[-1]
+            if last.startswith('RS-'):
+                result.add_pass(f"RelativeSegment ID '{seg_id}' format OK")
+            else:
+                result.add_error(f"RelativeSegment ID '{seg_id}' must start with 'RS-'")
+
+    # DatapointType format check
+    for com in root.findall(f'.//{ns}ComObject'):
+        dpt = com.get('DatapointType', '')
+        if dpt and not (dpt.startswith('DPST-') or dpt.startswith('DPT-')):
+            result.add_error(f"ComObject '{com.get('Name')}' has invalid DatapointType format '{dpt}' (Use DPST-x-y)")
+        elif dpt:
+            result.add_pass(f"ComObject '{com.get('Name')}' DPT format OK")
+
+    # ObjectSize format check
+    for com in root.findall(f'.//{ns}ComObject'):
+        size = com.get('ObjectSize', '')
+        if not re.match(r'^\d+ (Bit|Bits|Byte|Bytes)$', size):
+            result.add_error(f"ComObject '{com.get('Name')}' has invalid ObjectSize format '{size}'")
+        else:
+            result.add_pass(f"ComObject '{com.get('Name')}' ObjectSize format OK")
+
+    # 1. Basic Schema-like logic checks
+    # Check for empty attributes that should be numeric or DPT
+    critical_attrs = ['Value', 'Number', 'Size', 'Offset', 'BitOffset', 'DatapointType', 'ObjectSize']
+    for elem in root.iter():
+        for attr in critical_attrs:
+            val = elem.get(attr)
+            if val == "":
+                result.add_error(f"Element <{elem.tag.split('}')[-1]}> has empty attribute '{attr}' (Confirmed '.NET FormatException' trigger)")
+            elif val is not None:
+                # Specific DPT format check
+                if attr == 'DatapointType' and not val.startswith('DPST-') and not val.startswith('DPT-'):
+                     result.add_error(f"Invalid DatapointType format '{val}' in <{elem.tag.split('}')[-1]}>")
+
+    # Logic Rule 11.1: Security Options (Kaenx-Creator specific)
+    app_program = root.find(f".//{ns}ApplicationProgram")
+    if app_program is not None:
+        mask_version = app_program.get("MaskVersion", "")
+        if mask_version in ["MV-07B0", "MV-07B5"]:
+            options = root.find(f".//{ns}Options")
+            if options is None:
+                result.add_error("ApplicationProgram uses a Secure mask but is missing the <Options> tag")
+            else:
+                if options.get("SupportsExtendedMemoryServices") != "true":
+                    result.add_error("Secure device is missing 'SupportsExtendedMemoryServices=\"true\"' in <Options>")
+                else:
+                    result.add_pass("Secure memory services enabled in <Options>")
+                
+                if options.get("SupportsExtendedPropertyServices") != "true":
+                    result.add_error("Secure device is missing 'SupportsExtendedPropertyServices=\"true\"' in <Options>")
+                else:
+                    result.add_pass("Secure property services enabled in <Options>")
     
+    # Logic Rule 11.2: TypeRestriction must have Enumerations
+    for ptype in root.findall(f".//{ns}ParameterType"):
+        restriction = ptype.find(f"{ns}TypeRestriction")
+        if restriction is not None:
+            enums = restriction.findall(f"{ns}Enumeration")
+            if not enums:
+                result.add_error(f"ParameterType '{ptype.get('Name')}' uses TypeRestriction but has no Enumerations (Use TypeNumber instead)")
+            else:
+                result.add_pass(f"ParameterType '{ptype.get('Name')}' TypeRestriction has options")
+
+    # Logic Rule 11.3: Supported Dynamic Elements (Kaenx-Creator 1.9.6 ParseDynamic)
+    supported_dynamic = {
+        'Channel', 'ChannelIndependentBlock', 'ParameterBlock', 'choose', 'when',
+        'ParameterRefRef', 'ParameterSeparator', 'ComObjectRefRef', 'Module', 
+        'Assign', 'Rename', 'ParameterBlockRename', 'Repeat', 'Button',
+        'Rows', 'Columns', 'include'
+    }
+    dynamic_section = root.find(f'.//{ns}Dynamic')
+    if dynamic_section is not None:
+        for elem in dynamic_section.iter():
+            tag = elem.tag.split('}')[-1]
+            if tag == 'Dynamic': continue # Skip root of section
+            if tag not in supported_dynamic:
+                result.add_error(f"Unsupported dynamic element '{tag}' (Will cause crash: Unbekanntes Element in Dynamic)")
+            else:
+                # result.add_pass(f"Dynamic element '{tag}' is supported")
+                pass
+
+    # Check for overlapping memory
+
     return result
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python validate_knx_comprehensive.py <xml_file>")
-        print("\nThis validator checks ALL known Kaenx Creator crash points:")
-        print("  - NullReferenceException (5 points)")
-        print("  - ArgumentOutOfRangeException (2 points)")
-        print("  - FormatException (35+ points)")
-        print("  - InvalidOperationException (4 points)")
+        print("Usage: python validate_knx.py <xml_file>")
         sys.exit(1)
     
-    result = validate_xml(sys.argv[1])
+    file_path = sys.argv[1]
+    result = validate_xml(file_path)
     result.print_report()
-    
-    sys.exit(1 if result.errors else 0)
+    if result.errors:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

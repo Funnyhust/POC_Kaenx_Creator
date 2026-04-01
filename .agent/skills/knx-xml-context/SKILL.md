@@ -136,10 +136,12 @@ RESULT: FAIL - 1 error(s) will cause import failure
 4. **Use Comparison Operators**: `test="<3"`, `test=">0"` for flexible conditions
 5. **Conflict Prevention**: Check GPIO state before showing options
 
-### ID Naming Convention
+### ID Naming & Consistency (Golden Rule)
 
 - ✅ Use numeric suffixes: `_P-1`, `_O-2`, `_R-3`
+- ✅ **Deep Referential Integrity**: Cross-check every `RefId`, `ParameterType`, and `ParamRefId`.
 - ❌ Avoid text suffixes: `_P-Button`, `_O-Switch`
+- ⚠️ **Zero Typo Risk**: Even a single extra `0` in a reference suffix (e.g., `00001` vs `000001`) will trigger a "Sequence contains no matching element" crash in ETS/Kaenx.
 
 ### Hardware2ProgramRefId Format
 
@@ -154,7 +156,7 @@ RESULT: FAIL - 1 error(s) will cause import failure
 |---------------|------------|----------|
 | Unknown Error (Crash) | NullReference or OutOfRange | Check Hardware.VersionNumber exists |
 | Input string was not in correct format | Non-numeric ID suffix | Rename IDs to use numbers only |
-| Sequence contains no matching element | Missing reference | Verify CatalogItem contains encoded OrderNumber |
+| Sequence contains no matching element | **Broken Reference (RefId Typo)** | Verify all `ParameterType` and `RefId` suffixes match exactly |
 | Index outside bounds | String too short | Pad Hardware2ProgramRefId to 13+ chars |
 
 ## Resources

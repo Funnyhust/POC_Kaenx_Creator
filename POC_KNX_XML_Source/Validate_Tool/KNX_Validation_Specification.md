@@ -72,6 +72,7 @@
 | 386 | ImportHelper | `.Single(b => b.Id == MaskVersion)` | MaskVersion must exist in BCUs |
 | 1286 | ImportHelper | `DPTs.Single(d => d.Number == xtype[1])` | DPT number must exist |
 | 1590 | ImportHelper | `.Single(h => h.Attribute("RefId").Value == AppImportHelper)` | ApplicationProgramRef must exist |
+| Various | ImportHelper | `.Single(...)` / `.First(...)` | Every attribute containing `RefId`, `ParameterType`, or `ParamRefId` must have a corresponding target `Id`. **A single character typo (e.g. `0001` vs `00001`) causes a Sequence error.** |
 | 1639 | ImportHelper | `.Single(c => c.Attribute("Id").Value.Contains(orderNumber))` | CatalogItem must contain encoded OrderNumber |
 
 ---
@@ -248,7 +249,7 @@ OpenKNX: 0x00FA (special handling)
 | "Unknown Error" (Crash) | NullReference or OutOfRange | Check attributes listed in Section 1 |
 | "Input string was not in a correct format" | Non-numeric ID suffix | Rename IDs to use numbers only |
 | "RefId not unique" | Duplicate parsed IDs | Ensure unique numeric suffixes |
-| "Sequence contains no matching element" | Missing reference target | Verify CatalogItem contains encoded OrderNumber |
+| "Sequence contains no matching element" | **Broken Reference / Typo** | Every `RefId`, `ParameterType`, `ParamRefId` must match a target `Id`. |
 | "Index was outside the bounds" | String too short | Pad Hardware2ProgramRefId to 13 chars |
 
 ---

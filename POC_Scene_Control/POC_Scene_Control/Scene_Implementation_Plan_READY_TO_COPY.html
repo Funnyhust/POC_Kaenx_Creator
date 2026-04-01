@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lumi KNX Scene Implementation Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 5px solid #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0056b3;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CHIẾN LƯỢC TRIỂN KHAI KNX SCENE CONTROL - LUMI</h1>
+
+    <h2>0. Bảng Tóm Tắt Tổng Quan</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Đặc tính</th>
+                <th>Công tắc cảnh 4 nút</th>
+                <th>Actuator 4 Relay</th>
+                <th>Bộ điều khiển rèm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Vai trò</strong></td>
+                <td>Sender (Gửi lệnh)</td>
+                <td>Receiver (Nhận lệnh)</td>
+                <td>Receiver (Nhận lệnh)</td>
+            </tr>
+            <tr>
+                <td><strong>Số Scene/Slot</strong></td>
+                <td>Tùy biến theo nút/event</td>
+                <td>16 Scene Slots</td>
+                <td>10 Scene Slots</td>
+            </tr>
+            <tr>
+                <td><strong>DPT hỗ trợ</strong></td>
+                <td>18.001 (Recall/Store)</td>
+                <td>18.001 (Recall/Store)</td>
+                <td>18.001 (Recall/Store)</td>
+            </tr>
+            <tr>
+                <td><strong>Logic Recall</strong></td>
+                <td>Gửi telegram ra bus</td>
+                <td>Khớp Slot -> Set On/Off/No Action</td>
+                <td>Khớp Slot -> Chạy rèm %</td>
+            </tr>
+            <tr>
+                <td><strong>Lưu trữ (NVS)</strong></td>
+                <td>Không cần</td>
+                <td>Có (Lưu trạng thái học)</td>
+                <td>Có (Lưu vị trí học)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1. Định Nghĩa Các Loại Action (Hành Động)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Loại Action</th>
+                <th>Ý nghĩa</th>
+                <th>Kỹ thuật (DPT 18.001)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>None</strong> (Không dùng)</td>
+                <td>Vô hiệu hóa nút nhấn / sự kiện. Thiết bị sẽ không gửi bất kỳ lệnh nào ra Bus.</td>
+                <td>Không gửi Telegram</td>
+            </tr>
+            <tr>
+                <td><strong>Recall</strong> (Gọi cảnh)</td>
+                <td>Kích hoạt kịch bản đã lưu. Actuator sẽ chuyển trạng thái theo đúng số Scene nhận được.</td>
+                <td>Gửi Byte với <strong>Bit 7 = 0</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Store</strong> (Học/Lưu cảnh)</td>
+                <td>Lưu trạng thái thực tế (độ sáng, vị trí rèm, On/Off) vào bộ nhớ của Actuator cho Scene đó.</td>
+                <td>Gửi Byte với <strong>Bit 7 = 1</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>2. Chi tiết Công tắc cảnh 4 nút (Sender)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tương tác</th>
+                <th>Tham số</th>
+                <th>Lựa chọn</th>
+                <th>Logic gửi (DPT 18.001)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nhấn 1 lần (Single)</strong></td>
+                <td>Action</td>
+                <td>None, Recall, Store</td>
+                <td>Bit 7: 0=Recall, 1=Store</td>
+            </tr>
+            <tr>
+                <td><strong>Nhấn 1 lần (Single)</strong></td>
+                <td>Scene Number</td>
+                <td>0 ... 63</td>
+                <td>Bit 0..5: Scene Number</td>
+            </tr>
+            <tr>
+                <td><strong>Nhấn 2 lần (Double)</strong></td>
+                <td>Action</td>
+                <td>None, Recall, Store</td>
+                <td>Bit 7</td>
+            </tr>
+            <tr>
+                <td><strong>Nhấn 2 lần (Double)</strong></td>
+                <td>Scene Number</td>
+                <td>0 ... 63</td>
+                <td>Bit 0..5</td>
+            </tr>
+            <tr>
+                <td><strong>Nhấn giữ (Long)</strong></td>
+                <td>Action</td>
+                <td>None, Recall, Store</td>
+                <td>Bit 7</td>
+            </tr>
+            <tr>
+                <td><strong>Nhấn giữ (Long)</strong></td>
+                <td>Scene Number</td>
+                <td>0 ... 63</td>
+                <td>Bit 0..5</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note"><strong>Logic Firmware:</strong> <code>Lệnh gửi = (Action_Bit << 7) | (Scene_Number & 0x3F)</code>
+    </div>
+
+    <h2>2. Chi tiết Actuator 4 Relay (Receiver)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Phạm vi</th>
+                <th>Tham số</th>
+                <th>Lựa chọn</th>
+                <th>Mô tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Global</strong></td>
+                <td>Storage Function</td>
+                <td>Enable, Disable</td>
+                <td>Chốt chặn toàn cục (SLME)</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-16)</strong></td>
+                <td>Scene Number</td>
+                <td>0 ... 63</td>
+                <td>ID Scene khớp với lệnh Bus để kích hoạt slot này</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-16)</strong></td>
+                <td>Relay 1..4 Action</td>
+                <td>No Action, ON, OFF</td>
+                <td>Trạng thái của từng relay khi gọi Scene</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-16)</strong></td>
+                <td>Storage Enable</td>
+                <td>Yes, No</td>
+                <td>Quyền cho phép học (SFSN) riêng cho từng slot</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. Chi tiết Bộ điều khiển rèm (Receiver)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Phạm vi</th>
+                <th>Tham số</th>
+                <th>Lựa chọn / Tầm</th>
+                <th>Mô tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Global</strong></td>
+                <td>Storage Function</td>
+                <td>Enable, Disable</td>
+                <td>Chốt chặn toàn cục (SLME)</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-10)</strong></td>
+                <td>Scene Number</td>
+                <td>0 ... 63</td>
+                <td>ID Scene khớp với lệnh Bus</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-10)</strong></td>
+                <td>Blinds Position</td>
+                <td>0 ... 100 %</td>
+                <td>Vị trí rèm đích khi gọi Scene</td>
+            </tr>
+            <tr>
+                <td><strong>Slot (1-10)</strong></td>
+                <td>Storage Enable</td>
+                <td>Yes, No</td>
+                <td>Quyền cho phép học (SFSN) riêng cho từng slot</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>5. Phân Tích Tác Động Bộ Nhớ (RAM & Flash)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Thiết bị</th>
+                <th>RAM (Bảng Mapping + Data)</th>
+                <th>Flash (NVS - Học)</th>
+                <th>Flash (App - ETS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Công tắc 4 nút</strong></td>
+                <td><strong>~12 Bytes</strong></td>
+                <td>0 Bytes</td>
+                <td>~60 Bytes</td>
+            </tr>
+            <tr>
+                <td><strong>Actuator 4 Relay</strong></td>
+                <td><strong>~49 Bytes</strong></td>
+                <td>~33 Bytes</td>
+                <td>~120 Bytes</td>
+            </tr>
+            <tr>
+                <td><strong>Bộ điều khiển rèm</strong></td>
+                <td><strong>~31 Bytes</strong></td>
+                <td>~21 Bytes</td>
+                <td>~100 Bytes</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <strong>Nhận xét:</strong> Việc load bảng Mapping từ Flash lên RAM là <strong>bắt buộc</strong> cho cả thiết bị
+        gửi (Sender) và thiết bị nhận (Receiver) để đảm bảo tốc độ phản hồi lệnh tức thì (Real-time). Tổng RAM tốn thêm
+        cực kỳ nhỏ (Dưới 100 Bytes), hoàn toàn lý tưởng và không gây áp lực lên tài nguyên chip nRF52 hay ESP32.
+    </div>
+
+    <h2>6. Logic Lưu Trữ (NVS)</h2>
+    <ul>
+        <li><strong>Mirror RAM:</strong> Load bảng scene vào RAM khi khởi động để phản hồi Recall tức thì.</li>
+        <li><strong>Write Debounce:</strong> Khi thực hiện Store (Learn), cập nhật RAM ngay và trì hoãn ghi Flash 1-2
+            giây để tránh ghi lặp lại liên tục gây hại Flash.</li>
+    </ul>
+
+</body>
+
+</html>

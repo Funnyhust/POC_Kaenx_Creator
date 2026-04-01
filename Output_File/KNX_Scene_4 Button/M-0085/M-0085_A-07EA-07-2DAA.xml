@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX CreatedBy="kaenx-creator" ToolVersion="1.0.0" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-07EA-07-2DAA" ApplicationNumber="2026" ApplicationVersion="7" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX 4 Buttons App" DefaultLanguage="en-US" LoadProcedureStyle="MergedProcedure" PeiType="0" DynamicTableManagement="false" Linkable="false" IsSecureEnabled="true" MaxSecurityIndividualAddressEntries="512" MaxSecurityGroupKeyTableEntries="500" MinEtsVersion="5.0" Hash="LQibAKyMs5PzjuA+xgnBqg==">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-0085_A-07EA-07-2DAA_RS-04-00000" Name="Parameters" Offset="0" Size="24" LoadStateMachine="4" />
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-07EA-07-2DAA_PT-1" Name="1">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Disabled" Value="0" Id="M-0085_A-07EA-07-2DAA_PT-1_EN-0" />
+                  <Enumeration Text="Switch" Value="1" Id="M-0085_A-07EA-07-2DAA_PT-1_EN-1" />
+                  <Enumeration Text="Dimming" Value="2" Id="M-0085_A-07EA-07-2DAA_PT-1_EN-2" />
+                  <Enumeration Text="Shutter" Value="3" Id="M-0085_A-07EA-07-2DAA_PT-1_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0085_A-07EA-07-2DAA_PT-2" Name="2">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="No reaction" Value="0" Id="M-0085_A-07EA-07-2DAA_PT-2_EN-0" />
+                  <Enumeration Text="Toggle" Value="1" Id="M-0085_A-07EA-07-2DAA_PT-2_EN-1" />
+                  <Enumeration Text="On" Value="2" Id="M-0085_A-07EA-07-2DAA_PT-2_EN-2" />
+                  <Enumeration Text="Off" Value="3" Id="M-0085_A-07EA-07-2DAA_PT-2_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0085_A-07EA-07-2DAA_PT-3" Name="3">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Start/Stop" Value="0" Id="M-0085_A-07EA-07-2DAA_PT-3_EN-0" />
+                  <Enumeration Text="Step" Value="1" Id="M-0085_A-07EA-07-2DAA_PT-3_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0085_A-07EA-07-2DAA_PT-4" Name="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Break/Stop" Value="0" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-0" />
+                  <Enumeration Text="100%" Value="1" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-1" />
+                  <Enumeration Text="50%" Value="2" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-2" />
+                  <Enumeration Text="25%" Value="3" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-3" />
+                  <Enumeration Text="12.5%" Value="4" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-4" />
+                  <Enumeration Text="6.25%" Value="5" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-5" />
+                  <Enumeration Text="3.125%" Value="6" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-6" />
+                  <Enumeration Text="1.5625%" Value="7" Id="M-0085_A-07EA-07-2DAA_PT-4_EN-7" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-1" Name="Btn1_Mode" ParameterType="M-0085_A-07EA-07-2DAA_PT-1" Text="Button 1 Function" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="0" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-2" Name="Btn1_Single" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Single Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="1" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-21" Name="Btn1_Double" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Double Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="2" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-9" Name="Btn1_Dim_Behavior" ParameterType="M-0085_A-07EA-07-2DAA_PT-3" Text="Dimming Mode (Long Press &gt;500ms)" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="12" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-10" Name="Btn1_Dim_Step" ParameterType="M-0085_A-07EA-07-2DAA_PT-4" Text="Button 1 Step Size" Value="3">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="13" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-17" Name="Btn1_Long" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Long Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="20" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-3" Name="Btn2_Mode" ParameterType="M-0085_A-07EA-07-2DAA_PT-1" Text="Button 2 Function" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="3" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-4" Name="Btn2_Single" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Single Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="4" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-22" Name="Btn2_Double" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Double Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="5" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-11" Name="Btn2_Dim_Behavior" ParameterType="M-0085_A-07EA-07-2DAA_PT-3" Text="Dimming Mode (Long Press &gt;500ms)" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="14" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-12" Name="Btn2_Dim_Step" ParameterType="M-0085_A-07EA-07-2DAA_PT-4" Text="Button 2 Step Size" Value="3">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="15" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-18" Name="Btn2_Long" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Long Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="21" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-5" Name="Btn3_Mode" ParameterType="M-0085_A-07EA-07-2DAA_PT-1" Text="Button 3 Function" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="6" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-6" Name="Btn3_Single" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Single Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="7" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-23" Name="Btn3_Double" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Double Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="8" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-13" Name="Btn3_Dim_Behavior" ParameterType="M-0085_A-07EA-07-2DAA_PT-3" Text="Dimming Mode (Long Press &gt;500ms)" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="16" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-14" Name="Btn3_Dim_Step" ParameterType="M-0085_A-07EA-07-2DAA_PT-4" Text="Button 3 Step Size" Value="3">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="17" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-19" Name="Btn3_Long" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Long Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="22" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-7" Name="Btn4_Mode" ParameterType="M-0085_A-07EA-07-2DAA_PT-1" Text="Button 4 Function" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="9" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-8" Name="Btn4_Single" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Single Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="10" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-24" Name="Btn4_Double" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Double Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="11" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-15" Name="Btn4_Dim_Behavior" ParameterType="M-0085_A-07EA-07-2DAA_PT-3" Text="Dimming Mode (Long Press &gt;500ms)" Value="0">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="18" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-16" Name="Btn4_Dim_Step" ParameterType="M-0085_A-07EA-07-2DAA_PT-4" Text="Button 4 Step Size" Value="3">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="19" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-07EA-07-2DAA_P-20" Name="Btn4_Long" ParameterType="M-0085_A-07EA-07-2DAA_PT-2" Text="Long Press Reaction" Value="1">
+                <Memory CodeSegment="M-0085_A-07EA-07-2DAA_RS-04-00000" Offset="23" BitOffset="0" />
+              </Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-1" Id="M-0085_A-07EA-07-2DAA_P-1_R-1" Name="Btn1_Mode" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-2" Id="M-0085_A-07EA-07-2DAA_P-2_R-2" Name="Btn1_Single" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-21" Id="M-0085_A-07EA-07-2DAA_P-21_R-21" Name="Btn1_Double" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-17" Id="M-0085_A-07EA-07-2DAA_P-17_R-17" Name="Btn1_Long" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-3" Id="M-0085_A-07EA-07-2DAA_P-3_R-3" Name="Btn2_Mode" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-4" Id="M-0085_A-07EA-07-2DAA_P-4_R-4" Name="Btn2_Single" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-22" Id="M-0085_A-07EA-07-2DAA_P-22_R-22" Name="Btn2_Double" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-18" Id="M-0085_A-07EA-07-2DAA_P-18_R-18" Name="Btn2_Long" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-5" Id="M-0085_A-07EA-07-2DAA_P-5_R-5" Name="Btn3_Mode" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-6" Id="M-0085_A-07EA-07-2DAA_P-6_R-6" Name="Btn3_Single" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-23" Id="M-0085_A-07EA-07-2DAA_P-23_R-23" Name="Btn3_Double" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-19" Id="M-0085_A-07EA-07-2DAA_P-19_R-19" Name="Btn3_Long" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-7" Id="M-0085_A-07EA-07-2DAA_P-7_R-7" Name="Btn4_Mode" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-8" Id="M-0085_A-07EA-07-2DAA_P-8_R-8" Name="Btn4_Single" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-24" Id="M-0085_A-07EA-07-2DAA_P-24_R-24" Name="Btn4_Double" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-20" Id="M-0085_A-07EA-07-2DAA_P-20_R-20" Name="Btn4_Long" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-9" Id="M-0085_A-07EA-07-2DAA_P-9_R-9" Name="Btn1_Dim_Behavior" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-10" Id="M-0085_A-07EA-07-2DAA_P-10_R-10" Name="Btn1_Dim_Step" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-11" Id="M-0085_A-07EA-07-2DAA_P-11_R-11" Name="Btn2_Dim_Behavior" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-12" Id="M-0085_A-07EA-07-2DAA_P-12_R-12" Name="Btn2_Dim_Step" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-13" Id="M-0085_A-07EA-07-2DAA_P-13_R-13" Name="Btn3_Dim_Behavior" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-14" Id="M-0085_A-07EA-07-2DAA_P-14_R-14" Name="Btn3_Dim_Step" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-15" Id="M-0085_A-07EA-07-2DAA_P-15_R-15" Name="Btn4_Dim_Behavior" />
+              <ParameterRef RefId="M-0085_A-07EA-07-2DAA_P-16" Id="M-0085_A-07EA-07-2DAA_P-16_R-16" Name="Btn4_Dim_Step" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-1" Name="Btn1_Sw" Text="Button 1 Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-2" Name="Btn1_DblClick" Text="Button 1 Double Click" Number="2" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-8" Name="Btn1_Long" Text="Button 1 Long Press" Number="8" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-5" Name="Btn1_Dim" Text="Button 1 Dimming" Number="5" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-6" Name="Btn1_Shutter_Move" Text="Button 1 Shutter Move" Number="6" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-7" Name="Btn1_Shutter_Stop" Text="Button 1 Shutter Stop" Number="7" FunctionText="Stop/Step" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-11" Name="Btn2_Sw" Text="Button 2 Switch" Number="11" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-12" Name="Btn2_DblClick" Text="Button 2 Double Click" Number="12" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-18" Name="Btn2_Long" Text="Button 2 Long Press" Number="18" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-15" Name="Btn2_Dim" Text="Button 2 Dimming" Number="15" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-16" Name="Btn2_Shutter_Move" Text="Button 2 Shutter Move" Number="16" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-17" Name="Btn2_Shutter_Stop" Text="Button 2 Shutter Stop" Number="17" FunctionText="Stop/Step" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-21" Name="Btn3_Sw" Text="Button 3 Switch" Number="21" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-22" Name="Btn3_DblClick" Text="Button 3 Double Click" Number="22" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-28" Name="Btn3_Long" Text="Button 3 Long Press" Number="28" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-25" Name="Btn3_Dim" Text="Button 3 Dimming" Number="25" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-26" Name="Btn3_Shutter_Move" Text="Button 3 Shutter Move" Number="26" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-8" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-27" Name="Btn3_Shutter_Stop" Text="Button 3 Shutter Stop" Number="27" FunctionText="Stop/Step" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-31" Name="Btn4_Sw" Text="Button 4 Switch" Number="31" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-32" Name="Btn4_DblClick" Text="Button 4 Double Click" Number="32" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-38" Name="Btn4_Long" Text="Button 4 Long Press" Number="38" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-35" Name="Btn4_Dim" Text="Button 4 Dimming" Number="35" FunctionText="Dimming Control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-36" Name="Btn4_Shutter_Move" Text="Button 4 Shutter Move" Number="36" FunctionText="Up/Down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-37" Name="Btn4_Shutter_Stop" Text="Button 4 Shutter Stop" Number="37" FunctionText="Stop/Step" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-41" Name="Temperature" Text="Temperature Sensor" Number="41" FunctionText="Temperature" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-42" Name="Humidity" Text="Humidity Sensor" Number="42" FunctionText="Humidity" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
+              <ComObject Id="M-0085_A-07EA-07-2DAA_O-43" Name="Led_Brightness" Text="LED Brightness" Number="43" FunctionText="Brightness" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-1" Id="M-0085_A-07EA-07-2DAA_O-1_R-1" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-5" Id="M-0085_A-07EA-07-2DAA_O-5_R-5" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-11" Id="M-0085_A-07EA-07-2DAA_O-11_R-11" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-15" Id="M-0085_A-07EA-07-2DAA_O-15_R-15" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-21" Id="M-0085_A-07EA-07-2DAA_O-21_R-21" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-25" Id="M-0085_A-07EA-07-2DAA_O-25_R-25" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-31" Id="M-0085_A-07EA-07-2DAA_O-31_R-31" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-35" Id="M-0085_A-07EA-07-2DAA_O-35_R-35" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-6" Id="M-0085_A-07EA-07-2DAA_O-6_R-6" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-7" Id="M-0085_A-07EA-07-2DAA_O-7_R-7" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-16" Id="M-0085_A-07EA-07-2DAA_O-16_R-16" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-17" Id="M-0085_A-07EA-07-2DAA_O-17_R-17" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-26" Id="M-0085_A-07EA-07-2DAA_O-26_R-26" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-27" Id="M-0085_A-07EA-07-2DAA_O-27_R-27" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-36" Id="M-0085_A-07EA-07-2DAA_O-36_R-36" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-37" Id="M-0085_A-07EA-07-2DAA_O-37_R-37" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-2" Id="M-0085_A-07EA-07-2DAA_O-2_R-2" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-12" Id="M-0085_A-07EA-07-2DAA_O-12_R-12" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-22" Id="M-0085_A-07EA-07-2DAA_O-22_R-22" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-32" Id="M-0085_A-07EA-07-2DAA_O-32_R-32" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-8" Id="M-0085_A-07EA-07-2DAA_O-8_R-8" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-18" Id="M-0085_A-07EA-07-2DAA_O-18_R-18" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-28" Id="M-0085_A-07EA-07-2DAA_O-28_R-28" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-38" Id="M-0085_A-07EA-07-2DAA_O-38_R-38" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-41" Id="M-0085_A-07EA-07-2DAA_O-41_R-41" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-42" Id="M-0085_A-07EA-07-2DAA_O-42_R-42" />
+              <ComObjectRef RefId="M-0085_A-07EA-07-2DAA_O-43" Id="M-0085_A-07EA-07-2DAA_O-43_R-43" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65000" />
+            <AssociationTable MaxEntries="65000" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="24" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="24" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
+          </Static>
+          <Dynamic>
+            <Channel Text="Button 1" Number="1" Id="M-0085_A-07EA-07-2DAA_CH-1" Name="Button 1">
+              <ParameterBlock Id="M-0085_A-07EA-07-2DAA_PB-1" Text="Button 1 Configuration" Name="Btn1_Param">
+                <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-1_R-1" />
+                <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-1_R-1">
+                  <when test="1">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-1" Text="Interaction Reactions" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-2_R-2" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-21_R-21" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-17_R-17" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-1_R-1" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-2_R-2" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-8_R-8" />
+                  </when>
+                  <when test="2">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-2" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-1_R-1" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-5_R-5" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-9_R-9" />
+                    <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-9_R-9">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-10_R-10" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-3" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-6_R-6" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-7_R-7" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+            <Channel Text="Button 2" Number="2" Id="M-0085_A-07EA-07-2DAA_CH-2" Name="Button 2">
+              <ParameterBlock Id="M-0085_A-07EA-07-2DAA_PB-2" Text="Button 2 Configuration" Name="Btn2_Param">
+                <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-3_R-3" />
+                <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-3_R-3">
+                  <when test="1">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-4" Text="Interaction Reactions" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-4_R-4" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-22_R-22" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-18_R-18" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-11_R-11" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-12_R-12" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-18_R-18" />
+                  </when>
+                  <when test="2">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-5" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-11_R-11" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-15_R-15" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-11_R-11" />
+                    <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-11_R-11">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-12_R-12" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-6" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-16_R-16" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-17_R-17" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+            <Channel Text="Button 3" Number="3" Id="M-0085_A-07EA-07-2DAA_CH-3" Name="Button 3">
+              <ParameterBlock Id="M-0085_A-07EA-07-2DAA_PB-3" Text="Button 3 Configuration" Name="Btn3_Param">
+                <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-5_R-5" />
+                <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-5_R-5">
+                  <when test="1">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-7" Text="Interaction Reactions" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-6_R-6" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-23_R-23" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-19_R-19" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-21_R-21" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-22_R-22" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-28_R-28" />
+                  </when>
+                  <when test="2">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-8" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-21_R-21" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-25_R-25" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-13_R-13" />
+                    <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-13_R-13">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-14_R-14" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-9" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-26_R-26" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-27_R-27" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+            <Channel Text="Button 4" Number="4" Id="M-0085_A-07EA-07-2DAA_CH-4" Name="Button 4">
+              <ParameterBlock Id="M-0085_A-07EA-07-2DAA_PB-4" Text="Button 4 Configuration" Name="Btn4_Param">
+                <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-7_R-7" />
+                <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-7_R-7">
+                  <when test="1">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-10" Text="Interaction Reactions" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-8_R-8" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-24_R-24" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-20_R-20" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-31_R-31" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-32_R-32" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-38_R-38" />
+                  </when>
+                  <when test="2">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-11" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-31_R-31" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-35_R-35" />
+                    <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-15_R-15" />
+                    <choose ParamRefId="M-0085_A-07EA-07-2DAA_P-15_R-15">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-07EA-07-2DAA_P-16_R-16" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-12" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-36_R-36" />
+                    <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-37_R-37" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+            <Channel Text="Sensors" Number="5" Id="M-0085_A-07EA-07-2DAA_CH-5" Name="Sensors">
+              <ParameterBlock Id="M-0085_A-07EA-07-2DAA_PB-5" Text="Sensor Configuration" Name="Sensor_Param">
+                <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-13" Text="Update Information:" />
+                <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-14" Text="- Temperature: every 1°C change" />
+                <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-15" Text="- Humidity: every 5% change" />
+                <ParameterSeparator Id="M-0085_A-07EA-07-2DAA_PS-16" Text="- Periodic update: every 30 minutes" />
+                <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-41_R-41" />
+                <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-42_R-42" />
+                <ComObjectRefRef RefId="M-0085_A-07EA-07-2DAA_O-43_R-43" />
+              </ParameterBlock>
+            </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Languages>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0085_A-07EA-07-2DAA">
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA">
+              <Translation AttributeName="Name" Text="KNX 4 Buttons App" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-1_EN-0">
+              <Translation AttributeName="Text" Text="Disabled" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-1_EN-1">
+              <Translation AttributeName="Text" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-1_EN-2">
+              <Translation AttributeName="Text" Text="Dimming" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-1_EN-3">
+              <Translation AttributeName="Text" Text="Shutter" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-2_EN-0">
+              <Translation AttributeName="Text" Text="No reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-2_EN-1">
+              <Translation AttributeName="Text" Text="Toggle" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-2_EN-2">
+              <Translation AttributeName="Text" Text="On" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-2_EN-3">
+              <Translation AttributeName="Text" Text="Off" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-3_EN-0">
+              <Translation AttributeName="Text" Text="Start/Stop" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-3_EN-1">
+              <Translation AttributeName="Text" Text="Step" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-0">
+              <Translation AttributeName="Text" Text="Break/Stop" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-1">
+              <Translation AttributeName="Text" Text="100%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-2">
+              <Translation AttributeName="Text" Text="50%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-3">
+              <Translation AttributeName="Text" Text="25%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-4">
+              <Translation AttributeName="Text" Text="12.5%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-5">
+              <Translation AttributeName="Text" Text="6.25%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-6">
+              <Translation AttributeName="Text" Text="3.125%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PT-4_EN-7">
+              <Translation AttributeName="Text" Text="1.5625%" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-1">
+              <Translation AttributeName="Text" Text="Button 1 Function" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-2">
+              <Translation AttributeName="Text" Text="Single Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-21">
+              <Translation AttributeName="Text" Text="Double Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-9">
+              <Translation AttributeName="Text" Text="Dimming Mode (Long Press &gt;500ms)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-10">
+              <Translation AttributeName="Text" Text="Button 1 Step Size" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-17">
+              <Translation AttributeName="Text" Text="Long Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-3">
+              <Translation AttributeName="Text" Text="Button 2 Function" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-4">
+              <Translation AttributeName="Text" Text="Single Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-22">
+              <Translation AttributeName="Text" Text="Double Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-11">
+              <Translation AttributeName="Text" Text="Dimming Mode (Long Press &gt;500ms)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-12">
+              <Translation AttributeName="Text" Text="Button 2 Step Size" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-18">
+              <Translation AttributeName="Text" Text="Long Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-5">
+              <Translation AttributeName="Text" Text="Button 3 Function" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-6">
+              <Translation AttributeName="Text" Text="Single Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-23">
+              <Translation AttributeName="Text" Text="Double Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-13">
+              <Translation AttributeName="Text" Text="Dimming Mode (Long Press &gt;500ms)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-14">
+              <Translation AttributeName="Text" Text="Button 3 Step Size" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-19">
+              <Translation AttributeName="Text" Text="Long Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-7">
+              <Translation AttributeName="Text" Text="Button 4 Function" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-8">
+              <Translation AttributeName="Text" Text="Single Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-24">
+              <Translation AttributeName="Text" Text="Double Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-15">
+              <Translation AttributeName="Text" Text="Dimming Mode (Long Press &gt;500ms)" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-16">
+              <Translation AttributeName="Text" Text="Button 4 Step Size" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_P-20">
+              <Translation AttributeName="Text" Text="Long Press Reaction" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-1">
+              <Translation AttributeName="Text" Text="Button 1 Switch" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-2">
+              <Translation AttributeName="Text" Text="Button 1 Double Click" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-8">
+              <Translation AttributeName="Text" Text="Button 1 Long Press" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-5">
+              <Translation AttributeName="Text" Text="Button 1 Dimming" />
+              <Translation AttributeName="FunctionText" Text="Dimming Control" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-6">
+              <Translation AttributeName="Text" Text="Button 1 Shutter Move" />
+              <Translation AttributeName="FunctionText" Text="Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-7">
+              <Translation AttributeName="Text" Text="Button 1 Shutter Stop" />
+              <Translation AttributeName="FunctionText" Text="Stop/Step" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-11">
+              <Translation AttributeName="Text" Text="Button 2 Switch" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-12">
+              <Translation AttributeName="Text" Text="Button 2 Double Click" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-18">
+              <Translation AttributeName="Text" Text="Button 2 Long Press" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-15">
+              <Translation AttributeName="Text" Text="Button 2 Dimming" />
+              <Translation AttributeName="FunctionText" Text="Dimming Control" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-16">
+              <Translation AttributeName="Text" Text="Button 2 Shutter Move" />
+              <Translation AttributeName="FunctionText" Text="Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-17">
+              <Translation AttributeName="Text" Text="Button 2 Shutter Stop" />
+              <Translation AttributeName="FunctionText" Text="Stop/Step" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-21">
+              <Translation AttributeName="Text" Text="Button 3 Switch" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-22">
+              <Translation AttributeName="Text" Text="Button 3 Double Click" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-28">
+              <Translation AttributeName="Text" Text="Button 3 Long Press" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-25">
+              <Translation AttributeName="Text" Text="Button 3 Dimming" />
+              <Translation AttributeName="FunctionText" Text="Dimming Control" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-26">
+              <Translation AttributeName="Text" Text="Button 3 Shutter Move" />
+              <Translation AttributeName="FunctionText" Text="Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-27">
+              <Translation AttributeName="Text" Text="Button 3 Shutter Stop" />
+              <Translation AttributeName="FunctionText" Text="Stop/Step" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-31">
+              <Translation AttributeName="Text" Text="Button 4 Switch" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-32">
+              <Translation AttributeName="Text" Text="Button 4 Double Click" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-38">
+              <Translation AttributeName="Text" Text="Button 4 Long Press" />
+              <Translation AttributeName="FunctionText" Text="Switch" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-35">
+              <Translation AttributeName="Text" Text="Button 4 Dimming" />
+              <Translation AttributeName="FunctionText" Text="Dimming Control" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-36">
+              <Translation AttributeName="Text" Text="Button 4 Shutter Move" />
+              <Translation AttributeName="FunctionText" Text="Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-37">
+              <Translation AttributeName="Text" Text="Button 4 Shutter Stop" />
+              <Translation AttributeName="FunctionText" Text="Stop/Step" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-41">
+              <Translation AttributeName="Text" Text="Temperature Sensor" />
+              <Translation AttributeName="FunctionText" Text="Temperature" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-42">
+              <Translation AttributeName="Text" Text="Humidity Sensor" />
+              <Translation AttributeName="FunctionText" Text="Humidity" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_O-43">
+              <Translation AttributeName="Text" Text="LED Brightness" />
+              <Translation AttributeName="FunctionText" Text="Brightness" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_CH-1">
+              <Translation AttributeName="Text" Text="Button 1" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PB-1">
+              <Translation AttributeName="Text" Text="Button 1 Configuration" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-1">
+              <Translation AttributeName="Text" Text="Interaction Reactions" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-2">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-3">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_CH-2">
+              <Translation AttributeName="Text" Text="Button 2" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PB-2">
+              <Translation AttributeName="Text" Text="Button 2 Configuration" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-4">
+              <Translation AttributeName="Text" Text="Interaction Reactions" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-5">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-6">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_CH-3">
+              <Translation AttributeName="Text" Text="Button 3" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PB-3">
+              <Translation AttributeName="Text" Text="Button 3 Configuration" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-7">
+              <Translation AttributeName="Text" Text="Interaction Reactions" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-8">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-9">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_CH-4">
+              <Translation AttributeName="Text" Text="Button 4" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PB-4">
+              <Translation AttributeName="Text" Text="Button 4 Configuration" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-10">
+              <Translation AttributeName="Text" Text="Interaction Reactions" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-11">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): On/Off | Long Press (&gt;500ms): Dimming" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-12">
+              <Translation AttributeName="Text" Text="Short Press (&lt;500ms): Stop/Step | Long Press (&gt;500ms): Up/Down" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_CH-5">
+              <Translation AttributeName="Text" Text="Sensors" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PB-5">
+              <Translation AttributeName="Text" Text="Sensor Configuration" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-13">
+              <Translation AttributeName="Text" Text="Update Information:" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-14">
+              <Translation AttributeName="Text" Text="- Temperature: every 1°C change" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-15">
+              <Translation AttributeName="Text" Text="- Humidity: every 5% change" />
+            </TranslationElement>
+            <TranslationElement RefId="M-0085_A-07EA-07-2DAA_PS-16">
+              <Translation AttributeName="Text" Text="- Periodic update: every 30 minutes" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

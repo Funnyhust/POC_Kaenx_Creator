@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX CreatedBy="kaenx-creator" ToolVersion="1.0.0" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Hardware>
+        <Hardware Id="M-0085_H-KNX.2DBTN.2D003-4" Name="KNX 4 Buttons Hardware" SerialNumber="KNX-BTN-003" VersionNumber="4" BusCurrent="10" HasIndividualAddress="1" HasApplicationProgram="1">
+          <Products>
+            <Product Id="M-0085_H-KNX.2DBTN.2D003-4_P-KNXBTN" Text="KNX 4 Buttons" OrderNumber="KNXBTN" IsRailMounted="0" DefaultLanguage="en-US" Hash="a3H9xAx0wf0RiRk10Ol3aTbQ6QQ=">
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationSignature="BTobzsGt5WfaBdbYuZGD6pyORn9n4G73VI6B1VZqv8h6HN/bweyoVb9ZKQGiwkxXFYlCKjHqFNSZefbWwg+jwzpOPK3zx71eqtJZP4AvvFGAoJHmM1A1WVbMXtH9lhLQ8oyAHUUTj3+IeMNLOjlc1dOfzzzdzxOhI73LLuLFSrc=" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0085_H-KNX.2DBTN.2D003-4_HP-07EA-07-2DAA" MediumTypes="MT-0" Hash="DU29g30MKMT7Rc2+w9ohqwHCxiM=">
+              <ApplicationProgramRef RefId="M-0085_A-07EA-07-2DAA" />
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationNumber="0001/47" RegistrationSignature="fJZ+KQlUZfzZVBxtZQFBSeTW1S9Zd1gjlWTfkA52Ns93SQiXrL6eL5c84nDqd6ZiDlsl+qPIpQNWkcdAfsm77s0M5kaJrRJ0bJAToV5wLYbevPxpU8T4MoQd19R8v/4GlY0abCHSPzZ8jCsEMsgQIqgteLxMLgx8iTNjp9Twn1o=" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <Languages>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0085_H-KNX.2DBTN.2D003-4_P-KNXBTN">
+            <TranslationElement RefId="M-0085_H-KNX.2DBTN.2D003-4_P-KNXBTN">
+              <Translation AttributeName="Text" Text="KNX 4 Buttons" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.7.743.36956" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Hardware>
+        <Hardware Id="M-0085_H-CH22FC-16" Name="Waltz KNX Push Button Sensor with Secure, 4-gang" SerialNumber="CH22FC" VersionNumber="16" BusCurrent="21" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products>
+            <Product Id="M-0085_H-CH22FC-16_P-CHPB.2D08.2F02.2ES.2E2x" Text="Waltz KNX Push Button Sensor with Secure, 4-gang" OrderNumber="CHPB-08/02.S.2x" IsRailMounted="false" DefaultLanguage="en-US" Hash="QK52bU9EvJtd5N/qs7RUSO/YC2E=">
+              <RegistrationInfo RegistrationStatus="Certified" RegistrationDate="2023-06-21" RegistrationSignature="CAGeQEwnx9IrZxX1+RCz3g66l/guNMGVFgrEU3L6M3r2aQ1vYAlTTV99GeZl2qlzCpP8xTXnf9SvltIlDP85E4i65vlEK6A4zKZmSR08iC/+WzEY/jc1ENyMFhBYk7IYuQDRQfibAX3SMyhw/p6jrqdR0uwxjitHuuBPHJUOZDg=" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0085_H-CH22FC-16_HP-008A-20-FCD0" MediumTypes="MT-0" Hash="Fd0s9eSPnYTyv2WSEgM2pcjdcig=">
+              <ApplicationProgramRef RefId="M-0085_A-008A-20-FCD0" />
+              <RegistrationInfo RegistrationStatus="Certified" RegistrationNumber="2023/19505" RegistrationDate="2023-06-21" RegistrationSignature="dOEhECYf6hXiJEsyw9vwGHfJsVpBQVKlEMZjCVLOEs3ZS+3WDOa+uz22FY4ZmKTcHEWAaw970Fz0xkmb3TmC+UO98UJN1iVpSwyHNCqFn2qi2mNVkGa3BA7MnNVRS2s3BzZ9NTJfwRuG4oeDTgqxM/xINfYIRXP2Slj2njBneMs=" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <Languages>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0085_H-CH22FC-16_P-CHPB.2D08.2F02.2ES.2E2x">
+            <TranslationElement RefId="M-0085_H-CH22FC-16_P-CHPB.2D08.2F02.2ES.2E2x">
+              <Translation AttributeName="Text" Text="Waltz KNX Push Button Sensor with Secure, 4-gang" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
