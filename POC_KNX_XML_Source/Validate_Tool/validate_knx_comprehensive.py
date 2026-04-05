@@ -101,8 +101,10 @@ def validate_xml(file_path: str):
     if match:
         ns = match.group(1)
     
-    if 'project/20' not in ns:
-        result.add_warning(f"Namespace '{ns}' detected. Version 20 recommended for modern features")
+    if 'project/20' in ns:
+        result.add_error(f"Namespace '{ns}' detected. Kaenx-Creator 1.9.6 only supports up to project/14. Version 20 will cause import crash.")
+    elif 'project/14' not in ns and 'project/13' not in ns and 'project/11' not in ns:
+        result.add_warning(f"Namespace '{ns}' detected. project/14 is recommended for Kaenx-Creator.")
 
     # Track all IDs and their elements
     id_map = {}
@@ -265,6 +267,11 @@ def validate_xml(file_path: str):
             result.add_pass(f"ComObject '{com.get('Name')}' ObjectSize format OK")
 
     # 1. Basic Schema-like logic checks
+    # Check for missing Value in Parameters
+    for param in root.findall(f'.//{ns}Parameter'):
+        if 'Value' not in param.attrib:
+            result.add_error(f"Parameter '{param.get('Name', param.get('Id'))}' is missing the 'Value' attribute. (Will cause NullReferenceException in Kaenx UI rendering)")
+
     # Check for empty attributes that should be numeric or DPT
     critical_attrs = ['Value', 'Number', 'Size', 'Offset', 'BitOffset', 'DatapointType', 'ObjectSize']
     for elem in root.iter():

@@ -1,0 +1,84 @@
+﻿                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-13_R-13" />
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-13_R-13">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-14_R-14" />
+                      </when>
+                    </choose>
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-6_R-6" />
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="PS-32" Text="--- Shutter Configuration ---" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-25_R-25" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-26_R-26" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+
+              <!-- Button 4 Configuration -->
+              <ParameterBlock Id="PB-4" Text="Button 4" Name="Btn4_Config">
+                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-7_R-7" />
+                <choose ParamRefId="M-0085_A-2026-01-0003_P-7_R-7">
+                  <when test="1">
+                    <ParameterSeparator Id="PS-40" Text="--- Switching Configuration ---" />
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-8_R-8" />
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-24_R-24" />
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-20_R-20" />
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-8_R-8">
+                      <when test="&gt;0">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
+                      </when>
+                    </choose>
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-24_R-24">
+                      <when test="&gt;0">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-34_R-34" />
+                      </when>
+                    </choose>
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-20_R-20">
+                      <when test="&gt;0">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-54_R-54" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="2">
+                    <ParameterSeparator Id="PS-41" Text="--- Dimming Configuration ---" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-8_R-8" />
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-15_R-15" />
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-15_R-15">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-16_R-16" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="PS-42" Text="--- Shutter Configuration ---" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-27_R-27" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-28_R-28" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Sensors" Text="Sensors" Number="2" Id="CH-2">
+              <ParameterBlock Id="PB-5" Text="Sensor Configuration" Name="Sensor_Param">
+                <ParameterSeparator Id="PS-50" Text="Update Information:" />
+                <ParameterSeparator Id="PS-51" Text="- Temperature: every 1┬░C change" />
+                <ParameterSeparator Id="PS-52" Text="- Humidity: every 5% change" />
+                <ParameterSeparator Id="PS-53" Text="- Periodic update: every 30 minutes" />
+                <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-41_R-41" />
+                <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-42_R-42" />
+              </ParameterBlock>
+            </Channel>
+
+            <Channel Name="Internal LED" Text="Internal LED" Number="3" Id="CH-3">
+              <ParameterBlock Id="PB-6" Text="Internal LED Configuration" Name="LED_Config">
+                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-25_R-25" />
+              </ParameterBlock>
+            </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
