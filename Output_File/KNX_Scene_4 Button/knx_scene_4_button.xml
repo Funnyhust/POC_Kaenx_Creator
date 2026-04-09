@@ -162,6 +162,9 @@
                   <Enumeration Text="5 scenes" Value="5" Id="M-0085_A-2026-01-0003_PT-9_EN-5" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="M-0085_A-2026-01-0003_PT-12" Name="0..25_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="25" />
+              </ParameterType>
             </ParameterTypes>
             <Parameters>
               <!-- Button 1 -->
@@ -181,8 +184,13 @@
 
               <!-- Button 4 -->
               <Parameter Id="M-0085_A-2026-01-0003_P-7" Name="Btn4_Mode" ParameterType="M-0085_A-2026-01-0003_PT-1" Text="Function of Channel" Value="1"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="9" BitOffset="0" /></Parameter>
-              <Parameter Id="M-0085_A-2026-01-0003_P-15" Name="Btn4_Dim_Behavior" ParameterType="M-0085_A-2026-01-0003_PT-3" Text="Dimming Mode (Long Press &gt;500ms)" Value="0"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="18" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-15" Name="Btn4_Dim_Behavior" ParameterType="M-0085_A-2026-01-0003_PT-3" Text="Dimming Mode (Long Press >500ms)" Value="0"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="18" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2026-01-0003_P-16" Name="Btn4_Dim_Step" ParameterType="M-0085_A-2026-01-0003_PT-4" Text="Button 4 Step Size" Value="3"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="19" BitOffset="0" /></Parameter>
+
+              <Parameter Id="M-0085_A-2026-01-0003_P-17" Name="Btn1_Dim_Interval" ParameterType="M-0085_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" Suffix="*0.1s"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="20" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-18" Name="Btn2_Dim_Interval" ParameterType="M-0085_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" Suffix="*0.1s"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="21" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-19" Name="Btn3_Dim_Interval" ParameterType="M-0085_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" Suffix="*0.1s"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="22" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-20" Name="Btn4_Dim_Interval" ParameterType="M-0085_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" Suffix="*0.1s"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
 
               <!-- LED -->
               <Parameter Id="M-0085_A-2026-01-0003_P-25" Name="LED_Brightness" ParameterType="M-0085_A-2026-01-0003_PT-5" Text="LED Brightness" Value="50"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
@@ -277,6 +285,10 @@
               <ParameterRef Id="M-0085_A-2026-01-0003_P-14_R-14" RefId="M-0085_A-2026-01-0003_P-14" />
               <ParameterRef Id="M-0085_A-2026-01-0003_P-15_R-15" RefId="M-0085_A-2026-01-0003_P-15" />
               <ParameterRef Id="M-0085_A-2026-01-0003_P-16_R-16" RefId="M-0085_A-2026-01-0003_P-16" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-17_R-17" RefId="M-0085_A-2026-01-0003_P-17" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-18_R-18" RefId="M-0085_A-2026-01-0003_P-18" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-19_R-19" RefId="M-0085_A-2026-01-0003_P-19" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-20_R-20" RefId="M-0085_A-2026-01-0003_P-20" />
               <ParameterRef Id="M-0085_A-2026-01-0003_P-25_R-25" RefId="M-0085_A-2026-01-0003_P-25" />
               <!-- Scene Refs - Button 1 -->
               <ParameterRef Id="M-0085_A-2026-01-0003_P-30_R-30" RefId="M-0085_A-2026-01-0003_P-30" />
@@ -421,6 +433,7 @@
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-9_R-9">
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-10_R-10" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-17_R-17" />
                       </when>
                     </choose>
                   </when>
@@ -502,6 +515,7 @@
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-11_R-11">
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-12_R-12" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-18_R-18" />
                       </when>
                     </choose>
                   </when>
@@ -582,6 +596,7 @@
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-13_R-13">
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-14_R-14" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-19_R-19" />
                       </when>
                     </choose>
                     <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
@@ -666,6 +681,7 @@
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-15_R-15">
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-16_R-16" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-20_R-20" />
                       </when>
                     </choose>
                   </when>
