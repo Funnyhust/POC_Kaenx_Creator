@@ -475,12 +475,18 @@
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-38_R-38" />
                       </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-38_R-38" />
+                      </when>
                     </choose>
 
                     <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-12" Text="Long Hold" UIHint="Headline" />
                     <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-39_R-39" />
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-39_R-39">
                       <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-40_R-40" />
+                      </when>
+                      <when test="2">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-40_R-40" />
                       </when>
                     </choose>
@@ -558,12 +564,18 @@
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-50_R-50" />
                       </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-50_R-50" />
+                      </when>
                     </choose>
 
                     <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-22" Text="Long Hold" UIHint="Headline" />
                     <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-51_R-51" />
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-51_R-51">
                       <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-52_R-52" />
+                      </when>
+                      <when test="2">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-52_R-52" />
                       </when>
                     </choose>
@@ -641,12 +653,18 @@
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
                       </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
+                      </when>
                     </choose>
 
                     <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-32" Text="Long Hold" UIHint="Headline" />
                     <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-63_R-63" />
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-63_R-63">
                       <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
+                      </when>
+                      <when test="2">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
                       </when>
                     </choose>
@@ -724,11 +742,17 @@
                       <when test="1">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
                       </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
+                      </when>
                     </choose>
 
                     <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-42" Text="Long Hold" UIHint="Headline" />
                     <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-75_R-75" />
                     <choose ParamRefId="M-0085_A-2026-01-0003_P-75_R-75">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
+                      </when>
                       <when test="2">
                         <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
                       </when>
