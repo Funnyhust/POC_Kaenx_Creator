@@ -165,6 +165,15 @@
               <ParameterType Id="M-0085_A-2026-01-0003_PT-12" Name="0..25_PT">
                 <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="25" />
               </ParameterType>
+              <ParameterType Id="M-0085_A-2026-01-0003_PT-13" Name="Device Version">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="2 Buttons" Value="2" Id="M-0085_A-2026-01-0003_PT-13_E-2" />
+                  <Enumeration Text="4 Buttons" Value="4" Id="M-0085_A-2026-01-0003_PT-13_E-4" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-01-0003_PT-14" Name="0..255_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
+              </ParameterType>
             </ParameterTypes>
             <Parameters>
               <!-- Button 1 -->
@@ -266,6 +275,8 @@
               <Parameter Id="M-0085_A-2026-01-0003_P-75" Name="Btn4_SC_Long_Action" ParameterType="M-0085_A-2026-01-0003_PT-6" Text="Long Hold Action" Value="2"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="70" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2026-01-0003_P-76" Name="Btn4_SC_Long_SceneNo" ParameterType="M-0085_A-2026-01-0003_PT-7" Text="Long Hold Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="71" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2026-01-0003_P-77" Name="Btn4_SC_Objects" ParameterType="M-0085_A-2026-01-0003_PT-8" Text="Number of Scene Objects" Value="1"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="72" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-80" Name="Device_Version" ParameterType="M-0085_A-2026-01-0003_PT-13" Text="Device Selection" Value="4"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="74" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-81" Name="Fixed_Value_DD" ParameterType="M-0085_A-2026-01-0003_PT-14" Value="221"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="75" BitOffset="0" /></Parameter>
             </Parameters>
             
             <ParameterRefs>
@@ -342,6 +353,8 @@
               <ParameterRef Id="M-0085_A-2026-01-0003_P-75_R-75" RefId="M-0085_A-2026-01-0003_P-75" />
               <ParameterRef Id="M-0085_A-2026-01-0003_P-76_R-76" RefId="M-0085_A-2026-01-0003_P-76" />
               <ParameterRef Id="M-0085_A-2026-01-0003_P-77_R-77" RefId="M-0085_A-2026-01-0003_P-77" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-80_R-80" RefId="M-0085_A-2026-01-0003_P-80" />
+              <ParameterRef Id="M-0085_A-2026-01-0003_P-81_R-81" RefId="M-0085_A-2026-01-0003_P-81" />
             </ParameterRefs>
             
             <ComObjectTable>
@@ -416,10 +429,10 @@
             <AssociationTable MaxEntries="500" />
             <LoadProcedures>
               <LoadProcedure MergeId="2">
-                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="20" Mode="0" Fill="0" />
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="76" Mode="0" Fill="0" />
               </LoadProcedure>
               <LoadProcedure MergeId="4">
-                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="20" Verify="true" />
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="76" Verify="true" />
               </LoadProcedure>
             </LoadProcedures>
             <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
@@ -427,6 +440,9 @@
           
           <Dynamic>
             <ChannelIndependentBlock>
+              <ParameterBlock Id="M-0085_A-2026-01-0003_PB-1" Text="General setting" Name="General_Config">
+                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-80_R-80" />
+              </ParameterBlock>
               <!-- Button 1 Configuration -->
               <ParameterBlock Id="M-0085_A-2026-01-0003_PB-10" Text="Button 1 - ..." Name="Btn1_Config">
                 <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-1_R-1" />
@@ -608,187 +624,191 @@
                 </choose>
               </ParameterBlock>
 
-              <!-- Button 3 Configuration -->
-              <ParameterBlock Id="M-0085_A-2026-01-0003_PB-30" Text="Button 3 - ..." Name="Btn3_Config">
-                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-5_R-5" />
-                <choose ParamRefId="M-0085_A-2026-01-0003_P-5_R-5">
-                  <when test="1">
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-83_R-83" />
-                  </when>
-                  <when test="2">
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-13_R-13" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-13_R-13">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-14_R-14" />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-19_R-19" />
-                      </when>
-                    </choose>
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-83_R-83" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-6_R-6" />
-                  </when>
+              <choose ParamRefId="M-0085_A-2026-01-0003_P-80_R-80">
+                <when test="4">
                   <!-- Button 3 Configuration -->
-                  <when test="3">
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-30" Text="Single Press" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-54_R-54" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-54_R-54">
-                      <when test="1"> <!-- Recall Scene -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
+                  <ParameterBlock Id="M-0085_A-2026-01-0003_PB-30" Text="Button 3 - ..." Name="Btn3_Config">
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-5_R-5" />
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-5_R-5">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-83_R-83" />
                       </when>
-                      <when test="2"> <!-- Scene Cycling -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-55_R-55" />
-                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-35" Text="Each press recalls the next scene in the list (cyclic order)." />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-57_R-57" />
-                        <choose ParamRefId="M-0085_A-2026-01-0003_P-55_R-55">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-13_R-13" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-13_R-13">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-14_R-14" />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-19_R-19" />
+                          </when>
+                        </choose>
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-5_R-5" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-83_R-83" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-6_R-6" />
+                      </when>
+                      <!-- Button 3 Configuration -->
+                      <when test="3">
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-30" Text="Single Press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-54_R-54" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-54_R-54">
+                          <when test="1"> <!-- Recall Scene -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
+                          </when>
+                          <when test="2"> <!-- Scene Cycling -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-55_R-55" />
+                            <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-35" Text="Each press recalls the next scene in the list (cyclic order)." />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-57_R-57" />
+                            <choose ParamRefId="M-0085_A-2026-01-0003_P-55_R-55">
+                              <when test="3">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
+                              </when>
+                              <when test="4">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-59_R-59" />
+                              </when>
+                              <when test="5">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-59_R-59" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-60_R-60" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="3"> <!-- Store Scene -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-31" Text="Double Press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-61_R-61" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-61_R-61">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-32" Text="Long Hold" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-63_R-63" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-63_R-63">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-33" Text="Communications" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-65_R-65" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-65_R-65">
+                          <when test="1">
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-63_R-63" />
+                          </when>
                           <when test="3">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
-                          </when>
-                          <when test="4">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-59_R-59" />
-                          </when>
-                          <when test="5">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-58_R-58" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-59_R-59" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-60_R-60" />
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-63_R-63" />
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-69_R-69" />
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-70_R-70" />
                           </when>
                         </choose>
                       </when>
-                      <when test="3"> <!-- Store Scene -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-56_R-56" />
-                      </when>
                     </choose>
+                  </ParameterBlock>
 
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-31" Text="Double Press" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-61_R-61" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-61_R-61">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
-                      </when>
-                      <when test="2">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-62_R-62" />
-                      </when>
-                    </choose>
-
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-32" Text="Long Hold" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-63_R-63" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-63_R-63">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
-                      </when>
-                      <when test="2">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-64_R-64" />
-                      </when>
-                    </choose>
-
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-33" Text="Communications" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-65_R-65" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-65_R-65">
-                      <when test="1">
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-63_R-63" />
-                      </when>
-                      <when test="3">
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-63_R-63" />
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-69_R-69" />
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-70_R-70" />
-                      </when>
-                    </choose>
-                  </when>
-                </choose>
-              </ParameterBlock>
-
-              <!-- Button 4 Configuration -->
-              <ParameterBlock Id="M-0085_A-2026-01-0003_PB-40" Text="Button 4 - ..." Name="Btn4_Config">
-                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-7_R-7" />
-                <choose ParamRefId="M-0085_A-2026-01-0003_P-7_R-7">
-                  <when test="1">
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-84_R-84" />
-                  </when>
-                  <when test="2">
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-84_R-84" />
-                    <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-8_R-8" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-15_R-15" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-15_R-15">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-16_R-16" />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-20_R-20" />
-                      </when>
-                    </choose>
-                  </when>
                   <!-- Button 4 Configuration -->
-                  <when test="3">
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-40" Text="Single Press" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-66_R-66" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-66_R-66">
-                      <when test="1"> <!-- Recall Scene -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
+                  <ParameterBlock Id="M-0085_A-2026-01-0003_PB-40" Text="Button 4 - ..." Name="Btn4_Config">
+                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-7_R-7" />
+                    <choose ParamRefId="M-0085_A-2026-01-0003_P-7_R-7">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-84_R-84" />
                       </when>
-                      <when test="2"> <!-- Scene Cycling -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-67_R-67" />
-                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-45" Text="Each press recalls the next scene in the list (cyclic order)." />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-69_R-69" />
-                        <choose ParamRefId="M-0085_A-2026-01-0003_P-67_R-67">
-                          <when test="3">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
-                          </when>
-                          <when test="4">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-71_R-71" />
-                          </when>
-                          <when test="5">
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-71_R-71" />
-                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-72_R-72" />
+                      <when test="2">
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-7_R-7" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-84_R-84" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-8_R-8" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-15_R-15" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-15_R-15">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-16_R-16" />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-20_R-20" />
                           </when>
                         </choose>
                       </when>
-                      <when test="3"> <!-- Store Scene -->
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
-                      </when>
-                    </choose>
-
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-41" Text="Double Press" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-73_R-73" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-73_R-73">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
-                      </when>
-                      <when test="2">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
-                      </when>
-                    </choose>
-
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-42" Text="Long Hold" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-75_R-75" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-75_R-75">
-                      <when test="1">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
-                      </when>
-                      <when test="2">
-                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
-                      </when>
-                    </choose>
-
-                    <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-43" Text="Communications" UIHint="Headline" />
-                    <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-77_R-77" />
-                    <choose ParamRefId="M-0085_A-2026-01-0003_P-77_R-77">
-                      <when test="1">
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-64_R-64" />
-                      </when>
+                      <!-- Button 4 Configuration -->
                       <when test="3">
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-64_R-64" />
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-71_R-71" />
-                        <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-72_R-72" />
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-40" Text="Single Press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-66_R-66" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-66_R-66">
+                          <when test="1"> <!-- Recall Scene -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
+                          </when>
+                          <when test="2"> <!-- Scene Cycling -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-67_R-67" />
+                            <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-45" Text="Each press recalls the next scene in the list (cyclic order)." />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-69_R-69" />
+                            <choose ParamRefId="M-0085_A-2026-01-0003_P-67_R-67">
+                              <when test="3">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
+                              </when>
+                              <when test="4">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-71_R-71" />
+                              </when>
+                              <when test="5">
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-70_R-70" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-71_R-71" />
+                                <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-72_R-72" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="3"> <!-- Store Scene -->
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-68_R-68" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-41" Text="Double Press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-73_R-73" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-73_R-73">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-74_R-74" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-42" Text="Long Hold" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-75_R-75" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-75_R-75">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-76_R-76" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-0085_A-2026-01-0003_PS-43" Text="Communications" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-0085_A-2026-01-0003_P-77_R-77" />
+                        <choose ParamRefId="M-0085_A-2026-01-0003_P-77_R-77">
+                          <when test="1">
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-64_R-64" />
+                          </when>
+                          <when test="3">
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-64_R-64" />
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-71_R-71" />
+                            <ComObjectRefRef RefId="M-0085_A-2026-01-0003_O-72_R-72" />
+                          </when>
+                        </choose>
                       </when>
                     </choose>
-                  </when>
-                </choose>
-              </ParameterBlock>
+                  </ParameterBlock>
+                </when>
+              </choose>
 
               <!-- Sensors Block -->
               <ParameterBlock Id="M-0085_A-2026-01-0003_PB-50" Text="Internal Sensors" Name="Sensor_Param">
