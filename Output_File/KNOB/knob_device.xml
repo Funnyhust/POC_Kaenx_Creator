@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-2026-03-0001" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB Control" DefaultLanguage="en-US">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-0085_A-2026-03-0001_RS-04-00000" Name="Parameters" Size="200" LoadStateMachine="4" Offset="0" />
+            </Code>
+            <ParameterTypes>
+              <!-- Counts and Ranges -->
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-EndpointCount" Name="Endpoint Count">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="6" />
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-Percent" Name="0..100%">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-SleepTime" Name="Sleep Time">
+                <TypeNumber SizeInBit="32" Type="unsignedInt" minInclusive="10" maxInclusive="3600" />
+              </ParameterType>
+
+              <!-- Endpoint Functions -->
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-EpFunction" Name="Endpoint Function">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Switch" Value="1" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-1" />
+                  <Enumeration Text="Scene" Value="2" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-2" />
+                  <Enumeration Text="CCT" Value="3" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-3" />
+                  <Enumeration Text="Dim" Value="4" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-4" />
+                  <Enumeration Text="Curtain" Value="5" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-5" />
+                  <Enumeration Text="Fan" Value="6" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-6" />
+                  <Enumeration Text="AC" Value="7" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-7" />
+                  <Enumeration Text="Thermostat" Value="8" Id="M-0085_A-2026-03-0001_PT-EpFunction_EN-8" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <!-- Specific Settings -->
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-SwitchMode" Name="Switch Mode">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Press &amp; Release" Value="0" Id="M-0085_A-2026-03-0001_PT-SwitchMode_EN-0" />
+                  <Enumeration Text="Press &amp; Hold" Value="1" Id="M-0085_A-2026-03-0001_PT-SwitchMode_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-Startup" Name="Startup State">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Last State" Value="0" Id="M-0085_A-2026-03-0001_PT-Startup_EN-0" />
+                  <Enumeration Text="OFF" Value="1" Id="M-0085_A-2026-03-0001_PT-Startup_EN-1" />
+                  <Enumeration Text="ON" Value="2" Id="M-0085_A-2026-03-0001_PT-Startup_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-ACTemp" Name="AC Temperature">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="16" maxInclusive="32" />
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-TravelTime" Name="Travel Time">
+                <TypeNumber SizeInBit="32" Type="unsignedInt" minInclusive="1" maxInclusive="600" />
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-ACTempStep" Name="AC Temp Step">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="0.5" Value="0" Id="M-0085_A-2026-03-0001_PT-ACTempStep_EN-0" />
+                  <Enumeration Text="1.0" Value="1" Id="M-0085_A-2026-03-0001_PT-ACTempStep_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-Text20" Name="Text 20 Chars">
+                <TypeText SizeInByte="20" />
+              </ParameterType>
+
+              <!-- Placeholder for Icons -->
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-IconLights" Name="Icon Lights/Dim">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Icon 1" Value="1" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-1" />
+                  <Enumeration Text="Icon 2" Value="2" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-2" />
+                  <Enumeration Text="Icon 3" Value="3" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-3" />
+                  <Enumeration Text="Icon 4" Value="4" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-4" />
+                  <Enumeration Text="Icon 5" Value="5" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-5" />
+                  <Enumeration Text="Icon 6" Value="6" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-6" />
+                  <Enumeration Text="Icon 7" Value="7" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-7" />
+                  <Enumeration Text="Icon 8" Value="8" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-8" />
+                  <Enumeration Text="Icon 9" Value="9" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-9" />
+                  <Enumeration Text="Icon 10" Value="10" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-10" />
+                  <Enumeration Text="Icon 11" Value="11" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-11" />
+                  <Enumeration Text="Icon 12" Value="12" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-12" />
+                  <Enumeration Text="Icon 13" Value="13" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-13" />
+                  <Enumeration Text="Icon 14" Value="14" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-14" />
+                  <Enumeration Text="Icon 15" Value="15" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-15" />
+                  <Enumeration Text="Icon 16" Value="16" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-16" />
+                  <Enumeration Text="Icon 17" Value="17" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-17" />
+                  <Enumeration Text="Icon 18" Value="18" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-18" />
+                  <Enumeration Text="Icon 19" Value="19" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-19" />
+                  <Enumeration Text="Icon 20" Value="20" Id="M-0085_A-2026-03-0001_PT-IconLights_EN-20" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-IconCurtain" Name="Icon Curtain">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Icon 1" Value="1" Id="M-0085_A-2026-03-0001_PT-IconCurtain_EN-1" />
+                  <Enumeration Text="Icon 2" Value="2" Id="M-0085_A-2026-03-0001_PT-IconCurtain_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-IconScene" Name="Icon Scene">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Icon 1" Value="1" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-1" />
+                  <Enumeration Text="Icon 2" Value="2" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-2" />
+                  <Enumeration Text="Icon 3" Value="3" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-3" />
+                  <Enumeration Text="Icon 4" Value="4" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-4" />
+                  <Enumeration Text="Icon 5" Value="5" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-5" />
+                  <Enumeration Text="Icon 6" Value="6" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-6" />
+                  <Enumeration Text="Icon 7" Value="7" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-7" />
+                  <Enumeration Text="Icon 8" Value="8" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-8" />
+                  <Enumeration Text="Icon 9" Value="9" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-9" />
+                  <Enumeration Text="Icon 10" Value="10" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-10" />
+                  <Enumeration Text="Icon 11" Value="11" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-11" />
+                  <Enumeration Text="Icon 12" Value="12" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-12" />
+                  <Enumeration Text="Icon 13" Value="13" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-13" />
+                  <Enumeration Text="Icon 14" Value="14" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-14" />
+                  <Enumeration Text="Icon 15" Value="15" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-15" />
+                  <Enumeration Text="Icon 16" Value="16" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-16" />
+                  <Enumeration Text="Icon 17" Value="17" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-17" />
+                  <Enumeration Text="Icon 18" Value="18" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-18" />
+                  <Enumeration Text="Icon 19" Value="19" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-19" />
+                  <Enumeration Text="Icon 20" Value="20" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-20" />
+                  <Enumeration Text="Icon 21" Value="21" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-21" />
+                  <Enumeration Text="Icon 22" Value="22" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-22" />
+                  <Enumeration Text="Icon 23" Value="23" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-23" />
+                  <Enumeration Text="Icon 24" Value="24" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-24" />
+                  <Enumeration Text="Icon 25" Value="25" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-25" />
+                  <Enumeration Text="Icon 26" Value="26" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-26" />
+                  <Enumeration Text="Icon 27" Value="27" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-27" />
+                  <Enumeration Text="Icon 28" Value="28" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-28" />
+                  <Enumeration Text="Icon 29" Value="29" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-29" />
+                  <Enumeration Text="Icon 30" Value="30" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-30" />
+                  <Enumeration Text="Icon 31" Value="31" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-31" />
+                  <Enumeration Text="Icon 32" Value="32" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-32" />
+                  <Enumeration Text="Icon 33" Value="33" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-33" />
+                  <Enumeration Text="Icon 34" Value="34" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-34" />
+                  <Enumeration Text="Icon 35" Value="35" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-35" />
+                  <Enumeration Text="Icon 36" Value="36" Id="M-0085_A-2026-03-0001_PT-IconScene_EN-36" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-CurtainMotor" Name="Curtain Motor Type">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Standard 3-wire Motor" Value="1" Id="M-0085_A-2026-03-0001_PT-CurtainMotor_EN-1" />
+                  <Enumeration Text="Standard 4-wire Motor" Value="2" Id="M-0085_A-2026-03-0001_PT-CurtainMotor_EN-2" />
+                  <Enumeration Text="AutoHome Intelligent" Value="3" Id="M-0085_A-2026-03-0001_PT-CurtainMotor_EN-3" />
+                  <Enumeration Text="Pulse-driven 3-wire" Value="4" Id="M-0085_A-2026-03-0001_PT-CurtainMotor_EN-4" />
+                  <Enumeration Text="Direct 220V Roll-up" Value="5" Id="M-0085_A-2026-03-0001_PT-CurtainMotor_EN-5" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-Enable" Name="Enable/Disable">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Disable" Value="0" Id="M-0085_A-2026-03-0001_PT-Enable_EN-0" />
+                  <Enumeration Text="Enable" Value="1" Id="M-0085_A-2026-03-0001_PT-Enable_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-SceneNumber" Name="Scene Number">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="64" />
+              </ParameterType>
+            </ParameterTypes>
+            
+            <Parameters>
+              <!-- General Settings (Offset 0-10) -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-EpCount" Name="NumEndpoints" ParameterType="M-0085_A-2026-03-0001_PT-EndpointCount" Text="Number of Endpoints" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Brightness" Name="Brightness" ParameterType="M-0085_A-2026-03-0001_PT-Percent" Text="Screen brightness" Value="80" SuffixText="%"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-SleepTime" Name="SleepTime" ParameterType="M-0085_A-2026-03-0001_PT-SleepTime" Text="Auto sleep duration" Value="300" SuffixText="s"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="2" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-EnableScene" Name="EnableScene" ParameterType="M-0085_A-2026-03-0001_PT-Enable" Text="Enable scene function" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="3" BitOffset="0" /></Parameter>
+
+              <!-- Global Scene Assignments (Offset 4-20) -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-SceneA_Num" Name="SceneA_No" ParameterType="M-0085_A-2026-03-0001_PT-Scene" Text="Scene A number" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="4" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-SceneB_Num" Name="SceneB_No" ParameterType="M-0085_A-2026-03-0001_PT-Scene" Text="Scene B number" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="5" BitOffset="0" /></Parameter>
+              
+              <!-- Endpoint 1 (Always Visible) -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_Name" Name="Ep1_Name" ParameterType="M-0085_A-2026-03-0001_PT-Text20" Text="Endpoint 1 name" Value="Switch 01"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="10" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_Startup" Name="Ep1_Startup" ParameterType="M-0085_A-2026-03-0001_PT-Startup" Text="Startup state" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="31" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_Func" Name="Ep1_Func" ParameterType="M-0085_A-2026-03-0001_PT-EpFunction" Text="Function of endpoint" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="32" BitOffset="0" /></Parameter>
+
+              <!-- Split Icons for EP1 -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_IconLights" Name="Ep1_IconL" ParameterType="M-0085_A-2026-03-0001_PT-IconLights" Text="Icon (Lights/Dim)" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_IconCurtain" Name="Ep1_IconC" ParameterType="M-0085_A-2026-03-0001_PT-IconCurtain" Text="Icon (Curtain)" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_IconScene" Name="Ep1_IconS" ParameterType="M-0085_A-2026-03-0001_PT-IconScene" Text="Icon (Scene)" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
+
+              <!-- EP1 AC Parameters -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_ACTempMin" Name="Ep1_ACTMin" ParameterType="M-0085_A-2026-03-0001_PT-SleepTime" Text="Min temperature" Value="16" SuffixText="°C"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="36" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_ACTempMax" Name="Ep1_ACTMax" ParameterType="M-0085_A-2026-03-0001_PT-SleepTime" Text="Max temperature" Value="32" SuffixText="°C"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="37" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_ACModeHeat" Name="Ep1_ACModeH" ParameterType="M-0085_A-2026-03-0001_PT-Enable" Text="Support Heat mode" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="38" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_ACModeCool" Name="Ep1_ACModeC" ParameterType="M-0085_A-2026-03-0001_PT-Enable" Text="Support Cool mode" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="39" BitOffset="1" /></Parameter>
+
+              <!-- Endpoint 2 -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep2_Name" Name="Ep2_Name" ParameterType="M-0085_A-2026-03-0001_PT-Text20" Text="Endpoint 2 name" Value="EP 02"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="40" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep2_Func" Name="Ep2_Func" ParameterType="M-0085_A-2026-03-0001_PT-EpFunction" Text="Function of endpoint" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="61" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep2_IconLights" Name="Ep2_IconL" ParameterType="M-0085_A-2026-03-0001_PT-IconLights" Text="Icon (Lights/Dim)" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="62" BitOffset="0" /></Parameter>
+
+              <!-- Endpoint 3 -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep3_Function" Name="Ep3_Func" ParameterType="M-0085_A-2026-03-0001_PT-EpFunction" Text="Function of Endpoint 3" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="70" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep3_Name" Name="Ep3_Name" ParameterType="M-0085_A-2026-03-0001_PT-Text20" Text="Endpoint 3 Name" Value="EP 03"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="71" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep3_Icon" Name="Ep3_Icon" ParameterType="M-0085_A-2026-03-0001_PT-Icons" Text="Endpoint 3 Icon" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="91" BitOffset="0" /></Parameter>
+
+              <!-- Additional Settings for each EP (Shared Pool of IDs for now, using offset relative to EP start) -->
+              <!-- EP1 Specific -->
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_SwitchMode" Name="Ep1_SwMode" ParameterType="M-0085_A-2026-03-0001_PT-SwitchMode" Text="Switch Mode" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_SceneNo" Name="Ep1_SceneNo" ParameterType="M-0085_A-2026-03-0001_PT-SceneNumber" Text="Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_CurtainTime" Name="Ep1_CurtainTime" ParameterType="M-0085_A-2026-03-0001_PT-TravelTime" Text="Travel Time" Value="20" SuffixText="s"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-Ep1_ACTempStep" Name="Ep1_ACTempStep" ParameterType="M-0085_A-2026-03-0001_PT-ACTempStep" Text="Temperature Step" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="39" BitOffset="0" /></Parameter>
+
+              <!-- ... Pattern repeats for EP 2-6 ... -->
+            </Parameters>
+
+            <ComObjectTable>
+              <ComObject Id="M-0085_A-2026-03-0001_O-10" Name="Ep1_Switch" Text="EP 1" Number="10" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0001_O-11" Name="Ep1_Status" Text="EP 1" Number="11" FunctionText="Status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0001_O-12" Name="Ep1_Curtain_Move" Text="EP 1" Number="12" FunctionText="Move up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0001_O-13" Name="Ep1_Curtain_Stop" Text="EP 1" Number="13" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0001_O-14" Name="Ep1_Curtain_Pos" Text="EP 1" Number="14" FunctionText="Absolute position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0001_O-15" Name="Ep1_Curtain_Status" Text="EP 1" Number="15" FunctionText="Status position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-1_Ref" RefId="M-0085_A-2026-03-0001_O-1" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-2_Ref" RefId="M-0085_A-2026-03-0001_O-2" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-3_Ref" RefId="M-0085_A-2026-03-0001_O-3" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-9_Ref" RefId="M-0085_A-2026-03-0001_O-9" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-10_Ref" RefId="M-0085_A-2026-03-0001_O-10" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-11_Ref" RefId="M-0085_A-2026-03-0001_O-11" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-12_Ref" RefId="M-0085_A-2026-03-0001_O-12" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-13_Ref" RefId="M-0085_A-2026-03-0001_O-13" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-14_Ref" RefId="M-0085_A-2026-03-0001_O-14" />
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-15_Ref" RefId="M-0085_A-2026-03-0001_O-15" />
+              
+              <!-- Endpoint 2 ComObjectRefs -->
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-20_Ref" RefId="M-0085_A-2026-03-0001_O-10" /> <!-- Sharing base switch for demo, but in real case separate IDs would be generated -->
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-21_Ref" RefId="M-0085_A-2026-03-0001_O-11" />
+            </ComObjectRefs>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-EpCount_Ref" RefId="M-0085_A-2026-03-0001_P-EpCount" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Brightness_Ref" RefId="M-0085_A-2026-03-0001_P-Brightness" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-SleepTime_Ref" RefId="M-0085_A-2026-03-0001_P-SleepTime" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-EnableScene_Ref" RefId="M-0085_A-2026-03-0001_P-EnableScene" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_IconLights_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_IconLights" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_IconCurtain_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_IconCurtain" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_IconScene_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_IconScene" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_Startup_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_Startup" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_Func" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_SwMode_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_SwitchMode" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_SceneNo_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_SceneNo" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_CurtainTime_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_CurtainTime" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep1_ACTempStep_Ref" RefId="M-0085_A-2026-03-0001_P-Ep1_ACTempStep" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_Function" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_Icon_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_Icon" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep3_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep3_Function" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep3_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep3_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep3_Icon_Ref" RefId="M-0085_A-2026-03-0001_P-Ep3_Icon" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep4_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep4_Function" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep4_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep4_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep4_Icon_Ref" RefId="M-0085_A-2026-03-0001_P-Ep4_Icon" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep5_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep5_Function" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep5_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep5_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep5_Icon_Ref" RefId="M-0085_A-2026-03-0001_P-Ep5_Icon" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_Func" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep2_IconLights_Ref" RefId="M-0085_A-2026-03-0001_P-Ep2_IconLights" />
+              
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-SceneA_Num_Ref" RefId="M-0085_A-2026-03-0001_P-SceneA_Num" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-SceneB_Num_Ref" RefId="M-0085_A-2026-03-0001_P-SceneB_Num" />
+
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep6_Func_Ref" RefId="M-0085_A-2026-03-0001_P-Ep6_Function" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep6_Name_Ref" RefId="M-0085_A-2026-03-0001_P-Ep6_Name" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-Ep6_Icon_Ref" RefId="M-0085_A-2026-03-0001_P-Ep6_Icon" />
+            </ParameterRefs>
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-0085_A-2026-03-0001_PB-General" Text="General settings">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-EpCount_Ref" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Brightness_Ref" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-SleepTime_Ref" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-EnableScene_Ref" />
+                
+                <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-1_Ref" />
+                <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-2_Ref" />
+                <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-3_Ref" />
+                <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-9_Ref" />
+              </ParameterBlock>
+
+              <!-- Endpoint 1 (Always Visible) -->
+              <ParameterBlock Id="M-0085_A-2026-03-0001_PB-Ep1" Text="Endpoint 1 setting">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_Name_Ref" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_Startup_Ref" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_Func_Ref" />
+                
+                <choose ParamRefId="M-0085_A-2026-03-0001_P-Ep1_Func_Ref">
+                  <when test="1 | 3 | 4"> <!-- Switch, CCT, Dim -->
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_IconLights_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-10_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-11_Ref" />
+                  </when>
+                  <when test="2"> <!-- Scene -->
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_IconScene_Ref" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_SceneNo_Ref" />
+                  </when>
+                  <when test="5"> <!-- Curtain -->
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_IconCurtain_Ref" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_CurtainTime_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-12_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-13_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-14_Ref" />
+                    <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-15_Ref" />
+                  </when>
+                  <when test="7"> <!-- AC -->
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep1_ACTempStep_Ref" />
+                  </when>
+                </choose>
+              </ParameterBlock>
+
+              <!-- Endpoints 2-6 (Conditional) -->
+              <choose ParamRefId="M-0085_A-2026-03-0001_P-EpCount_Ref">
+                <when test="2..6">
+                  <ParameterBlock Id="M-0085_A-2026-03-0001_PB-Ep2" Text="Endpoint 2 setting">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep2_Name_Ref" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep2_Func_Ref" />
+                    
+                    <choose ParamRefId="M-0085_A-2026-03-0001_P-Ep2_Func_Ref">
+                      <when test="1 | 3 | 4"> <!-- Switch, CCT, Dim -->
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-Ep2_IconLights_Ref" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-20_Ref" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-21_Ref" />
+                      </when>
+                      <when test="2"> <!-- Scene -->
+                         <!-- EP2 Scene No and Icon placeholder -->
+                      </when>
+                      <when test="5"> <!-- Curtain -->
+                         <!-- EP2 Curtain Time and Icon placeholder -->
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+              
+              <choose ParamRefId="M-0085_A-2026-03-0001_P-EnableScene_Ref">
+                <when test="1">
+                  <ParameterBlock Id="M-0085_A-2026-03-0001_PB-Scenes" Text="Scene settings">
+                     <ParameterSeparator Id="M-0085_A-2026-03-0001_PS-SceneHeader" Text="Global Scene Configuration" />
+                     <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-SceneA_Num_Ref" />
+                     <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-SceneB_Num_Ref" />
+                  </ParameterBlock>
+                </when>
+              </choose>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

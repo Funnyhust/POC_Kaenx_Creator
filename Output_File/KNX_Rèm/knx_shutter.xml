@@ -23,7 +23,7 @@
         <ApplicationProgram Id="M-0085_A-1234-56-00001" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Shutter Actuator 4-relay 16A" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0" IsSecureEnabled="true" MaxUserEntries="1" MaxSecurityProxyGroupKeyTableEntries="0" MaxSecurityIndividualAddressEntries="500" MaxTunnelingUserEntries="0" MaxSecurityP2PKeyTableEntries="0" MaxSecurityGroupKeyTableEntries="512">
           <Static>
             <Code>
-              <RelativeSegment Id="M-0085_A-1234-56-00001_RS-04-00001" Name="Parameters" Size="28" LoadStateMachine="4" Offset="0" />
+              <RelativeSegment Id="M-0085_A-1234-56-00001_RS-04-00001" Name="Parameters" Size="29" LoadStateMachine="4" Offset="0" />
             </Code>
             <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
             <ParameterTypes>
@@ -127,6 +127,9 @@
               <ParameterType Id="M-0085_A-1234-56-00001_PT-10" Name="Percent8_PT">
                 <TypeNumber Type="unsignedInt" SizeInBit="8" minInclusive="0" maxInclusive="100" />
               </ParameterType>
+              <ParameterType Id="M-0085_A-1234-56-00001_PT-11" Name="0..255_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
+              </ParameterType>
             </ParameterTypes>
             <Parameters>
               <Parameter Id="M-0085_A-1234-56-00001_P-1" Name="MotorType" ParameterType="M-0085_A-1234-56-00001_PT-1" Text="Motor Type" Value="2"><Memory CodeSegment="M-0085_A-1234-56-00001_RS-04-00001" Offset="0" BitOffset="0" /></Parameter>
@@ -165,6 +168,7 @@
 
               <Parameter Id="M-0085_A-1234-56-00001_P-42" Name="SceneJ_Num" ParameterType="M-0085_A-1234-56-00001_PT-9" Text="Scene J Number" Value="0"><Memory CodeSegment="M-0085_A-1234-56-00001_RS-04-00001" Offset="26" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-1234-56-00001_P-43" Name="SceneJ_Pos" ParameterType="M-0085_A-1234-56-00001_PT-10" Text="Scene J Position" SuffixText=" %" Value="0"><Memory CodeSegment="M-0085_A-1234-56-00001_RS-04-00001" Offset="27" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-1234-56-00001_P-100" Name="Fixed_Value_DD" ParameterType="M-0085_A-1234-56-00001_PT-11" Value="221"><Memory CodeSegment="M-0085_A-1234-56-00001_RS-04-00001" Offset="28" BitOffset="0" /></Parameter>
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="M-0085_A-1234-56-00001_P-1_R-1" RefId="M-0085_A-1234-56-00001_P-1" />
@@ -192,6 +196,7 @@
               <ParameterRef Id="M-0085_A-1234-56-00001_P-40_R-40" RefId="M-0085_A-1234-56-00001_P-40" />
               <ParameterRef Id="M-0085_A-1234-56-00001_P-42_R-42" RefId="M-0085_A-1234-56-00001_P-42" />
               <ParameterRef Id="M-0085_A-1234-56-00001_P-43_R-43" RefId="M-0085_A-1234-56-00001_P-43" />
+              <ParameterRef Id="M-0085_A-1234-56-00001_P-100_R-100" RefId="M-0085_A-1234-56-00001_P-100" />
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="M-0085_A-1234-56-00001_O-1" Name="Move" Text="Channel A" Number="1" FunctionText="Shutter up/down" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" DatapointType="DPST-1-8" />
@@ -213,10 +218,10 @@
             <AssociationTable MaxEntries="255" />
             <LoadProcedures>
               <LoadProcedure MergeId="2">
-                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="28" Mode="0" Fill="0" />
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="29" Mode="0" Fill="0" />
               </LoadProcedure>
               <LoadProcedure MergeId="4">
-                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="28" Verify="true" />
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="29" Verify="true" />
               </LoadProcedure>
             </LoadProcedures>
           </Static>

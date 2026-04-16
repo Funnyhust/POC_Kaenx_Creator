@@ -1,0 +1,164 @@
+﻿STT,Nội dung,,Thao tác,Chi tiết,Led hiển thị,Ghi chú,Icon,,,,,,,,,,,,
+1,Khi bắt đầu cấp nguồn,,Cấp nguồn cho thiết bị,Nếu thiết bị đã được cấu hình KNX,Led nháy xanh 2 lần,"Cả 2 trường hợp đều hiển thị logo Lumi, cho đến khi:
+1. Nhận được time từ Bluetooth/KNX và không có thao tác từ người dùng. Các thông tin sẽ hiển thị trên màn hình chính:
+ + Thời gian: DD, dd:MM hh:mm. Ví dụ: Tuesday, 19 Dec
+ + Nhiệt độ: xx.x độ C
+ + Độ ẩm: xx.x %
+2. Có thao tác vuốt màn hình bởi người dùng >> hiển thị màn hình tương ứng",,,,,,,,,,,,,
+,,,,Nếu thiết bị chưa được cấu hình(Cả KXN và BLE),Led nháy đỏ 3 lần,,,,,,,,,,,,,,
+2.1,"Cấu hình cho thiết bị (không có Secure)
+(Thông tin cấu hình: Địa chỉ vật lý (IA), các tham số (parameter), Group Object và GA của từng Object)",,Nhấn giữ knob_down khoảng 10s để vào menu cài đặt,"B1. Chọn Thêm thiết bị
+B2. Nhấn chọn KNX
+B3. Nhấn Vào mode để vào mode cấu hình KNX
+(để thoát mode thao tác lại như các bước trên và bấm thoát mode)
+B4. Bấm download trên app ETS để nạp cấu hình KNX cho thiết bị","1. Vào mode
+   + Led sẽ nháy xanh 1 lần báo vào mode thành công
+   + Led sẽ nháy xanh liên tục với chu kỳ 5s cho đến khi hết time out
+2. Thoát mode
+   + Led nháy đỏ 1 lần
+3. Thiết bị reboot nếu cấu hình ETS thành công",- Timeout gia nhập mạng là 5 phút.,,,,,,,,,,,,,
+2.2,"Cấu hình cho thiết bị secure
+(Thống số cấu hình:
+- Địa chỉ vật lý(PA)
+- Địa chỉ nhóm(GA)
+- Parameter
+- ComObject)",,Thao tác trên phần mềm ETS,B1: Nếu nạp file .knxprj mới cho thiết bị thì cần xóa cấu hình cho thiết bị,,"Lưu ý: 
+* Nếu trước đó thiết bị đang cấu hình
+ + Secure: Cần xóa trước khi thay đổi config
+ + In-secure: Không cần xóa mà cấu hình được luôn
+* Time out trong chế độ cấu hình là 5p, nếu không cấu hình cho thiết bị sẽ tự thoát chế độ cấu hình KNX",,,,,,,,,,,,,
+,,,,B2: Nhấn 1 lần nút config để vào mode/thoát mode cấu hình KNX,,,,,,,,,,,,,,,
+,,,,"B3: Thao tác với ETS
+- Sau khi thiết bị  vào chế độ cấu hình KNX, bấm nút  dowload trên ETS để nạp cấu hình cho thiết bị
+","1. Vào mode
+   + Led sẽ nháy xanh 1 lần báo vào mode thành công
+   + Led sẽ nháy xanh liên tục với chu kỳ 5s cho đến khi hết time out
+2. Thoát mode
+   + Led nháy đỏ 1 lần
+3. Thiết bị reboot nếu cấu hình ETS thành công",,,,,,,,,,,,,,
+4,Xóa cấu hình thiết bị,,Thao tác dưới thiết bị,"- B1: Nhấn giữ nút config khoảng 10s đến khi led nháy xanh 2 lần thì nhả ra 
+- B2: Trong khoảng tối đã 5s kể từ thời điểm nhả tay ở bước 1, nhấn nút config thêm 1 lần nữa để xóa cấu hình ETS của thiết bị.
+=> thiết bị sẽ tiến hành reset và reboot.
+(Xóa cấu hình KNX: Xóa địa chỉ KNX: (địa chỉ vật lý(PA), địa nhỉ nhóm (GA), các parameter, object)","'+ Thành công: khởi động lại(xem trạng thái led khởi động)
++ Thất bại: thiết bị không thay đổi trạng thái","- Nạp lại cấu hình mới với file ETS cũ sẽ không cần xóa cấu hình này.
+- Các trường hợp cần xóa cấu hình KNX:
+  + Không muốn dùng mode KNX nữa, xóa hoàn toàn cấu hình.
+  + (Dành riêng cho thiết bị KNX có Secure) Nạp file ETS project mới cho thiết bị có Secure",,,,,,,,,,,,,
+5,Khôi phục cài đặt gốc(reset factory),,"Nhấn giữ knob_down khoảng 10s để vào menu cài đặt
+","B1. Chọn Khôi phục cài đặt gốc
+B2. Nhấn xác nhận: thực hiện khôi phục cài đặt gốc.
+Lưu ý: thao tác này sẽ xóa thiết bị ra khỏi mạng.","
+- Sau khi nhấn xác nhận: thiết bị khôi phục lại cài đặt gốc và thông báo ""Khôi phục cài đặt gốc thành công"" trên Knob sau đó thiết bị sẽ reboot","Toàn bộ cài đặt sẽ về mặc định các giá trị mặc định(như 1 thiết bị mới)
+Lưu ý: ""Xóa thiết bị"" không có tác dụng với KNX",,,,,,,,,,,,,
+6,Chức năng của màn hình điều khiển(type),Công tắc,"- Nhấn nút power/nhấn knob_down để bật/tắt.
+Trạng thái mặc định: Tắt
+Màn mặc định: Không có","Vuốt ngang để chuyển màn hình (chuyển endpoint và chuyển cảnh)
+Ví dụ: thiết bị được cấu hình gồm 2 cảnh + 1 đèn CCT + 2 rèm, khi đó thứ tự hiển thị khi vuốt ngang sẽ như sau:
+Công tắc 1 > công tắc 2 > cảnh 1 > cảnh 2 > CCT > rèm 1 > rèm 2",,"* Khi trở lại màn hình điều khiển or thiết bị khởi động lại sẽ hiển thị trạng thái cuối cùng được điều khiển
+* Trạng thái mặc định là trạng thái hiển thị trên màn hình khi vừa được cấu hình qua ETS
+* Màn hình mặc định: Khi chuyển giữa các màn điều khiển thiết bị sẽ hiển thị màn này. Ví dụ: Chuyển từ màn công tắc -> Điều hòa thì sẽ hiện màn mặc định của điều hòa.",,,,,,,,,,,,,
+,,Nút cảnh ,"- Nhấn vào icon cảnh tương ứng để kích hoạt, nếu kích hoạt thành công sẽ hiển thị thông báo ""activated scene success""
+- Vuốt lên/xuống trên màn hình để chuyển cảnh.
+Trạng thái mặc định: Không Active
+Màn mặc định: Cảnh cuối trước khi chuyển màn",,,,,,,,,,,,,,,,
+,,Đèn CCT,"- Vuốt dọc để chuyển thuộc tính (brightness / temperature) hoặc cảnh CCT.
+  + Bật/tắt: Nhấn icon nút power trên màn hình hoặc nhấn 
+  + Brightness: Vặn knob để thay đổi độ sáng (0 - 100%), nhấn icon nút power/nhấn knob_down để bật/tắt.
+  + Temperature Color: Vặn knob để thay đổi nhiệt độ màu (2700K - 6500K), nhấn icon nút power để bật tắt.
+  + Cảnh: Nhấn chọn các cảnh của đèn CCT đã được định nghĩa sẵn (đọc sách, ăn tối, xem phim, làm việc)
+Trạng thái mặc định: Tắt - Brightness(0%) - Temperature Color(6500K)
+Màn mặc định: Bật/tắt + Brightness",,,,,,,,,,,,,,,,
+,,Đèn Dim," - Bật/tắt: Nhấn icon nút power trên màn hình hoặc nhấn knob_down để bật/tắt.
+ - Vặn Knob để thay đổi độ sáng 0 - 100%
+Trạng thái mặc định: Tắt - Brightness(0%)
+Màn mặc định: Không có",,,,,,,,,,,,,,,,
+,,Rèm,"- Vặn knob để thay đổi level (0 - 100%): 100%, 83%, 67%, 50%, 33%, 17%, 0%
+- Nhấn icon Open để mở, Stop để dừng, Close để đóng
+Màn mặc định: Không có",,,,,,,,,,,,,,,,
+,,Fan,"- Vặn knob hoặc nhấn icon tăng/giảm để thay đổi level (0 - 4)
+- Nhấn icon power/nhấn knob_down để bật/tắt.
+Màn mặc định: Không có",,,,,,,,,,,,,,,,
+,,Điều hòa,"Vuốt dọc để chuyển thuộc tính: nhiệt độ/mode/fan/swing
+1. Màn hình chung:
+   - Vặn knob để thay đổi giá trị nhiệt độ
+   - Bấm icon Mode để đổi các các chế độ
+   - Bấm icon Fan để đổi mức
+   - Nhấn vào icon nút power/nhấn knob_down để bật/tắt.
+2. Màn hình mode:
+   - Nhấn vào biểu tượng tăng/giảm hoặc vặn knob để thay đổi mode
+3. Màn hình Fan:
+   - Nhấn vào biểu tượng tăng/giảm hoặc vặn knob để thay đổi tốc độ quạt gió.
+4. Màn hình Swing
+   - Nhấn vào biểu tượng tăng/giảm hoặc vặn knob để thay đổi vị trí cửa gió.
+Trạng thái mặc định: Tắt - Nhiệt độ(25.0 độ C) - Mode(Cool) - Fan(Low) - Swing(Stop)
+Màn mặc định: Màn hình chung",,,,,,,,,,,,,,,,
+,,Sưởi,"- Vặn knob để thay đổi giá trị đặt
+- Nhấn vào icon nút power/nhấn knob_down để bật/tắt.
+Trạng thái mặc định: Tắt - Nhiệt độ đặt(25.0 độ C) - Nhiệt độ phòng(theo nhiệt độ đo được trên thiết bị)
+Màn mặc định: Không có",,,,,,,,,,,,,,,,
+7,Màn hình chính (clock),,,"Nếu không có thao tác với màn hình trong khoảng thời gian đã cài đặt, màn hình sẽ tự động quay về hiển thị clock sau 30s",,,,,,,,,,,,,,,
+8,"Cài đặt chung
+(General Settings)",Chọn loại thiết bị,Thao tác trên phần mềm ETS,"- Object 1: Công tắc
+- Object 2: Cảm biến nhiệt độ
+- Object 3: Cảm biến độ ẩm
+- Các Object từ 4 - 8 có thể chọn được type: switch, scene, cct, dim, curtain, fan, ac, sưởi
+- Object 9: Date","Sau khi download có 2 trường hợp:
++ Thành công(ETS hiển thị download thành công): thiết bị sẽ reboot và trạng thái LED và màn hình lúc đó theo mục 1 ""Cấp nguồn cho thiết bị""
++ Thất bại(ETS hiển thị download thất bại): Đây là trường hợp không xác định. Thiết bị có thể mất hết cài đặt ban đầu.","Lưu ý: Object 1,2,3 không thể thay đổi type",,,,,,,,,,,,,
+,,Chọn số lượng Endpoint,,,,,,,,,,,,,,,,,
+,,Cài đặt độ sáng màn hình,,Default: 80%,,,,,,,,,,,,,,,
+,,Thời gian ngủ tự động,,Default: 50%(có thể thay đổi trong quá trình làm),,,,,,,,,,,,,,,
+,,Tự động quay về màn hình chính,,"Hiển thị tùy chọn cài đặt thời gian(đơn vị: giây)
+Default: 30s",,,,,,,,,,,,,,,
+9,Cài đặt theo chủng loại thiết bị,Công tắc,,"- Caì đặt mode công tắc: nhấn nhả/nhấn giữ(default: nhấn giữ)
+- Cài đặt icon
+- Tên thiết bị: (tên default: Switch 0x trong đó: x-endpoint)
+Lưu ý: Chức năng đổi type từng endpoint trong thiết bị chỉ hiển thị và chọn ở endpoint 1.",,"Cài đặt icon + tên thiết bị/tên cảnh
+Danh sách Icon và Icon default cho từng loại: Danh sách icon 
+Tên thiết bị/Tên cảnh:
+ + Danh sách ký tự hỗ trợ: Vietnamese character conversion table 
+ + Tối đa 20 ký tự(hỗ trợ Tiếng Việt)",,,,,,,,,,,,,
+,,Cảnh,,"- Cài đặt icon 
+- Tên cảnh(tên default: ""Scene x"" trong đó: x là thứ tự của cảnh 01 - 16)
+Note: Tối đa 16 cảnh",,,,,,,,,,,,,,,
+,,CCT,,"- Cài đặt icon
+- Tên thiết bị(tên default: CCT 0x trong đó: x-endpoint)",,,,,,,,,,,,,,,
+,,Dim,,"- Cài đặt icon
+- Tên thiết bị(tên default: Dim 0x trong đó: x-endpoint)",,,,,,,,,,,,,,,
+,,Rèm,,"- Cài đặt hành trình rèm(default: 20s)
+- Cài đặt icon
+- Tên thiết bị(tên default: Curtain 0x trong đó: x-endpoint)",,,,,,,,,,,,,,,
+,,Fan,,"- Cài đặt icon
+- Tên thiết bị(tên default: Fan 0x trong đó: x-endpoint)",,,,,,,,,,,,,,,
+,,AC,,"- Tên thiết bị(tên default: Air conditioning 0x trong đó: x-endpoint)
+- Cài đặt dải thông số điều hòa:
+  + Bước thay đổi nhiệt độ: 0.5 hoặc 1
+  + Mode: Auto/Fan/Heat/Cool/Dry
+  + Fan: Auto/Low/Mid/High
+  + Swing: P0/P1/P2/P3/P4/Stop/Swing
+  + Temp Min: 16 - 31
+  + Temp Max: 17 - 32",,,,,,,,,,,,,,,
+,,Sưởi,,- Tên thiết bị(tên default: Thermostat 0x trong đó: x-endpoint),,,,,,,,,,,,,,,
+10,"Cập nhật thông số nhiệt độ, độ ẩm",,Ngưỡng cập nhật,"- Nhiệt độ thay đổi >= 1℃
+- Độ ẩm thay đổi >= 5%",,,"- Sai số cảm biến:
+Độ ẩm: ±3% (maximum)
+Nhiệt độ: ±0.4°C
+(maximum)",,,,,,,,,,,,
+,,,Cập nhật định kỳ,"Định kỳ cập nhật cả 2 thông số nhiệt độ, độ ẩm trong <= 30 phút",,,,,,,,,,,,,,,
+Tính năng trên app khác,,,,,,,,,,,,,,,,,,,
+1,Rule,Công tắc,,"Đầu vào: Có
+Đầu ra: Có",,Riêng Endpoint 1 cho phép đầu ra là chuyển màn,,,,,,,,,,,,,
+,,Cảnh,,,,,,,,,,,,,,,,,
+,,CCT,,,,,,,,,,,,,,,,,
+,,Dim,,,,,,,,,,,,,,,,,
+,,Rèm,,,,,,,,,,,,,,,,,
+,,Fan,,,,,,,,,,,,,,,,,
+,,AC,,"Đầu vào: Không
+Đầu ra: Có",,,,,,,,,,,,,,,
+,,Sưởi,,,,,,,,,,,,,,,,,
+2,Cảnh thường,,,Tất cả các type đều hỗ trợ,,,,,,,,,,,,,,,
+3,Lịch,,,Tất cả các type đều hỗ trợ,,,,,,,,,,,,,,,
+4,Cảnh Lighting,,,Không hỗ trợ,,,,,,,,,,,,,,,
+5,Nhóm Lighting,,,Không hỗ trợ,,,,,,,,,,,,,,,
+6,Binding,,,Không hỗ trợ,,,,,,,,,,,,,,,
+7,Nhóm thường,,,Chỉ hỗ trợ công tắc,,,,,,,,,,,,,,,

@@ -23,7 +23,7 @@
         <ApplicationProgram Id="M-0085_A-2025-01-00001" ApplicationNumber="2025" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Switch Actuator 4-relay 16A/1.0" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0" IsSecureEnabled="true" MaxUserEntries="1" MaxSecurityProxyGroupKeyTableEntries="0" MaxSecurityIndividualAddressEntries="64" MaxTunnelingUserEntries="0" MaxSecurityP2PKeyTableEntries="1" MaxSecurityGroupKeyTableEntries="48">
           <Static>
             <Code>
-              <RelativeSegment Id="M-0085_A-2025-01-00001_RS-04-00001" Name="Parameters" Size="125" LoadStateMachine="4" Offset="0" />
+              <RelativeSegment Id="M-0085_A-2025-01-00001_RS-04-00001" Name="Parameters" Size="126" LoadStateMachine="4" Offset="0" />
             </Code>
             <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
             <ParameterTypes>
@@ -136,6 +136,9 @@
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="ON" Value="1" Id="M-0085_A-2025-01-00001_PT-9_EN-1" />
                 </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2025-01-00001_PT-10" Name="0..255_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
               </ParameterType>
             </ParameterTypes>
             <Parameters>
@@ -285,6 +288,7 @@
               <Parameter Id="M-0085_A-2025-01-00001_P-111" Name="R4_Scene8_Num" ParameterType="M-0085_A-2025-01-00001_PT-7" Text="Scene 8 Number" Value="0"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="91" BitOffset="0" /></Parameter>
               <Parameter Id="M-0085_A-2025-01-00001_P-112" Name="R4_Scene8_Act" ParameterType="M-0085_A-2025-01-00001_PT-8" Text="Scene 8 Action" Value="1"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="92" BitOffset="0" /></Parameter>
 
+              <Parameter Id="M-0085_A-2025-01-00001_P-200" Name="Fixed_Value_DD" ParameterType="M-0085_A-2025-01-00001_PT-10" Value="221"><Memory CodeSegment="M-0085_A-2025-01-00001_RS-04-00001" Offset="125" BitOffset="0" /></Parameter>
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="M-0085_A-2025-01-00001_P-1_R-1" RefId="M-0085_A-2025-01-00001_P-1" />
@@ -407,6 +411,7 @@
               <ParameterRef Id="M-0085_A-2025-01-00001_P-118_R-118" RefId="M-0085_A-2025-01-00001_P-118" />
               <ParameterRef Id="M-0085_A-2025-01-00001_P-119_R-119" RefId="M-0085_A-2025-01-00001_P-119" />
               <ParameterRef Id="M-0085_A-2025-01-00001_P-120_R-120" RefId="M-0085_A-2025-01-00001_P-120" />
+              <ParameterRef Id="M-0085_A-2025-01-00001_P-200_R-200" RefId="M-0085_A-2025-01-00001_P-200" />
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="M-0085_A-2025-01-00001_O-1" Name="Output A" Text="Output A-..." Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
@@ -440,10 +445,10 @@
             <AssociationTable MaxEntries="500" />
             <LoadProcedures>
               <LoadProcedure MergeId="2">
-                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="125" Mode="0" Fill="0" />
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="126" Mode="0" Fill="0" />
               </LoadProcedure>
               <LoadProcedure MergeId="4">
-                 <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="125" Verify="true" />
+                 <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="126" Verify="true" />
               </LoadProcedure>
             </LoadProcedures>
           </Static>
