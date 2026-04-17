@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Catalog>
+        <CatalogSection Id="M-0085_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-0085_H-2026-03_HP-2026-03-00001_CI-LMKNOB" Name="Lumi KNOB Control" Number="1" ProductRefId="M-0085_H-2026-03_P-202603" Hardware2ProgramRefId="M-0085_H-2026-03_HP-2026-03-00001" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <Hardware>
+        <Hardware Id="M-0085_H-2026-03" Name="KNX KNOB Hardware" SerialNumber="KNOB-2026" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true">
+          <Products>
+            <Product Id="M-0085_H-2026-03_P-202603" Text="Lumi KNOB Control" OrderNumber="LMKNOB" IsRailMounted="false" DefaultLanguage="en-US" />
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0085_H-2026-03_HP-2026-03-00001" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-0085_A-2026-03-0001" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-2026-03-0001" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB Control" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="5.7" IsSecureEnabled="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true" ToolAccessSecure="true" MaxSecurityIndividualAddressEntries="64" MaxSecurityGroupKeyTableEntries="48">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-0085_A-2026-03-0001_RS-04-00000" Name="Parameters" Size="256" LoadStateMachine="4" Offset="0" />
+            </Code>
+            <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-EndpointCount" Name="Endpoint Count">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="6" />
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-Percent" Name="Percent">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-SleepTime" Name="Sleep Time">
+                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="10" maxInclusive="3600" />
+              </ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0001_PT-EndpointFunction" Name="Endpoint Function">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Switch" Value="1" Id="M-0085_A-2026-03-0001_PT-EndpointFunction_EN-1" />
+                  <Enumeration Text="Scene" Value="2" Id="M-0085_A-2026-03-0001_PT-EndpointFunction_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-2026-03-0001_P-1" Name="Endpoint Count" ParameterType="M-0085_A-2026-03-0001_PT-EndpointCount" Text="Endpoint Count" Value="6"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-2" Name="Brightness" ParameterType="M-0085_A-2026-03-0001_PT-Percent" Text="Brightness" Value="100"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-3" Name="Sleep Time" ParameterType="M-0085_A-2026-03-0001_PT-SleepTime" Text="Sleep Time" Value="60"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="2" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0001_P-4" Name="Ep1 Function" ParameterType="M-0085_A-2026-03-0001_PT-EndpointFunction" Text="Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0001_RS-04-00000" Offset="4" BitOffset="0" /></Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-1_R-1" RefId="M-0085_A-2026-03-0001_P-1" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-2_R-2" RefId="M-0085_A-2026-03-0001_P-2" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-3_R-3" RefId="M-0085_A-2026-03-0001_P-3" />
+              <ParameterRef Id="M-0085_A-2026-03-0001_P-4_R-4" RefId="M-0085_A-2026-03-0001_P-4" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <ComObject Id="M-0085_A-2026-03-0001_O-1" Name="Ep1 Switch" Text="Ep1 Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="M-0085_A-2026-03-0001_O-1_R-1" RefId="M-0085_A-2026-03-0001_O-1" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65535" />
+            <AssociationTable MaxEntries="65535" />
+            <LoadProcedures />
+            <Messages />
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-0085_A-2026-03-0001_PB-1" Name="General settings" Text="General settings">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-1_R-1" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-2_R-2" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-3_R-3" />
+              </ParameterBlock>
+              <choose ParamRefId="M-0085_A-2026-03-0001_P-1_R-1">
+                <when test=">=1">
+                  <ParameterBlock Id="M-0085_A-2026-03-0001_PB-2" Name="Endpoint 1" Text="Endpoint 1">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0001_P-4_R-4" />
+                    <choose ParamRefId="M-0085_A-2026-03-0001_P-4_R-4">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0001_O-1_R-1" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

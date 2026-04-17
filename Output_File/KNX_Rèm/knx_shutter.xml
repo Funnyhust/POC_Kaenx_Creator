@@ -23,7 +23,7 @@
         <ApplicationProgram Id="M-0085_A-1234-56-00001" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Shutter Actuator 4-relay 16A" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0" IsSecureEnabled="true" MaxUserEntries="1" MaxSecurityProxyGroupKeyTableEntries="0" MaxSecurityIndividualAddressEntries="500" MaxTunnelingUserEntries="0" MaxSecurityP2PKeyTableEntries="0" MaxSecurityGroupKeyTableEntries="512">
           <Static>
             <Code>
-              <RelativeSegment Id="M-0085_A-1234-56-00001_RS-04-00001" Name="Parameters" Size="29" LoadStateMachine="4" Offset="0" />
+              <RelativeSegment Id="M-0085_A-1234-56-00001_RS-04-00001" Name="Parameters" Size="30" LoadStateMachine="4" Offset="0" />
             </Code>
             <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
             <ParameterTypes>

@@ -175,7 +175,6 @@
               </ParameterType>
               <ParameterType Id="M-0085_A-2026-01-0003_PT-15" Name="Switch Mode">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Disable" Value="0" Id="M-0085_A-2026-01-0003_PT-15_EN-0" />
                   <Enumeration Text="Toggle" Value="1" Id="M-0085_A-2026-01-0003_PT-15_EN-1" />
                   <Enumeration Text="Auto On/Off" Value="2" Id="M-0085_A-2026-01-0003_PT-15_EN-2" />
                   <Enumeration Text="Momentary" Value="3" Id="M-0085_A-2026-01-0003_PT-15_EN-3" />
@@ -233,7 +232,7 @@
               <Parameter Id="M-0085_A-2026-01-0003_P-20" Name="Btn4_Dim_Interval" ParameterType="M-0085_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" SuffixText="*0.1s"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
 
               <!-- LED -->
-              <Parameter Id="M-0085_A-2026-01-0003_P-25" Name="LED_Brightness" ParameterType="M-0085_A-2026-01-0003_PT-5" Text="LED Brightness" Value="20" SuffixText="%"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-01-0003_P-25" Name="LED_Brightness" ParameterType="M-0085_A-2026-01-0003_PT-5" Text="LED Brightness" Value="50" SuffixText="%"><Memory CodeSegment="M-0085_A-2026-01-0003_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
 
               <!-- Scene Control - Button 1 (Offsets 25-36) -->
               <Parameter Id="M-0085_A-2026-01-0003_P-30" Name="Btn1_SC_Single_Action" ParameterType="M-0085_A-2026-01-0003_PT-10" Text="Single Press Action" Value="1">

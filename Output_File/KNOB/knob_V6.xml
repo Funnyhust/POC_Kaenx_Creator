@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Catalog><CatalogSection Id="M-0085_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+        <CatalogItem Id="M-0085_H-2026-03_HP-2026-03-00001_CI-LMKNOB" Name="Lumi KNOB Control" Number="1" ProductRefId="M-0085_H-2026-03_P-202603" Hardware2ProgramRefId="M-0085_H-2026-03_HP-2026-03-00001" DefaultLanguage="en-US" />
+      </CatalogSection></Catalog>
+      <Hardware><Hardware Id="M-0085_H-2026-03" Name="KNX KNOB Hardware" SerialNumber="KNOB-2026" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true">
+        <Products><Product Id="M-0085_H-2026-03_P-202603" Text="Lumi KNOB Control" OrderNumber="LMKNOB" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
+        <Hardware2Programs><Hardware2Program Id="M-0085_H-2026-03_HP-2026-03-00001" MediumTypes="MT-0">
+          <ApplicationProgramRef RefId="M-0085_A-2026-03-0002" />
+        </Hardware2Program></Hardware2Programs>
+      </Hardware></Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-2026-03-0002" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB Control" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="5.7" IsSecureEnabled="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true" ToolAccessSecure="true" MaxSecurityIndividualAddressEntries="64" MaxSecurityGroupKeyTableEntries="48">
+          <Static>
+            <Code><RelativeSegment Id="M-0085_A-2026-03-0002_RS-04-00000" Name="Parameters" Size="256" LoadStateMachine="4" Offset="0" /></Code>
+            <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-EndpointCount" Name="Endpoint Count"><TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="6" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-Percent" Name="Percent"><TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="100" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-SleepTime" Name="Sleep Time"><TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="10" maxInclusive="3600" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-YesNo" Name="Yes/No"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="No" Value="0" Id="M-0085_A-2026-03-0002_PT-YesNo_EN-0" />
+<Enumeration Text="Yes" Value="1" Id="M-0085_A-2026-03-0002_PT-YesNo_EN-1" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-EndpointFunction" Name="Endpoint Function"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Switch" Value="1" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-1" />
+<Enumeration Text="Scene" Value="2" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-2" />
+<Enumeration Text="CCT" Value="3" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-3" />
+<Enumeration Text="Dim" Value="4" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-4" />
+<Enumeration Text="Curtain" Value="5" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-5" />
+<Enumeration Text="Fan" Value="6" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-6" />
+<Enumeration Text="AC" Value="7" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-7" />
+<Enumeration Text="Thermostat" Value="8" Id="M-0085_A-2026-03-0002_PT-EndpointFunction_EN-8" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-SceneIcon" Name="Scene Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Icon 1" Value="1" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-1" />
+<Enumeration Text="Icon 2" Value="2" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-2" />
+<Enumeration Text="Icon 3" Value="3" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-3" />
+<Enumeration Text="Icon 4" Value="4" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-4" />
+<Enumeration Text="Icon 5" Value="5" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-5" />
+<Enumeration Text="Icon 6" Value="6" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-6" />
+<Enumeration Text="Icon 7" Value="7" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-7" />
+<Enumeration Text="Icon 8" Value="8" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-8" />
+<Enumeration Text="Icon 9" Value="9" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-9" />
+<Enumeration Text="Icon 10" Value="10" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-10" />
+<Enumeration Text="Icon 11" Value="11" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-11" />
+<Enumeration Text="Icon 12" Value="12" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-12" />
+<Enumeration Text="Icon 13" Value="13" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-13" />
+<Enumeration Text="Icon 14" Value="14" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-14" />
+<Enumeration Text="Icon 15" Value="15" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-15" />
+<Enumeration Text="Icon 16" Value="16" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-16" />
+<Enumeration Text="Icon 17" Value="17" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-17" />
+<Enumeration Text="Icon 18" Value="18" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-18" />
+<Enumeration Text="Icon 19" Value="19" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-19" />
+<Enumeration Text="Icon 20" Value="20" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-20" />
+<Enumeration Text="Icon 21" Value="21" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-21" />
+<Enumeration Text="Icon 22" Value="22" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-22" />
+<Enumeration Text="Icon 23" Value="23" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-23" />
+<Enumeration Text="Icon 24" Value="24" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-24" />
+<Enumeration Text="Icon 25" Value="25" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-25" />
+<Enumeration Text="Icon 26" Value="26" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-26" />
+<Enumeration Text="Icon 27" Value="27" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-27" />
+<Enumeration Text="Icon 28" Value="28" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-28" />
+<Enumeration Text="Icon 29" Value="29" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-29" />
+<Enumeration Text="Icon 30" Value="30" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-30" />
+<Enumeration Text="Icon 31" Value="31" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-31" />
+<Enumeration Text="Icon 32" Value="32" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-32" />
+<Enumeration Text="Icon 33" Value="33" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-33" />
+<Enumeration Text="Icon 34" Value="34" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-34" />
+<Enumeration Text="Icon 35" Value="35" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-35" />
+<Enumeration Text="Icon 36" Value="36" Id="M-0085_A-2026-03-0002_PT-SceneIcon_EN-36" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-LightIcon" Name="Light Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Icon 1" Value="1" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-1" />
+<Enumeration Text="Icon 2" Value="2" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-2" />
+<Enumeration Text="Icon 3" Value="3" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-3" />
+<Enumeration Text="Icon 4" Value="4" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-4" />
+<Enumeration Text="Icon 5" Value="5" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-5" />
+<Enumeration Text="Icon 6" Value="6" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-6" />
+<Enumeration Text="Icon 7" Value="7" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-7" />
+<Enumeration Text="Icon 8" Value="8" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-8" />
+<Enumeration Text="Icon 9" Value="9" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-9" />
+<Enumeration Text="Icon 10" Value="10" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-10" />
+<Enumeration Text="Icon 11" Value="11" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-11" />
+<Enumeration Text="Icon 12" Value="12" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-12" />
+<Enumeration Text="Icon 13" Value="13" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-13" />
+<Enumeration Text="Icon 14" Value="14" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-14" />
+<Enumeration Text="Icon 15" Value="15" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-15" />
+<Enumeration Text="Icon 16" Value="16" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-16" />
+<Enumeration Text="Icon 17" Value="17" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-17" />
+<Enumeration Text="Icon 18" Value="18" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-18" />
+<Enumeration Text="Icon 19" Value="19" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-19" />
+<Enumeration Text="Icon 20" Value="20" Id="M-0085_A-2026-03-0002_PT-LightIcon_EN-20" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-CurtainIcon" Name="Curtain Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Roller" Value="1" Id="M-0085_A-2026-03-0002_PT-CurtainIcon_EN-1" />
+<Enumeration Text="Blinds" Value="2" Id="M-0085_A-2026-03-0002_PT-CurtainIcon_EN-2" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-FanIcon" Name="Fan Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Default" Value="1" Id="M-0085_A-2026-03-0002_PT-FanIcon_EN-1" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-ACIcon" Name="AC Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Default" Value="1" Id="M-0085_A-2026-03-0002_PT-ACIcon_EN-1" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-ThermostatIcon" Name="Thermostat Icon"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Default" Value="1" Id="M-0085_A-2026-03-0002_PT-ThermostatIcon_EN-1" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-NameText" Name="Name String"><TypeText SizeInBit="112" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-SwitchMode" Name="Switch Mode"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Press &amp; Release" Value="1" Id="M-0085_A-2026-03-0002_PT-SwitchMode_EN-1" />
+<Enumeration Text="Press &amp; Hold" Value="2" Id="M-0085_A-2026-03-0002_PT-SwitchMode_EN-2" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-SceneNumber" Name="Scene Number"><TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="64" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-TravelTime" Name="Travel Time"><TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="5" maxInclusive="300" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-ACMode" Name="AC Mode"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Auto" Value="0" Id="M-0085_A-2026-03-0002_PT-ACMode_EN-0" />
+<Enumeration Text="Fan" Value="1" Id="M-0085_A-2026-03-0002_PT-ACMode_EN-1" />
+<Enumeration Text="Heat" Value="2" Id="M-0085_A-2026-03-0002_PT-ACMode_EN-2" />
+<Enumeration Text="Cool" Value="3" Id="M-0085_A-2026-03-0002_PT-ACMode_EN-3" />
+<Enumeration Text="Dry" Value="4" Id="M-0085_A-2026-03-0002_PT-ACMode_EN-4" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-ACFanSpeed" Name="AC Fan Speed"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Auto" Value="0" Id="M-0085_A-2026-03-0002_PT-ACFanSpeed_EN-0" />
+<Enumeration Text="Low" Value="1" Id="M-0085_A-2026-03-0002_PT-ACFanSpeed_EN-1" />
+<Enumeration Text="Mid" Value="2" Id="M-0085_A-2026-03-0002_PT-ACFanSpeed_EN-2" />
+<Enumeration Text="High" Value="3" Id="M-0085_A-2026-03-0002_PT-ACFanSpeed_EN-3" />
+</TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0002_PT-ACSwing" Name="AC Swing"><TypeRestriction Base="Value" SizeInBit="8">
+<Enumeration Text="Stop" Value="0" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-0" />
+<Enumeration Text="P0" Value="1" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-1" />
+<Enumeration Text="P1" Value="2" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-2" />
+<Enumeration Text="P2" Value="3" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-3" />
+<Enumeration Text="P3" Value="4" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-4" />
+<Enumeration Text="P4" Value="5" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-5" />
+<Enumeration Text="Swing" Value="6" Id="M-0085_A-2026-03-0002_PT-ACSwing_EN-6" />
+</TypeRestriction></ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-2026-03-0002_P-1" Name="Endpoint Count" ParameterType="M-0085_A-2026-03-0002_PT-EndpointCount" Text="Endpoint Count" Value="6"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-2" Name="Brightness" ParameterType="M-0085_A-2026-03-0002_PT-Percent" Text="Brightness" Value="80"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-3" Name="Sleep Time" ParameterType="M-0085_A-2026-03-0002_PT-SleepTime" Text="Sleep Time" Value="300"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="2" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-4" Name="Enable Scene" ParameterType="M-0085_A-2026-03-0002_PT-YesNo" Text="Enable Scene" Value="0"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="4" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-5" Name="Endpoint 1 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 1 Name" Value="Ep1" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-6" Name="Endpoint 1 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 1 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="5" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-7" Name="Ep1 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep1 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="6" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-8" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="7" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-9" Name="Ep1 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep1 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="8" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-10" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="9" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-11" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="10" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-12" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="11" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-13" Name="Ep1 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep1 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="12" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-14" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="14" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-15" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="15" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-16" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="16" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-17" Name="Ep1 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep1 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="17" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-18" Name="Endpoint 2 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 2 Name" Value="Ep2" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-19" Name="Endpoint 2 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 2 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="18" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-20" Name="Ep2 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep2 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="19" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-21" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="20" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-22" Name="Ep2 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep2 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="21" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-23" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="22" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-24" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-25" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-26" Name="Ep2 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep2 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="25" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-27" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="27" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-28" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="28" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-29" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="29" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-30" Name="Ep2 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep2 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="30" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-31" Name="Endpoint 3 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 3 Name" Value="Ep3" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-32" Name="Endpoint 3 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 3 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="31" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-33" Name="Ep3 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep3 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="32" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-34" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-35" Name="Ep3 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep3 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-36" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-37" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="36" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-38" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="37" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-39" Name="Ep3 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep3 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="38" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-40" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="40" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-41" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="41" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-42" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="42" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-43" Name="Ep3 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep3 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="43" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-44" Name="Endpoint 4 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 4 Name" Value="Ep4" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-45" Name="Endpoint 4 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 4 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="44" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-46" Name="Ep4 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep4 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="45" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-47" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="46" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-48" Name="Ep4 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep4 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="47" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-49" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="48" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-50" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="49" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-51" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="50" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-52" Name="Ep4 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep4 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="51" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-53" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="53" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-54" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="54" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-55" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="55" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-56" Name="Ep4 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep4 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="56" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-57" Name="Endpoint 5 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 5 Name" Value="Ep5" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-58" Name="Endpoint 5 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 5 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="57" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-59" Name="Ep5 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep5 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="58" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-60" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="59" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-61" Name="Ep5 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep5 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="60" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-62" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="61" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-63" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="62" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-64" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="63" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-65" Name="Ep5 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep5 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="64" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-66" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="66" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-67" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="67" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-68" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="68" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-69" Name="Ep5 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep5 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="69" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-70" Name="Endpoint 6 Name" ParameterType="M-0085_A-2026-03-0002_PT-NameText" Text="Endpoint 6 Name" Value="Ep6" />
+              <Parameter Id="M-0085_A-2026-03-0002_P-71" Name="Endpoint 6 Function" ParameterType="M-0085_A-2026-03-0002_PT-EndpointFunction" Text="Endpoint 6 Function" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="70" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-72" Name="Ep6 Mode" ParameterType="M-0085_A-2026-03-0002_PT-SwitchMode" Text="Ep6 Mode" Value="2"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="71" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-73" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="72" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-74" Name="Ep6 Scene Number" ParameterType="M-0085_A-2026-03-0002_PT-SceneNumber" Text="Ep6 Scene Number" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="73" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-75" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-SceneIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="74" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-76" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="75" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-77" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-LightIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="76" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-78" Name="Ep6 Travel Time" ParameterType="M-0085_A-2026-03-0002_PT-TravelTime" Text="Ep6 Travel Time" Value="20"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="77" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-79" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-CurtainIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="79" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-80" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-FanIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="80" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-81" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ACIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="81" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0002_P-82" Name="Ep6 Icon" ParameterType="M-0085_A-2026-03-0002_PT-ThermostatIcon" Text="Ep6 Icon" Value="1"><Memory CodeSegment="M-0085_A-2026-03-0002_RS-04-00000" Offset="82" BitOffset="0" /></Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-1_R-1" RefId="M-0085_A-2026-03-0002_P-1" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-2_R-2" RefId="M-0085_A-2026-03-0002_P-2" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-3_R-3" RefId="M-0085_A-2026-03-0002_P-3" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-4_R-4" RefId="M-0085_A-2026-03-0002_P-4" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-5_R-5" RefId="M-0085_A-2026-03-0002_P-5" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-6_R-6" RefId="M-0085_A-2026-03-0002_P-6" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-7_R-7" RefId="M-0085_A-2026-03-0002_P-7" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-8_R-8" RefId="M-0085_A-2026-03-0002_P-8" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-9_R-9" RefId="M-0085_A-2026-03-0002_P-9" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-10_R-10" RefId="M-0085_A-2026-03-0002_P-10" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-11_R-11" RefId="M-0085_A-2026-03-0002_P-11" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-12_R-12" RefId="M-0085_A-2026-03-0002_P-12" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-13_R-13" RefId="M-0085_A-2026-03-0002_P-13" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-14_R-14" RefId="M-0085_A-2026-03-0002_P-14" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-15_R-15" RefId="M-0085_A-2026-03-0002_P-15" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-16_R-16" RefId="M-0085_A-2026-03-0002_P-16" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-17_R-17" RefId="M-0085_A-2026-03-0002_P-17" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-18_R-18" RefId="M-0085_A-2026-03-0002_P-18" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-19_R-19" RefId="M-0085_A-2026-03-0002_P-19" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-20_R-20" RefId="M-0085_A-2026-03-0002_P-20" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-21_R-21" RefId="M-0085_A-2026-03-0002_P-21" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-22_R-22" RefId="M-0085_A-2026-03-0002_P-22" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-23_R-23" RefId="M-0085_A-2026-03-0002_P-23" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-24_R-24" RefId="M-0085_A-2026-03-0002_P-24" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-25_R-25" RefId="M-0085_A-2026-03-0002_P-25" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-26_R-26" RefId="M-0085_A-2026-03-0002_P-26" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-27_R-27" RefId="M-0085_A-2026-03-0002_P-27" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-28_R-28" RefId="M-0085_A-2026-03-0002_P-28" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-29_R-29" RefId="M-0085_A-2026-03-0002_P-29" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-30_R-30" RefId="M-0085_A-2026-03-0002_P-30" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-31_R-31" RefId="M-0085_A-2026-03-0002_P-31" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-32_R-32" RefId="M-0085_A-2026-03-0002_P-32" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-33_R-33" RefId="M-0085_A-2026-03-0002_P-33" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-34_R-34" RefId="M-0085_A-2026-03-0002_P-34" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-35_R-35" RefId="M-0085_A-2026-03-0002_P-35" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-36_R-36" RefId="M-0085_A-2026-03-0002_P-36" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-37_R-37" RefId="M-0085_A-2026-03-0002_P-37" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-38_R-38" RefId="M-0085_A-2026-03-0002_P-38" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-39_R-39" RefId="M-0085_A-2026-03-0002_P-39" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-40_R-40" RefId="M-0085_A-2026-03-0002_P-40" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-41_R-41" RefId="M-0085_A-2026-03-0002_P-41" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-42_R-42" RefId="M-0085_A-2026-03-0002_P-42" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-43_R-43" RefId="M-0085_A-2026-03-0002_P-43" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-44_R-44" RefId="M-0085_A-2026-03-0002_P-44" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-45_R-45" RefId="M-0085_A-2026-03-0002_P-45" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-46_R-46" RefId="M-0085_A-2026-03-0002_P-46" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-47_R-47" RefId="M-0085_A-2026-03-0002_P-47" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-48_R-48" RefId="M-0085_A-2026-03-0002_P-48" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-49_R-49" RefId="M-0085_A-2026-03-0002_P-49" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-50_R-50" RefId="M-0085_A-2026-03-0002_P-50" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-51_R-51" RefId="M-0085_A-2026-03-0002_P-51" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-52_R-52" RefId="M-0085_A-2026-03-0002_P-52" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-53_R-53" RefId="M-0085_A-2026-03-0002_P-53" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-54_R-54" RefId="M-0085_A-2026-03-0002_P-54" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-55_R-55" RefId="M-0085_A-2026-03-0002_P-55" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-56_R-56" RefId="M-0085_A-2026-03-0002_P-56" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-57_R-57" RefId="M-0085_A-2026-03-0002_P-57" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-58_R-58" RefId="M-0085_A-2026-03-0002_P-58" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-59_R-59" RefId="M-0085_A-2026-03-0002_P-59" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-60_R-60" RefId="M-0085_A-2026-03-0002_P-60" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-61_R-61" RefId="M-0085_A-2026-03-0002_P-61" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-62_R-62" RefId="M-0085_A-2026-03-0002_P-62" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-63_R-63" RefId="M-0085_A-2026-03-0002_P-63" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-64_R-64" RefId="M-0085_A-2026-03-0002_P-64" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-65_R-65" RefId="M-0085_A-2026-03-0002_P-65" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-66_R-66" RefId="M-0085_A-2026-03-0002_P-66" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-67_R-67" RefId="M-0085_A-2026-03-0002_P-67" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-68_R-68" RefId="M-0085_A-2026-03-0002_P-68" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-69_R-69" RefId="M-0085_A-2026-03-0002_P-69" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-70_R-70" RefId="M-0085_A-2026-03-0002_P-70" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-71_R-71" RefId="M-0085_A-2026-03-0002_P-71" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-72_R-72" RefId="M-0085_A-2026-03-0002_P-72" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-73_R-73" RefId="M-0085_A-2026-03-0002_P-73" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-74_R-74" RefId="M-0085_A-2026-03-0002_P-74" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-75_R-75" RefId="M-0085_A-2026-03-0002_P-75" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-76_R-76" RefId="M-0085_A-2026-03-0002_P-76" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-77_R-77" RefId="M-0085_A-2026-03-0002_P-77" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-78_R-78" RefId="M-0085_A-2026-03-0002_P-78" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-79_R-79" RefId="M-0085_A-2026-03-0002_P-79" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-80_R-80" RefId="M-0085_A-2026-03-0002_P-80" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-81_R-81" RefId="M-0085_A-2026-03-0002_P-81" />
+              <ParameterRef Id="M-0085_A-2026-03-0002_P-82_R-82" RefId="M-0085_A-2026-03-0002_P-82" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <ComObject Id="M-0085_A-2026-03-0002_O-1" Name="Ep1 Switch" Text="Ep1 Switch" Number="1" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-2" Name="Ep1 Scene" Text="Ep1 Scene" Number="2" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-3" Name="Ep1 CCT Power" Text="Ep1 CCT Power" Number="3" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-4" Name="Ep1 CCT Brightness" Text="Ep1 CCT Brightness" Number="4" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-5" Name="Ep1 CCT Color Temp" Text="Ep1 CCT Color Temp" Number="5" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-6" Name="Ep1 Dim Power" Text="Ep1 Dim Power" Number="6" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-7" Name="Ep1 Dim Brightness" Text="Ep1 Dim Brightness" Number="7" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-8" Name="Ep1 Move" Text="Ep1 Move" Number="8" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-9" Name="Ep1 Stop" Text="Ep1 Stop" Number="9" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-10" Name="Ep1 UnusedPos" Text="Ep1 UnusedPos" Number="10" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-11" Name="Ep1 Fan Power" Text="Ep1 Fan Power" Number="11" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-12" Name="Ep1 Fan Speed" Text="Ep1 Fan Speed" Number="12" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-13" Name="Ep1 AC Power" Text="Ep1 AC Power" Number="13" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-14" Name="Ep1 AC Mode" Text="Ep1 AC Mode" Number="14" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-15" Name="Ep1 Therm Power" Text="Ep1 Therm Power" Number="15" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-16" Name="Ep2 Switch" Text="Ep2 Switch" Number="16" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-17" Name="Ep2 Scene" Text="Ep2 Scene" Number="17" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-18" Name="Ep2 CCT Power" Text="Ep2 CCT Power" Number="18" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-19" Name="Ep2 CCT Brightness" Text="Ep2 CCT Brightness" Number="19" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-20" Name="Ep2 CCT Color Temp" Text="Ep2 CCT Color Temp" Number="20" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-21" Name="Ep2 Dim Power" Text="Ep2 Dim Power" Number="21" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-22" Name="Ep2 Dim Brightness" Text="Ep2 Dim Brightness" Number="22" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-23" Name="Ep2 Move" Text="Ep2 Move" Number="23" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-24" Name="Ep2 Stop" Text="Ep2 Stop" Number="24" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-25" Name="Ep2 UnusedPos" Text="Ep2 UnusedPos" Number="25" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-26" Name="Ep2 Fan Power" Text="Ep2 Fan Power" Number="26" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-27" Name="Ep2 Fan Speed" Text="Ep2 Fan Speed" Number="27" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-28" Name="Ep2 AC Power" Text="Ep2 AC Power" Number="28" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-29" Name="Ep2 AC Mode" Text="Ep2 AC Mode" Number="29" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-30" Name="Ep2 Therm Power" Text="Ep2 Therm Power" Number="30" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-31" Name="Ep3 Switch" Text="Ep3 Switch" Number="31" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-32" Name="Ep3 Scene" Text="Ep3 Scene" Number="32" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-33" Name="Ep3 CCT Power" Text="Ep3 CCT Power" Number="33" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-34" Name="Ep3 CCT Brightness" Text="Ep3 CCT Brightness" Number="34" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-35" Name="Ep3 CCT Color Temp" Text="Ep3 CCT Color Temp" Number="35" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-36" Name="Ep3 Dim Power" Text="Ep3 Dim Power" Number="36" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-37" Name="Ep3 Dim Brightness" Text="Ep3 Dim Brightness" Number="37" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-38" Name="Ep3 Move" Text="Ep3 Move" Number="38" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-39" Name="Ep3 Stop" Text="Ep3 Stop" Number="39" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-40" Name="Ep3 UnusedPos" Text="Ep3 UnusedPos" Number="40" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-41" Name="Ep3 Fan Power" Text="Ep3 Fan Power" Number="41" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-42" Name="Ep3 Fan Speed" Text="Ep3 Fan Speed" Number="42" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-43" Name="Ep3 AC Power" Text="Ep3 AC Power" Number="43" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-44" Name="Ep3 AC Mode" Text="Ep3 AC Mode" Number="44" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-45" Name="Ep3 Therm Power" Text="Ep3 Therm Power" Number="45" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-46" Name="Ep4 Switch" Text="Ep4 Switch" Number="46" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-47" Name="Ep4 Scene" Text="Ep4 Scene" Number="47" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-48" Name="Ep4 CCT Power" Text="Ep4 CCT Power" Number="48" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-49" Name="Ep4 CCT Brightness" Text="Ep4 CCT Brightness" Number="49" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-50" Name="Ep4 CCT Color Temp" Text="Ep4 CCT Color Temp" Number="50" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-51" Name="Ep4 Dim Power" Text="Ep4 Dim Power" Number="51" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-52" Name="Ep4 Dim Brightness" Text="Ep4 Dim Brightness" Number="52" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-53" Name="Ep4 Move" Text="Ep4 Move" Number="53" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-54" Name="Ep4 Stop" Text="Ep4 Stop" Number="54" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-55" Name="Ep4 UnusedPos" Text="Ep4 UnusedPos" Number="55" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-56" Name="Ep4 Fan Power" Text="Ep4 Fan Power" Number="56" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-57" Name="Ep4 Fan Speed" Text="Ep4 Fan Speed" Number="57" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-58" Name="Ep4 AC Power" Text="Ep4 AC Power" Number="58" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-59" Name="Ep4 AC Mode" Text="Ep4 AC Mode" Number="59" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-60" Name="Ep4 Therm Power" Text="Ep4 Therm Power" Number="60" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-61" Name="Ep5 Switch" Text="Ep5 Switch" Number="61" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-62" Name="Ep5 Scene" Text="Ep5 Scene" Number="62" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-63" Name="Ep5 CCT Power" Text="Ep5 CCT Power" Number="63" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-64" Name="Ep5 CCT Brightness" Text="Ep5 CCT Brightness" Number="64" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-65" Name="Ep5 CCT Color Temp" Text="Ep5 CCT Color Temp" Number="65" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-66" Name="Ep5 Dim Power" Text="Ep5 Dim Power" Number="66" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-67" Name="Ep5 Dim Brightness" Text="Ep5 Dim Brightness" Number="67" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-68" Name="Ep5 Move" Text="Ep5 Move" Number="68" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-69" Name="Ep5 Stop" Text="Ep5 Stop" Number="69" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-70" Name="Ep5 UnusedPos" Text="Ep5 UnusedPos" Number="70" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-71" Name="Ep5 Fan Power" Text="Ep5 Fan Power" Number="71" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-72" Name="Ep5 Fan Speed" Text="Ep5 Fan Speed" Number="72" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-73" Name="Ep5 AC Power" Text="Ep5 AC Power" Number="73" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-74" Name="Ep5 AC Mode" Text="Ep5 AC Mode" Number="74" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-75" Name="Ep5 Therm Power" Text="Ep5 Therm Power" Number="75" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-76" Name="Ep6 Switch" Text="Ep6 Switch" Number="76" FunctionText="Switch" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-77" Name="Ep6 Scene" Text="Ep6 Scene" Number="77" FunctionText="Scene" ObjectSize="1 Byte" DatapointType="DPST-17-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-78" Name="Ep6 CCT Power" Text="Ep6 CCT Power" Number="78" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-79" Name="Ep6 CCT Brightness" Text="Ep6 CCT Brightness" Number="79" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-80" Name="Ep6 CCT Color Temp" Text="Ep6 CCT Color Temp" Number="80" FunctionText="Color Temp" ObjectSize="2 Byte" DatapointType="DPST-7-600" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-81" Name="Ep6 Dim Power" Text="Ep6 Dim Power" Number="81" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-82" Name="Ep6 Dim Brightness" Text="Ep6 Dim Brightness" Number="82" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-83" Name="Ep6 Move" Text="Ep6 Move" Number="83" FunctionText="Move" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-84" Name="Ep6 Stop" Text="Ep6 Stop" Number="84" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-85" Name="Ep6 UnusedPos" Text="Ep6 UnusedPos" Number="85" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-86" Name="Ep6 Fan Power" Text="Ep6 Fan Power" Number="86" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-87" Name="Ep6 Fan Speed" Text="Ep6 Fan Speed" Number="87" FunctionText="Speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-88" Name="Ep6 AC Power" Text="Ep6 AC Power" Number="88" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-89" Name="Ep6 AC Mode" Text="Ep6 AC Mode" Number="89" FunctionText="Mode" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-0085_A-2026-03-0002_O-90" Name="Ep6 Therm Power" Text="Ep6 Therm Power" Number="90" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-1_R-1" RefId="M-0085_A-2026-03-0002_O-1" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-2_R-2" RefId="M-0085_A-2026-03-0002_O-2" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-3_R-3" RefId="M-0085_A-2026-03-0002_O-3" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-4_R-4" RefId="M-0085_A-2026-03-0002_O-4" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-5_R-5" RefId="M-0085_A-2026-03-0002_O-5" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-6_R-6" RefId="M-0085_A-2026-03-0002_O-6" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-7_R-7" RefId="M-0085_A-2026-03-0002_O-7" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-8_R-8" RefId="M-0085_A-2026-03-0002_O-8" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-9_R-9" RefId="M-0085_A-2026-03-0002_O-9" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-10_R-10" RefId="M-0085_A-2026-03-0002_O-10" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-11_R-11" RefId="M-0085_A-2026-03-0002_O-11" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-12_R-12" RefId="M-0085_A-2026-03-0002_O-12" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-13_R-13" RefId="M-0085_A-2026-03-0002_O-13" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-14_R-14" RefId="M-0085_A-2026-03-0002_O-14" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-15_R-15" RefId="M-0085_A-2026-03-0002_O-15" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-16_R-16" RefId="M-0085_A-2026-03-0002_O-16" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-17_R-17" RefId="M-0085_A-2026-03-0002_O-17" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-18_R-18" RefId="M-0085_A-2026-03-0002_O-18" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-19_R-19" RefId="M-0085_A-2026-03-0002_O-19" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-20_R-20" RefId="M-0085_A-2026-03-0002_O-20" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-21_R-21" RefId="M-0085_A-2026-03-0002_O-21" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-22_R-22" RefId="M-0085_A-2026-03-0002_O-22" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-23_R-23" RefId="M-0085_A-2026-03-0002_O-23" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-24_R-24" RefId="M-0085_A-2026-03-0002_O-24" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-25_R-25" RefId="M-0085_A-2026-03-0002_O-25" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-26_R-26" RefId="M-0085_A-2026-03-0002_O-26" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-27_R-27" RefId="M-0085_A-2026-03-0002_O-27" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-28_R-28" RefId="M-0085_A-2026-03-0002_O-28" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-29_R-29" RefId="M-0085_A-2026-03-0002_O-29" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-30_R-30" RefId="M-0085_A-2026-03-0002_O-30" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-31_R-31" RefId="M-0085_A-2026-03-0002_O-31" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-32_R-32" RefId="M-0085_A-2026-03-0002_O-32" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-33_R-33" RefId="M-0085_A-2026-03-0002_O-33" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-34_R-34" RefId="M-0085_A-2026-03-0002_O-34" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-35_R-35" RefId="M-0085_A-2026-03-0002_O-35" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-36_R-36" RefId="M-0085_A-2026-03-0002_O-36" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-37_R-37" RefId="M-0085_A-2026-03-0002_O-37" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-38_R-38" RefId="M-0085_A-2026-03-0002_O-38" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-39_R-39" RefId="M-0085_A-2026-03-0002_O-39" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-40_R-40" RefId="M-0085_A-2026-03-0002_O-40" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-41_R-41" RefId="M-0085_A-2026-03-0002_O-41" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-42_R-42" RefId="M-0085_A-2026-03-0002_O-42" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-43_R-43" RefId="M-0085_A-2026-03-0002_O-43" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-44_R-44" RefId="M-0085_A-2026-03-0002_O-44" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-45_R-45" RefId="M-0085_A-2026-03-0002_O-45" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-46_R-46" RefId="M-0085_A-2026-03-0002_O-46" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-47_R-47" RefId="M-0085_A-2026-03-0002_O-47" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-48_R-48" RefId="M-0085_A-2026-03-0002_O-48" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-49_R-49" RefId="M-0085_A-2026-03-0002_O-49" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-50_R-50" RefId="M-0085_A-2026-03-0002_O-50" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-51_R-51" RefId="M-0085_A-2026-03-0002_O-51" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-52_R-52" RefId="M-0085_A-2026-03-0002_O-52" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-53_R-53" RefId="M-0085_A-2026-03-0002_O-53" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-54_R-54" RefId="M-0085_A-2026-03-0002_O-54" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-55_R-55" RefId="M-0085_A-2026-03-0002_O-55" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-56_R-56" RefId="M-0085_A-2026-03-0002_O-56" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-57_R-57" RefId="M-0085_A-2026-03-0002_O-57" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-58_R-58" RefId="M-0085_A-2026-03-0002_O-58" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-59_R-59" RefId="M-0085_A-2026-03-0002_O-59" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-60_R-60" RefId="M-0085_A-2026-03-0002_O-60" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-61_R-61" RefId="M-0085_A-2026-03-0002_O-61" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-62_R-62" RefId="M-0085_A-2026-03-0002_O-62" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-63_R-63" RefId="M-0085_A-2026-03-0002_O-63" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-64_R-64" RefId="M-0085_A-2026-03-0002_O-64" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-65_R-65" RefId="M-0085_A-2026-03-0002_O-65" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-66_R-66" RefId="M-0085_A-2026-03-0002_O-66" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-67_R-67" RefId="M-0085_A-2026-03-0002_O-67" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-68_R-68" RefId="M-0085_A-2026-03-0002_O-68" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-69_R-69" RefId="M-0085_A-2026-03-0002_O-69" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-70_R-70" RefId="M-0085_A-2026-03-0002_O-70" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-71_R-71" RefId="M-0085_A-2026-03-0002_O-71" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-72_R-72" RefId="M-0085_A-2026-03-0002_O-72" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-73_R-73" RefId="M-0085_A-2026-03-0002_O-73" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-74_R-74" RefId="M-0085_A-2026-03-0002_O-74" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-75_R-75" RefId="M-0085_A-2026-03-0002_O-75" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-76_R-76" RefId="M-0085_A-2026-03-0002_O-76" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-77_R-77" RefId="M-0085_A-2026-03-0002_O-77" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-78_R-78" RefId="M-0085_A-2026-03-0002_O-78" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-79_R-79" RefId="M-0085_A-2026-03-0002_O-79" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-80_R-80" RefId="M-0085_A-2026-03-0002_O-80" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-81_R-81" RefId="M-0085_A-2026-03-0002_O-81" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-82_R-82" RefId="M-0085_A-2026-03-0002_O-82" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-83_R-83" RefId="M-0085_A-2026-03-0002_O-83" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-84_R-84" RefId="M-0085_A-2026-03-0002_O-84" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-85_R-85" RefId="M-0085_A-2026-03-0002_O-85" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-86_R-86" RefId="M-0085_A-2026-03-0002_O-86" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-87_R-87" RefId="M-0085_A-2026-03-0002_O-87" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-88_R-88" RefId="M-0085_A-2026-03-0002_O-88" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-89_R-89" RefId="M-0085_A-2026-03-0002_O-89" />
+              <ComObjectRef Id="M-0085_A-2026-03-0002_O-90_R-90" RefId="M-0085_A-2026-03-0002_O-90" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65535" />
+            <AssociationTable MaxEntries="65535" />
+            <LoadProcedures />
+            <Messages />
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-0085_A-2026-03-0002_PB-1" Name="General settings" Text="General settings">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-1_R-1" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-2_R-2" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-3_R-3" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-4_R-4" />
+              </ParameterBlock>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-4_R-4">
+                <when test="1">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-2" Name="Scene settings" Text="Scene settings">
+                  </ParameterBlock>
+                </when>
+              </choose>
+              <ParameterBlock Id="M-0085_A-2026-03-0002_PB-3" Name="Endpoint 1" Text="Endpoint 1">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-5_R-5" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-6_R-6" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-6_R-6">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-7_R-7" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-8_R-8" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-1_R-1" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-9_R-9" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-10_R-10" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-2_R-2" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-11_R-11" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-3_R-3" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-4_R-4" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-5_R-5" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-12_R-12" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-6_R-6" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-7_R-7" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-13_R-13" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-14_R-14" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-8_R-8" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-9_R-9" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-15_R-15" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-11_R-11" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-12_R-12" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-16_R-16" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-13_R-13" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-14_R-14" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-17_R-17" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-15_R-15" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-1_R-1">
+                <when test=">=2">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-4" Name="Endpoint 2" Text="Endpoint 2">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-18_R-18" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-19_R-19" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-19_R-19">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-20_R-20" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-21_R-21" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-16_R-16" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-22_R-22" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-23_R-23" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-17_R-17" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-24_R-24" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-18_R-18" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-19_R-19" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-20_R-20" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-25_R-25" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-21_R-21" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-22_R-22" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-26_R-26" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-27_R-27" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-23_R-23" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-24_R-24" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-28_R-28" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-26_R-26" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-27_R-27" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-29_R-29" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-28_R-28" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-29_R-29" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-30_R-30" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-30_R-30" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-1_R-1">
+                <when test=">=3">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-5" Name="Endpoint 3" Text="Endpoint 3">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-31_R-31" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-32_R-32" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-32_R-32">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-33_R-33" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-34_R-34" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-31_R-31" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-35_R-35" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-36_R-36" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-32_R-32" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-37_R-37" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-33_R-33" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-34_R-34" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-35_R-35" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-38_R-38" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-36_R-36" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-37_R-37" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-39_R-39" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-40_R-40" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-38_R-38" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-39_R-39" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-41_R-41" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-41_R-41" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-42_R-42" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-42_R-42" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-43_R-43" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-44_R-44" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-43_R-43" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-45_R-45" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-1_R-1">
+                <when test=">=4">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-6" Name="Endpoint 4" Text="Endpoint 4">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-44_R-44" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-45_R-45" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-45_R-45">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-46_R-46" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-47_R-47" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-46_R-46" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-48_R-48" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-49_R-49" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-47_R-47" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-50_R-50" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-48_R-48" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-49_R-49" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-50_R-50" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-51_R-51" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-51_R-51" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-52_R-52" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-52_R-52" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-53_R-53" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-53_R-53" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-54_R-54" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-54_R-54" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-56_R-56" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-57_R-57" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-55_R-55" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-58_R-58" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-59_R-59" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-56_R-56" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-60_R-60" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-1_R-1">
+                <when test=">=5">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-7" Name="Endpoint 5" Text="Endpoint 5">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-57_R-57" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-58_R-58" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-58_R-58">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-59_R-59" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-60_R-60" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-61_R-61" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-61_R-61" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-62_R-62" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-62_R-62" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-63_R-63" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-63_R-63" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-64_R-64" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-65_R-65" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-64_R-64" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-66_R-66" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-67_R-67" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-65_R-65" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-66_R-66" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-68_R-68" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-69_R-69" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-67_R-67" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-71_R-71" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-72_R-72" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-68_R-68" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-73_R-73" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-74_R-74" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-69_R-69" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-75_R-75" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+              <choose ParamRefId="M-0085_A-2026-03-0002_P-1_R-1">
+                <when test=">=6">
+                  <ParameterBlock Id="M-0085_A-2026-03-0002_PB-8" Name="Endpoint 6" Text="Endpoint 6">
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-70_R-70" />
+                    <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-71_R-71" />
+                    <choose ParamRefId="M-0085_A-2026-03-0002_P-71_R-71">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-72_R-72" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-73_R-73" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-76_R-76" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-74_R-74" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-75_R-75" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-77_R-77" />
+                      </when>
+                      <when test="3">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-76_R-76" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-78_R-78" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-79_R-79" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-80_R-80" />
+                      </when>
+                      <when test="4">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-77_R-77" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-81_R-81" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-82_R-82" />
+                      </when>
+                      <when test="5">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-78_R-78" />
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-79_R-79" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-83_R-83" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-84_R-84" />
+                      </when>
+                      <when test="6">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-80_R-80" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-86_R-86" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-87_R-87" />
+                      </when>
+                      <when test="7">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-81_R-81" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-88_R-88" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-89_R-89" />
+                      </when>
+                      <when test="8">
+                        <ParameterRefRef RefId="M-0085_A-2026-03-0002_P-82_R-82" />
+                        <ComObjectRefRef RefId="M-0085_A-2026-03-0002_O-90_R-90" />
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
