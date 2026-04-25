@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Catalog><CatalogSection Id="M-0085_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+        <CatalogItem Id="M-0085_CI-LMKNOB" Name="Lumi KNOB (POC v40)" Number="1" ProductRefId="M-0085_P-POC" Hardware2ProgramRefId="M-0085_HP-POC" DefaultLanguage="en-US" />
+      </CatalogSection></Catalog>
+      <Hardware><Hardware Id="M-0085_H-POC" Name="KNX KNOB Hardware" SerialNumber="KNOB-2026" VersionNumber="1">
+        <Products><Product Id="M-0085_P-POC" Text="Lumi KNOB (POC v40)" OrderNumber="LMKNOB-POC" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
+        <Hardware2Programs><Hardware2Program Id="M-0085_HP-POC" MediumTypes="MT-0">
+          <ApplicationProgramRef RefId="M-0085_A-2026-03-0014" />
+        </Hardware2Program></Hardware2Programs>
+      </Hardware></Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-2026-03-0014" ApplicationNumber="1" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB POC v40" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="5.0" IsSecureEnabled="true">
+          <Static>
+            <Code><RelativeSegment Id="M-0085_A-2026-03-0014_RS-04-00000" Name="Parameters" Size="5120" LoadStateMachine="4" Offset="0" /></Code>
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-2026-03-0014_PT-Byte255" Name="Byte value"><TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" /></ParameterType>
+              <ParameterType Id="M-0085_A-2026-03-0014_PT-NameText" Name="Name"><TypeText SizeInBit="80" /></ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-2026-03-0014_P-1" Name="Btn1_Name_Input" ParameterType="M-0085_A-2026-03-0014_PT-NameText" Text="Name Input" Value="Lumi"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="1000" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-2" Name="Btn1_Name_Byte0" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 0" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="100" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-3" Name="Btn1_Name_Byte1" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 1" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="101" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-4" Name="Btn1_Name_Byte2" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 2" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="102" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-5" Name="Btn1_Name_Byte3" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 3" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="103" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-6" Name="Btn1_Name_Byte4" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 4" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="104" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-7" Name="Btn1_Name_Byte5" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 5" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="105" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-8" Name="Btn1_Name_Byte6" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 6" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="106" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-9" Name="Btn1_Name_Byte7" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 7" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="107" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-10" Name="Btn1_Name_Byte8" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 8" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="108" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-2026-03-0014_P-11" Name="Btn1_Name_Byte9" ParameterType="M-0085_A-2026-03-0014_PT-Byte255" Text="Byte 9" Value="228"><Memory CodeSegment="M-0085_A-2026-03-0014_RS-04-00000" Offset="109" BitOffset="0" /></Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-1_R-1" RefId="M-0085_A-2026-03-0014_P-1" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-2_R-2" RefId="M-0085_A-2026-03-0014_P-2" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-3_R-3" RefId="M-0085_A-2026-03-0014_P-3" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-4_R-4" RefId="M-0085_A-2026-03-0014_P-4" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-5_R-5" RefId="M-0085_A-2026-03-0014_P-5" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-6_R-6" RefId="M-0085_A-2026-03-0014_P-6" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-7_R-7" RefId="M-0085_A-2026-03-0014_P-7" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-8_R-8" RefId="M-0085_A-2026-03-0014_P-8" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-9_R-9" RefId="M-0085_A-2026-03-0014_P-9" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-10_R-10" RefId="M-0085_A-2026-03-0014_P-10" />
+              <ParameterRef Id="M-0085_A-2026-03-0014_P-11_R-11" RefId="M-0085_A-2026-03-0014_P-11" />
+            </ParameterRefs>
+            <ParameterCalculations>
+              <ParameterCalculation Id="PC-0" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 0);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-2_R-2" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-1" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 1);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-3_R-3" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-2" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 2);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-4_R-4" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-3" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 3);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-5_R-5" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-4" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 4);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-6_R-6" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-5" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 5);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-7_R-7" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-6" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 6);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-8_R-8" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-7" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 7);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-9_R-9" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-8" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 8);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-10_R-10" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+              <ParameterCalculation Id="PC-9" Language="JavaScript">
+                <RLTransformation>p0 = 228</RLTransformation>
+                <LRTransformation>p0 = get_mapped_index(p1, 9);</LRTransformation>
+                <LParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" AliasName="p1" /></LParameters>
+                <RParameters><ParameterRefRef RefId="M-0085_A-2026-03-0014_P-11_R-11" AliasName="p0" /></RParameters>
+              </ParameterCalculation>
+            </ParameterCalculations>
+            <LoadProcedures>
+              <LoadProcedure MergeId="2"><LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="5120" Mode="0" Fill="0" /></LoadProcedure>
+              <LoadProcedure MergeId="4"><LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="5120" Verify="true" /></LoadProcedure>
+            </LoadProcedures>
+            <Script><![CDATA[
+              var unicodeTable = [{u:97,i:0},{u:225,i:1},{u:224,i:2},{u:7843,i:3},{u:227,i:4},{u:7841,i:5},{u:259,i:6},{u:7855,i:7},{u:7857,i:8},{u:7859,i:9},{u:7861,i:10},{u:7863,i:11},{u:226,i:12},{u:7845,i:13},{u:7847,i:14},{u:7849,i:15},{u:7851,i:16},{u:7853,i:17},{u:98,i:18},{u:99,i:19},{u:100,i:20},{u:273,i:21},{u:101,i:22},{u:233,i:23},{u:232,i:24},{u:7867,i:25},{u:7869,i:26},{u:7865,i:27},{u:234,i:28},{u:7871,i:29},{u:7873,i:30},{u:7875,i:31},{u:7877,i:32},{u:7879,i:33},{u:102,i:34},{u:103,i:35},{u:104,i:36},{u:105,i:37},{u:237,i:38},{u:236,i:39},{u:7881,i:40},{u:297,i:41},{u:7883,i:42},{u:106,i:43},{u:107,i:44},{u:108,i:45},{u:109,i:46},{u:110,i:47},{u:111,i:48},{u:243,i:49},{u:242,i:50},{u:7887,i:51},{u:245,i:52},{u:7885,i:53},{u:244,i:54},{u:7889,i:55},{u:7891,i:56},{u:7893,i:57},{u:7895,i:58},{u:7897,i:59},{u:417,i:60},{u:7899,i:61},{u:7901,i:62},{u:7903,i:63},{u:7905,i:64},{u:7907,i:65},{u:112,i:66},{u:113,i:67},{u:114,i:68},{u:115,i:69},{u:116,i:70},{u:117,i:71},{u:250,i:72},{u:249,i:73},{u:7911,i:74},{u:361,i:75},{u:7909,i:76},{u:432,i:77},{u:7913,i:78},{u:7915,i:79},{u:7917,i:80},{u:7919,i:81},{u:7921,i:82},{u:118,i:83},{u:119,i:84},{u:120,i:85},{u:121,i:86},{u:253,i:87},{u:7923,i:88},{u:7927,i:89},{u:7929,i:90},{u:7925,i:91},{u:122,i:92},{u:65,i:93},{u:193,i:94},{u:192,i:95},{u:7842,i:96},{u:195,i:97},{u:7840,i:98},{u:258,i:99},{u:7854,i:100},{u:7856,i:101},{u:7858,i:102},{u:7860,i:103},{u:7862,i:104},{u:194,i:105},{u:7844,i:106},{u:7846,i:107},{u:7848,i:108},{u:7850,i:109},{u:7852,i:110},{u:66,i:111},{u:67,i:112},{u:68,i:113},{u:272,i:114},{u:69,i:115},{u:201,i:116},{u:200,i:117},{u:7866,i:118},{u:7868,i:119},{u:7864,i:120},{u:202,i:121},{u:7870,i:122},{u:7872,i:123},{u:7874,i:124},{u:7876,i:125},{u:7878,i:126},{u:70,i:127},{u:71,i:128},{u:72,i:129},{u:73,i:130},{u:205,i:131},{u:204,i:132},{u:7880,i:133},{u:296,i:134},{u:7882,i:135},{u:74,i:136},{u:75,i:137},{u:76,i:138},{u:77,i:139},{u:78,i:140},{u:79,i:141},{u:211,i:142},{u:210,i:143},{u:7886,i:144},{u:213,i:145},{u:7884,i:146},{u:212,i:147},{u:7888,i:148},{u:7890,i:149},{u:7892,i:150},{u:7894,i:151},{u:7896,i:152},{u:416,i:153},{u:7898,i:154},{u:7900,i:155},{u:7902,i:156},{u:7904,i:157},{u:7906,i:158},{u:80,i:159},{u:81,i:160},{u:82,i:161},{u:83,i:162},{u:84,i:163},{u:85,i:164},{u:218,i:165},{u:217,i:166},{u:7910,i:167},{u:360,i:168},{u:7908,i:169},{u:431,i:170},{u:7912,i:171},{u:7914,i:172},{u:7916,i:173},{u:7918,i:174},{u:7920,i:175},{u:86,i:176},{u:87,i:177},{u:88,i:178},{u:89,i:179},{u:221,i:180},{u:7922,i:181},{u:7926,i:182},{u:7928,i:183},{u:7924,i:184},{u:90,i:185},{u:48,i:186},{u:49,i:187},{u:50,i:188},{u:51,i:189},{u:52,i:190},{u:53,i:191},{u:54,i:192},{u:55,i:193},{u:56,i:194},{u:57,i:195},{u:33,i:196},{u:96,i:197},{u:64,i:198},{u:126,i:199},{u:35,i:200},{u:36,i:201},{u:37,i:202},{u:94,i:220},{u:38,i:204},{u:42,i:205},{u:40,i:206},{u:41,i:207},{u:45,i:208},{u:61,i:209},{u:43,i:210},{u:91,i:211},{u:93,i:212},{u:123,i:213},{u:125,i:214},{u:95,i:215},{u:59,i:216},{u:58,i:217},{u:39,i:218},{u:34,i:219},{u:46,i:221},{u:60,i:222},{u:62,i:223},{u:47,i:224},{u:63,i:225},{u:92,i:226},{u:124,i:227},{u:32,i:228}];
+              function get_mapped_index(text, pos) {
+                if(!text || pos >= text.length) return 228;
+                var cp = text.charCodeAt(pos);
+                for(var j=0; j<unicodeTable.length; j++) { if(unicodeTable[j].u == cp) return unicodeTable[j].i; }
+                return 228;
+              }
+            ]]></Script>
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="PB-1" Name="Test Name" Text="Test Name">
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-1_R-1" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-2_R-2" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-3_R-3" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-4_R-4" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-5_R-5" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-6_R-6" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-7_R-7" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-8_R-8" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-9_R-9" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-10_R-10" />
+                <ParameterRefRef RefId="M-0085_A-2026-03-0014_P-11_R-11" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

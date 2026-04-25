@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX CreatedBy="kaenx-creator" ToolVersion="1.0.0" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Baggages>
+        <Baggage TargetPath="" Name="Icons_d48aba.zip" Id="M-0085_BG--Icons.5Fd48aba.2Ezip">
+          <FileInfo TimeInfo="2026-04-17T13:34:31.6307623Z" />
+        </Baggage>
+      </Baggages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

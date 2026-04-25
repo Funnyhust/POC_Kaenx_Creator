@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Catalog>
+        <CatalogSection Id="M-0085_CS-1" Name="Lumi Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-0085_CS-1_CI-44" Name="KNOB Unicode v44" Number="44" ProductRefId="M-0085_H-0001-01_P-1" Hardware2ProgramRefId="M-0085_H-0001-01_HP-00001" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <Hardware>
+        <Hardware Id="M-0085_H-0001-01" Name="KNOB HW" SerialNumber="KNOB-44" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products><Product Id="M-0085_H-0001-01_P-1" Text="KNOB Unicode v44" OrderNumber="KNOB44" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
+          <Hardware2Programs><Hardware2Program Id="M-0085_H-0001-01_HP-00001" MediumTypes="MT-0"><ApplicationProgramRef RefId="M-0085_A-0001-01-00044" /></Hardware2Program></Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-0001-01-00044" ApplicationNumber="44" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB Dropdown v44" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" MinEtsVersion="5.0">
+          <Static>
+            <Code><RelativeSegment Id="M-0085_A-0001-01-00044_RS-04-00000" Name="Parameters" Size="512" LoadStateMachine="4" Offset="0" /></Code>
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-0001-01-00044_PT-10" Name="CharList">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-0" Text=" " Value="0" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-1" Text="a" Value="1" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-2" Text="à" Value="2" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-3" Text="á" Value="3" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-4" Text="ả" Value="4" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-5" Text="ã" Value="5" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-6" Text="ạ" Value="6" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-7" Text="ă" Value="7" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-8" Text="ằ" Value="8" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-9" Text="ắ" Value="9" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-10" Text="ẳ" Value="10" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-11" Text="ẵ" Value="11" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-12" Text="ặ" Value="12" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-13" Text="â" Value="13" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-14" Text="ầ" Value="14" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-15" Text="ấ" Value="15" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-16" Text="ẩ" Value="16" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-17" Text="ẫ" Value="17" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-18" Text="ậ" Value="18" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-19" Text="A" Value="19" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-20" Text="À" Value="20" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-21" Text="Á" Value="21" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-22" Text="Ả" Value="22" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-23" Text="Ã" Value="23" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-24" Text="Ạ" Value="24" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-25" Text="Ă" Value="25" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-26" Text="Ằ" Value="26" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-27" Text="Ắ" Value="27" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-28" Text="Ẳ" Value="28" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-29" Text="Ẵ" Value="29" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-30" Text="Ặ" Value="30" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-31" Text="Â" Value="31" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-32" Text="Ầ" Value="32" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-33" Text="Ấ" Value="33" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-34" Text="Ẩ" Value="34" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-35" Text="Ẫ" Value="35" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-36" Text="Ậ" Value="36" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-37" Text="b" Value="37" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-38" Text="B" Value="38" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-39" Text="c" Value="39" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-40" Text="C" Value="40" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-41" Text="d" Value="41" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-42" Text="D" Value="42" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-43" Text="đ" Value="43" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-44" Text="Đ" Value="44" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-45" Text="e" Value="45" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-46" Text="è" Value="46" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-47" Text="é" Value="47" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-48" Text="ẻ" Value="48" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-49" Text="ẽ" Value="49" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-50" Text="ẹ" Value="50" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-51" Text="ê" Value="51" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-52" Text="ề" Value="52" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-53" Text="ế" Value="53" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-54" Text="ể" Value="54" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-55" Text="ễ" Value="55" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-56" Text="ệ" Value="56" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-57" Text="E" Value="57" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-58" Text="È" Value="58" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-59" Text="É" Value="59" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-60" Text="Ẻ" Value="60" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-61" Text="Ẽ" Value="61" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-62" Text="Ẹ" Value="62" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-63" Text="Ê" Value="63" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-64" Text="Ề" Value="64" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-65" Text="Ế" Value="65" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-66" Text="Ể" Value="66" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-67" Text="Ễ" Value="67" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-68" Text="Ệ" Value="68" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-69" Text="g" Value="69" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-70" Text="G" Value="70" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-71" Text="h" Value="71" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-72" Text="H" Value="72" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-73" Text="i" Value="73" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-74" Text="ì" Value="74" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-75" Text="í" Value="75" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-76" Text="ỉ" Value="76" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-77" Text="ĩ" Value="77" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-78" Text="ị" Value="78" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-79" Text="I" Value="79" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-80" Text="Ì" Value="80" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-81" Text="Í" Value="81" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-82" Text="Ỉ" Value="82" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-83" Text="Ĩ" Value="83" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-84" Text="Ị" Value="84" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-85" Text="k" Value="85" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-86" Text="K" Value="86" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-87" Text="l" Value="87" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-88" Text="L" Value="88" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-89" Text="m" Value="89" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-90" Text="M" Value="90" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-91" Text="n" Value="91" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-92" Text="N" Value="92" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-93" Text="o" Value="93" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-94" Text="ò" Value="94" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-95" Text="ó" Value="95" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-96" Text="ỏ" Value="96" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-97" Text="õ" Value="97" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-98" Text="ọ" Value="98" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-99" Text="ô" Value="99" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-100" Text="ồ" Value="100" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-101" Text="ố" Value="101" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-102" Text="ổ" Value="102" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-103" Text="ỗ" Value="103" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-104" Text="ộ" Value="104" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-105" Text="ơ" Value="105" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-106" Text="ờ" Value="106" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-107" Text="ớ" Value="107" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-108" Text="ở" Value="108" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-109" Text="ỡ" Value="109" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-110" Text="ợ" Value="110" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-111" Text="O" Value="111" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-112" Text="Ò" Value="112" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-113" Text="Ó" Value="113" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-114" Text="Ỏ" Value="114" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-115" Text="Õ" Value="115" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-116" Text="Ọ" Value="116" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-117" Text="Ô" Value="117" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-118" Text="Ồ" Value="118" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-119" Text="Ố" Value="119" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-120" Text="Ổ" Value="120" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-121" Text="Ỗ" Value="121" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-122" Text="Ộ" Value="122" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-123" Text="Ơ" Value="123" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-124" Text="Ờ" Value="124" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-125" Text="Ớ" Value="125" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-126" Text="Ở" Value="126" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-127" Text="Ỡ" Value="127" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-128" Text="Ợ" Value="128" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-129" Text="p" Value="129" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-130" Text="P" Value="130" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-131" Text="q" Value="131" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-132" Text="Q" Value="132" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-133" Text="r" Value="133" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-134" Text="R" Value="134" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-135" Text="s" Value="135" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-136" Text="S" Value="136" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-137" Text="t" Value="137" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-138" Text="T" Value="138" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-139" Text="u" Value="139" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-140" Text="ù" Value="140" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-141" Text="ú" Value="141" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-142" Text="ủ" Value="142" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-143" Text="ũ" Value="143" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-144" Text="ụ" Value="144" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-145" Text="ư" Value="145" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-146" Text="ừ" Value="146" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-147" Text="ứ" Value="147" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-148" Text="ử" Value="148" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-149" Text="ữ" Value="149" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-150" Text="ự" Value="150" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-151" Text="U" Value="151" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-152" Text="Ù" Value="152" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-153" Text="Ú" Value="153" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-154" Text="Ủ" Value="154" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-155" Text="Ũ" Value="155" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-156" Text="Ụ" Value="156" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-157" Text="Ư" Value="157" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-158" Text="Ừ" Value="158" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-159" Text="Ứ" Value="159" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-160" Text="Ử" Value="160" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-161" Text="Ữ" Value="161" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-162" Text="Ự" Value="162" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-163" Text="v" Value="163" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-164" Text="V" Value="164" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-165" Text="x" Value="165" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-166" Text="X" Value="166" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-167" Text="y" Value="167" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-168" Text="ỳ" Value="168" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-169" Text="ý" Value="169" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-170" Text="ỷ" Value="170" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-171" Text="ỹ" Value="171" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-172" Text="ỵ" Value="172" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-173" Text="Y" Value="173" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-174" Text="Ỳ" Value="174" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-175" Text="Ý" Value="175" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-176" Text="Ỷ" Value="176" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-177" Text="Ỹ" Value="177" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-178" Text="Ỵ" Value="178" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-179" Text="w" Value="179" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-180" Text="W" Value="180" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-181" Text="z" Value="181" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-182" Text="Z" Value="182" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-183" Text="0" Value="183" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-184" Text="1" Value="184" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-185" Text="2" Value="185" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-186" Text="3" Value="186" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-187" Text="4" Value="187" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-188" Text="5" Value="188" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-189" Text="6" Value="189" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-190" Text="7" Value="190" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-191" Text="8" Value="191" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-192" Text="9" Value="192" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-193" Text="!" Value="193" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-194" Text="@" Value="194" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-195" Text="#" Value="195" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-196" Text="$" Value="196" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-197" Text="%" Value="197" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-198" Text="^" Value="198" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-199" Text="&amp;" Value="199" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-200" Text="*" Value="200" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-201" Text="(" Value="201" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-202" Text=")" Value="202" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-203" Text="-" Value="203" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-204" Text="_" Value="204" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-205" Text="+" Value="205" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-206" Text="=" Value="206" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-207" Text="[" Value="207" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-208" Text="]" Value="208" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-209" Text="{" Value="209" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-210" Text="}" Value="210" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-211" Text=";" Value="211" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-212" Text=":" Value="212" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-213" Text="'" Value="213" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-214" Text="&quot;" Value="214" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-215" Text="," Value="215" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-216" Text="." Value="216" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-217" Text="&lt;" Value="217" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-218" Text="&gt;" Value="218" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-219" Text="/" Value="219" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-220" Text="?" Value="220" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-221" Text="|" Value="221" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-222" Text="\" Value="222" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-223" Text="`" Value="223" />
+                  <Enumeration Id="M-0085_A-0001-01-00044_PT-10_EN-224" Text="~" Value="224" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-0001-01-00044_P-200" Name="Char_1" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 1" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="100" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-201" Name="Char_2" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 2" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="101" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-202" Name="Char_3" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 3" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="102" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-203" Name="Char_4" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 4" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="103" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-204" Name="Char_5" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 5" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="104" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-205" Name="Char_6" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 6" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="105" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-206" Name="Char_7" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 7" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="106" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-207" Name="Char_8" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 8" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="107" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-208" Name="Char_9" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 9" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="108" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-0085_A-0001-01-00044_P-209" Name="Char_10" ParameterType="M-0085_A-0001-01-00044_PT-10" Text="Character 10" Value="0">
+                <Memory CodeSegment="M-0085_A-0001-01-00044_RS-04-00000" Offset="109" BitOffset="0" />
+              </Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-200_R-200" RefId="M-0085_A-0001-01-00044_P-200" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-201_R-201" RefId="M-0085_A-0001-01-00044_P-201" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-202_R-202" RefId="M-0085_A-0001-01-00044_P-202" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-203_R-203" RefId="M-0085_A-0001-01-00044_P-203" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-204_R-204" RefId="M-0085_A-0001-01-00044_P-204" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-205_R-205" RefId="M-0085_A-0001-01-00044_P-205" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-206_R-206" RefId="M-0085_A-0001-01-00044_P-206" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-207_R-207" RefId="M-0085_A-0001-01-00044_P-207" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-208_R-208" RefId="M-0085_A-0001-01-00044_P-208" />
+              <ParameterRef Id="M-0085_A-0001-01-00044_P-209_R-209" RefId="M-0085_A-0001-01-00044_P-209" />
+            </ParameterRefs>
+            <LoadProcedures>
+              <LoadProcedure MergeId="2"><LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="512" Mode="0" Fill="0" /></LoadProcedure>
+              <LoadProcedure MergeId="4"><LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="512" Verify="true" /></LoadProcedure>
+            </LoadProcedures>
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="PB-1" Name="Vietnamese Text Input">
+                <ParameterSeparator Id="PS-1" Text="Select characters for Name (max 10):" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-200_R-200" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-201_R-201" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-202_R-202" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-203_R-203" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-204_R-204" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-205_R-205" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-206_R-206" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-207_R-207" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-208_R-208" />
+                <ParameterRefRef RefId="M-0085_A-0001-01-00044_P-209_R-209" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0085">
+      <Catalog><CatalogSection Id="M-0085_CS-1" Name="Lumi GVS Mirror" Number="1" DefaultLanguage="en-US">
+        <CatalogItem Id="M-0085_CI-46" Name="KNOB GVS Mirror v46" Number="46" ProductRefId="M-0085_H-00B2-11_P-1" Hardware2ProgramRefId="M-0085_H-00B2-11_HP-1" DefaultLanguage="en-US" />
+      </CatalogSection></Catalog>
+      <Hardware>
+        <Hardware Id="M-0085_H-00B2-11" Name="KNOB GVS HW" SerialNumber="KNOB-GVS-46" VersionNumber="11" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true">
+          <Products><Product Id="M-0085_H-00B2-11_P-1" Text="KNOB GVS Mirror v46" OrderNumber="KNOB-GVS" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
+          <Hardware2Programs><Hardware2Program Id="M-0085_H-00B2-11_HP-1" MediumTypes="MT-0"><ApplicationProgramRef RefId="M-0085_A-00B2-11-FDD4" /></Hardware2Program></Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-0085_A-00B2-11-FDD4" ApplicationNumber="178" ApplicationVersion="11" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNOB GVS Mirror v46" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" MinEtsVersion="5.0" IsSecureEnabled="true">
+          <Static>
+            <Code><RelativeSegment Id="M-0085_A-00B2-11-FDD4_RS-04-00000" Name="Parameters" Size="512" LoadStateMachine="4" Offset="0"><Data>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8=</Data></RelativeSegment></Code>
+            <ParameterTypes>
+              <ParameterType Id="M-0085_A-00B2-11-FDD4_PT-UTF8" Name="UTF8_List"><TypeRestriction Base="Value" SizeInBit="4"><Enumeration Text="UTF-8" Value="0" Id="M-0085_A-00B2-11-FDD4_PT-UTF8_EN-0" /><Enumeration Text="ISO8859-1" Value="1" Id="M-0085_A-00B2-11-FDD4_PT-UTF8_EN-1" /></TypeRestriction></ParameterType>
+              <ParameterType Id="M-0085_A-00B2-11-FDD4_PT-Text10" Name="Text10"><TypeText SizeInBit="80" /></ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Parameter Id="M-0085_A-00B2-11-FDD4_P-CP" Name="G_Codepage" ParameterType="M-0085_A-00B2-11-FDD4_PT-UTF8" Text="Codepage" Value="0"><Memory CodeSegment="M-0085_A-00B2-11-FDD4_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-0085_A-00B2-11-FDD4_P-NAME" Name="G_Name" ParameterType="M-0085_A-00B2-11-FDD4_PT-Text10" Text="Device Name (Vietnamese)" Value=""><Memory CodeSegment="M-0085_A-00B2-11-FDD4_RS-04-00000" Offset="10" BitOffset="0" /></Parameter>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="M-0085_A-00B2-11-FDD4_P-CP_R" RefId="M-0085_A-00B2-11-FDD4_P-CP" />
+              <ParameterRef Id="M-0085_A-00B2-11-FDD4_P-NAME_R" RefId="M-0085_A-00B2-11-FDD4_P-NAME" />
+            </ParameterRefs>
+            <LoadProcedures>
+              <LoadProcedure MergeId="2"><LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="512" Mode="0" Fill="0" /></LoadProcedure>
+              <LoadProcedure MergeId="4"><LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="512" Verify="true" /></LoadProcedure>
+            </LoadProcedures>
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="PB-1" Name="GVS Style Unicode">
+                <ParameterRefRef RefId="M-0085_A-00B2-11-FDD4_P-CP_R" />
+                <ParameterRefRef RefId="M-0085_A-00B2-11-FDD4_P-NAME_R" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
