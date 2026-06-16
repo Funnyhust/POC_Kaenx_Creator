@@ -218,10 +218,12 @@ def validate_xml(file_path: str):
         product = id_map.get(product_ref)
         if product is not None:
             order_number = product.get('OrderNumber', '')
-            if order_number and order_number not in cat_id:
-                result.add_error(f"CatalogItem ID '{cat_id}' must contain OrderNumber '{order_number}' (Confirmed 'Sequence' error trigger)")
-            elif order_number:
-                result.add_pass(f"CatalogItem ID format OK (contains {order_number})")
+            if order_number:
+                encoded_order = order_number.replace('.', '.2E').replace('-', '.2D')
+                if order_number not in cat_id and encoded_order not in cat_id:
+                    result.add_error(f"CatalogItem ID '{cat_id}' must contain OrderNumber '{order_number}' or its encoded version '{encoded_order}' (Confirmed 'Sequence' error trigger)")
+                else:
+                    result.add_pass(f"CatalogItem ID format OK (contains {order_number} or encoded version)")
 
     # Logic Rule 10: Numeric suffixes for certain tags (Kaenx-Creator strict parsing)
     # Tags that must end in _ + (offset) + (decimal number)

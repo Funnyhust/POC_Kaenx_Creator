@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.7.743.36956" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-035A">
+      <Baggages>
+        <Baggage TargetPath="" Name="69_4-gang.png" Id="M-035A_BG--69.5F4.2Dgang.2Epng">
+          <FileInfo TimeInfo="2025-07-14T05:37:54.1581363Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="69_3-gang.png" Id="M-035A_BG--69.5F3.2Dgang.2Epng">
+          <FileInfo TimeInfo="2025-07-14T05:37:54.1421784Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="69_2-gang.png" Id="M-035A_BG--69.5F2.2Dgang.2Epng">
+          <FileInfo TimeInfo="2025-07-14T05:37:54.1272181Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="69_1-gang.png" Id="M-035A_BG--69.5F1.2Dgang.2Epng">
+          <FileInfo TimeInfo="2025-07-14T05:37:54.1142535Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="63_Icons.zip" Id="M-035A_BG--63.5FIcons.2Ezip">
+          <FileInfo TimeInfo="2025-07-14T05:37:54.0992978Z" />
+        </Baggage>
+      </Baggages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

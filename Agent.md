@@ -6,7 +6,7 @@ Note: _This is purely the output of the chat conversation and does not contain a
 
 @[c:\Lumi\KNX_Creater_tool\Kaenx_Creator_Tool\Output_File\KNX_4_Relay\knx_relay_4ch.xml] kiem tra thiet bi nay cua toi da co scene hay chua
 
-*Viewed [knx_relay_4ch.xml](file:///c:/Lumi/KNX_Creater_tool/Kaenx_Creator_Tool/Output_File/KNX_4_Relay/knx_relay_4ch.xml) *
+*Viewed [knx_relay_4ch.xml](file:///c:/Lumi/KNX_Creater_tool/Kaenx_Creator_Tool/Output_File/KNX_4_Relay/knx_relay_4ch.xml) *A
 
 ### Planner Response
 

@@ -127,7 +127,7 @@
 <Enumeration Text="Icon 1" Value="1" Id="M-035A_A-2026-03-0014_PT-10_EN-1" />
 <Enumeration Text="Icon 2" Value="2" Id="M-035A_A-2026-03-0014_PT-10_EN-2" />
 </TypeRestriction></ParameterType>
-              <ParameterType Id="M-035A_A-2026-03-0014_PT-11" Name="Name"><TypeText SizeInBit="160" /></ParameterType>
+              <ParameterType Id="M-035A_A-2026-03-0014_PT-11" Name="Name"><TypeText SizeInBit="160" Pattern=".+" /></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-12" Name="Switch mode"><TypeRestriction Base="Value" SizeInBit="8">
 <Enumeration Text="Toggle" Value="1" Id="M-035A_A-2026-03-0014_PT-12_EN-1" />
 <Enumeration Text="Auto On/Off" Value="2" Id="M-035A_A-2026-03-0014_PT-12_EN-2" />
