@@ -128,7 +128,7 @@ def create_obj_struct(internal_name, func_text, obj_size, dp_type, ui_text, is_s
         p_update = "Disabled"
     elif internal_name.endswith("_HeRmT"):
         # Room temperature of heater: C R W T U
-        p_read = "Enabled"
+        p_read = "Disabled"
         p_write = "Enabled"
         p_comm = "Enabled"
         p_trans = "Enabled"
