@@ -14,7 +14,7 @@ APP = "M-035A_A-2026-03-0014"
 RS = f"{APP}_RS-04-00000"
 
 # ── Device info constants ──────────────────────────────────────────────────────
-DEVICE_NAME      = "Lumi Knob aluminium"   # Hardware.Name / Product.Text
+DEVICE_NAME      = "Lumi Knob aluminium SE"   # Hardware.Name / Product.Text
 DEVICE_SERIAL    = "LM26KN"               # Hardware.SerialNumber
 DEVICE_ORDER     = "LMS0KK.1LE"           # Product.OrderNumber
 APP_PROGRAM_NAME = 'Touch panel OLED 1.43"'  # ApplicationProgram.Name
@@ -155,15 +155,15 @@ add_pt_number("Percent", "Percent", 0, 100, 8)
 add_pt_number("SleepTime", "Sleep time", 10, 3600, 16)
 # Checkbox ParameterType (real 1-bit square tick box)
 add_pt_checkbox("Checkbox", "Checkbox")
-add_pt_enum("EndpointFunction", "Endpoint function", {0: "Disabled", 1: "Switch", 2: "CCT", 3: "Dimmer", 4: "Curtain", 5: "Fan", 6: "Air conditioner", 7: "Heater"})
+add_pt_enum("EndpointFunction", "Endpoint function", {0: "Disabled", 1: "Switch", 2: "CCT", 3: "Dimmer", 4: "Shutter/Curtain", 5: "Fan", 6: "Air conditioner", 7: "Heater"})
 add_pt_enum("SceneIcon", "Scene icon", {i: f"Icon {i}" for i in range(1, 37)})
 add_pt_enum("LightIcon", "Light icon", {i: f"Icon {i}" for i in range(1, 21)})
-add_pt_enum("CurtainIcon", "Curtain icon", {i: f"Icon {i}" for i in range(1, 3)})
+add_pt_enum("ShutterCurtainIcon", "Shutter/Curtain icon", {i: f"Icon {i}" for i in range(1, 3)})
 add_pt_text("NameText", "Name", 20, pattern=".+")
 
-add_pt_enum("SwitchMode", "Switch mode", {1: "Toggle", 2: "Auto On/Off", 3: "Momentary"})
-add_pt_enum("StartupBehaviour", "Startup behavior", {0: "Restore Last Value", 1: "Set OFF", 2: "Set ON"})
-add_pt_enum("AutoModeType", "Auto mode type", {0: "Auto OFF", 1: "Auto ON"})
+add_pt_enum("SwitchMode", "Switch mode", {1: "Toggle", 2: "Auto on/off", 3: "Momentary"})
+add_pt_enum("StartupBehaviour", "Startup behavior", {0: "Restore last value", 1: "Set off", 2: "Set on"})
+add_pt_enum("AutoModeType", "Auto mode type", {0: "Auto off", 1: "Auto on"})
 add_pt_number("Time16", "Time value", 1, 65535, 16)
 add_pt_enum("AcStep", "Setpoint step", {0: "0.5 °C", 1: "1 °C"})
 add_pt_enum("AcFanType", "Fan speed type (AC)", {0: "Steps (Low->Middle->High)", 1: "Scaling (%)"})
@@ -210,9 +210,9 @@ for sc in range(1, 17):
     pid_n, rid_n = new_p_id()
     deferred_names.append((pid_n, f"Sc{sc}_Name"))  # offset filled in later
     parameter_refs.append(f'<ParameterRef Id="{rid_n}" RefId="{pid_n}" />')
-    _, rid_i = add_param_basic(f"Sc{sc}_Icon", "SceneIcon", "Icon", "1", 1)
-    _, rid_num = add_param_basic(f"Sc{sc}_Number", "SceneNumber", "Scene number", f"{sc}", 1)
-    _, rid_vis = add_param_basic(f"Sc{sc}_Visible", "Visible", "Show on display", "1", 1)
+    _, rid_i = add_param_basic(f"Sc{sc}_Icon", "SceneIcon", "  Icon", "1", 1)
+    _, rid_num = add_param_basic(f"Sc{sc}_Number", "SceneNumber", "  Scene number", f"{sc}", 1)
+    _, rid_vis = add_param_basic(f"Sc{sc}_Visible", "Visible", "  Show on display", "1", 1)
     scene_defs.append((sc, rid_n, rid_i, rid_num, rid_vis))
 
 endpoints_logic = []
@@ -229,7 +229,7 @@ for ep in range(1, 7):
     _, rid_sw_icon = add_param_basic(f"Btn{ep}_SwIcon", "LightIcon", "  Icon", "1", 1)
     _, rid_cct_icon = add_param_basic(f"Btn{ep}_CctIcon", "LightIcon", "  Icon", "1", 1)
     _, rid_dim_icon = add_param_basic(f"Btn{ep}_DimIcon", "LightIcon", "  Icon", "1", 1)
-    _, rid_cu_icon  = add_param_basic(f"Btn{ep}_CuIcon", "CurtainIcon", "  Icon", "1", 1)
+    _, rid_cu_icon  = add_param_basic(f"Btn{ep}_ShutterCurtainIcon", "ShutterCurtainIcon", "  Icon", "1", 1)
     _, rid_cu_time  = add_param_basic(f"Btn{ep}_CuTime", "TravelTime", "  Travel time", "20", 2, suffix="s")
     _, rid_fan_type = add_param_basic(f"Btn{ep}_FanType", "FanOnlyType", "  Fan speed type", "0", 1)
     _, rid_ac_step     = add_param_basic(f"Btn{ep}_AcStep", "AcStep", "  Setpoint step", "0", 1)
@@ -253,7 +253,7 @@ for ep in range(1, 7):
     cct_objs = [create_obj_struct(f"Btn{ep}_CctPow", "Switch", "1 Bit", "DPST-1-1", cct_ui), create_obj_struct(f"Btn{ep}_CctBri", "Brightness", "1 Byte", "DPST-5-1", cct_ui), create_obj_struct(f"Btn{ep}_CctCol", "Color temperature", "2 Bytes", "DPST-7-600", cct_ui), create_obj_struct(f"Btn{ep}_CctPowS", "Switch status", "1 Bit", "DPST-1-1", cct_ui, is_status=True), create_obj_struct(f"Btn{ep}_CctBriS", "Brightness status", "1 Byte", "DPST-5-1", cct_ui, is_status=True), create_obj_struct(f"Btn{ep}_CctColS", "Color temperature status", "2 Bytes", "DPST-7-600", cct_ui, is_status=True)]
     dim_ui = f"Endpoint {ep} - Dimmer"
     dim_objs = [create_obj_struct(f"Btn{ep}_DimSw", "Switch", "1 Bit", "DPST-1-1", dim_ui), create_obj_struct(f"Btn{ep}_DimBri", "Brightness", "1 Byte", "DPST-5-1", dim_ui), create_obj_struct(f"Btn{ep}_DimStat", "Switch status", "1 Bit", "DPST-1-1", dim_ui, is_status=True), create_obj_struct(f"Btn{ep}_DimBriS", "Brightness status", "1 Byte", "DPST-5-1", dim_ui, is_status=True)]
-    cu_ui = f"Endpoint {ep} - Curtain"
+    cu_ui = f"Endpoint {ep} - Shutter/Curtain"
     cu_objs = [create_obj_struct(f"Btn{ep}_CuUpDn", "Up/down", "1 Bit", "DPST-1-8", cu_ui), create_obj_struct(f"Btn{ep}_CuStop", "Stop", "1 Bit", "DPST-1-7", cu_ui), create_obj_struct(f"Btn{ep}_CuPos", "Position", "1 Byte", "DPST-5-1", cu_ui), create_obj_struct(f"Btn{ep}_CuUpDnS", "Up/down status", "1 Bit", "DPST-1-11", cu_ui, is_status=True), create_obj_struct(f"Btn{ep}_CuPosS", "Position status", "1 Byte", "DPST-5-1", cu_ui, is_status=True)]
     fan_ui = f"Endpoint {ep} - Fan"
     fan_pow_objs  = [create_obj_struct(f"Btn{ep}_FanPow",  "Power",             "1 Bit",  "DPST-1-1",  fan_ui),
@@ -293,7 +293,8 @@ for ep in range(1, 7):
 name_start_offset = mem_offset
 NAME_SIZE = 20
 for pid_n, internal_name in deferred_names:
-    parameters.append(f'<Parameter Id="{pid_n}" Name="{internal_name}" ParameterType="{ptid("NameText")}" Text="Name" Value=" "><Memory CodeSegment="{RS}" Offset="{mem_offset}" BitOffset="0" /></Parameter>')
+    text = "  Name" if internal_name.startswith("Sc") else "Name"
+    parameters.append(f'<Parameter Id="{pid_n}" Name="{internal_name}" ParameterType="{ptid("NameText")}" Text="{text}" Value=" "><Memory CodeSegment="{RS}" Offset="{mem_offset}" BitOffset="0" /></Parameter>')
     mem_offset += NAME_SIZE
 final_mem_used = mem_offset
 
@@ -387,7 +388,7 @@ def render_ac_mode_checkboxes(cfg, indent):
         res.append(f'{" " * ci}<choose ParamRefId="{rid}">')
         res.append(f'{" " * ci}  <when test="0">')
         ci += 4
-    res.append(f'{" " * ci}<ParameterSeparator Id="{new_pb_id()}" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />')
+    res.append(f'{" " * ci}<ParameterSeparator Id="{new_pb_id()}" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />')
     for _ in modes:
         ci -= 4
         res.append(f'{" " * ci}  </when>')
@@ -459,16 +460,16 @@ def render_endpoint_block(cfg, indent):
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["rid_visible"]}" />')
         res.append(f'{I}  </when>')
         res.append(f'{I}  <when test="6">')
-        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Temperature settings" UIHint="Headline" />')
+        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Temperature settings" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_step"]}" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_min"]}" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_max"]}" />')
-        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="AC Modes" UIHint="Headline" />')
+        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="AC Modes" />')
         for line in render_ac_mode_checkboxes(cfg, indent + 4):
             res.append(line)
-        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Swing" UIHint="Headline" />')
+        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Swing" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_swi_type"]}" />')
-        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Fan speed" UIHint="Headline" />')
+        res.append(f'{I}    <ParameterSeparator Id="{new_pb_id()}" Text="Fan speed" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_fan_type"]}" />')
         res.append(f'{I}    <ParameterRefRef RefId="{cfg["ac"]["rid_fan_auto"]}" />')
         for orid in cfg["ac"]["base_orids"]: res.append(f'{I}    <ComObjectRefRef RefId="{orid}" />')
@@ -561,6 +562,16 @@ L(f'                </choose>')
 L(f'                <ParameterRefRef RefId="{_rid_bright}" />')
 L(f'                <ParameterRefRef RefId="{_rid_led_bright}" />')
 L(f'                <ParameterRefRef RefId="{_rid_sleep}" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Sensor settings" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Temperature measurement" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Transmission on change ≥ 1 °C" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text=" " />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Humidity measurement" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Transmission on change ≥ 5 %" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text=" " />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Transmission cycle" />')
+L(f'                <ParameterSeparator Id="{new_pb_id()}" Text="Periodic transmission every 5 minutes" />')
 for orid in global_orids: L(f'                <ComObjectRefRef RefId="{orid}" />')
 L('              </ParameterBlock>')
 L(f'              <choose ParamRefId="{_rid_en_scene}">')
@@ -571,7 +582,7 @@ for sc, rid_n, rid_i, rid_num, rid_vis in scene_defs:
     L(f'                    <choose ParamRefId="{_rid_sc_count}">')
     L(f'                      <when test=">={sc}">')
     if sc > 1: L(f'                        <ParameterSeparator Id="{new_pb_id()}" />')
-    L(f'                        <ParameterSeparator Id="{new_pb_id()}" Text="  Scene {sc}" UIHint="Headline" />')
+    L(f'                        <ParameterSeparator Id="{new_pb_id()}" Text="Scene {sc}" />')
     L(f'                        <ParameterRefRef RefId="{rid_n}" />')
     L(f'                        <ParameterRefRef RefId="{rid_i}" />')
     L(f'                        <ParameterRefRef RefId="{rid_num}" />')
@@ -583,7 +594,7 @@ for sc, rid_n, rid_i, rid_num, rid_vis in scene_defs:
 L('                  </ParameterBlock>')
 L('                </when>')
 L('              </choose>')
-L(f'              <ParameterBlock Id="{new_pb_id()}" Name="Endpoint 1" Text="Endpoint 1 setting">')
+L(f'              <ParameterBlock Id="{new_pb_id()}" Name="Endpoint 1" Text="Endpoint 1 settings">')
 for line in render_endpoint_block(endpoints_logic[0], 16): L(line)
 L('              </ParameterBlock>')
 for cfg in endpoints_logic[1:]:
@@ -593,7 +604,7 @@ for cfg in endpoints_logic[1:]:
     if ep_n <= 5:
         L(f'                  <choose ParamRefId="{_rid_ep_count5}">')
         L(f'                    <when test=">={ep_n}">')
-        L(f'                      <ParameterBlock Id="{new_pb_id()}" Name="Endpoint {ep_n}" Text="Endpoint {ep_n} setting">')
+        L(f'                      <ParameterBlock Id="{new_pb_id()}" Name="Endpoint {ep_n}" Text="Endpoint {ep_n} settings">')
         for line in render_endpoint_block(cfg, 24): L(line)
         L('                      </ParameterBlock>')
         L('                    </when>')
@@ -602,7 +613,7 @@ for cfg in endpoints_logic[1:]:
     L('                <when test="0">')
     L(f'                  <choose ParamRefId="{_rid_ep_count6}">')
     L(f'                    <when test=">={ep_n}">')
-    L(f'                      <ParameterBlock Id="{new_pb_id()}" Name="Endpoint {ep_n}" Text="Endpoint {ep_n} setting">')
+    L(f'                      <ParameterBlock Id="{new_pb_id()}" Name="Endpoint {ep_n}" Text="Endpoint {ep_n} settings">')
     for line in render_endpoint_block(cfg, 24): L(line)
     L(f'                      </ParameterBlock>')
     L('                    </when>')

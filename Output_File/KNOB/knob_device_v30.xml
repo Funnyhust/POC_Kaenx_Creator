@@ -3,10 +3,10 @@
   <ManufacturerData>
     <Manufacturer RefId="M-035A">
       <Catalog><CatalogSection Id="M-035A_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
-        <CatalogItem Id="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium" Number="1" ProductRefId="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Hardware2ProgramRefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F" DefaultLanguage="en-US" />
+        <CatalogItem Id="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium SE" Number="1" ProductRefId="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Hardware2ProgramRefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F" DefaultLanguage="en-US" />
       </CatalogSection></Catalog>
-      <Hardware><Hardware Id="M-035A_H-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium" SerialNumber="LM26KN" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true">
-        <Products><Product Id="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Text="Lumi Knob aluminium" OrderNumber="LMS0KK.1LE" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
+      <Hardware><Hardware Id="M-035A_H-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium SE" SerialNumber="LM26KN" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true">
+        <Products><Product Id="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Text="Lumi Knob aluminium SE" OrderNumber="LMS0KK.1LE" IsRailMounted="false" DefaultLanguage="en-US" /></Products>
         <Hardware2Programs><Hardware2Program Id="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F" MediumTypes="MT-0">
           <ApplicationProgramRef RefId="M-035A_A-2026-03-0014" />
         </Hardware2Program></Hardware2Programs>
@@ -58,7 +58,7 @@
 <Enumeration Text="Switch" Value="1" Id="M-035A_A-2026-03-0014_PT-7_EN-1" />
 <Enumeration Text="CCT" Value="2" Id="M-035A_A-2026-03-0014_PT-7_EN-2" />
 <Enumeration Text="Dimmer" Value="3" Id="M-035A_A-2026-03-0014_PT-7_EN-3" />
-<Enumeration Text="Curtain" Value="4" Id="M-035A_A-2026-03-0014_PT-7_EN-4" />
+<Enumeration Text="Shutter/Curtain" Value="4" Id="M-035A_A-2026-03-0014_PT-7_EN-4" />
 <Enumeration Text="Fan" Value="5" Id="M-035A_A-2026-03-0014_PT-7_EN-5" />
 <Enumeration Text="Air conditioner" Value="6" Id="M-035A_A-2026-03-0014_PT-7_EN-6" />
 <Enumeration Text="Heater" Value="7" Id="M-035A_A-2026-03-0014_PT-7_EN-7" />
@@ -123,24 +123,24 @@
 <Enumeration Text="Icon 19" Value="19" Id="M-035A_A-2026-03-0014_PT-9_EN-19" />
 <Enumeration Text="Icon 20" Value="20" Id="M-035A_A-2026-03-0014_PT-9_EN-20" />
 </TypeRestriction></ParameterType>
-              <ParameterType Id="M-035A_A-2026-03-0014_PT-10" Name="Curtain icon"><TypeRestriction Base="Value" SizeInBit="8">
+              <ParameterType Id="M-035A_A-2026-03-0014_PT-10" Name="Shutter/Curtain icon"><TypeRestriction Base="Value" SizeInBit="8">
 <Enumeration Text="Icon 1" Value="1" Id="M-035A_A-2026-03-0014_PT-10_EN-1" />
 <Enumeration Text="Icon 2" Value="2" Id="M-035A_A-2026-03-0014_PT-10_EN-2" />
 </TypeRestriction></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-11" Name="Name"><TypeText SizeInBit="160" Pattern=".+" /></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-12" Name="Switch mode"><TypeRestriction Base="Value" SizeInBit="8">
 <Enumeration Text="Toggle" Value="1" Id="M-035A_A-2026-03-0014_PT-12_EN-1" />
-<Enumeration Text="Auto On/Off" Value="2" Id="M-035A_A-2026-03-0014_PT-12_EN-2" />
+<Enumeration Text="Auto on/off" Value="2" Id="M-035A_A-2026-03-0014_PT-12_EN-2" />
 <Enumeration Text="Momentary" Value="3" Id="M-035A_A-2026-03-0014_PT-12_EN-3" />
 </TypeRestriction></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-13" Name="Startup behavior"><TypeRestriction Base="Value" SizeInBit="8">
-<Enumeration Text="Restore Last Value" Value="0" Id="M-035A_A-2026-03-0014_PT-13_EN-0" />
-<Enumeration Text="Set OFF" Value="1" Id="M-035A_A-2026-03-0014_PT-13_EN-1" />
-<Enumeration Text="Set ON" Value="2" Id="M-035A_A-2026-03-0014_PT-13_EN-2" />
+<Enumeration Text="Restore last value" Value="0" Id="M-035A_A-2026-03-0014_PT-13_EN-0" />
+<Enumeration Text="Set off" Value="1" Id="M-035A_A-2026-03-0014_PT-13_EN-1" />
+<Enumeration Text="Set on" Value="2" Id="M-035A_A-2026-03-0014_PT-13_EN-2" />
 </TypeRestriction></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-14" Name="Auto mode type"><TypeRestriction Base="Value" SizeInBit="8">
-<Enumeration Text="Auto OFF" Value="0" Id="M-035A_A-2026-03-0014_PT-14_EN-0" />
-<Enumeration Text="Auto ON" Value="1" Id="M-035A_A-2026-03-0014_PT-14_EN-1" />
+<Enumeration Text="Auto off" Value="0" Id="M-035A_A-2026-03-0014_PT-14_EN-0" />
+<Enumeration Text="Auto on" Value="1" Id="M-035A_A-2026-03-0014_PT-14_EN-1" />
 </TypeRestriction></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-15" Name="Time value"><TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="65535" /></ParameterType>
               <ParameterType Id="M-035A_A-2026-03-0014_PT-16" Name="Setpoint step"><TypeRestriction Base="Value" SizeInBit="8">
@@ -283,54 +283,54 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-5" Name="Gen_LedBrightness" ParameterType="M-035A_A-2026-03-0014_PT-4" Text="Led brightness" Value="100" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="3" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-6" Name="Gen_SleepTime" ParameterType="M-035A_A-2026-03-0014_PT-5" Text="Turn off screen after" Value="300" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="4" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-7" Name="Gen_ScCount" ParameterType="M-035A_A-2026-03-0014_PT-3" Text="Scene count" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="6" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-9" Name="Sc1_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="19" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-10" Name="Sc1_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="20" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-11" Name="Sc1_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="21" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-13" Name="Sc2_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="22" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-14" Name="Sc2_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="2"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-15" Name="Sc2_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-17" Name="Sc3_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="25" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-18" Name="Sc3_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="3"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="26" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-19" Name="Sc3_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="27" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-21" Name="Sc4_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="28" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-22" Name="Sc4_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="4"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="29" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-23" Name="Sc4_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="30" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-25" Name="Sc5_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="31" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-26" Name="Sc5_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="5"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="32" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-27" Name="Sc5_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-29" Name="Sc6_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-30" Name="Sc6_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="6"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-31" Name="Sc6_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="36" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-33" Name="Sc7_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="37" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-34" Name="Sc7_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="7"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="38" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-35" Name="Sc7_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="39" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-37" Name="Sc8_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="40" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-38" Name="Sc8_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="8"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="41" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-39" Name="Sc8_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="42" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-41" Name="Sc9_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="43" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-42" Name="Sc9_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="9"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="44" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-43" Name="Sc9_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="45" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-45" Name="Sc10_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="46" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-46" Name="Sc10_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="10"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="47" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-47" Name="Sc10_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="48" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-49" Name="Sc11_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="49" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-50" Name="Sc11_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="11"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="50" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-51" Name="Sc11_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="51" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-53" Name="Sc12_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="52" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-54" Name="Sc12_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="12"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="53" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-55" Name="Sc12_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="54" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-57" Name="Sc13_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="55" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-58" Name="Sc13_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="13"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="56" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-59" Name="Sc13_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="57" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-61" Name="Sc14_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="58" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-62" Name="Sc14_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="14"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="59" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-63" Name="Sc14_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="60" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-65" Name="Sc15_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="61" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-66" Name="Sc15_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="15"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="62" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-67" Name="Sc15_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="63" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-69" Name="Sc16_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="64" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-70" Name="Sc16_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="Scene number" Value="16"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="65" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-71" Name="Sc16_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="66" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-9" Name="Sc1_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="19" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-10" Name="Sc1_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="20" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-11" Name="Sc1_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="21" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-13" Name="Sc2_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="22" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-14" Name="Sc2_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="2"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-15" Name="Sc2_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-17" Name="Sc3_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="25" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-18" Name="Sc3_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="3"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="26" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-19" Name="Sc3_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="27" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-21" Name="Sc4_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="28" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-22" Name="Sc4_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="4"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="29" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-23" Name="Sc4_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="30" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-25" Name="Sc5_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="31" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-26" Name="Sc5_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="5"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="32" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-27" Name="Sc5_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-29" Name="Sc6_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-30" Name="Sc6_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="6"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-31" Name="Sc6_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="36" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-33" Name="Sc7_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="37" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-34" Name="Sc7_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="7"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="38" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-35" Name="Sc7_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="39" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-37" Name="Sc8_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="40" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-38" Name="Sc8_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="8"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="41" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-39" Name="Sc8_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="42" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-41" Name="Sc9_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="43" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-42" Name="Sc9_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="9"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="44" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-43" Name="Sc9_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="45" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-45" Name="Sc10_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="46" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-46" Name="Sc10_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="10"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="47" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-47" Name="Sc10_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="48" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-49" Name="Sc11_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="49" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-50" Name="Sc11_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="11"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="50" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-51" Name="Sc11_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="51" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-53" Name="Sc12_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="52" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-54" Name="Sc12_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="12"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="53" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-55" Name="Sc12_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="54" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-57" Name="Sc13_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="55" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-58" Name="Sc13_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="13"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="56" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-59" Name="Sc13_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="57" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-61" Name="Sc14_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="58" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-62" Name="Sc14_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="14"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="59" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-63" Name="Sc14_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="60" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-65" Name="Sc15_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="61" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-66" Name="Sc15_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="15"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="62" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-67" Name="Sc15_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="63" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-69" Name="Sc16_Icon" ParameterType="M-035A_A-2026-03-0014_PT-8" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="64" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-70" Name="Sc16_Number" ParameterType="M-035A_A-2026-03-0014_PT-24" Text="  Scene number" Value="16"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="65" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-71" Name="Sc16_Visible" ParameterType="M-035A_A-2026-03-0014_PT-26" Text="  Show on display" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="66" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-73" Name="Btn1_Mode" ParameterType="M-035A_A-2026-03-0014_PT-7" Text="Function of endpoint" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="67" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-74" Name="Btn1_SwMode" ParameterType="M-035A_A-2026-03-0014_PT-12" Text="  Switch mode" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="68" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-75" Name="Btn1_SwStartup" ParameterType="M-035A_A-2026-03-0014_PT-13" Text="  Behavior on bus voltage recovery" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="69" BitOffset="0" /></Parameter>
@@ -339,7 +339,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-78" Name="Btn1_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="73" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-79" Name="Btn1_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="74" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-80" Name="Btn1_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="75" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-81" Name="Btn1_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="76" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-81" Name="Btn1_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="76" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-82" Name="Btn1_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="77" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-83" Name="Btn1_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="79" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-84" Name="Btn1_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="80" BitOffset="0" /></Parameter>
@@ -363,7 +363,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-103" Name="Btn2_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="93" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-104" Name="Btn2_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="94" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-105" Name="Btn2_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="95" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-106" Name="Btn2_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="96" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-106" Name="Btn2_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="96" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-107" Name="Btn2_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="97" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-108" Name="Btn2_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="99" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-109" Name="Btn2_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="100" BitOffset="0" /></Parameter>
@@ -387,7 +387,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-128" Name="Btn3_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="113" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-129" Name="Btn3_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="114" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-130" Name="Btn3_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="115" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-131" Name="Btn3_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="116" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-131" Name="Btn3_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="116" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-132" Name="Btn3_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="117" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-133" Name="Btn3_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="119" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-134" Name="Btn3_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="120" BitOffset="0" /></Parameter>
@@ -411,7 +411,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-153" Name="Btn4_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="133" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-154" Name="Btn4_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="134" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-155" Name="Btn4_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="135" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-156" Name="Btn4_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="136" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-156" Name="Btn4_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="136" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-157" Name="Btn4_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="137" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-158" Name="Btn4_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="139" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-159" Name="Btn4_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="140" BitOffset="0" /></Parameter>
@@ -435,7 +435,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-178" Name="Btn5_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="153" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-179" Name="Btn5_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="154" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-180" Name="Btn5_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="155" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-181" Name="Btn5_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="156" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-181" Name="Btn5_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="156" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-182" Name="Btn5_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="157" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-183" Name="Btn5_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="159" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-184" Name="Btn5_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="160" BitOffset="0" /></Parameter>
@@ -459,7 +459,7 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-203" Name="Btn6_SwIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="173" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-204" Name="Btn6_CctIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="174" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-205" Name="Btn6_DimIcon" ParameterType="M-035A_A-2026-03-0014_PT-9" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="175" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-206" Name="Btn6_CuIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="176" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-206" Name="Btn6_ShutterCurtainIcon" ParameterType="M-035A_A-2026-03-0014_PT-10" Text="  Icon" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="176" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-207" Name="Btn6_CuTime" ParameterType="M-035A_A-2026-03-0014_PT-28" Text="  Travel time" Value="20" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="177" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-208" Name="Btn6_FanType" ParameterType="M-035A_A-2026-03-0014_PT-18" Text="  Fan speed type" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="179" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-209" Name="Btn6_AcStep" ParameterType="M-035A_A-2026-03-0014_PT-16" Text="  Setpoint step" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="180" BitOffset="0" /></Parameter>
@@ -475,22 +475,22 @@
               <Parameter Id="M-035A_A-2026-03-0014_P-219" Name="Btn6_AcFanAuto" ParameterType="M-035A_A-2026-03-0014_PT-6" Text="  Support fan auto" Value="1"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="184" BitOffset="6" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-220" Name="Btn6_AcSwiType" ParameterType="M-035A_A-2026-03-0014_PT-20" Text="  Swing position" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="185" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-221" Name="Btn6_HeTempSrc" ParameterType="M-035A_A-2026-03-0014_PT-29" Text="Temperature sensor source" Value="0"><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="186" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-8" Name="Sc1_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="187" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-12" Name="Sc2_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="207" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-16" Name="Sc3_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="227" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-20" Name="Sc4_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="247" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-24" Name="Sc5_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="267" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-28" Name="Sc6_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="287" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-32" Name="Sc7_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="307" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-36" Name="Sc8_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="327" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-40" Name="Sc9_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="347" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-44" Name="Sc10_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="367" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-48" Name="Sc11_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="387" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-52" Name="Sc12_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="407" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-56" Name="Sc13_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="427" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-60" Name="Sc14_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="447" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-64" Name="Sc15_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="467" BitOffset="0" /></Parameter>
-              <Parameter Id="M-035A_A-2026-03-0014_P-68" Name="Sc16_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="487" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-8" Name="Sc1_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="187" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-12" Name="Sc2_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="207" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-16" Name="Sc3_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="227" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-20" Name="Sc4_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="247" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-24" Name="Sc5_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="267" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-28" Name="Sc6_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="287" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-32" Name="Sc7_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="307" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-36" Name="Sc8_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="327" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-40" Name="Sc9_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="347" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-44" Name="Sc10_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="367" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-48" Name="Sc11_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="387" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-52" Name="Sc12_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="407" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-56" Name="Sc13_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="427" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-60" Name="Sc14_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="447" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-64" Name="Sc15_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="467" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-03-0014_P-68" Name="Sc16_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="  Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="487" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-72" Name="Btn1_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="507" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-97" Name="Btn2_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="527" BitOffset="0" /></Parameter>
               <Parameter Id="M-035A_A-2026-03-0014_P-122" Name="Btn3_Name" ParameterType="M-035A_A-2026-03-0014_PT-11" Text="Name" Value=" "><Memory CodeSegment="M-035A_A-2026-03-0014_RS-04-00000" Offset="547" BitOffset="0" /></Parameter>
@@ -739,11 +739,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-14" Name="Btn1_DimBri" Text="Endpoint 1 - Dimmer" Number="14" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-15" Name="Btn1_DimStat" Text="Endpoint 1 - Dimmer" Number="15" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-16" Name="Btn1_DimBriS" Text="Endpoint 1 - Dimmer" Number="16" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-17" Name="Btn1_CuUpDn" Text="Endpoint 1 - Curtain" Number="17" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-18" Name="Btn1_CuStop" Text="Endpoint 1 - Curtain" Number="18" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-19" Name="Btn1_CuPos" Text="Endpoint 1 - Curtain" Number="19" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-20" Name="Btn1_CuUpDnS" Text="Endpoint 1 - Curtain" Number="20" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-21" Name="Btn1_CuPosS" Text="Endpoint 1 - Curtain" Number="21" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-17" Name="Btn1_CuUpDn" Text="Endpoint 1 - Shutter/Curtain" Number="17" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-18" Name="Btn1_CuStop" Text="Endpoint 1 - Shutter/Curtain" Number="18" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-19" Name="Btn1_CuPos" Text="Endpoint 1 - Shutter/Curtain" Number="19" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-20" Name="Btn1_CuUpDnS" Text="Endpoint 1 - Shutter/Curtain" Number="20" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-21" Name="Btn1_CuPosS" Text="Endpoint 1 - Shutter/Curtain" Number="21" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-22" Name="Btn1_FanPow" Text="Endpoint 1 - Fan" Number="22" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-23" Name="Btn1_FanPowS" Text="Endpoint 1 - Fan" Number="23" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-24" Name="Btn1_FanSpd" Text="Endpoint 1 - Fan" Number="24" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -779,11 +779,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-60" Name="Btn2_DimBri" Text="Endpoint 2 - Dimmer" Number="60" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-61" Name="Btn2_DimStat" Text="Endpoint 2 - Dimmer" Number="61" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-62" Name="Btn2_DimBriS" Text="Endpoint 2 - Dimmer" Number="62" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-63" Name="Btn2_CuUpDn" Text="Endpoint 2 - Curtain" Number="63" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-64" Name="Btn2_CuStop" Text="Endpoint 2 - Curtain" Number="64" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-65" Name="Btn2_CuPos" Text="Endpoint 2 - Curtain" Number="65" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-66" Name="Btn2_CuUpDnS" Text="Endpoint 2 - Curtain" Number="66" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-67" Name="Btn2_CuPosS" Text="Endpoint 2 - Curtain" Number="67" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-63" Name="Btn2_CuUpDn" Text="Endpoint 2 - Shutter/Curtain" Number="63" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-64" Name="Btn2_CuStop" Text="Endpoint 2 - Shutter/Curtain" Number="64" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-65" Name="Btn2_CuPos" Text="Endpoint 2 - Shutter/Curtain" Number="65" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-66" Name="Btn2_CuUpDnS" Text="Endpoint 2 - Shutter/Curtain" Number="66" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-67" Name="Btn2_CuPosS" Text="Endpoint 2 - Shutter/Curtain" Number="67" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-68" Name="Btn2_FanPow" Text="Endpoint 2 - Fan" Number="68" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-69" Name="Btn2_FanPowS" Text="Endpoint 2 - Fan" Number="69" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-70" Name="Btn2_FanSpd" Text="Endpoint 2 - Fan" Number="70" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -819,11 +819,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-106" Name="Btn3_DimBri" Text="Endpoint 3 - Dimmer" Number="106" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-107" Name="Btn3_DimStat" Text="Endpoint 3 - Dimmer" Number="107" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-108" Name="Btn3_DimBriS" Text="Endpoint 3 - Dimmer" Number="108" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-109" Name="Btn3_CuUpDn" Text="Endpoint 3 - Curtain" Number="109" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-110" Name="Btn3_CuStop" Text="Endpoint 3 - Curtain" Number="110" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-111" Name="Btn3_CuPos" Text="Endpoint 3 - Curtain" Number="111" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-112" Name="Btn3_CuUpDnS" Text="Endpoint 3 - Curtain" Number="112" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-113" Name="Btn3_CuPosS" Text="Endpoint 3 - Curtain" Number="113" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-109" Name="Btn3_CuUpDn" Text="Endpoint 3 - Shutter/Curtain" Number="109" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-110" Name="Btn3_CuStop" Text="Endpoint 3 - Shutter/Curtain" Number="110" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-111" Name="Btn3_CuPos" Text="Endpoint 3 - Shutter/Curtain" Number="111" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-112" Name="Btn3_CuUpDnS" Text="Endpoint 3 - Shutter/Curtain" Number="112" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-113" Name="Btn3_CuPosS" Text="Endpoint 3 - Shutter/Curtain" Number="113" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-114" Name="Btn3_FanPow" Text="Endpoint 3 - Fan" Number="114" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-115" Name="Btn3_FanPowS" Text="Endpoint 3 - Fan" Number="115" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-116" Name="Btn3_FanSpd" Text="Endpoint 3 - Fan" Number="116" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -859,11 +859,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-152" Name="Btn4_DimBri" Text="Endpoint 4 - Dimmer" Number="152" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-153" Name="Btn4_DimStat" Text="Endpoint 4 - Dimmer" Number="153" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-154" Name="Btn4_DimBriS" Text="Endpoint 4 - Dimmer" Number="154" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-155" Name="Btn4_CuUpDn" Text="Endpoint 4 - Curtain" Number="155" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-156" Name="Btn4_CuStop" Text="Endpoint 4 - Curtain" Number="156" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-157" Name="Btn4_CuPos" Text="Endpoint 4 - Curtain" Number="157" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-158" Name="Btn4_CuUpDnS" Text="Endpoint 4 - Curtain" Number="158" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-159" Name="Btn4_CuPosS" Text="Endpoint 4 - Curtain" Number="159" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-155" Name="Btn4_CuUpDn" Text="Endpoint 4 - Shutter/Curtain" Number="155" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-156" Name="Btn4_CuStop" Text="Endpoint 4 - Shutter/Curtain" Number="156" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-157" Name="Btn4_CuPos" Text="Endpoint 4 - Shutter/Curtain" Number="157" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-158" Name="Btn4_CuUpDnS" Text="Endpoint 4 - Shutter/Curtain" Number="158" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-159" Name="Btn4_CuPosS" Text="Endpoint 4 - Shutter/Curtain" Number="159" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-160" Name="Btn4_FanPow" Text="Endpoint 4 - Fan" Number="160" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-161" Name="Btn4_FanPowS" Text="Endpoint 4 - Fan" Number="161" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-162" Name="Btn4_FanSpd" Text="Endpoint 4 - Fan" Number="162" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -899,11 +899,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-198" Name="Btn5_DimBri" Text="Endpoint 5 - Dimmer" Number="198" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-199" Name="Btn5_DimStat" Text="Endpoint 5 - Dimmer" Number="199" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-200" Name="Btn5_DimBriS" Text="Endpoint 5 - Dimmer" Number="200" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-201" Name="Btn5_CuUpDn" Text="Endpoint 5 - Curtain" Number="201" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-202" Name="Btn5_CuStop" Text="Endpoint 5 - Curtain" Number="202" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-203" Name="Btn5_CuPos" Text="Endpoint 5 - Curtain" Number="203" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-204" Name="Btn5_CuUpDnS" Text="Endpoint 5 - Curtain" Number="204" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-205" Name="Btn5_CuPosS" Text="Endpoint 5 - Curtain" Number="205" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-201" Name="Btn5_CuUpDn" Text="Endpoint 5 - Shutter/Curtain" Number="201" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-202" Name="Btn5_CuStop" Text="Endpoint 5 - Shutter/Curtain" Number="202" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-203" Name="Btn5_CuPos" Text="Endpoint 5 - Shutter/Curtain" Number="203" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-204" Name="Btn5_CuUpDnS" Text="Endpoint 5 - Shutter/Curtain" Number="204" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-205" Name="Btn5_CuPosS" Text="Endpoint 5 - Shutter/Curtain" Number="205" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-206" Name="Btn5_FanPow" Text="Endpoint 5 - Fan" Number="206" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-207" Name="Btn5_FanPowS" Text="Endpoint 5 - Fan" Number="207" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-208" Name="Btn5_FanSpd" Text="Endpoint 5 - Fan" Number="208" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -939,11 +939,11 @@
               <ComObject Id="M-035A_A-2026-03-0014_O-244" Name="Btn6_DimBri" Text="Endpoint 6 - Dimmer" Number="244" FunctionText="Brightness" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-245" Name="Btn6_DimStat" Text="Endpoint 6 - Dimmer" Number="245" FunctionText="Switch status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-246" Name="Btn6_DimBriS" Text="Endpoint 6 - Dimmer" Number="246" FunctionText="Brightness status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-247" Name="Btn6_CuUpDn" Text="Endpoint 6 - Curtain" Number="247" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-248" Name="Btn6_CuStop" Text="Endpoint 6 - Curtain" Number="248" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-249" Name="Btn6_CuPos" Text="Endpoint 6 - Curtain" Number="249" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-250" Name="Btn6_CuUpDnS" Text="Endpoint 6 - Curtain" Number="250" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
-              <ComObject Id="M-035A_A-2026-03-0014_O-251" Name="Btn6_CuPosS" Text="Endpoint 6 - Curtain" Number="251" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-247" Name="Btn6_CuUpDn" Text="Endpoint 6 - Shutter/Curtain" Number="247" FunctionText="Up/down" ObjectSize="1 Bit" DatapointType="DPST-1-8" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-248" Name="Btn6_CuStop" Text="Endpoint 6 - Shutter/Curtain" Number="248" FunctionText="Stop" ObjectSize="1 Bit" DatapointType="DPST-1-7" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-249" Name="Btn6_CuPos" Text="Endpoint 6 - Shutter/Curtain" Number="249" FunctionText="Position" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-250" Name="Btn6_CuUpDnS" Text="Endpoint 6 - Shutter/Curtain" Number="250" FunctionText="Up/down status" ObjectSize="1 Bit" DatapointType="DPST-1-11" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
+              <ComObject Id="M-035A_A-2026-03-0014_O-251" Name="Btn6_CuPosS" Text="Endpoint 6 - Shutter/Curtain" Number="251" FunctionText="Position status" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-252" Name="Btn6_FanPow" Text="Endpoint 6 - Fan" Number="252" FunctionText="Power" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-253" Name="Btn6_FanPowS" Text="Endpoint 6 - Fan" Number="253" FunctionText="Power status" ObjectSize="1 Bit" DatapointType="DPST-1-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
               <ComObject Id="M-035A_A-2026-03-0014_O-254" Name="Btn6_FanSpd" Text="Endpoint 6 - Fan" Number="254" FunctionText="Fan speed" ObjectSize="1 Byte" DatapointType="DPST-5-1" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" />
@@ -1000,11 +1000,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-14_R-14" RefId="M-035A_A-2026-03-0014_O-14" Text="Endpoint 1 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-15_R-15" RefId="M-035A_A-2026-03-0014_O-15" Text="Endpoint 1 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-16_R-16" RefId="M-035A_A-2026-03-0014_O-16" Text="Endpoint 1 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-17_R-17" RefId="M-035A_A-2026-03-0014_O-17" Text="Endpoint 1 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-18_R-18" RefId="M-035A_A-2026-03-0014_O-18" Text="Endpoint 1 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-19_R-19" RefId="M-035A_A-2026-03-0014_O-19" Text="Endpoint 1 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-20_R-20" RefId="M-035A_A-2026-03-0014_O-20" Text="Endpoint 1 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-21_R-21" RefId="M-035A_A-2026-03-0014_O-21" Text="Endpoint 1 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-17_R-17" RefId="M-035A_A-2026-03-0014_O-17" Text="Endpoint 1 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-18_R-18" RefId="M-035A_A-2026-03-0014_O-18" Text="Endpoint 1 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-19_R-19" RefId="M-035A_A-2026-03-0014_O-19" Text="Endpoint 1 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-20_R-20" RefId="M-035A_A-2026-03-0014_O-20" Text="Endpoint 1 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-21_R-21" RefId="M-035A_A-2026-03-0014_O-21" Text="Endpoint 1 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-22_R-22" RefId="M-035A_A-2026-03-0014_O-22" Text="Endpoint 1 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-23_R-23" RefId="M-035A_A-2026-03-0014_O-23" Text="Endpoint 1 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-24_R-24" RefId="M-035A_A-2026-03-0014_O-24" DatapointType="DPST-5-1" Text="Endpoint 1 - Fan" FunctionText="Fan speed" />
@@ -1046,11 +1046,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-60_R-60" RefId="M-035A_A-2026-03-0014_O-60" Text="Endpoint 2 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-61_R-61" RefId="M-035A_A-2026-03-0014_O-61" Text="Endpoint 2 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-62_R-62" RefId="M-035A_A-2026-03-0014_O-62" Text="Endpoint 2 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-63_R-63" RefId="M-035A_A-2026-03-0014_O-63" Text="Endpoint 2 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-64_R-64" RefId="M-035A_A-2026-03-0014_O-64" Text="Endpoint 2 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-65_R-65" RefId="M-035A_A-2026-03-0014_O-65" Text="Endpoint 2 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-66_R-66" RefId="M-035A_A-2026-03-0014_O-66" Text="Endpoint 2 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-67_R-67" RefId="M-035A_A-2026-03-0014_O-67" Text="Endpoint 2 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-63_R-63" RefId="M-035A_A-2026-03-0014_O-63" Text="Endpoint 2 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-64_R-64" RefId="M-035A_A-2026-03-0014_O-64" Text="Endpoint 2 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-65_R-65" RefId="M-035A_A-2026-03-0014_O-65" Text="Endpoint 2 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-66_R-66" RefId="M-035A_A-2026-03-0014_O-66" Text="Endpoint 2 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-67_R-67" RefId="M-035A_A-2026-03-0014_O-67" Text="Endpoint 2 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-68_R-68" RefId="M-035A_A-2026-03-0014_O-68" Text="Endpoint 2 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-69_R-69" RefId="M-035A_A-2026-03-0014_O-69" Text="Endpoint 2 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-70_R-70" RefId="M-035A_A-2026-03-0014_O-70" DatapointType="DPST-5-1" Text="Endpoint 2 - Fan" FunctionText="Fan speed" />
@@ -1092,11 +1092,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-106_R-106" RefId="M-035A_A-2026-03-0014_O-106" Text="Endpoint 3 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-107_R-107" RefId="M-035A_A-2026-03-0014_O-107" Text="Endpoint 3 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-108_R-108" RefId="M-035A_A-2026-03-0014_O-108" Text="Endpoint 3 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-109_R-109" RefId="M-035A_A-2026-03-0014_O-109" Text="Endpoint 3 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-110_R-110" RefId="M-035A_A-2026-03-0014_O-110" Text="Endpoint 3 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-111_R-111" RefId="M-035A_A-2026-03-0014_O-111" Text="Endpoint 3 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-112_R-112" RefId="M-035A_A-2026-03-0014_O-112" Text="Endpoint 3 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-113_R-113" RefId="M-035A_A-2026-03-0014_O-113" Text="Endpoint 3 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-109_R-109" RefId="M-035A_A-2026-03-0014_O-109" Text="Endpoint 3 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-110_R-110" RefId="M-035A_A-2026-03-0014_O-110" Text="Endpoint 3 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-111_R-111" RefId="M-035A_A-2026-03-0014_O-111" Text="Endpoint 3 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-112_R-112" RefId="M-035A_A-2026-03-0014_O-112" Text="Endpoint 3 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-113_R-113" RefId="M-035A_A-2026-03-0014_O-113" Text="Endpoint 3 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-114_R-114" RefId="M-035A_A-2026-03-0014_O-114" Text="Endpoint 3 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-115_R-115" RefId="M-035A_A-2026-03-0014_O-115" Text="Endpoint 3 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-116_R-116" RefId="M-035A_A-2026-03-0014_O-116" DatapointType="DPST-5-1" Text="Endpoint 3 - Fan" FunctionText="Fan speed" />
@@ -1138,11 +1138,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-152_R-152" RefId="M-035A_A-2026-03-0014_O-152" Text="Endpoint 4 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-153_R-153" RefId="M-035A_A-2026-03-0014_O-153" Text="Endpoint 4 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-154_R-154" RefId="M-035A_A-2026-03-0014_O-154" Text="Endpoint 4 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-155_R-155" RefId="M-035A_A-2026-03-0014_O-155" Text="Endpoint 4 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-156_R-156" RefId="M-035A_A-2026-03-0014_O-156" Text="Endpoint 4 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-157_R-157" RefId="M-035A_A-2026-03-0014_O-157" Text="Endpoint 4 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-158_R-158" RefId="M-035A_A-2026-03-0014_O-158" Text="Endpoint 4 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-159_R-159" RefId="M-035A_A-2026-03-0014_O-159" Text="Endpoint 4 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-155_R-155" RefId="M-035A_A-2026-03-0014_O-155" Text="Endpoint 4 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-156_R-156" RefId="M-035A_A-2026-03-0014_O-156" Text="Endpoint 4 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-157_R-157" RefId="M-035A_A-2026-03-0014_O-157" Text="Endpoint 4 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-158_R-158" RefId="M-035A_A-2026-03-0014_O-158" Text="Endpoint 4 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-159_R-159" RefId="M-035A_A-2026-03-0014_O-159" Text="Endpoint 4 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-160_R-160" RefId="M-035A_A-2026-03-0014_O-160" Text="Endpoint 4 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-161_R-161" RefId="M-035A_A-2026-03-0014_O-161" Text="Endpoint 4 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-162_R-162" RefId="M-035A_A-2026-03-0014_O-162" DatapointType="DPST-5-1" Text="Endpoint 4 - Fan" FunctionText="Fan speed" />
@@ -1184,11 +1184,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-198_R-198" RefId="M-035A_A-2026-03-0014_O-198" Text="Endpoint 5 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-199_R-199" RefId="M-035A_A-2026-03-0014_O-199" Text="Endpoint 5 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-200_R-200" RefId="M-035A_A-2026-03-0014_O-200" Text="Endpoint 5 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-201_R-201" RefId="M-035A_A-2026-03-0014_O-201" Text="Endpoint 5 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-202_R-202" RefId="M-035A_A-2026-03-0014_O-202" Text="Endpoint 5 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-203_R-203" RefId="M-035A_A-2026-03-0014_O-203" Text="Endpoint 5 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-204_R-204" RefId="M-035A_A-2026-03-0014_O-204" Text="Endpoint 5 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-205_R-205" RefId="M-035A_A-2026-03-0014_O-205" Text="Endpoint 5 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-201_R-201" RefId="M-035A_A-2026-03-0014_O-201" Text="Endpoint 5 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-202_R-202" RefId="M-035A_A-2026-03-0014_O-202" Text="Endpoint 5 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-203_R-203" RefId="M-035A_A-2026-03-0014_O-203" Text="Endpoint 5 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-204_R-204" RefId="M-035A_A-2026-03-0014_O-204" Text="Endpoint 5 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-205_R-205" RefId="M-035A_A-2026-03-0014_O-205" Text="Endpoint 5 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-206_R-206" RefId="M-035A_A-2026-03-0014_O-206" Text="Endpoint 5 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-207_R-207" RefId="M-035A_A-2026-03-0014_O-207" Text="Endpoint 5 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-208_R-208" RefId="M-035A_A-2026-03-0014_O-208" DatapointType="DPST-5-1" Text="Endpoint 5 - Fan" FunctionText="Fan speed" />
@@ -1230,11 +1230,11 @@
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-244_R-244" RefId="M-035A_A-2026-03-0014_O-244" Text="Endpoint 6 - Dimmer" FunctionText="Brightness" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-245_R-245" RefId="M-035A_A-2026-03-0014_O-245" Text="Endpoint 6 - Dimmer" FunctionText="Switch status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-246_R-246" RefId="M-035A_A-2026-03-0014_O-246" Text="Endpoint 6 - Dimmer" FunctionText="Brightness status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-247_R-247" RefId="M-035A_A-2026-03-0014_O-247" Text="Endpoint 6 - Curtain" FunctionText="Up/down" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-248_R-248" RefId="M-035A_A-2026-03-0014_O-248" Text="Endpoint 6 - Curtain" FunctionText="Stop" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-249_R-249" RefId="M-035A_A-2026-03-0014_O-249" Text="Endpoint 6 - Curtain" FunctionText="Position" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-250_R-250" RefId="M-035A_A-2026-03-0014_O-250" Text="Endpoint 6 - Curtain" FunctionText="Up/down status" />
-              <ComObjectRef Id="M-035A_A-2026-03-0014_O-251_R-251" RefId="M-035A_A-2026-03-0014_O-251" Text="Endpoint 6 - Curtain" FunctionText="Position status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-247_R-247" RefId="M-035A_A-2026-03-0014_O-247" Text="Endpoint 6 - Shutter/Curtain" FunctionText="Up/down" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-248_R-248" RefId="M-035A_A-2026-03-0014_O-248" Text="Endpoint 6 - Shutter/Curtain" FunctionText="Stop" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-249_R-249" RefId="M-035A_A-2026-03-0014_O-249" Text="Endpoint 6 - Shutter/Curtain" FunctionText="Position" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-250_R-250" RefId="M-035A_A-2026-03-0014_O-250" Text="Endpoint 6 - Shutter/Curtain" FunctionText="Up/down status" />
+              <ComObjectRef Id="M-035A_A-2026-03-0014_O-251_R-251" RefId="M-035A_A-2026-03-0014_O-251" Text="Endpoint 6 - Shutter/Curtain" FunctionText="Position status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-252_R-252" RefId="M-035A_A-2026-03-0014_O-252" Text="Endpoint 6 - Fan" FunctionText="Power" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-253_R-253" RefId="M-035A_A-2026-03-0014_O-253" Text="Endpoint 6 - Fan" FunctionText="Power status" />
               <ComObjectRef Id="M-035A_A-2026-03-0014_O-254_R-254" RefId="M-035A_A-2026-03-0014_O-254" DatapointType="DPST-5-1" Text="Endpoint 6 - Fan" FunctionText="Fan speed" />
@@ -1299,17 +1299,27 @@
                 <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-4_R-4" />
                 <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-5_R-5" />
                 <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-6_R-6" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-2" Text="" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-3" Text="Sensor settings" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-4" Text="Temperature measurement" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-5" Text="Transmission on change ≥ 1 °C" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-6" Text=" " />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-7" Text="Humidity measurement" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-8" Text="Transmission on change ≥ 5 %" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-9" Text=" " />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-10" Text="Transmission cycle" />
+                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-11" Text="Periodic transmission every 5 minutes" />
                 <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-1_R-1" />
                 <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-2_R-2" />
                 <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-3_R-3" />
               </ParameterBlock>
               <choose ParamRefId="M-035A_A-2026-03-0014_P-1_R-1">
                 <when test="1">
-                  <ParameterBlock Id="M-035A_A-2026-03-0014_PB-2" Name="Scene settings" Text="Scene settings">
+                  <ParameterBlock Id="M-035A_A-2026-03-0014_PB-12" Name="Scene settings" Text="Scene settings">
                     <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-7_R-7" />
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=1">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-3" Text="  Scene 1" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-13" Text="Scene 1" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-8_R-8" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-9_R-9" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-10_R-10" />
@@ -1319,8 +1329,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=2">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-4" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-5" Text="  Scene 2" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-14" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-15" Text="Scene 2" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-12_R-12" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-13_R-13" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-14_R-14" />
@@ -1330,8 +1340,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=3">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-6" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-7" Text="  Scene 3" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-16" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-17" Text="Scene 3" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-16_R-16" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-17_R-17" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-18_R-18" />
@@ -1341,8 +1351,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=4">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-8" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-9" Text="  Scene 4" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-18" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-19" Text="Scene 4" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-20_R-20" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-21_R-21" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-22_R-22" />
@@ -1352,8 +1362,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=5">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-10" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-11" Text="  Scene 5" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-20" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-21" Text="Scene 5" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-24_R-24" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-25_R-25" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-26_R-26" />
@@ -1363,8 +1373,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=6">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-12" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-13" Text="  Scene 6" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-22" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-23" Text="Scene 6" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-28_R-28" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-29_R-29" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-30_R-30" />
@@ -1374,8 +1384,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=7">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-14" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-15" Text="  Scene 7" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-24" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-25" Text="Scene 7" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-32_R-32" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-33_R-33" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-34_R-34" />
@@ -1385,8 +1395,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=8">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-16" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-17" Text="  Scene 8" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-26" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-27" Text="Scene 8" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-36_R-36" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-37_R-37" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-38_R-38" />
@@ -1396,8 +1406,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=9">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-18" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-19" Text="  Scene 9" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-28" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-29" Text="Scene 9" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-40_R-40" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-41_R-41" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-42_R-42" />
@@ -1407,8 +1417,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=10">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-20" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-21" Text="  Scene 10" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-30" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-31" Text="Scene 10" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-44_R-44" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-45_R-45" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-46_R-46" />
@@ -1418,8 +1428,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=11">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-22" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-23" Text="  Scene 11" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-32" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-33" Text="Scene 11" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-48_R-48" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-49_R-49" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-50_R-50" />
@@ -1429,8 +1439,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=12">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-24" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-25" Text="  Scene 12" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-34" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-35" Text="Scene 12" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-52_R-52" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-53_R-53" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-54_R-54" />
@@ -1440,8 +1450,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=13">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-26" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-27" Text="  Scene 13" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-36" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-37" Text="Scene 13" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-56_R-56" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-57_R-57" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-58_R-58" />
@@ -1451,8 +1461,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=14">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-28" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-29" Text="  Scene 14" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-38" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-39" Text="Scene 14" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-60_R-60" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-61_R-61" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-62_R-62" />
@@ -1462,8 +1472,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=15">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-30" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-31" Text="  Scene 15" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-40" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-41" Text="Scene 15" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-64_R-64" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-65_R-65" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-66_R-66" />
@@ -1473,8 +1483,8 @@
                     </choose>
                     <choose ParamRefId="M-035A_A-2026-03-0014_P-7_R-7">
                       <when test=">=16">
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-32" />
-                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-33" Text="  Scene 16" UIHint="Headline" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-42" />
+                        <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-43" Text="Scene 16" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-68_R-68" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-69_R-69" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-70_R-70" />
@@ -1485,7 +1495,7 @@
                   </ParameterBlock>
                 </when>
               </choose>
-              <ParameterBlock Id="M-035A_A-2026-03-0014_PB-34" Name="Endpoint 1" Text="Endpoint 1 setting">
+              <ParameterBlock Id="M-035A_A-2026-03-0014_PB-44" Name="Endpoint 1" Text="Endpoint 1 settings">
                 <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-72_R-72" />
                 <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-5_R-5" />
                 <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-6_R-6" />
@@ -1505,7 +1515,7 @@
                 <when test="1">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-3_R-3">
                     <when test=">=2">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-35" Name="Endpoint 2" Text="Endpoint 2 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-45" Name="Endpoint 2" Text="Endpoint 2 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-97_R-97" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-98_R-98" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-98_R-98">
@@ -1569,11 +1579,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-113_R-113" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-36" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-46" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-109_R-109" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-110_R-110" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-111_R-111" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-37" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-47" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-114_R-114" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-115_R-115" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-116_R-116" />
@@ -1589,7 +1599,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-118_R-118">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-38" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-48" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -1600,9 +1610,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-39" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-49" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-120_R-120" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-40" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-50" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-112_R-112" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-119_R-119" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-74_R-74" />
@@ -1658,7 +1668,7 @@
                 <when test="0">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-2_R-2">
                     <when test=">=2">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-41" Name="Endpoint 2" Text="Endpoint 2 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-51" Name="Endpoint 2" Text="Endpoint 2 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-97_R-97" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-98_R-98" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-98_R-98">
@@ -1722,11 +1732,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-113_R-113" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-42" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-52" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-109_R-109" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-110_R-110" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-111_R-111" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-43" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-53" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-114_R-114" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-115_R-115" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-116_R-116" />
@@ -1742,7 +1752,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-118_R-118">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-44" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-54" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -1753,9 +1763,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-45" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-55" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-120_R-120" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-46" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-56" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-112_R-112" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-119_R-119" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-74_R-74" />
@@ -1813,7 +1823,7 @@
                 <when test="1">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-3_R-3">
                     <when test=">=3">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-47" Name="Endpoint 3" Text="Endpoint 3 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-57" Name="Endpoint 3" Text="Endpoint 3 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-122_R-122" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-123_R-123" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-123_R-123">
@@ -1877,11 +1887,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-138_R-138" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-48" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-58" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-134_R-134" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-135_R-135" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-136_R-136" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-49" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-59" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-139_R-139" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-140_R-140" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-141_R-141" />
@@ -1897,7 +1907,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-143_R-143">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-50" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-60" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -1908,9 +1918,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-51" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-61" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-145_R-145" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-52" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-62" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-137_R-137" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-144_R-144" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-120_R-120" />
@@ -1966,7 +1976,7 @@
                 <when test="0">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-2_R-2">
                     <when test=">=3">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-53" Name="Endpoint 3" Text="Endpoint 3 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-63" Name="Endpoint 3" Text="Endpoint 3 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-122_R-122" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-123_R-123" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-123_R-123">
@@ -2030,11 +2040,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-138_R-138" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-54" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-64" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-134_R-134" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-135_R-135" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-136_R-136" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-55" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-65" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-139_R-139" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-140_R-140" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-141_R-141" />
@@ -2050,7 +2060,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-143_R-143">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-56" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-66" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2061,9 +2071,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-57" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-67" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-145_R-145" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-58" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-68" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-137_R-137" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-144_R-144" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-120_R-120" />
@@ -2121,7 +2131,7 @@
                 <when test="1">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-3_R-3">
                     <when test=">=4">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-59" Name="Endpoint 4" Text="Endpoint 4 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-69" Name="Endpoint 4" Text="Endpoint 4 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-147_R-147" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-148_R-148" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-148_R-148">
@@ -2185,11 +2195,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-163_R-163" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-60" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-70" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-159_R-159" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-160_R-160" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-161_R-161" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-61" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-71" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-164_R-164" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-165_R-165" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-166_R-166" />
@@ -2205,7 +2215,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-168_R-168">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-62" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-72" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2216,9 +2226,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-63" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-73" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-170_R-170" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-64" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-74" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-162_R-162" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-169_R-169" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-166_R-166" />
@@ -2274,7 +2284,7 @@
                 <when test="0">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-2_R-2">
                     <when test=">=4">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-65" Name="Endpoint 4" Text="Endpoint 4 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-75" Name="Endpoint 4" Text="Endpoint 4 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-147_R-147" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-148_R-148" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-148_R-148">
@@ -2338,11 +2348,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-163_R-163" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-66" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-76" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-159_R-159" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-160_R-160" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-161_R-161" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-67" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-77" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-164_R-164" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-165_R-165" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-166_R-166" />
@@ -2358,7 +2368,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-168_R-168">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-68" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-78" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2369,9 +2379,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-69" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-79" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-170_R-170" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-70" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-80" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-162_R-162" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-169_R-169" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-166_R-166" />
@@ -2429,7 +2439,7 @@
                 <when test="1">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-3_R-3">
                     <when test=">=5">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-71" Name="Endpoint 5" Text="Endpoint 5 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-81" Name="Endpoint 5" Text="Endpoint 5 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-172_R-172" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-173_R-173" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-173_R-173">
@@ -2493,11 +2503,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-188_R-188" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-72" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-82" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-184_R-184" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-185_R-185" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-186_R-186" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-73" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-83" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-189_R-189" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-190_R-190" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-191_R-191" />
@@ -2513,7 +2523,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-193_R-193">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-74" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-84" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2524,9 +2534,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-75" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-85" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-195_R-195" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-76" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-86" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-187_R-187" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-194_R-194" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-212_R-212" />
@@ -2582,7 +2592,7 @@
                 <when test="0">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-2_R-2">
                     <when test=">=5">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-77" Name="Endpoint 5" Text="Endpoint 5 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-87" Name="Endpoint 5" Text="Endpoint 5 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-172_R-172" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-173_R-173" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-173_R-173">
@@ -2646,11 +2656,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-188_R-188" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-78" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-88" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-184_R-184" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-185_R-185" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-186_R-186" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-79" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-89" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-189_R-189" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-190_R-190" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-191_R-191" />
@@ -2666,7 +2676,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-193_R-193">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-80" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-90" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2677,9 +2687,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-81" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-91" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-195_R-195" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-82" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-92" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-187_R-187" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-194_R-194" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-212_R-212" />
@@ -2739,7 +2749,7 @@
                 <when test="0">
                   <choose ParamRefId="M-035A_A-2026-03-0014_P-2_R-2">
                     <when test=">=6">
-                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-83" Name="Endpoint 6" Text="Endpoint 6 setting">
+                      <ParameterBlock Id="M-035A_A-2026-03-0014_PB-93" Name="Endpoint 6" Text="Endpoint 6 settings">
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-197_R-197" />
                         <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-198_R-198" />
                         <choose ParamRefId="M-035A_A-2026-03-0014_P-198_R-198">
@@ -2803,11 +2813,11 @@
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-213_R-213" />
                           </when>
                           <when test="6">
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-84" Text="Temperature settings" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-94" Text="Temperature settings" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-209_R-209" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-210_R-210" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-211_R-211" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-85" Text="AC Modes" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-95" Text="AC Modes" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-214_R-214" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-215_R-215" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-216_R-216" />
@@ -2823,7 +2833,7 @@
                                           <when test="0">
                                             <choose ParamRefId="M-035A_A-2026-03-0014_P-218_R-218">
                                               <when test="0">
-                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-86" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." UIHint="Headline" />
+                                                <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-96" Text="Warning: At least 1 AC mode must be enabled. If not, the device will use the old mode configuration." />
                                               </when>
                                             </choose>
                                           </when>
@@ -2834,9 +2844,9 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-87" Text="Swing" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-97" Text="Swing" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-220_R-220" />
-                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-88" Text="Fan speed" UIHint="Headline" />
+                            <ParameterSeparator Id="M-035A_A-2026-03-0014_PB-98" Text="Fan speed" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-212_R-212" />
                             <ParameterRefRef RefId="M-035A_A-2026-03-0014_P-219_R-219" />
                             <ComObjectRefRef RefId="M-035A_A-2026-03-0014_O-258_R-258" />

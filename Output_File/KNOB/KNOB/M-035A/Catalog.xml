@@ -4,7 +4,7 @@
     <Manufacturer RefId="M-035A">
       <Catalog>
         <CatalogSection Id="M-035A_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
-          <CatalogItem Id="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium" Number="1" VisibleDescription="" ProductRefId="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Hardware2ProgramRefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F" DefaultLanguage="en-US" />
+          <CatalogItem Id="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium SE" Number="1" VisibleDescription="" ProductRefId="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Hardware2ProgramRefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F" DefaultLanguage="en-US" />
         </CatalogSection>
       </Catalog>
       <Languages>
@@ -16,7 +16,7 @@
           </TranslationUnit>
           <TranslationUnit RefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1">
             <TranslationElement RefId="M-035A_H-LMS0KK.2E1LE-1_HP-00001-01-A35F_CI-LMS0KK.2E1LE-1">
-              <Translation AttributeName="Name" Text="Lumi Knob aluminium" />
+              <Translation AttributeName="Name" Text="Lumi Knob aluminium SE" />
             </TranslationElement>
           </TranslationUnit>
         </Language>

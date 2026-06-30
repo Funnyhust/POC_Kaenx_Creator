@@ -3,9 +3,9 @@
   <ManufacturerData>
     <Manufacturer RefId="M-035A">
       <Hardware>
-        <Hardware Id="M-035A_H-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium" SerialNumber="LM26KN" VersionNumber="1" BusCurrent="10" HasIndividualAddress="1" HasApplicationProgram="1">
+        <Hardware Id="M-035A_H-LMS0KK.2E1LE-1" Name="Lumi Knob aluminium SE" SerialNumber="LM26KN" VersionNumber="1" BusCurrent="10" HasIndividualAddress="1" HasApplicationProgram="1">
           <Products>
-            <Product Id="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Text="Lumi Knob aluminium" OrderNumber="LMS0KK.1LE" IsRailMounted="0" DefaultLanguage="en-US" Hash="LPUvYo6l9hQXBJJ5NtVsATdL+DA=">
+            <Product Id="M-035A_H-LMS0KK.2E1LE-1_P-LMS0KK.2E1LE" Text="Lumi Knob aluminium SE" OrderNumber="LMS0KK.1LE" IsRailMounted="0" DefaultLanguage="en-US" Hash="LPUvYo6l9hQXBJJ5NtVsATdL+DA=">
               <RegistrationInfo RegistrationStatus="Registered" RegistrationSignature="EuQ0Tf8cKxpbj7YDwFAkELb09y1eHztCnBH0GXNAJvVCPx4pNefq1KL6V3x1DqKOhITCI5cv233EH/mD9r8z3YODipBO+gb/nbwv2IRfSU3vzEnArX42kHgXnogKjHLcV07FbX2Io7DNQEDHIprpflN+O/5Rw8ccp8zqZxGnGrY=" />
             </Product>
           </Products>

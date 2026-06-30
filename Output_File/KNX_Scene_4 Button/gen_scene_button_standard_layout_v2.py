@@ -1,0 +1,1269 @@
+#!/usr/bin/env python3
+"""Generate the Scene Button XML with the standard parameter layout v2.
+
+The script embeds the complete base XML, applies the standard layout rules,
+and writes the full v2 XML without reading another XML file.
+"""
+
+from __future__ import annotations
+
+from collections import Counter
+from html import escape
+from pathlib import Path
+import re
+
+
+BASE_XML = r"""<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-035A">
+      <Catalog>
+        <CatalogSection Id="M-035A_CS-1" Name="Devices" Number="1" DefaultLanguage="en-US">
+          <CatalogItem Id="M-035A_H-2026-3_HP-2026-03-00003_CI-LM4SCK4GE" Name="Lumi Switch/Dimming/Scene, 4 gang SE" Number="1" ProductRefId="M-035A_H-2026-3_P-KNX-BTN" Hardware2ProgramRefId="M-035A_H-2026-3_HP-2026-03-00003" DefaultLanguage="en-US" />
+        </CatalogSection>
+      </Catalog>
+      <Hardware>
+        <Hardware Id="M-035A_H-2026-3" Name="Lumi Switch/Dimming/Scene, 4 gang SE" SerialNumber="LM4SCK4GE" VersionNumber="4" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true">
+          <Products>
+            <Product Id="M-035A_H-2026-3_P-KNX-BTN" Text="Lumi Switch/Dimming/Scene, 4 gang SE" OrderNumber="LM4SCK4GE" IsRailMounted="false" DefaultLanguage="en-US" />
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-035A_H-2026-3_HP-2026-03-00003" MediumTypes="MT-0">
+              <ApplicationProgramRef RefId="M-035A_A-2026-01-0003" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-035A_A-2026-01-0003" ApplicationNumber="2026" ApplicationVersion="4" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="Switch/Dimming/Scene 4-gang" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="en-US" DynamicTableManagement="false" Linkable="false" MinEtsVersion="5.7" IsSecureEnabled="true" SupportsKNXDataSecure="true" SupportsKNXToolAccessSecure="true" ToolAccessSecure="true" MaxSecurityIndividualAddressEntries="64" MaxSecurityGroupKeyTableEntries="48">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-035A_A-2026-01-0003_RS-04-00000" Name="Parameters" Size="100" LoadStateMachine="4" Offset="0" />
+            </Code>
+            <ParameterTypes>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-1" Name="Button Mode">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Disabled" Value="0" Id="M-035A_A-2026-01-0003_PT-1_EN-0" />
+                  <Enumeration Text="Switch" Value="1" Id="M-035A_A-2026-01-0003_PT-1_EN-1" />
+                  <Enumeration Text="Dimming" Value="2" Id="M-035A_A-2026-01-0003_PT-1_EN-2" />
+                  <Enumeration Text="Scene control" Value="3" Id="M-035A_A-2026-01-0003_PT-1_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-10" Name="SceneSingleAction_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="No action" Value="0" Id="M-035A_A-2026-01-0003_PT-10_E-0" />
+                  <Enumeration Text="Recall scene" Value="1" Id="M-035A_A-2026-01-0003_PT-10_E-1" />
+                  <Enumeration Text="Scene cycling" Value="2" Id="M-035A_A-2026-01-0003_PT-10_E-2" />
+                  <Enumeration Text="Store scene" Value="3" Id="M-035A_A-2026-01-0003_PT-10_E-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-11" Name="SceneCount_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="2 Scenes" Value="2" Id="M-035A_A-2026-01-0003_PT-11_E-2" />
+                  <Enumeration Text="3 Scenes" Value="3" Id="M-035A_A-2026-01-0003_PT-11_E-3" />
+                  <Enumeration Text="4 Scenes" Value="4" Id="M-035A_A-2026-01-0003_PT-11_E-4" />
+                  <Enumeration Text="5 Scenes" Value="5" Id="M-035A_A-2026-01-0003_PT-11_E-5" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-3" Name="Dimming Behavior">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Start/Stop" Value="0" Id="M-035A_A-2026-01-0003_PT-3_EN-0" />
+                  <Enumeration Text="Step" Value="1" Id="M-035A_A-2026-01-0003_PT-3_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-4" Name="Step Size">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="100" Value="1" Id="M-035A_A-2026-01-0003_PT-4_EN-1" />
+                  <Enumeration Text="50" Value="2" Id="M-035A_A-2026-01-0003_PT-4_EN-2" />
+                  <Enumeration Text="25" Value="3" Id="M-035A_A-2026-01-0003_PT-4_EN-3" />
+                  <Enumeration Text="12.5" Value="4" Id="M-035A_A-2026-01-0003_PT-4_EN-4" />
+                  <Enumeration Text="6.25" Value="5" Id="M-035A_A-2026-01-0003_PT-4_EN-5" />
+                  <Enumeration Text="3.125" Value="6" Id="M-035A_A-2026-01-0003_PT-4_EN-6" />
+                  <Enumeration Text="1.5625" Value="7" Id="M-035A_A-2026-01-0003_PT-4_EN-7" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-5" Name="1..100">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="100" />
+              </ParameterType>
+              <!-- Scene Control ParameterTypes -->
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-6" Name="SceneAction_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="No reaction" Value="0" Id="M-035A_A-2026-01-0003_PT-6_EN-0" />
+                  <Enumeration Text="Recall scene" Value="1" Id="M-035A_A-2026-01-0003_PT-6_EN-1" />
+                  <Enumeration Text="Store scene" Value="2" Id="M-035A_A-2026-01-0003_PT-6_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-7" Name="SceneNumber_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Scene No. 1" Value="1" Id="M-035A_A-2026-01-0003_PT-7_EN-1" />
+                  <Enumeration Text="Scene No. 2" Value="2" Id="M-035A_A-2026-01-0003_PT-7_EN-2" />
+                  <Enumeration Text="Scene No. 3" Value="3" Id="M-035A_A-2026-01-0003_PT-7_EN-3" />
+                  <Enumeration Text="Scene No. 4" Value="4" Id="M-035A_A-2026-01-0003_PT-7_EN-4" />
+                  <Enumeration Text="Scene No. 5" Value="5" Id="M-035A_A-2026-01-0003_PT-7_EN-5" />
+                  <Enumeration Text="Scene No. 6" Value="6" Id="M-035A_A-2026-01-0003_PT-7_EN-6" />
+                  <Enumeration Text="Scene No. 7" Value="7" Id="M-035A_A-2026-01-0003_PT-7_EN-7" />
+                  <Enumeration Text="Scene No. 8" Value="8" Id="M-035A_A-2026-01-0003_PT-7_EN-8" />
+                  <Enumeration Text="Scene No. 9" Value="9" Id="M-035A_A-2026-01-0003_PT-7_EN-9" />
+                  <Enumeration Text="Scene No. 10" Value="10" Id="M-035A_A-2026-01-0003_PT-7_EN-10" />
+                  <Enumeration Text="Scene No. 11" Value="11" Id="M-035A_A-2026-01-0003_PT-7_EN-11" />
+                  <Enumeration Text="Scene No. 12" Value="12" Id="M-035A_A-2026-01-0003_PT-7_EN-12" />
+                  <Enumeration Text="Scene No. 13" Value="13" Id="M-035A_A-2026-01-0003_PT-7_EN-13" />
+                  <Enumeration Text="Scene No. 14" Value="14" Id="M-035A_A-2026-01-0003_PT-7_EN-14" />
+                  <Enumeration Text="Scene No. 15" Value="15" Id="M-035A_A-2026-01-0003_PT-7_EN-15" />
+                  <Enumeration Text="Scene No. 16" Value="16" Id="M-035A_A-2026-01-0003_PT-7_EN-16" />
+                  <Enumeration Text="Scene No. 17" Value="17" Id="M-035A_A-2026-01-0003_PT-7_EN-17" />
+                  <Enumeration Text="Scene No. 18" Value="18" Id="M-035A_A-2026-01-0003_PT-7_EN-18" />
+                  <Enumeration Text="Scene No. 19" Value="19" Id="M-035A_A-2026-01-0003_PT-7_EN-19" />
+                  <Enumeration Text="Scene No. 20" Value="20" Id="M-035A_A-2026-01-0003_PT-7_EN-20" />
+                  <Enumeration Text="Scene No. 21" Value="21" Id="M-035A_A-2026-01-0003_PT-7_EN-21" />
+                  <Enumeration Text="Scene No. 22" Value="22" Id="M-035A_A-2026-01-0003_PT-7_EN-22" />
+                  <Enumeration Text="Scene No. 23" Value="23" Id="M-035A_A-2026-01-0003_PT-7_EN-23" />
+                  <Enumeration Text="Scene No. 24" Value="24" Id="M-035A_A-2026-01-0003_PT-7_EN-24" />
+                  <Enumeration Text="Scene No. 25" Value="25" Id="M-035A_A-2026-01-0003_PT-7_EN-25" />
+                  <Enumeration Text="Scene No. 26" Value="26" Id="M-035A_A-2026-01-0003_PT-7_EN-26" />
+                  <Enumeration Text="Scene No. 27" Value="27" Id="M-035A_A-2026-01-0003_PT-7_EN-27" />
+                  <Enumeration Text="Scene No. 28" Value="28" Id="M-035A_A-2026-01-0003_PT-7_EN-28" />
+                  <Enumeration Text="Scene No. 29" Value="29" Id="M-035A_A-2026-01-0003_PT-7_EN-29" />
+                  <Enumeration Text="Scene No. 30" Value="30" Id="M-035A_A-2026-01-0003_PT-7_EN-30" />
+                  <Enumeration Text="Scene No. 31" Value="31" Id="M-035A_A-2026-01-0003_PT-7_EN-31" />
+                  <Enumeration Text="Scene No. 32" Value="32" Id="M-035A_A-2026-01-0003_PT-7_EN-32" />
+                  <Enumeration Text="Scene No. 33" Value="33" Id="M-035A_A-2026-01-0003_PT-7_EN-33" />
+                  <Enumeration Text="Scene No. 34" Value="34" Id="M-035A_A-2026-01-0003_PT-7_EN-34" />
+                  <Enumeration Text="Scene No. 35" Value="35" Id="M-035A_A-2026-01-0003_PT-7_EN-35" />
+                  <Enumeration Text="Scene No. 36" Value="36" Id="M-035A_A-2026-01-0003_PT-7_EN-36" />
+                  <Enumeration Text="Scene No. 37" Value="37" Id="M-035A_A-2026-01-0003_PT-7_EN-37" />
+                  <Enumeration Text="Scene No. 38" Value="38" Id="M-035A_A-2026-01-0003_PT-7_EN-38" />
+                  <Enumeration Text="Scene No. 39" Value="39" Id="M-035A_A-2026-01-0003_PT-7_EN-39" />
+                  <Enumeration Text="Scene No. 40" Value="40" Id="M-035A_A-2026-01-0003_PT-7_EN-40" />
+                  <Enumeration Text="Scene No. 41" Value="41" Id="M-035A_A-2026-01-0003_PT-7_EN-41" />
+                  <Enumeration Text="Scene No. 42" Value="42" Id="M-035A_A-2026-01-0003_PT-7_EN-42" />
+                  <Enumeration Text="Scene No. 43" Value="43" Id="M-035A_A-2026-01-0003_PT-7_EN-43" />
+                  <Enumeration Text="Scene No. 44" Value="44" Id="M-035A_A-2026-01-0003_PT-7_EN-44" />
+                  <Enumeration Text="Scene No. 45" Value="45" Id="M-035A_A-2026-01-0003_PT-7_EN-45" />
+                  <Enumeration Text="Scene No. 46" Value="46" Id="M-035A_A-2026-01-0003_PT-7_EN-46" />
+                  <Enumeration Text="Scene No. 47" Value="47" Id="M-035A_A-2026-01-0003_PT-7_EN-47" />
+                  <Enumeration Text="Scene No. 48" Value="48" Id="M-035A_A-2026-01-0003_PT-7_EN-48" />
+                  <Enumeration Text="Scene No. 49" Value="49" Id="M-035A_A-2026-01-0003_PT-7_EN-49" />
+                  <Enumeration Text="Scene No. 50" Value="50" Id="M-035A_A-2026-01-0003_PT-7_EN-50" />
+                  <Enumeration Text="Scene No. 51" Value="51" Id="M-035A_A-2026-01-0003_PT-7_EN-51" />
+                  <Enumeration Text="Scene No. 52" Value="52" Id="M-035A_A-2026-01-0003_PT-7_EN-52" />
+                  <Enumeration Text="Scene No. 53" Value="53" Id="M-035A_A-2026-01-0003_PT-7_EN-53" />
+                  <Enumeration Text="Scene No. 54" Value="54" Id="M-035A_A-2026-01-0003_PT-7_EN-54" />
+                  <Enumeration Text="Scene No. 55" Value="55" Id="M-035A_A-2026-01-0003_PT-7_EN-55" />
+                  <Enumeration Text="Scene No. 56" Value="56" Id="M-035A_A-2026-01-0003_PT-7_EN-56" />
+                  <Enumeration Text="Scene No. 57" Value="57" Id="M-035A_A-2026-01-0003_PT-7_EN-57" />
+                  <Enumeration Text="Scene No. 58" Value="58" Id="M-035A_A-2026-01-0003_PT-7_EN-58" />
+                  <Enumeration Text="Scene No. 59" Value="59" Id="M-035A_A-2026-01-0003_PT-7_EN-59" />
+                  <Enumeration Text="Scene No. 60" Value="60" Id="M-035A_A-2026-01-0003_PT-7_EN-60" />
+                  <Enumeration Text="Scene No. 61" Value="61" Id="M-035A_A-2026-01-0003_PT-7_EN-61" />
+                  <Enumeration Text="Scene No. 62" Value="62" Id="M-035A_A-2026-01-0003_PT-7_EN-62" />
+                  <Enumeration Text="Scene No. 63" Value="63" Id="M-035A_A-2026-01-0003_PT-7_EN-63" />
+                  <Enumeration Text="Scene No. 64" Value="64" Id="M-035A_A-2026-01-0003_PT-7_EN-64" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-8" Name="SceneObjects_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="1 object (shared)" Value="1" Id="M-035A_A-2026-01-0003_PT-8_EN-1" />
+                  <Enumeration Text="3 objects (one per action)" Value="3" Id="M-035A_A-2026-01-0003_PT-8_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-9" Name="SceneCount_PT">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="1 scene" Value="1" Id="M-035A_A-2026-01-0003_PT-9_EN-1" />
+                  <Enumeration Text="2 scenes" Value="2" Id="M-035A_A-2026-01-0003_PT-9_EN-2" />
+                  <Enumeration Text="3 scenes" Value="3" Id="M-035A_A-2026-01-0003_PT-9_EN-3" />
+                  <Enumeration Text="4 scenes" Value="4" Id="M-035A_A-2026-01-0003_PT-9_EN-4" />
+                  <Enumeration Text="5 scenes" Value="5" Id="M-035A_A-2026-01-0003_PT-9_EN-5" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-12" Name="0..25_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="25" />
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-13" Name="Device Version">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="2 Buttons" Value="2" Id="M-035A_A-2026-01-0003_PT-13_E-2" />
+                  <Enumeration Text="4 Buttons" Value="4" Id="M-035A_A-2026-01-0003_PT-13_E-4" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-14" Name="0..255_PT">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-15" Name="Switch Mode">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Toggle" Value="1" Id="M-035A_A-2026-01-0003_PT-15_EN-1" />
+                  <Enumeration Text="Auto On/Off" Value="2" Id="M-035A_A-2026-01-0003_PT-15_EN-2" />
+                  <Enumeration Text="Momentary" Value="3" Id="M-035A_A-2026-01-0003_PT-15_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-17" Name="Auto Mode Type">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Auto OFF" Value="0" Id="M-035A_A-2026-01-0003_PT-17_EN-0" />
+                  <Enumeration Text="Auto ON" Value="1" Id="M-035A_A-2026-01-0003_PT-17_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-18" Name="Time Value">
+                <TypeNumber Type="unsignedInt" SizeInBit="32" minInclusive="1" maxInclusive="10800" />
+              </ParameterType>
+              <ParameterType Id="M-035A_A-2026-01-0003_PT-16" Name="Startup Behaviour">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Restore last value" Value="0" Id="M-035A_A-2026-01-0003_PT-16_EN-0" />
+                  <Enumeration Text="Set OFF" Value="1" Id="M-035A_A-2026-01-0003_PT-16_EN-1" />
+                  <Enumeration Text="Set ON" Value="2" Id="M-035A_A-2026-01-0003_PT-16_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <!-- Button 1 -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-1" Name="Btn1_Mode" ParameterType="M-035A_A-2026-01-0003_PT-1" Text="Function of channel" Value="3"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="0" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-100" Name="Btn1_SwMode" ParameterType="M-035A_A-2026-01-0003_PT-15" Text="Switch mode" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="1" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-101" Name="Btn1_SwStartup" ParameterType="M-035A_A-2026-01-0003_PT-16" Text="Behavior on bus voltage recovery" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="2" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-9" Name="Btn1_Dim_Behavior" ParameterType="M-035A_A-2026-01-0003_PT-3" Text="Dimming mode (Long press &gt;500ms)" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="12" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-10" Name="Btn1_Dim_Step" ParameterType="M-035A_A-2026-01-0003_PT-4" Text="Button 1 step size" Value="3" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="13" BitOffset="0" /></Parameter>
+
+              <!-- Button 2 -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-3" Name="Btn2_Mode" ParameterType="M-035A_A-2026-01-0003_PT-1" Text="Function of channel" Value="3"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="3" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-102" Name="Btn2_SwMode" ParameterType="M-035A_A-2026-01-0003_PT-15" Text="Switch mode" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="4" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-103" Name="Btn2_SwStartup" ParameterType="M-035A_A-2026-01-0003_PT-16" Text="Behavior on bus voltage recovery" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="5" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-11" Name="Btn2_Dim_Behavior" ParameterType="M-035A_A-2026-01-0003_PT-3" Text="Dimming mode (Long press &gt;500ms)" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="14" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-12" Name="Btn2_Dim_Step" ParameterType="M-035A_A-2026-01-0003_PT-4" Text="Button 2 step size" Value="3" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="15" BitOffset="0" /></Parameter>
+
+              <!-- Button 3 -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-5" Name="Btn3_Mode" ParameterType="M-035A_A-2026-01-0003_PT-1" Text="Function of channel" Value="3"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="6" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-104" Name="Btn3_SwMode" ParameterType="M-035A_A-2026-01-0003_PT-15" Text="Switch mode" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="7" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-105" Name="Btn3_SwStartup" ParameterType="M-035A_A-2026-01-0003_PT-16" Text="Behavior on bus voltage recovery" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="8" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-13" Name="Btn3_Dim_Behavior" ParameterType="M-035A_A-2026-01-0003_PT-3" Text="Dimming mode (Long press &gt;500ms)" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="16" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-14" Name="Btn3_Dim_Step" ParameterType="M-035A_A-2026-01-0003_PT-4" Text="Button 3 step size" Value="3" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="17" BitOffset="0" /></Parameter>
+
+              <!-- Button 4 -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-7" Name="Btn4_Mode" ParameterType="M-035A_A-2026-01-0003_PT-1" Text="Function of channel" Value="3"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="9" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-106" Name="Btn4_SwMode" ParameterType="M-035A_A-2026-01-0003_PT-15" Text="Switch mode" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="10" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-107" Name="Btn4_SwStartup" ParameterType="M-035A_A-2026-01-0003_PT-16" Text="Behavior on bus voltage recovery" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="11" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-15" Name="Btn4_Dim_Behavior" ParameterType="M-035A_A-2026-01-0003_PT-3" Text="Dimming mode (Long press >500ms)" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="18" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-16" Name="Btn4_Dim_Step" ParameterType="M-035A_A-2026-01-0003_PT-4" Text="Button 4 step size" Value="3" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="19" BitOffset="0" /></Parameter>
+
+              <Parameter Id="M-035A_A-2026-01-0003_P-17" Name="Btn1_Dim_Interval" ParameterType="M-035A_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" SuffixText="*0.1s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="20" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-18" Name="Btn2_Dim_Interval" ParameterType="M-035A_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" SuffixText="*0.1s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="21" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-19" Name="Btn3_Dim_Interval" ParameterType="M-035A_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" SuffixText="*0.1s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="22" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-20" Name="Btn4_Dim_Interval" ParameterType="M-035A_A-2026-01-0003_PT-12" Text="Interval of tele. cyclic send [0..25,0=send once]" Value="1" SuffixText="*0.1s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="23" BitOffset="0" /></Parameter>
+
+              <!-- LED -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-25" Name="LED_Brightness" ParameterType="M-035A_A-2026-01-0003_PT-5" Text="LED brightness" Value="50" SuffixText="%"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="24" BitOffset="0" /></Parameter>
+
+              <!-- Scene Control - Button 1 (Offsets 25-36) -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-30" Name="Btn1_SC_Single_Action" ParameterType="M-035A_A-2026-01-0003_PT-10" Text="Single press action" Value="1">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="25" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-31" Name="Btn1_SC_Single_Count" ParameterType="M-035A_A-2026-01-0003_PT-11" Text="Number of scenes (cycling)" Value="2">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="26" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-32" Name="Btn1_SC_Single_SceneNo1" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 1 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="27" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-33" Name="Btn1_SC_Single_SceneNo2" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 2 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="28" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-34" Name="Btn1_SC_Single_SceneNo3" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 3 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="29" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-35" Name="Btn1_SC_Single_SceneNo4" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 4 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="30" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-36" Name="Btn1_SC_Single_SceneNo5" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 5 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="31" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-37" Name="Btn1_SC_Double_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Double press action" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="32" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-38" Name="Btn1_SC_Double_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Double press scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="33" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-39" Name="Btn1_SC_Long_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Long hold action" Value="2"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="34" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-40" Name="Btn1_SC_Long_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Long hold scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="35" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-41" Name="Btn1_SC_Objects" ParameterType="M-035A_A-2026-01-0003_PT-8" Text="Number of scene objects" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="36" BitOffset="0" /></Parameter>
+
+              <!-- Scene Control - Button 2 (Offsets 37-48) -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-42" Name="Btn2_SC_Single_Action" ParameterType="M-035A_A-2026-01-0003_PT-10" Text="Single press action" Value="1">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="37" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-43" Name="Btn2_SC_Single_Count" ParameterType="M-035A_A-2026-01-0003_PT-11" Text="Number of scenes (cycling)" Value="2">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="38" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-44" Name="Btn2_SC_Single_SceneNo1" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 1 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="39" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-45" Name="Btn2_SC_Single_SceneNo2" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 2 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="40" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-46" Name="Btn2_SC_Single_SceneNo3" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 3 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="41" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-47" Name="Btn2_SC_Single_SceneNo4" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 4 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="42" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-48" Name="Btn2_SC_Single_SceneNo5" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 5 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="43" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-49" Name="Btn2_SC_Double_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Double press action" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="44" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-50" Name="Btn2_SC_Double_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Double press scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="45" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-51" Name="Btn2_SC_Long_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Long hold action" Value="2"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="46" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-52" Name="Btn2_SC_Long_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Long hold scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="47" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-53" Name="Btn2_SC_Objects" ParameterType="M-035A_A-2026-01-0003_PT-8" Text="Number of scene objects" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="48" BitOffset="0" /></Parameter>
+
+              <!-- Scene Control - Button 3 (Offsets 49-60) -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-54" Name="Btn3_SC_Single_Action" ParameterType="M-035A_A-2026-01-0003_PT-10" Text="Single press action" Value="1">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="49" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-55" Name="Btn3_SC_Single_Count" ParameterType="M-035A_A-2026-01-0003_PT-11" Text="Number of scenes (cycling)" Value="2">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="50" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-56" Name="Btn3_SC_Single_SceneNo1" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 1 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="51" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-57" Name="Btn3_SC_Single_SceneNo2" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 2 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="52" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-58" Name="Btn3_SC_Single_SceneNo3" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 3 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="53" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-59" Name="Btn3_SC_Single_SceneNo4" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 4 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="54" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-60" Name="Btn3_SC_Single_SceneNo5" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 5 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="55" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-61" Name="Btn3_SC_Double_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Double press action" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="56" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-62" Name="Btn3_SC_Double_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Double press scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="57" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-63" Name="Btn3_SC_Long_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Long hold action" Value="2"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="58" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-64" Name="Btn3_SC_Long_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Long hold scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="59" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-65" Name="Btn3_SC_Objects" ParameterType="M-035A_A-2026-01-0003_PT-8" Text="Number of scene objects" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="60" BitOffset="0" /></Parameter>
+
+              <!-- Scene Control - Button 4 (Offsets 61-72) -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-66" Name="Btn4_SC_Single_Action" ParameterType="M-035A_A-2026-01-0003_PT-10" Text="Single press action" Value="1">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="61" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-67" Name="Btn4_SC_Single_Count" ParameterType="M-035A_A-2026-01-0003_PT-11" Text="Number of scenes (cycling)" Value="2">
+                <Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="62" BitOffset="0" />
+              </Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-68" Name="Btn4_SC_Single_SceneNo1" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 1 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="63" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-69" Name="Btn4_SC_Single_SceneNo2" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 2 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="64" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-70" Name="Btn4_SC_Single_SceneNo3" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 3 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="65" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-71" Name="Btn4_SC_Single_SceneNo4" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 4 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="66" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-72" Name="Btn4_SC_Single_SceneNo5" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Scene 5 number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="67" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-73" Name="Btn4_SC_Double_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Double press action" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="68" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-74" Name="Btn4_SC_Double_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Double press scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="69" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-75" Name="Btn4_SC_Long_Action" ParameterType="M-035A_A-2026-01-0003_PT-6" Text="Long hold action" Value="2"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="70" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-76" Name="Btn4_SC_Long_SceneNo" ParameterType="M-035A_A-2026-01-0003_PT-7" Text="Long hold scene number" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="71" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-77" Name="Btn4_SC_Objects" ParameterType="M-035A_A-2026-01-0003_PT-8" Text="Number of scene objects" Value="1"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="72" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-80" Name="Device_Version" ParameterType="M-035A_A-2026-01-0003_PT-13" Text="Device selection" Value="4"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="74" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-81" Name="Fixed_Value_DD" ParameterType="M-035A_A-2026-01-0003_PT-14" Value="221"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="75" BitOffset="0" /></Parameter>
+
+              <!-- Auto On/Off Parameters -->
+              <Parameter Id="M-035A_A-2026-01-0003_P-110" Name="Btn1_AutoType" ParameterType="M-035A_A-2026-01-0003_PT-17" Text="Auto mode type" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="76" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-111" Name="Btn1_AutoTime" ParameterType="M-035A_A-2026-01-0003_PT-18" Text="Time value" Value="1" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="77" BitOffset="0" /></Parameter>
+
+              <Parameter Id="M-035A_A-2026-01-0003_P-112" Name="Btn2_AutoType" ParameterType="M-035A_A-2026-01-0003_PT-17" Text="Auto mode type" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="81" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-113" Name="Btn2_AutoTime" ParameterType="M-035A_A-2026-01-0003_PT-18" Text="Time value" Value="1" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="82" BitOffset="0" /></Parameter>
+
+              <Parameter Id="M-035A_A-2026-01-0003_P-114" Name="Btn3_AutoType" ParameterType="M-035A_A-2026-01-0003_PT-17" Text="Auto mode type" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="86" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-115" Name="Btn3_AutoTime" ParameterType="M-035A_A-2026-01-0003_PT-18" Text="Time value" Value="1" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="87" BitOffset="0" /></Parameter>
+
+              <Parameter Id="M-035A_A-2026-01-0003_P-116" Name="Btn4_AutoType" ParameterType="M-035A_A-2026-01-0003_PT-17" Text="Auto mode type" Value="0"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="91" BitOffset="0" /></Parameter>
+              <Parameter Id="M-035A_A-2026-01-0003_P-117" Name="Btn4_AutoTime" ParameterType="M-035A_A-2026-01-0003_PT-18" Text="Time value" Value="1" SuffixText="s"><Memory CodeSegment="M-035A_A-2026-01-0003_RS-04-00000" Offset="92" BitOffset="0" /></Parameter>
+            </Parameters>
+            
+            <ParameterRefs>
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-1_R-1" RefId="M-035A_A-2026-01-0003_P-1" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-100_R-100" RefId="M-035A_A-2026-01-0003_P-100" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-101_R-101" RefId="M-035A_A-2026-01-0003_P-101" />
+
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-3_R-3" RefId="M-035A_A-2026-01-0003_P-3" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-102_R-102" RefId="M-035A_A-2026-01-0003_P-102" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-103_R-103" RefId="M-035A_A-2026-01-0003_P-103" />
+
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-5_R-5" RefId="M-035A_A-2026-01-0003_P-5" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-104_R-104" RefId="M-035A_A-2026-01-0003_P-104" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-105_R-105" RefId="M-035A_A-2026-01-0003_P-105" />
+
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-7_R-7" RefId="M-035A_A-2026-01-0003_P-7" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-106_R-106" RefId="M-035A_A-2026-01-0003_P-106" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-107_R-107" RefId="M-035A_A-2026-01-0003_P-107" />
+
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-9_R-9" RefId="M-035A_A-2026-01-0003_P-9" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-10_R-10" RefId="M-035A_A-2026-01-0003_P-10" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-11_R-11" RefId="M-035A_A-2026-01-0003_P-11" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-12_R-12" RefId="M-035A_A-2026-01-0003_P-12" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-13_R-13" RefId="M-035A_A-2026-01-0003_P-13" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-14_R-14" RefId="M-035A_A-2026-01-0003_P-14" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-15_R-15" RefId="M-035A_A-2026-01-0003_P-15" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-16_R-16" RefId="M-035A_A-2026-01-0003_P-16" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-17_R-17" RefId="M-035A_A-2026-01-0003_P-17" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-18_R-18" RefId="M-035A_A-2026-01-0003_P-18" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-19_R-19" RefId="M-035A_A-2026-01-0003_P-19" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-20_R-20" RefId="M-035A_A-2026-01-0003_P-20" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-25_R-25" RefId="M-035A_A-2026-01-0003_P-25" />
+              <!-- Scene Refs - Button 1 -->
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-30_R-30" RefId="M-035A_A-2026-01-0003_P-30" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-31_R-31" RefId="M-035A_A-2026-01-0003_P-31" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-32_R-32" RefId="M-035A_A-2026-01-0003_P-32" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-33_R-33" RefId="M-035A_A-2026-01-0003_P-33" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-34_R-34" RefId="M-035A_A-2026-01-0003_P-34" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-35_R-35" RefId="M-035A_A-2026-01-0003_P-35" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-36_R-36" RefId="M-035A_A-2026-01-0003_P-36" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-37_R-37" RefId="M-035A_A-2026-01-0003_P-37" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-38_R-38" RefId="M-035A_A-2026-01-0003_P-38" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-39_R-39" RefId="M-035A_A-2026-01-0003_P-39" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-40_R-40" RefId="M-035A_A-2026-01-0003_P-40" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-41_R-41" RefId="M-035A_A-2026-01-0003_P-41" />
+              <!-- Scene Refs - Button 2 -->
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-42_R-42" RefId="M-035A_A-2026-01-0003_P-42" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-43_R-43" RefId="M-035A_A-2026-01-0003_P-43" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-44_R-44" RefId="M-035A_A-2026-01-0003_P-44" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-45_R-45" RefId="M-035A_A-2026-01-0003_P-45" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-46_R-46" RefId="M-035A_A-2026-01-0003_P-46" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-47_R-47" RefId="M-035A_A-2026-01-0003_P-47" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-48_R-48" RefId="M-035A_A-2026-01-0003_P-48" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-49_R-49" RefId="M-035A_A-2026-01-0003_P-49" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-50_R-50" RefId="M-035A_A-2026-01-0003_P-50" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-51_R-51" RefId="M-035A_A-2026-01-0003_P-51" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-52_R-52" RefId="M-035A_A-2026-01-0003_P-52" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-53_R-53" RefId="M-035A_A-2026-01-0003_P-53" />
+              <!-- Scene Refs - Button 3 -->
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-54_R-54" RefId="M-035A_A-2026-01-0003_P-54" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-55_R-55" RefId="M-035A_A-2026-01-0003_P-55" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-56_R-56" RefId="M-035A_A-2026-01-0003_P-56" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-57_R-57" RefId="M-035A_A-2026-01-0003_P-57" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-58_R-58" RefId="M-035A_A-2026-01-0003_P-58" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-59_R-59" RefId="M-035A_A-2026-01-0003_P-59" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-60_R-60" RefId="M-035A_A-2026-01-0003_P-60" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-61_R-61" RefId="M-035A_A-2026-01-0003_P-61" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-62_R-62" RefId="M-035A_A-2026-01-0003_P-62" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-63_R-63" RefId="M-035A_A-2026-01-0003_P-63" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-64_R-64" RefId="M-035A_A-2026-01-0003_P-64" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-65_R-65" RefId="M-035A_A-2026-01-0003_P-65" />
+              <!-- Scene Refs - Button 4 -->
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-66_R-66" RefId="M-035A_A-2026-01-0003_P-66" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-67_R-67" RefId="M-035A_A-2026-01-0003_P-67" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-68_R-68" RefId="M-035A_A-2026-01-0003_P-68" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-69_R-69" RefId="M-035A_A-2026-01-0003_P-69" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-70_R-70" RefId="M-035A_A-2026-01-0003_P-70" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-71_R-71" RefId="M-035A_A-2026-01-0003_P-71" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-72_R-72" RefId="M-035A_A-2026-01-0003_P-72" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-73_R-73" RefId="M-035A_A-2026-01-0003_P-73" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-74_R-74" RefId="M-035A_A-2026-01-0003_P-74" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-75_R-75" RefId="M-035A_A-2026-01-0003_P-75" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-76_R-76" RefId="M-035A_A-2026-01-0003_P-76" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-77_R-77" RefId="M-035A_A-2026-01-0003_P-77" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-80_R-80" RefId="M-035A_A-2026-01-0003_P-80" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-81_R-81" RefId="M-035A_A-2026-01-0003_P-81" />
+              <!-- Auto On/Off Refs -->
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-110_R-110" RefId="M-035A_A-2026-01-0003_P-110" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-111_R-111" RefId="M-035A_A-2026-01-0003_P-111" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-112_R-112" RefId="M-035A_A-2026-01-0003_P-112" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-113_R-113" RefId="M-035A_A-2026-01-0003_P-113" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-114_R-114" RefId="M-035A_A-2026-01-0003_P-114" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-115_R-115" RefId="M-035A_A-2026-01-0003_P-115" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-116_R-116" RefId="M-035A_A-2026-01-0003_P-116" />
+              <ParameterRef Id="M-035A_A-2026-01-0003_P-117_R-117" RefId="M-035A_A-2026-01-0003_P-117" />
+            </ParameterRefs>
+            
+            <ComObjectTable>
+              <!-- Button 1 Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-1" Name="Btn1_Sw" Text="Button 1 - ..." Number="1" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-2" Name="Btn1_Dim" Text="Button 1 - ..." Number="5" FunctionText="Dimming control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" Security="Optional" />
+              <!-- Button 2 Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-3" Name="Btn2_Sw" Text="Button 2 - ..." Number="11" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-4" Name="Btn2_Dim" Text="Button 2 - ..." Number="15" FunctionText="Dimming control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" Security="Optional" />
+              <!-- Button 3 Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-5" Name="Btn3_Sw" Text="Button 3 - ..." Number="21" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-6" Name="Btn3_Dim" Text="Button 3 - ..." Number="25" FunctionText="Dimming control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" Security="Optional" />
+              <!-- Button 4 Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-7" Name="Btn4_Sw" Text="Button 4 - ..." Number="31" FunctionText="Switch" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-8" Name="Btn4_Dim" Text="Button 4 - ..." Number="35" FunctionText="Dimming control" ObjectSize="4 Bit" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" Security="Optional" />
+              
+              <!-- Scene Objects -->
+              <!-- Button 1 Scene Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-61" Name="Btn1_Scene" Text="Button 1 - ..." Number="3" FunctionText="Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-65" Name="Btn1_Scene_Double" Text="Button 1 - ..." Number="4" FunctionText="Double, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-66" Name="Btn1_Scene_Long" Text="Button 1 - ..." Number="6" FunctionText="Long, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <!-- Button 2 Scene Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-62" Name="Btn2_Scene" Text="Button 2 - ..." Number="13" FunctionText="Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-67" Name="Btn2_Scene_Double" Text="Button 2 - ..." Number="14" FunctionText="Double, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-68" Name="Btn2_Scene_Long" Text="Button 2 - ..." Number="16" FunctionText="Long, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <!-- Button 3 Scene Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-63" Name="Btn3_Scene" Text="Button 3 - ..." Number="23" FunctionText="Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-69" Name="Btn3_Scene_Double" Text="Button 3 - ..." Number="24" FunctionText="Double, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-70" Name="Btn3_Scene_Long" Text="Button 3 - ..." Number="26" FunctionText="Long, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <!-- Button 4 Scene Objects -->
+              <ComObject Id="M-035A_A-2026-01-0003_O-64" Name="Btn4_Scene" Text="Button 4 - ..." Number="33" FunctionText="Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-71" Name="Btn4_Scene_Double" Text="Button 4 - ..." Number="34" FunctionText="Double, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-72" Name="Btn4_Scene_Long" Text="Button 4 - ..." Number="36" FunctionText="Long, Scene" ObjectSize="1 Byte" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-18-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-41" Name="Temperature" Text="Temperature sensor" Number="41" FunctionText="Temperature" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-42" Name="Humidity" Text="Humidity sensor" Number="42" FunctionText="Humidity" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-81" Name="Btn1_Stat" Text="Button 1 - ..." Number="2" FunctionText="Switch status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-82" Name="Btn2_Stat" Text="Button 2 - ..." Number="12" FunctionText="Switch status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-83" Name="Btn3_Stat" Text="Button 3 - ..." Number="22" FunctionText="Switch status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+              <ComObject Id="M-035A_A-2026-01-0003_O-84" Name="Btn4_Stat" Text="Button 4 - ..." Number="32" FunctionText="Switch status" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" Security="Optional" />
+            </ComObjectTable>
+
+            <ComObjectRefs>
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-1_R-1" RefId="M-035A_A-2026-01-0003_O-1" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-2_R-2" RefId="M-035A_A-2026-01-0003_O-2" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-3_R-3" RefId="M-035A_A-2026-01-0003_O-3" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-4_R-4" RefId="M-035A_A-2026-01-0003_O-4" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-5_R-5" RefId="M-035A_A-2026-01-0003_O-5" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-6_R-6" RefId="M-035A_A-2026-01-0003_O-6" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-7_R-7" RefId="M-035A_A-2026-01-0003_O-7" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-8_R-8" RefId="M-035A_A-2026-01-0003_O-8" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-61_R-61" RefId="M-035A_A-2026-01-0003_O-61" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-61_R-161" RefId="M-035A_A-2026-01-0003_O-61" FunctionText="Short, Scene" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-65_R-65" RefId="M-035A_A-2026-01-0003_O-65" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-66_R-66" RefId="M-035A_A-2026-01-0003_O-66" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-62_R-62" RefId="M-035A_A-2026-01-0003_O-62" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-62_R-162" RefId="M-035A_A-2026-01-0003_O-62" FunctionText="Short, Scene" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-67_R-67" RefId="M-035A_A-2026-01-0003_O-67" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-68_R-68" RefId="M-035A_A-2026-01-0003_O-68" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-63_R-63" RefId="M-035A_A-2026-01-0003_O-63" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-63_R-163" RefId="M-035A_A-2026-01-0003_O-63" FunctionText="Short, Scene" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-69_R-69" RefId="M-035A_A-2026-01-0003_O-69" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-70_R-70" RefId="M-035A_A-2026-01-0003_O-70" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-64_R-64" RefId="M-035A_A-2026-01-0003_O-64" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-64_R-164" RefId="M-035A_A-2026-01-0003_O-64" FunctionText="Short, Scene" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-71_R-71" RefId="M-035A_A-2026-01-0003_O-71" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-72_R-72" RefId="M-035A_A-2026-01-0003_O-72" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-41_R-41" RefId="M-035A_A-2026-01-0003_O-41" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-42_R-42" RefId="M-035A_A-2026-01-0003_O-42" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-81_R-81" RefId="M-035A_A-2026-01-0003_O-81" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-82_R-82" RefId="M-035A_A-2026-01-0003_O-82" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-83_R-83" RefId="M-035A_A-2026-01-0003_O-83" />
+              <ComObjectRef Id="M-035A_A-2026-01-0003_O-84_R-84" RefId="M-035A_A-2026-01-0003_O-84" />
+            </ComObjectRefs>
+
+            <AddressTable MaxEntries="500" />
+            <AssociationTable MaxEntries="500" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment AppliesTo="full" LsmIdx="4" Size="100" Mode="0" Fill="0" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="100" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options SupportsExtendedMemoryServices="true" SupportsExtendedPropertyServices="true" />
+          </Static>
+          
+          <Dynamic>
+            <ChannelIndependentBlock>
+              <ParameterBlock Id="M-035A_A-2026-01-0003_PB-1" Text="General settings" Name="General_Config">
+                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-80_R-80" />
+              </ParameterBlock>
+              <!-- Button 1 Configuration -->
+              <ParameterBlock Id="M-035A_A-2026-01-0003_PB-10" Text="Button 1 - ..." Name="Btn1_Config">
+                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-1_R-1" />
+                <choose ParamRefId="M-035A_A-2026-01-0003_P-1_R-1">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-1_R-1" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-81_R-81" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-100_R-100" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-100_R-100">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-101_R-101" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-101_R-101" />
+                      </when>
+                    </choose>
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-100_R-100">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-110_R-110" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-111_R-111" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-1_R-1" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-81_R-81" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-2_R-2" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-9_R-9" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-9_R-9">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-10_R-10" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-17_R-17" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="3">
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-10" Text="Single press" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-30_R-30" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-30_R-30">
+                      <when test="1"> <!-- Recall Scene -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-32_R-32" />
+                      </when>
+                      <when test="2"> <!-- Scene Cycling -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-31_R-31" />
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-15" Text="Each press recalls the next scene in the list (cyclic order)." />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-32_R-32" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-33_R-33" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-31_R-31">
+                          <when test="3">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-34_R-34" />
+                          </when>
+                          <when test="4">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-34_R-34" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-35_R-35" />
+                          </when>
+                          <when test="5">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-34_R-34" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-35_R-35" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-36_R-36" />
+                          </when>
+                        </choose>
+                      </when>
+                      <when test="3"> <!-- Store Scene -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-32_R-32" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-11" Text="Double press" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-37_R-37" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-37_R-37">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-38_R-38" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-38_R-38" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-12" Text="Long hold" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-39_R-39" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-39_R-39">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-40_R-40" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-40_R-40" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-13" Text="Communications" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-41_R-41" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-41_R-41">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-61_R-61" />
+                      </when>
+                      <when test="3">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-61_R-161" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-65_R-65" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-66_R-66" />
+                      </when>
+                    </choose>
+                  </when>
+                </choose>
+              </ParameterBlock>
+
+              <!-- Button 2 Configuration -->
+              <ParameterBlock Id="M-035A_A-2026-01-0003_PB-20" Text="Button 2 - ..." Name="Btn2_Config">
+                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-3_R-3" />
+                <choose ParamRefId="M-035A_A-2026-01-0003_P-3_R-3">
+                  <when test="1">
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-3_R-3" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-82_R-82" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-102_R-102" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-102_R-102">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-103_R-103" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-103_R-103" />
+                      </when>
+                    </choose>
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-102_R-102">
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-112_R-112" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-113_R-113" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="2">
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-3_R-3" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-82_R-82" />
+                    <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-4_R-4" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-11_R-11" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-11_R-11">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-12_R-12" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-18_R-18" />
+                      </when>
+                    </choose>
+                  </when>
+                  <!-- Button 2 Configuration -->
+                  <when test="3">
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-20" Text="Single press" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-42_R-42" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-42_R-42">
+                      <when test="1"> <!-- Recall Scene -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-44_R-44" />
+                      </when>
+                      <when test="2"> <!-- Scene Cycling -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-43_R-43" />
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-25" Text="Each press recalls the next scene in the list (cyclic order)." />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-44_R-44" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-45_R-45" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-43_R-43">
+                          <when test="3">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-46_R-46" />
+                          </when>
+                          <when test="4">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-46_R-46" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-47_R-47" />
+                          </when>
+                          <when test="5">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-46_R-46" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-47_R-47" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-48_R-48" />
+                          </when>
+                        </choose>
+                      </when>
+                      <when test="3"> <!-- Store Scene -->
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-44_R-44" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-21" Text="Double press" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-49_R-49" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-49_R-49">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-50_R-50" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-50_R-50" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-22" Text="Long hold" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-51_R-51" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-51_R-51">
+                      <when test="1">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-52_R-52" />
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-52_R-52" />
+                      </when>
+                    </choose>
+
+                    <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-23" Text="Communications" UIHint="Headline" />
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-53_R-53" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-53_R-53">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-62_R-62" />
+                      </when>
+                      <when test="3">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-62_R-162" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-67_R-67" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-68_R-68" />
+                      </when>
+                    </choose>
+                  </when>
+                </choose>
+              </ParameterBlock>
+
+              <choose ParamRefId="M-035A_A-2026-01-0003_P-80_R-80">
+                <when test="4">
+                  <!-- Button 3 Configuration -->
+                  <ParameterBlock Id="M-035A_A-2026-01-0003_PB-30" Text="Button 3 - ..." Name="Btn3_Config">
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-5_R-5" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-5_R-5">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-5_R-5" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-83_R-83" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-104_R-104" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-104_R-104">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-105_R-105" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-105_R-105" />
+                          </when>
+                        </choose>
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-104_R-104">
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-114_R-114" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-115_R-115" />
+                          </when>
+                        </choose>
+                      </when>
+                      <when test="2">
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-13_R-13" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-13_R-13">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-14_R-14" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-19_R-19" />
+                          </when>
+                        </choose>
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-5_R-5" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-83_R-83" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-6_R-6" />
+                      </when>
+                      <!-- Button 3 Configuration -->
+                      <when test="3">
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-30" Text="Single press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-54_R-54" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-54_R-54">
+                          <when test="1"> <!-- Recall Scene -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-56_R-56" />
+                          </when>
+                          <when test="2"> <!-- Scene Cycling -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-55_R-55" />
+                            <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-35" Text="Each press recalls the next scene in the list (cyclic order)." />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-56_R-56" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-57_R-57" />
+                            <choose ParamRefId="M-035A_A-2026-01-0003_P-55_R-55">
+                              <when test="3">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-58_R-58" />
+                              </when>
+                              <when test="4">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-58_R-58" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-59_R-59" />
+                              </when>
+                              <when test="5">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-58_R-58" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-59_R-59" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-60_R-60" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="3"> <!-- Store Scene -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-56_R-56" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-31" Text="Double press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-61_R-61" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-61_R-61">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-62_R-62" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-62_R-62" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-32" Text="Long hold" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-63_R-63" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-63_R-63">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-64_R-64" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-64_R-64" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-33" Text="Communications" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-65_R-65" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-65_R-65">
+                          <when test="1">
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-63_R-63" />
+                          </when>
+                          <when test="3">
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-63_R-163" />
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-69_R-69" />
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-70_R-70" />
+                          </when>
+                        </choose>
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+
+                  <!-- Button 4 Configuration -->
+                  <ParameterBlock Id="M-035A_A-2026-01-0003_PB-40" Text="Button 4 - ..." Name="Btn4_Config">
+                    <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-7_R-7" />
+                    <choose ParamRefId="M-035A_A-2026-01-0003_P-7_R-7">
+                      <when test="1">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-7_R-7" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-84_R-84" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-106_R-106" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-106_R-106">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-107_R-107" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-107_R-107" />
+                          </when>
+                        </choose>
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-106_R-106">
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-116_R-116" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-117_R-117" />
+                          </when>
+                        </choose>
+                      </when>
+                      <when test="2">
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-7_R-7" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-84_R-84" />
+                        <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-8_R-8" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-15_R-15" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-15_R-15">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-16_R-16" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-20_R-20" />
+                          </when>
+                        </choose>
+                      </when>
+                      <!-- Button 4 Configuration -->
+                      <when test="3">
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-40" Text="Single press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-66_R-66" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-66_R-66">
+                          <when test="1"> <!-- Recall Scene -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-68_R-68" />
+                          </when>
+                          <when test="2"> <!-- Scene Cycling -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-67_R-67" />
+                            <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-45" Text="Each press recalls the next scene in the list (cyclic order)." />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-68_R-68" />
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-69_R-69" />
+                            <choose ParamRefId="M-035A_A-2026-01-0003_P-67_R-67">
+                              <when test="3">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-70_R-70" />
+                              </when>
+                              <when test="4">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-70_R-70" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-71_R-71" />
+                              </when>
+                              <when test="5">
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-70_R-70" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-71_R-71" />
+                                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-72_R-72" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="3"> <!-- Store Scene -->
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-68_R-68" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-41" Text="Double press" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-73_R-73" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-73_R-73">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-74_R-74" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-74_R-74" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-42" Text="Long hold" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-75_R-75" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-75_R-75">
+                          <when test="1">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-76_R-76" />
+                          </when>
+                          <when test="2">
+                            <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-76_R-76" />
+                          </when>
+                        </choose>
+
+                        <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-43" Text="Communications" UIHint="Headline" />
+                        <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-77_R-77" />
+                        <choose ParamRefId="M-035A_A-2026-01-0003_P-77_R-77">
+                          <when test="1">
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-64_R-64" />
+                          </when>
+                          <when test="3">
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-64_R-164" />
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-71_R-71" />
+                            <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-72_R-72" />
+                          </when>
+                        </choose>
+                      </when>
+                    </choose>
+                  </ParameterBlock>
+                </when>
+              </choose>
+
+              <!-- Sensors Block -->
+              <ParameterBlock Id="M-035A_A-2026-01-0003_PB-50" Text="Internal sensors" Name="Sensor_Param">
+                <!-- Temperature Section -->
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-50" Text="Temperature measurement" UIHint="Headline" />
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-51" Text="Transmission on change ≥ 1 °C" />
+                <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-41_R-41" />
+                
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-54" Text=" " /> <!-- Spacer -->
+
+                <!-- Humidity Section -->
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-52" Text="Humidity measurement" UIHint="Headline" />
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-55" Text="Transmission on change ≥ 5 %" />
+                <ComObjectRefRef RefId="M-035A_A-2026-01-0003_O-42_R-42" />
+
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-56" Text=" " /> <!-- Spacer -->
+
+                <!-- Cyclic Section -->
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-53" Text="Transmission cycle" UIHint="Headline" />
+                <ParameterSeparator Id="M-035A_A-2026-01-0003_PS-57" Text="Periodic transmission every 5 minutes" />
+              </ParameterBlock>
+
+              <!-- Internal LED Block -->
+              <ParameterBlock Id="M-035A_A-2026-01-0003_PB-60" Text="Brightness settings" Name="LED_Config">
+                <ParameterRefRef RefId="M-035A_A-2026-01-0003_P-25_R-25" />
+              </ParameterBlock>
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
+"""
+OUTPUT_XML = Path(__file__).with_name("knx_scene_4_button_m035a_standard_layout_v2.xml")
+PREFIX = "M-035A_A-2026-01-0003"
+
+
+def _dynamic_match(xml: str) -> re.Match[str]:
+    match = re.search(r"(?ms)^(\s*)<Dynamic>\s*$.*?^\1</Dynamic>\s*$", xml)
+    if not match:
+        raise ValueError("Cannot find a standalone <Dynamic> block")
+    return match
+
+
+def _without_dynamic(xml: str) -> str:
+    match = _dynamic_match(xml)
+    return xml[: match.start()] + xml[match.end() :]
+
+
+def _refs(xml: str, tag: str) -> Counter[str]:
+    dynamic = _dynamic_match(xml).group(0)
+    return Counter(re.findall(fr"<{tag}\s+RefId=\"([^\"]+)\"", dynamic))
+
+
+def _extract_block(dynamic: str, block_id: str) -> tuple[str, str]:
+    pattern = re.compile(
+        rf"(?ms)^(\s*)<ParameterBlock\b[^>]*Id=\"{re.escape(block_id)}\"[^>]*>\s*$.*?^\1</ParameterBlock>\s*$"
+    )
+    match = pattern.search(dynamic)
+    if not match:
+        raise ValueError(f"Cannot find ParameterBlock {block_id}")
+    return match.group(0), dynamic[: match.start()] + dynamic[match.end() :]
+
+
+def _block_inner(block: str) -> str:
+    lines = block.splitlines()
+    if len(lines) < 2:
+        raise ValueError("Invalid ParameterBlock")
+    return "\n".join(lines[1:-1])
+
+
+def _plain_separators(dynamic: str) -> str:
+    return dynamic.replace(' UIHint="Headline"', "")
+
+
+
+def _sentence_case_display(value: str) -> str:
+    if not value.strip():
+        return value
+
+    leading = value[: len(value) - len(value.lstrip(" "))]
+    text = value.lstrip(" ")
+    parts = re.split(r"(\([^)]*\))", text)
+    lowered = "".join(part if part.startswith("(") else part.lower() for part in parts)
+    chars = list(lowered)
+    for index, char in enumerate(chars):
+        if char.isalpha():
+            chars[index] = char.upper()
+            break
+    result = leading + "".join(chars)
+    result = re.sub(
+        r"\b(channel|output|scene) ([abcd])\b",
+        lambda match: f"{match.group(1)} {match.group(2).upper()}",
+        result,
+        flags=re.IGNORECASE,
+    )
+    for acronym in ("knx", "led", "cct", "hvac", "dpt", "ets"):
+        result = re.sub(rf"\b{acronym}\b", acronym.upper(), result, flags=re.IGNORECASE)
+    result = re.sub(r"\bscene no\.", "Scene No.", result, flags=re.IGNORECASE)
+    result = result.replace("°c", "°C")
+    return result
+
+
+def _normalize_tag_display_case(tag: str) -> str:
+    match = re.match(r"<(\w+)\b", tag)
+    attrs_by_tag = {
+        "Parameter": ("Text",),
+        "ParameterBlock": ("Text",),
+        "ParameterSeparator": ("Text",),
+        "Enumeration": ("Text",),
+        "ComObject": ("Name", "Text", "FunctionText"),
+    }
+    attrs = attrs_by_tag.get(match.group(1) if match else "", ())
+    for attr in attrs:
+        attr_match = re.search(fr'\b{attr}="([^"]*)"', tag)
+        if attr_match:
+            value = escape(_sentence_case_display(attr_match.group(1)), quote=True)
+            tag = re.sub(fr'\b{attr}="[^"]*"', f'{attr}="{value}"', tag)
+    return tag
+
+
+def normalize_display_case(xml: str) -> str:
+    return re.sub(
+        r"<(?:Parameter|ParameterBlock|ParameterSeparator|Enumeration|ComObject)\b[^>]*>",
+        lambda match: _normalize_tag_display_case(match.group(0)),
+        xml,
+    )
+def _child_parameter_ref_ids(dynamic: str) -> set[str]:
+    refs: set[str] = set()
+    in_block = False
+    after_separator = False
+    for line in dynamic.splitlines():
+        if "<ParameterBlock " in line:
+            in_block = True
+            after_separator = False
+        if "</ParameterBlock>" in line:
+            in_block = False
+            after_separator = False
+        if in_block and "<ParameterSeparator " in line and 'Text=""' not in line:
+            after_separator = True
+        if in_block and after_separator:
+            match = re.search(r'<ParameterRefRef\s+RefId="([^"]+)"', line)
+            if match:
+                refs.add(match.group(1))
+    return refs
+
+
+def _parameter_text_by_ref_id(xml: str) -> dict[str, str]:
+    param_text = {
+        match.group("id"): match.group("text")
+        for match in re.finditer(
+            r'<Parameter\b(?=[^>]*\bId="(?P<id>[^"]+)")(?=[^>]*\bText="(?P<text>[^"]*)")[^>]*>',
+            xml,
+        )
+    }
+    return {
+        match.group("ref_id"): param_text.get(match.group("param_id"), "")
+        for match in re.finditer(
+            r'<ParameterRef\b(?=[^>]*\bId="(?P<ref_id>[^"]+)")(?=[^>]*\bRefId="(?P<param_id>[^"]+)")[^>]*/>',
+            xml,
+        )
+    }
+
+
+def apply_child_indent_overrides(xml: str, dynamic: str) -> str:
+    child_refs = _child_parameter_ref_ids(dynamic)
+    ref_to_param = {
+        match.group("ref_id"): match.group("param_id")
+        for match in re.finditer(
+            r'<ParameterRef\b(?=[^>]*\bId="(?P<ref_id>[^"]+)")(?=[^>]*\bRefId="(?P<param_id>[^"]+)")[^>]*/>',
+            xml,
+        )
+    }
+    child_params = {ref_to_param[ref_id] for ref_id in child_refs if ref_id in ref_to_param}
+
+    def repl(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        id_match = re.search(r'\bId="([^"]+)"', tag)
+        text_match = re.search(r'\bText="([^"]*)"', tag)
+        if not id_match or id_match.group(1) not in child_params or not text_match:
+            return tag
+        text = text_match.group(1)
+        if text.startswith("  "):
+            return tag
+        return re.sub(r'\bText="[^"]*"', f'Text="{escape("  " + text, quote=True)}"', tag)
+
+    return re.sub(r'<Parameter\b[^>]*>', repl, xml)
+
+
+def _without_dynamic_and_ref_text(xml: str) -> str:
+    stripped = re.sub(r'\s+(Name|Text|FunctionText)="[^"]*"', "", _without_dynamic(xml))
+    stripped = re.sub(r'\s+(ReadFlag|WriteFlag|TransmitFlag|UpdateFlag)="[^"]*"', "", stripped)
+    for number in (39, 51, 63, 75):
+        pattern = rf'(<Parameter\b(?=[^>]*\bId="{PREFIX}_P-{number}")[^>]*)\s+Value="[^"]*"'
+        stripped = re.sub(pattern, r"\1", stripped)
+    return stripped
+
+
+def _set_attr(tag: str, attr: str, value: str) -> str:
+    if re.search(fr'\b{attr}="[^"]*"', tag):
+        return re.sub(fr'\b{attr}="[^"]*"', f'{attr}="{value}"', tag)
+    return tag[:-3] + f' {attr}="{value}" />'
+
+
+def apply_com_object_flag_policy(xml: str) -> str:
+    led_status_ids = {f"{PREFIX}_O-{number}" for number in (81, 82, 83, 84)}
+    control_functions = {"Switch", "Dimming control", "Scene", "Double, Scene", "Long, Scene"}
+
+    def repl(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        id_match = re.search(r'\bId="([^"]+)"', tag)
+        fn_match = re.search(r'\bFunctionText="([^"]+)"', tag)
+        object_id = id_match.group(1) if id_match else ""
+        function_text = fn_match.group(1) if fn_match else ""
+
+        if object_id in led_status_ids:
+            tag = _set_attr(tag, "ReadFlag", "Disabled")
+            tag = _set_attr(tag, "WriteFlag", "Enabled")
+            tag = _set_attr(tag, "TransmitFlag", "Disabled")
+            tag = _set_attr(tag, "UpdateFlag", "Enabled")
+            return tag
+
+        if function_text in control_functions:
+            tag = _set_attr(tag, "UpdateFlag", "Disabled")
+            return tag
+
+        return tag
+
+    return re.sub(r'<ComObject\b[^>]*/>', repl, xml)
+
+
+def apply_default_value_policy(xml: str) -> str:
+    long_hold_action_ids = {f"{PREFIX}_P-{number}" for number in (39, 51, 63, 75)}
+
+    def repl(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        id_match = re.search(r'\bId="([^"]+)"', tag)
+        if not id_match or id_match.group(1) not in long_hold_action_ids:
+            return tag
+        return _set_attr(tag, "Value", "1")
+
+    return re.sub(r'<Parameter\b[^>]*>', repl, xml)
+
+
+def _rename_top_level_blocks(dynamic: str) -> str:
+    dynamic = dynamic.replace(
+        'Text="General settings" Name="General_Config"',
+        'Text="General settings" Name="General settings"',
+    )
+    for index in range(1, 5):
+        dynamic = dynamic.replace(
+            f'Text="Button {index} - ..." Name="Btn{index}_Config"',
+            f'Text="Button {index} settings" Name="Button {index}"',
+        )
+    return dynamic
+
+
+def _remove_cycling_help_text(dynamic: str) -> str:
+    return dynamic.replace(
+        'Text="Each press recalls the next scene in the list (cyclic order)."',
+        'Text=""',
+    )
+
+
+def _merge_common_settings_into_general(dynamic: str) -> str:
+    sensor_block, dynamic = _extract_block(dynamic, f"{PREFIX}_PB-50")
+    led_block, dynamic = _extract_block(dynamic, f"{PREFIX}_PB-60")
+
+    general_insert = "\n".join(
+        [
+            f'                <ParameterSeparator Id="{PREFIX}_PS-58" Text="Brightness settings" UIHint="Headline" />',
+            _block_inner(led_block).strip(),
+            f'                <ParameterSeparator Id="{PREFIX}_PS-59" Text="" />',
+            f'                <ParameterSeparator Id="{PREFIX}_PS-60" Text="Sensor settings" UIHint="Headline" />',
+            _block_inner(sensor_block).strip(),
+        ]
+    )
+    needle = f'                <ParameterRefRef RefId="{PREFIX}_P-80_R-80" />\n              </ParameterBlock>'
+    replacement = (
+        f'                <ParameterRefRef RefId="{PREFIX}_P-80_R-80" />\n'
+        + general_insert
+        + "\n              </ParameterBlock>"
+    )
+    if needle not in dynamic:
+        raise ValueError("Cannot find the General settings insertion point")
+    return dynamic.replace(needle, replacement)
+
+
+def build_dynamic(xml: str) -> str:
+    dynamic = _dynamic_match(xml).group(0)
+    dynamic = _rename_top_level_blocks(dynamic)
+    dynamic = _remove_cycling_help_text(dynamic)
+    dynamic = _merge_common_settings_into_general(dynamic)
+    return _plain_separators(dynamic)
+
+
+def main() -> None:
+    xml = BASE_XML
+    dynamic = build_dynamic(xml)
+    match = _dynamic_match(xml)
+    out_xml = xml[: match.start()] + dynamic + xml[match.end() :]
+    out_xml = apply_child_indent_overrides(out_xml, dynamic)
+    out_xml = apply_com_object_flag_policy(out_xml)
+    out_xml = apply_default_value_policy(out_xml)
+    out_xml = normalize_display_case(out_xml)
+
+    if _without_dynamic_and_ref_text(xml) != _without_dynamic_and_ref_text(out_xml):
+        raise AssertionError("Non-Dynamic XML changed outside allowed layout and flag overrides")
+    for tag in ("ParameterRefRef", "ComObjectRefRef"):
+        if _refs(xml, tag) != _refs(out_xml, tag):
+            raise AssertionError(f"{tag} references changed")
+
+    OUTPUT_XML.write_text(out_xml, encoding="utf-8", newline="\n")
+    print(f"Wrote {OUTPUT_XML}")
+
+
+if __name__ == "__main__":
+    main()
