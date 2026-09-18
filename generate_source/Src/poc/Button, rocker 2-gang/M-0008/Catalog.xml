@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.7.1428.39779" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0008">
+      <Catalog>
+        <CatalogSection Id="M-0008_CS-PB" Name="Taster" Number="PB" DefaultLanguage="de-DE" NonRegRelevantDataVersion="2">
+          <CatalogSection Id="M-0008_CS-PB-P2" Name="Push button, 2fold" Number="P2" DefaultLanguage="en-US" NonRegRelevantDataVersion="1">
+            <CatalogItem Id="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_HP-1162-21-2E13-O000A_CI-5173.20xx.2C.205174.20xx-1" Name="Button, rocker 2-gang" Number="1" ProductRefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_P-5173.20xx.2C.205174.20xx" Hardware2ProgramRefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_HP-1162-21-2E13-O000A" DefaultLanguage="en-US" />
+          </CatalogSection>
+        </CatalogSection>
+      </Catalog>
+      <Languages>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0008_CS-PB" Version="2">
+            <TranslationElement RefId="M-0008_CS-PB">
+              <Translation AttributeName="Name" Text="Buttons" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0008_CS-PB-P2" Version="1">
+            <TranslationElement RefId="M-0008_CS-PB-P2">
+              <Translation AttributeName="Name" Text="Push button, 2fold" />
+            </TranslationElement>
+          </TranslationUnit>
+          <TranslationUnit RefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_HP-1162-21-2E13-O000A_CI-5173.20xx.2C.205174.20xx-1">
+            <TranslationElement RefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_HP-1162-21-2E13-O000A_CI-5173.20xx.2C.205174.20xx-1">
+              <Translation AttributeName="Name" Text="Button, rocker 2-gang" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

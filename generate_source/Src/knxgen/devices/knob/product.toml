@@ -1,0 +1,20 @@
+[product]
+device_key = "knob"
+manufacturer = "lumi"
+product_name = "Lumi Knob aluminium SE"
+order_number = "LMS0KK.1LE"
+serial_number = "LM26KN"
+hardware_version = 1
+bus_current_ma = 10
+rail_mounted = false
+application_name = "Touch panel OLED 1.43 inch"
+application_number = 1
+application_version = 1
+mask_version = "MV-07B0"
+min_ets_version = "5.7"
+schema_version = 14
+secure = true
+medium = "MT-0"
+baseline_sha256 = "396d0d235b624541cf695cb5d867b0f8dc87c6bf9697a1a662b9a04e8d1473b1"
+expected_parameter_count = 222
+expected_com_object_count = 259

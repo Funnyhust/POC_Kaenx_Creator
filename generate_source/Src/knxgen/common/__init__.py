@@ -1,0 +1,2 @@
+"""Reusable KNX generation primitives."""
+

@@ -1,0 +1,15 @@
+[manufacturers.lumi]
+id = "M-035A"
+name = "Lumi"
+default_language = "en-US"
+
+[manufacturers.lumi_legacy]
+id = "M-0085"
+name = "Lumi Legacy"
+default_language = "en-US"
+
+[manufacturers.test]
+id = "M-00FA"
+name = "Test Manufacturer"
+default_language = "en-US"
+

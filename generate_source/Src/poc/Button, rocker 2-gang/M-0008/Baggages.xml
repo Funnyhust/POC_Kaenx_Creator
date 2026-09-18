@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.7.1428.39779" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0008">
+      <Baggages>
+        <Baggage TargetPath="" Name="Secure.png" Id="M-0008_BG--Secure.2Epng">
+          <FileInfo TimeInfo="2026-01-28T12:03:46.6054205Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Securecard_Gira.png" Id="M-0008_BG--Securecard.5FGira.2Epng">
+          <FileInfo TimeInfo="2026-01-28T12:03:46.6064271Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Safe.png" Id="M-0008_BG--Safe.2Epng">
+          <FileInfo TimeInfo="2026-01-28T12:03:46.6024197Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Icon_KHT.zip" Id="M-0008_BG--Icon.5FKHT.2Ezip">
+          <FileInfo TimeInfo="2021-10-01T06:01:15.4633094Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="KHT_FDSK_Position.png" Id="M-0008_BG--KHT.5FFDSK.5FPosition.2Epng">
+          <FileInfo TimeInfo="2020-05-26T12:24:12.137334Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="KNX_KHT_TP_Direkthilfe_EN.zip" Id="M-0008_BG--KNX.5FKHT.5FTP.5FDirekthilfe.5FEN.2Ezip">
+          <FileInfo TimeInfo="2020-08-03T06:35:01.2874508Z" />
+        </Baggage>
+        <Baggage TargetPath="" Name="KHT_TP_2f_Programmiermodus.png" Id="M-0008_BG--KHT.5FTP.5F2f.5FProgrammiermodus.2Epng">
+          <FileInfo TimeInfo="2020-01-24T12:30:22.6978227Z" />
+        </Baggage>
+      </Baggages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

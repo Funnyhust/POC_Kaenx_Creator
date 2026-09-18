@@ -1,0 +1,20 @@
+[product]
+device_key = "6_8_buttons_display"
+manufacturer = "lumi"
+product_name = "Lumi 6/8-button Display"
+order_number = "LM68BDKNX"
+serial_number = "LM68BDKNXV2"
+hardware_version = 1
+bus_current_ma = 20
+rail_mounted = false
+application_name = "6/8-button Display V2"
+application_number = 2027
+application_version = 2
+mask_version = "MV-07B0"
+min_ets_version = "5.7"
+schema_version = 14
+secure = true
+medium = "MT-0"
+baseline_sha256 = ""
+expected_parameter_count = 398
+expected_com_object_count = 98

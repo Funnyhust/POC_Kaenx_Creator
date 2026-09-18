@@ -1,0 +1,20 @@
+[product]
+device_key = "scene_button_4gang"
+manufacturer = "lumi"
+product_name = "Lumi Switch/Dimming/Scene, 4 gang SE"
+order_number = "LM4SCK4GE"
+serial_number = "LM4SCK4GE"
+hardware_version = 4
+bus_current_ma = 10
+rail_mounted = false
+application_name = "Switch/Dimming/Scene 4-gang"
+application_number = 2026
+application_version = 5
+mask_version = "MV-07B0"
+min_ets_version = "5.7"
+schema_version = 14
+secure = true
+medium = "MT-0"
+baseline_sha256 = "9be8760d0c61b74d33ce8d4111e006ef1ba2b540bef638b3c720dadb8e39f575"
+expected_parameter_count = 85
+expected_com_object_count = 26

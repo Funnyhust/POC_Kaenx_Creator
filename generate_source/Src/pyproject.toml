@@ -1,0 +1,13 @@
+[project]
+name = "lumi-knx-xml-generator"
+version = "0.1.0"
+description = "Shared generator for Lumi KNX product XML files"
+requires-python = ">=3.11"
+
+[project.scripts]
+knx-generate = "knxgen.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

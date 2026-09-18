@@ -1,0 +1,20 @@
+[product]
+device_key = "shutter_4relay"
+manufacturer = "lumi"
+product_name = "Lumi Shutter/Curtain actuator, 4 relay 16A SE"
+order_number = "LM1CK16RE"
+serial_number = "SH-4RL-2026"
+hardware_version = 1
+bus_current_ma = 10
+rail_mounted = true
+application_name = "Shutter/Curtain actuator 4-relay 16A"
+application_number = 1
+application_version = 1
+mask_version = "MV-07B0"
+min_ets_version = "4.0"
+schema_version = 14
+secure = true
+medium = "MT-0"
+baseline_sha256 = "55255081a2877cb7fcc94997c8050ae5f80cf318d83daa5c1168294a2383173f"
+expected_parameter_count = 25
+expected_com_object_count = 5

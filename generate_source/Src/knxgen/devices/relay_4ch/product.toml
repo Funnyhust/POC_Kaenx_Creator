@@ -1,0 +1,20 @@
+[product]
+device_key = "relay_4ch"
+manufacturer = "lumi"
+product_name = "Lumi Switch actuator, 4 relay 16A SE"
+order_number = "LM4OK16RE"
+serial_number = "RL-4CH-2025"
+hardware_version = 1
+bus_current_ma = 10
+rail_mounted = true
+application_name = "Switch Actuator 4-relay 16A/1.0"
+application_number = 2025
+application_version = 1
+mask_version = "MV-07B0"
+min_ets_version = "4.0"
+schema_version = 14
+secure = true
+medium = "MT-0"
+baseline_sha256 = "a5d662c41da49f9d06f0e1427ffe405bd20fe56f1714edeb38acec8bc790262d"
+expected_parameter_count = 121
+expected_com_object_count = 12

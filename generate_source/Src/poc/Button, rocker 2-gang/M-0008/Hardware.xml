@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KNX xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="ETS5" ToolVersion="5.7.1428.39779" xmlns="http://knx.org/xml/project/20">
+  <ManufacturerData>
+    <Manufacturer RefId="M-0008">
+      <Hardware>
+        <Hardware Id="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A" Name="Gira KNX Kurzhubtaste TP 2f" SerialNumber="8 // 5173 xx" VersionNumber="0" BusCurrent="12" HasIndividualAddress="true" HasApplicationProgram="true" OriginalManufacturer="M-000A">
+          <Products>
+            <Product Id="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_P-5173.20xx.2C.205174.20xx" Text="Button, rocker 2-gang" OrderNumber="5173 xx, 5174 xx" IsRailMounted="false" DefaultLanguage="en-US" Hash="fP7e8mCGeCAezjS0+MG1D/YW3Ws=">
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationDate="2020-07-17" RegistrationSignature="YXt5lDFQFGewVnHBzUn6dS2S6F9BIXqPZFKQtgSWsACSxS4lJl/d97mSPuc48rH/30QIMIDpayiMN7C/3rn+85C/7+X9+RrQZmkGGebE+33cPIpgoG3jJSlDF84aR8ofLyYNwW676ozVfs8k9r2IJ+j2YSS3eUiKBJB+uXzHrxA=" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_HP-1162-21-2E13-O000A" MediumTypes="MT-0" Hash="ZANTkfDyI+61ZRwkTPOPIWm55r8=">
+              <ApplicationProgramRef RefId="M-0008_A-1162-21-2E13-O000A" />
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationNumber="2020/16824" RegistrationDate="2020-07-17" RegistrationSignature="oUNAnMiVzdys1qKhTwY7oZLXohVd+URIySSyYnUYrKCRLjqYoOJUXuj7fcFe4QcGvLJHFmcfQZc2oQxb4+zDyz6+cjXdLJFLf80zlpy6ziNgUpggHTfRYF3+JIeWbYTKOeZqALLmKy/r1iJU5sbwVGvyUcawNjyPy6ilTjFvUgY=" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+      <Languages>
+        <Language Identifier="en-US">
+          <TranslationUnit RefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_P-5173.20xx.2C.205174.20xx">
+            <TranslationElement RefId="M-0008_H-8.20.2F.2F.205173.20xx-0-O000A_P-5173.20xx.2C.205174.20xx">
+              <Translation AttributeName="Text" Text="Button, rocker 2-gang" />
+            </TranslationElement>
+          </TranslationUnit>
+        </Language>
+      </Languages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

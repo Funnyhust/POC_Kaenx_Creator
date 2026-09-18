@@ -1,0 +1,12 @@
+[knx]
+medium = "MT-0"
+default_language = "en-US"
+load_procedure_style = "MergedProcedure"
+program_type = "ApplicationProgram"
+pei_type = 0
+
+[output]
+encoding = "utf-8"
+indent = 2
+xml_declaration = true
+
