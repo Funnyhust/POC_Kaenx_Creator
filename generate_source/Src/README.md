@@ -84,3 +84,26 @@ thuật toán ký bằng Python.
 
 - https://github.com/OpenKNX/OpenKNX.Toolbox.Sign
 - https://github.com/OpenKNX/Kaenx-Creator-Share
+
+## One-command `.knxprod` build
+
+When Kaenx Creator 1.9.9 is installed at
+`D:\Project\KNX\KNX_Create_Product\Kaenx Creator 1.9.9`, run
+`generate_knxprod.bat` from this directory:
+
+```bat
+generate_knxprod.bat
+generate_knxprod.bat 6_8_buttons_display
+generate_knxprod.bat knob D:\out\knob.knxprod
+generate_knxprod.bat --all
+```
+
+The batch file generates and validates `prod.xml`, imports it through Kaenx's
+1.9.9 libraries, runs Kaenx's check/sign/export path, and writes the resulting
+`.knxprod`. No manual Import/Publish steps are needed. Use
+`--rebuild-exporter` only after changing the C# bridge itself; normal Python
+generator edits are picked up on the next run.
+
+The first bridge build needs the .NET 9 SDK. The generated x86 runtime is kept
+under `tools/knxprod_exporter/publish` locally (that build directory is
+ignored by Git), so subsequent runs do not rebuild it.

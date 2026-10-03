@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 from xml.etree.ElementTree import Element, SubElement
 
 from knxgen.common.config import load_manufacturer, load_product
+from knxgen.common.constants import SENTINEL_VALUE
 from knxgen.common.models import ProductSpec
 from knxgen.common.product_generator import GeneratedProduct, write_generated_product
 from knxgen.common.xml_builder import new_knx_document
 
-from .com_objects import ComObjectDef, all_objects
+from .com_objects import ComObjectDef, all_objects, ref_presentation, ref_text_parameter_key
 from .dynamic import build_dynamic
-from .identifiers import COM_OBJECT_IDS, PARAMETER_IDS
+from .identifiers import COM_OBJECT_IDS, COM_OBJECT_REF_IDS, OBJECT_REF_VARIANTS, PARAMETER_IDS
 from .memory_map import (
     DIMMING_MODE,
     DIMMING_STEP,
@@ -23,28 +25,34 @@ from .memory_map import (
     REPEAT_INTERVAL,
     SCENE_1,
     SCENE_CYCLE_COUNT,
-    SCENE_DOUBLE_ACTION,
-    SCENE_DOUBLE_NUMBER,
-    SCENE_LONG_ACTION,
-    SCENE_LONG_NUMBER,
+    SCENE_CYCLE_MODE,
     SCENE_SINGLE_ACTION,
     SEGMENT_ID,
     SEGMENT_SIZE,
     VIETNAMESE_NAME,
     AUTO_MODE_TYPE,
     AUTO_TIME,
-    SCENE_OBJECTS,
     SWITCH_MODE,
     SWITCH_STARTUP,
     CURTAIN_ICON,
     CURTAIN_TRAVEL_TIME,
+    DIMMER_VIETNAMESE_NAME,
+    CURTAIN_VIETNAMESE_NAME,
     SCENE_ENGLISH_NAME_1,
     SCENE_VIETNAMESE_NAME_1,
     SCENE_ICON_1,
+    SENTINEL_OFFSET,
     endpoint,
 )
+from .identifiers import SENTINEL_PARAMETER_KEY, DISPLAY_NAME_PARAMETER_KEYS
 from .parameters import ENUM_TYPES
-from .translations import VIETNAMESE_LABELS
+from .translations import (
+    labels_for_presentation,
+    VIETNAMESE_CURTAIN_LABELS,
+    VIETNAMESE_DIMMER_LABELS,
+    VIETNAMESE_ON_OFF_LABELS,
+    VIETNAMESE_SCENE_LABELS,
+)
 
 
 PRODUCT_FILE = Path(__file__).with_name("product.toml")
@@ -106,18 +114,22 @@ def _add_number_type(parent: Element, key: str, name: str, minimum: int, maximum
 def _build_parameter_types(parent: Element) -> None:
     for definition in ENUM_TYPES:
         _add_enum_type(parent, definition.key, definition.name, definition.values)
-    _add_enum_type(parent, "VietnameseName", "Vietnamese display name code", VIETNAMESE_LABELS)
+    _add_enum_type(parent, "VietnameseOnOffName", "Vietnamese switch name", VIETNAMESE_ON_OFF_LABELS)
+    _add_enum_type(parent, "VietnameseDimmerName", "Vietnamese dimmer/CCT name", VIETNAMESE_DIMMER_LABELS)
+    _add_enum_type(parent, "VietnameseCurtainName", "Vietnamese curtain name", VIETNAMESE_CURTAIN_LABELS)
+    _add_enum_type(parent, "VietnameseSceneName", "Vietnamese scene name", VIETNAMESE_SCENE_LABELS)
     _add_number_type(parent, "Percentage1To100", "Brightness percentage (1-100 %)", 1, 100)
     _add_number_type(parent, "ScreenTimeoutSeconds", "Screen timeout in seconds", 10, 3600, 16)
     _add_number_type(parent, "ProximityDistanceCm", "Proximity wake-up distance (30-200 cm)", 30, 200)
     _add_number_type(parent, "Repeat100ms", "Telegram repeat interval (100 ms units)", 0, 25)
     _add_number_type(parent, "AutoTimeSeconds", "Automatic switch timer in seconds", 1, 10800, 32)
     _add_number_type(parent, "CurtainTravelTimeSeconds", "Travel time", 1, 300, 16)
+    _add_number_type(parent, "FixedValueDD", "Reserved ETS marker byte", 0, 255)
     text_type = SubElement(parent, "ParameterType", {
-        "Id": _parameter_type_id("EnglishName20"),
-        "Name": "English display name (maximum 20 ASCII characters)",
+        "Id": _parameter_type_id("EnglishName15"),
+        "Name": "English display name (maximum 15 ASCII characters)",
     })
-    SubElement(text_type, "TypeText", {"SizeInBit": "160", "Pattern": "[ -~]{0,20}"})
+    SubElement(text_type, "TypeText", {"SizeInBit": "120", "Pattern": "[ -~]{0,15}"})
 
 
 def _add_parameter(parent: Element, key: str, name: str, text: str, type_key: str, value: int | str, offset: int, suffix: str | None = None) -> None:
@@ -134,16 +146,37 @@ def _add_parameter(parent: Element, key: str, name: str, text: str, type_key: st
     SubElement(parameter, "Memory", {"CodeSegment": SEGMENT_ID, "Offset": str(offset), "BitOffset": "0"})
 
 
+def _add_hidden_sentinel(parent: Element) -> None:
+    """Add the fixed 0xDD byte used by the established Lumi products.
+
+    Omitting ``Text`` is intentional: Kaenx/ETS keeps this compatibility byte
+    out of the user-facing parameter pages while it remains part of the
+    download memory image.
+    """
+    parameter = SubElement(parent, "Parameter", {
+        "Id": _parameter_id(SENTINEL_PARAMETER_KEY),
+        "Name": "Fixed_Value_DD",
+        "ParameterType": _parameter_type_id("FixedValueDD"),
+        "Value": str(SENTINEL_VALUE),
+    })
+    SubElement(parameter, "Memory", {
+        "CodeSegment": SEGMENT_ID,
+        "Offset": str(SENTINEL_OFFSET),
+        "BitOffset": "0",
+    })
+
+
 def _build_parameters(parent: Element) -> list[str]:
-    keys: list[str] = []
+    keys: list[str] = [SENTINEL_PARAMETER_KEY]
+    _add_hidden_sentinel(parent)
 
     def add(key: str, name: str, text: str, type_key: str, value: int | str, offset: int, suffix: str | None = None) -> None:
         _add_parameter(parent, key, name, text, type_key, value, offset, suffix)
         keys.append(key)
 
     add("DeviceVariant", "Device variant", "Device selection", "DeviceVariant", 8, GLOBAL["device_variant"])
-    add("TopMergeDirection", "Top area merging direction", "Endpoint merging for Buttons 1, 2, 3 and 4", "MergeDirection", 0, GLOBAL["top_layout"])
-    add("BottomMergeDirection", "Bottom area merging direction", "Endpoint merging for Buttons 5, 6, 7 and 8", "MergeDirection", 0, GLOBAL["bottom_layout"])
+    add("TopMergeDirection", "Top area button grouping direction", "Button grouping for Buttons 1, 2, 3 and 4", "MergeDirection", 0, GLOBAL["top_layout"])
+    add("BottomMergeDirection", "Bottom area button grouping direction", "Button grouping for Buttons 5, 6, 7 and 8", "MergeDirection", 0, GLOBAL["bottom_layout"])
     for key, field, text in (("SixPair15", "six_pair_15", "Button 1 + Button 5"), ("SixPair24", "six_pair_24", "Button 2 + Button 4"), ("SixPair68", "six_pair_68", "Button 6 + Button 8")):
         add(key, f"6-button pair {text}", f"Operating mode of {text}", "PairMode", 0, GLOBAL[field])
     add("ScreenBrightness", "Screen brightness", "Screen brightness", "Percentage1To100", 80, GLOBAL["screen_brightness"], "%")
@@ -159,39 +192,42 @@ def _build_parameters(parent: Element) -> list[str]:
     for button in range(1, 9):
         prefix = f"NC{button}"
         add(f"{prefix}-IndependentFunction", f"{prefix} independent function", "Function of channel", "IndependentFunction", enum_defaults["IndependentFunction"], endpoint(button, INDEPENDENT_FUNCTION))
-        add(f"{prefix}-PairedFunction", f"{prefix} paired endpoint function", "Function of endpoint", "PairedFunction", enum_defaults["PairedFunction"], endpoint(button, PAIRED_FUNCTION))
+        add(f"{prefix}-PairedFunction", f"{prefix} button group function", "Function of button group", "PairedFunction", enum_defaults["PairedFunction"], endpoint(button, PAIRED_FUNCTION))
         add(f"{prefix}-NameLanguage", f"Button {button} name language", "Name language", "NameLanguage", 0, endpoint(button, NAME_LANGUAGE))
-        add(f"{prefix}-VietnameseName", f"{prefix} Vietnamese display name", "Name", "VietnameseName", 0, endpoint(button, VIETNAMESE_NAME))
-        add(f"{prefix}-EnglishName", f"Button {button} English display name", "Name", "EnglishName20", " ", endpoint(button, ENGLISH_NAME))
+        add(f"{prefix}-VietnameseName", f"{prefix} Vietnamese switch name", "Name", "VietnameseOnOffName", 0, endpoint(button, VIETNAMESE_NAME))
+        add(f"{prefix}-DimmerVietnameseName", f"{prefix} Vietnamese dimmer/CCT name", "Name", "VietnameseDimmerName", 0, endpoint(button, DIMMER_VIETNAMESE_NAME))
+        add(f"{prefix}-CurtainVietnameseName", f"{prefix} Vietnamese curtain name", "Name", "VietnameseCurtainName", 0, endpoint(button, CURTAIN_VIETNAMESE_NAME))
+        add(f"{prefix}-EnglishName", f"Button {button} English display name", "Name", "EnglishName15", "", endpoint(button, ENGLISH_NAME))
         add(f"{prefix}-Icon", f"{prefix} light icon", "Icon", "Icon", 1, endpoint(button, ICON))
         add(f"{prefix}-CurtainIcon", f"{prefix} shutter/curtain icon", "Icon", "CurtainIcon", 1, endpoint(button, CURTAIN_ICON))
         add(f"{prefix}-CurtainTravelTime", f"{prefix} curtain travel time", "Travel time", "CurtainTravelTimeSeconds", 20, endpoint(button, CURTAIN_TRAVEL_TIME), "s")
         add(f"{prefix}-DimmingMode", f"{prefix} relative dimming mode", "Dimming Mode (Long Press >500ms)", "DimmingMode", 0, endpoint(button, DIMMING_MODE))
         add(f"{prefix}-DimmingStep", f"{prefix} fixed dimming step", f"Button {button} Step Size", "DimmingStep", 3, endpoint(button, DIMMING_STEP), "%")
         add(f"{prefix}-RepeatInterval", f"{prefix} dimming repeat interval", "Interval of tele. cyclic send [0..25,0=send once]", "Repeat100ms", 1, endpoint(button, REPEAT_INTERVAL), "*0.1s")
-        add(f"{prefix}-SceneSingleAction", f"{prefix} single press / touch action", "  Single press action", "SceneSingleAction", 1, endpoint(button, SCENE_SINGLE_ACTION))
+        add(f"{prefix}-SceneSingleAction", f"{prefix} single press scene action", "  Single press action", "SceneSingleAction", 1, endpoint(button, SCENE_SINGLE_ACTION))
         add(f"{prefix}-SceneCycleCount", f"{prefix} scene cycle count", "  Number of scenes (cycling)", "SceneCycleCount", 2, endpoint(button, SCENE_CYCLE_COUNT))
+        add(f"{prefix}-SceneCycleMode", f"{prefix} automatic scene change", "  Automatic scene change", "SceneCycleMode", 0, endpoint(button, SCENE_CYCLE_MODE))
         for index in range(1, 6):
             add(f"{prefix}-Scene{index}", f"{prefix} scene {index} number", f"  Scene {index} number", "SceneNumber1To64", 1, endpoint(button, SCENE_1 + index - 1))
-        add(f"{prefix}-SceneDoubleAction", f"{prefix} double press action", "  Double press action", "SceneExtraAction", 1, endpoint(button, SCENE_DOUBLE_ACTION))
-        add(f"{prefix}-SceneDoubleNumber", f"{prefix} double press scene number", "  Double press scene number", "SceneNumber1To64", 1, endpoint(button, SCENE_DOUBLE_NUMBER))
-        add(f"{prefix}-SceneLongAction", f"{prefix} long press action", "  Long hold action", "SceneExtraAction", 2, endpoint(button, SCENE_LONG_ACTION))
-        add(f"{prefix}-SceneLongNumber", f"{prefix} long press scene number", "  Long hold scene number", "SceneNumber1To64", 1, endpoint(button, SCENE_LONG_NUMBER))
         add(f"{prefix}-SwitchMode", f"{prefix} switch operating mode", "Switch mode", "SwitchMode", 1, endpoint(button, SWITCH_MODE))
         add(f"{prefix}-SwitchStartup", f"{prefix} switch startup behavior", "Behavior on bus voltage recovery", "StartupBehavior", 0, endpoint(button, SWITCH_STARTUP))
         add(f"{prefix}-AutoModeType", f"{prefix} automatic timer action", "Auto mode type", "AutoModeType", 0, endpoint(button, AUTO_MODE_TYPE))
         add(f"{prefix}-AutoTime", f"{prefix} automatic timer", "Time value", "AutoTimeSeconds", 60, endpoint(button, AUTO_TIME), "s")
-        add(f"{prefix}-SceneObjects", f"{prefix} scene communication objects", "  Number of scene objects", "SceneObjects", 1, endpoint(button, SCENE_OBJECTS))
-        scene_name_slots = (
-            *((f"Scene{index}", f"  Scene {index} name", f"Scene {index}") for index in range(1, 6)),
-            ("SceneDouble", "  Double press scene name", "Double Press"),
-            ("SceneLong", "  Long hold scene name", "Long Hold"),
+        scene_name_slots = tuple(
+            (f"Scene{index}", f"  Scene {index} name", "")
+            for index in range(1, 6)
         )
         for slot, text, default in scene_name_slots:
-            slot_index = (int(slot.removeprefix("Scene")) - 1) if slot[5:].isdigit() else (5 if slot == "SceneDouble" else 6)
-            add(f"{prefix}-{slot}EnglishName", f"{prefix} {slot} English name", text, "EnglishName20", default, endpoint(button, SCENE_ENGLISH_NAME_1 + slot_index * 20))
-            add(f"{prefix}-{slot}VietnameseName", f"{prefix} {slot} Vietnamese name", text, "VietnameseName", 0, endpoint(button, SCENE_VIETNAMESE_NAME_1 + slot_index))
+            slot_index = int(slot.removeprefix("Scene")) - 1
+            add(f"{prefix}-{slot}EnglishName", f"{prefix} {slot} English name", text, "EnglishName15", default, endpoint(button, SCENE_ENGLISH_NAME_1 + slot_index * 20))
+            add(f"{prefix}-{slot}VietnameseName", f"{prefix} {slot} Vietnamese name", text, "VietnameseSceneName", 0, endpoint(button, SCENE_VIETNAMESE_NAME_1 + slot_index))
             add(f"{prefix}-{slot}Icon", f"{prefix} {slot} icon", "  Icon", "Icon", 1, endpoint(button, SCENE_ICON_1 + slot_index))
+    for key in DISPLAY_NAME_PARAMETER_KEYS:
+        SubElement(parent, "Parameter", {
+            "Id": _parameter_id(key), "Name": key, "Text": "Object display name",
+            "ParameterType": _parameter_type_id("ObjectDisplayName"), "Value": "",
+        })
+        keys.append(key)
     return keys
 
 
@@ -253,16 +289,58 @@ def _build_document(spec: ProductSpec) -> Element:
     SubElement(code, "RelativeSegment", {"Id": SEGMENT_ID, "Name": "V1 parameter memory", "Size": str(SEGMENT_SIZE), "LoadStateMachine": "4", "Offset": "0"})
     parameter_types = SubElement(static, "ParameterTypes")
     _build_parameter_types(parameter_types)
+    display_type = SubElement(parameter_types, "ParameterType", {
+        "Id": _parameter_type_id("ObjectDisplayName"), "Name": "ETS object display name",
+    })
+    SubElement(display_type, "TypeText", {"SizeInBit": "640"})
     parameters = SubElement(static, "Parameters")
     parameter_keys = _build_parameters(parameters)
     refs = SubElement(static, "ParameterRefs")
     for key in parameter_keys:
         SubElement(refs, "ParameterRef", {"Id": _parameter_ref_id(key), "RefId": _parameter_id(key)})
+    calculations = SubElement(static, "ParameterCalculations")
+    for index, key in enumerate(DISPLAY_NAME_PARAMETER_KEYS, 1):
+        prefix, slot = key.removesuffix("ObjectName").split("-", 1)
+        scene = slot.startswith("Scene")
+        presentation = "button_scene" if scene else slot
+        vi_slot = slot if scene else {"button_switch": "", "endpoint_dimmer": "Dimmer", "endpoint_cct": "Dimmer", "endpoint_curtain": "Curtain"}[slot]
+        english_key = f"{prefix}-{slot if scene else ''}EnglishName"
+        vi_key = f"{prefix}-{vi_slot}VietnameseName"
+        calc = SubElement(calculations, "ParameterCalculation", {
+            "Id": f"{APP_ID}_PC-{index}", "Name": key, "Language": "JavaScript",
+        })
+        SubElement(calc, "RLTransformation").text = "// Display-only output; never modify device parameters."
+        labels = json.dumps(dict(labels_for_presentation(presentation)), ensure_ascii=True)
+        SubElement(calc, "LRTransformation").text = (
+            f"var labels = {labels}; var text = language == 1 ? labels[preset] : english; "
+            "display = text == null || String(text) === '' ? '...' : String(text);"
+        )
+        left = SubElement(calc, "LParameters")
+        for alias, source in (("language", f"{prefix}-NameLanguage"), ("english", english_key), ("preset", vi_key)):
+            SubElement(left, "ParameterRefRef", {"RefId": _parameter_ref_id(source), "AliasName": alias})
+        right = SubElement(calc, "RParameters")
+        SubElement(right, "ParameterRefRef", {"RefId": _parameter_ref_id(key), "AliasName": "display"})
     table = SubElement(static, "ComObjectTable")
     objects = _build_com_objects(table)
     object_refs = SubElement(static, "ComObjectRefs")
     for item in objects:
         SubElement(object_refs, "ComObjectRef", {"Id": _object_ref_id(item.key), "RefId": _object_id(item.key)})
+        for variant in OBJECT_REF_VARIANTS:
+            presentation = ref_presentation(item.key, variant)
+            if presentation is None:
+                continue
+            text, function_text = presentation
+            ref_id = COM_OBJECT_REF_IDS[(item.key, variant)]
+            attributes = {
+                "Id": f"{_object_id(item.key)}_R-{ref_id}",
+                "RefId": _object_id(item.key),
+                "Text": text,
+                "FunctionText": function_text,
+            }
+            text_parameter_key = ref_text_parameter_key(item.key, variant)
+            if text_parameter_key:
+                attributes["TextParameterRefId"] = _parameter_ref_id(text_parameter_key)
+            SubElement(object_refs, "ComObjectRef", attributes)
     SubElement(static, "AddressTable", {"MaxEntries": "500"})
     SubElement(static, "AssociationTable", {"MaxEntries": "500"})
     procedures = SubElement(static, "LoadProcedures")

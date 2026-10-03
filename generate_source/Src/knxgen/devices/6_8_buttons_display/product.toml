@@ -1,20 +1,21 @@
 [product]
 device_key = "6_8_buttons_display"
 manufacturer = "lumi"
-product_name = "Lumi 6/8-button Display"
+product_name = "Lumi 4/6/8-button Display"
 order_number = "LM68BDKNX"
-serial_number = "LM68BDKNXV2"
+serial_number = "LM68BDKNXV12"
 hardware_version = 1
 bus_current_ma = 20
 rail_mounted = false
-application_name = "6/8-button Display V2"
+application_name = "4/6/8-button Display V12"
 application_number = 2027
-application_version = 2
+# Increment for every revised product delivered; keep the V suffixes above in sync.
+application_version = 12
 mask_version = "MV-07B0"
 min_ets_version = "5.7"
 schema_version = 14
 secure = true
 medium = "MT-0"
 baseline_sha256 = ""
-expected_parameter_count = 398
-expected_com_object_count = 98
+expected_parameter_count = 407
+expected_com_object_count = 114

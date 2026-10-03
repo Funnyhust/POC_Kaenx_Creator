@@ -1,0 +1,87 @@
+﻿STT,Nhóm UX,Function,Giao thức,Trạng thái/Điều kiện,Thao tác người dùng,Hành vi thiết bị,Màn hình hiển thị,LED hiển thị,Timing/Tham số,Ghi chú,,,,,,,,
+1,Bố cục chung,Tất cả,Chung,Thiết bị 6 nút NC1 NC2 NC4 NC5 NC6 NC8,Cấu hình function,Dùng lưới màn hình cơ sở 2 cột x 4 hàng; NC1 và NC5 là hai nút lớn bên trái; NC2 NC4 NC6 NC8 là bốn nút bên phải,Các vùng điều khiển bám theo vị trí vật lý của 6 nút,,,Không có nút NC3 và NC7,,,,,,,,
+2,,Switch/Scene,Chung,Khi cấu hình Switch hoặc Scene,Gán function vào một nút,Function dùng vùng màn hình tương ứng với nút đã gán,Hiển thị tên icon và trạng thái tương ứng,,,NC1 và NC5 dùng vùng cao 2 hàng; mỗi nút bên phải dùng 1 ô,,,,,,,,
+3,,Dimmer/CCT/Curtain,Chung,Khi cấu hình function,Gán function vào một cặp nút hợp lệ,Gộp vùng màn hình tương ứng thành 1 vùng dọc,Hiển thị như một thiết bị duy nhất,,,Bản 6 nút chỉ hỗ trợ ghép dọc,,,,,,,,
+4,,,,Khi chọn ghép dọc,Chọn function cho một cặp,Chỉ cho phép các cặp NC1-NC5 NC2-NC4 hoặc NC6-NC8,Vùng ghép hiển thị theo cặp đã chọn,,,Nút trên: tăng/mở; nút dưới: giảm/đóng,,NC1,,NC2,,,,
+5,,,,Khi ghép cặp NC1-NC5,Gán một function cho cặp nút lớn bên trái,Gộp toàn bộ 4 ô của cột trái thành 1 vùng cao toàn màn hình,Hiển thị một endpoint duy nhất ở cột trái,,,NC1: tăng/mở; NC5: giảm/đóng,,,,NC4,,,,
+6,,,,Khi ghép cặp bên phải,Gán function cho NC2-NC4 hoặc NC6-NC8,Gộp dọc 2 ô bên phải tương ứng thành một vùng,Hiển thị endpoint phía trên hoặc phía dưới cột phải,,,NC2/NC6: tăng/mở; NC4/NC8: giảm/đóng,,NC5,,NC6,,,,
+8,Đồng bộ trạng thái,Tất cả,Chung,Nhận trạng thái mới từ nút touch KNX/BLE hoặc hệ thống khác,Không có,Cập nhật trạng thái thực của thiết bị,Cập nhật icon giá trị và trạng thái tương ứng,Cập nhật theo trạng thái function,,Không dùng trạng thái dự đoán làm trạng thái cuối cùng nếu chưa có phản hồi,,,,NC8,,,,
+11,Điều khiển,Switch,Chung,Thiết bị đang ON hoặc OFF,Nhấn nút vật lý một lần,Đảo trạng thái ON/OFF,Cập nhật icon và trạng thái,ON: đỏ; OFF: xanh dương,,,,,,,,,,
+12,,,,Thiết bị đang ON hoặc OFF,Chạm ngắn vùng Switch,Đảo trạng thái ON/OFF,Cập nhật icon và trạng thái,ON: đỏ; OFF: xanh dương,,,,,,,,,,
+13,,Event Notify,Chung,Khi cấu hình Event Notify,Gán function vào một nút,Scene chiếm 1 ô đơn,Hiển thị tên icon và cảnh đang được chọn hoặc vừa kích hoạt,LED nháy xanh dương 1 lần,,"Một nút vật lý điều khiển tối đa 5 cảnh, Cho phép tự động/không tự động chuyển cảnh khi được kích hoạt bằng nút(default tự động)",,,,,,,,
+14,,,BLE,Đã cấu hình 1-5 cảnh eventNotify,Kích hoạt function bằng nút,Gửi eventNotify tương ứng với cảnh đang chọn,Gửi eventNotify tương ứng với cảnh đang chọn,LED nháy xanh dương 1 lần,5 cảnh: 1-5,BLE dùng eventNotify thay cho KNX Scene,,,,,,,,
+15,,,,Chế độ chuyển cảnh Auto (mặc định),Kích hoạt function bằng nút,Chuyển tuần tự cảnh 1→2→3→4→5→1 rồi gửi eventNotify của cảnh hiện tại,Cập nhật chỉ số hoặc tên cảnh hiện tại,LED nháy xanh dương 1 lần,Mặc định Auto,Mỗi lần kích hoạt nút chuyển sang cảnh tiếp theo,,,,,,,,
+16,,,,Chế độ chuyển cảnh Manual,Chọn hoặc cấu hình một cảnh rồi kích hoạt bằng nút,Gửi eventNotify của cảnh đã chọn và không tự chuyển sang cảnh khác,Cập nhật chỉ số hoặc tên cảnh đã chọn,LED nháy xanh dương 1 lần,5 cảnh: 1-5,Chế độ Auto/Manual được cấu hình; mặc định Auto,,,,,,,,
+17,,,KNX,Đã cấu hình 5 cảnh KNX,Kích hoạt function bằng nút,Gọi scene KNX tương ứng với cảnh đang chọn,Cập nhật tên icon và cảnh sau khi có kết quả,LED nháy xanh dương 1 lần,5 cảnh: 1-5,KNX vẫn sử dụng Scene,Đổi sang sạng eventNotify có 5 cảnh. Cho phép tự động/không tự động chuyển cảnh khi được kích hoạt bằng nút(default tự động),,,,,,,
+18,,,,Chế độ chuyển cảnh Auto (mặc định),Kích hoạt function bằng nút,Chuyển tuần tự cảnh 1→2→3→4→5→1 rồi gửi scene KNX của cảnh hiện tại,Cập nhật chỉ số hoặc tên cảnh hiện tại,LED nháy xanh dương 1 lần,Mặc định Auto,Mỗi lần kích hoạt nút chuyển sang cảnh tiếp theo,,,,,,,,
+19,,,,Chế độ chuyển cảnh Manual,Chọn hoặc cấu hình một cảnh rồi kích hoạt bằng nút,Gọi scene KNX của cảnh đã chọn và không tự chuyển sang cảnh khác,Cập nhật chỉ số hoặc tên cảnh đã chọn,LED nháy xanh dương 1 lần,5 cảnh: 1-5,Chế độ Auto/Manual được cấu hình; mặc định Auto,,,,,,,,
+21,,,Chung,Touch action,Chạm ngắn vùng Scene,Gửi eventNotify tương ứng với cảnh đang chọn,Gửi eventNotify tương ứng với cảnh đang chọn,LED nháy xanh dương 1 lần,5 cảnh: 1-5,Tương đương Single Press,,,,,,,,
+22,,Dimmer,Chung,Khi cấu hình Dimmer,Gán function vào cặp nút,Nút giảm và nút tăng được xác định theo hướng ghép,Một màn duy nhất hiển thị tên icon ON/OFF và Brightness,,,Không có thao tác chuyển màn,,,,,,,,
+23,,,,Thiết bị đang ON hoặc OFF,Chạm ngắn vùng Dimmer,Đảo trạng thái ON/OFF,Cập nhật icon ON/OFF và Brightness hiện tại,ON: đỏ; OFF: xanh dương,,Bật/tắt chỉ thực hiện bằng touch,,,,,,,,
+24,,,BLE,Giữ nút giảm quá ngưỡng hold,Nhấn giữ nút giảm,Gửi START DIM DOWN,Hiển thị trạng thái đang giảm và giá trị nhận được,Nháy xanh dương 2 lần,Hold >500 ms,BLE chỉ sử dụng START/STOP,,,,,,,,
+25,,,,Đang DIM DOWN,Nhả nút giảm,Gửi STOP DIM,Dừng trạng thái đang giảm và giữ giá trị mới,,,Không đảo hướng sau khi nhả,,,,,,,,
+26,,,,Giữ nút tăng quá ngưỡng hold,Nhấn giữ nút tăng,Gửi START DIM UP,Hiển thị trạng thái đang tăng và giá trị nhận được,Nháy đỏ 2 lần,Hold >500 ms,BLE chỉ sử dụng START/STOP,,,,,,,,
+27,,,,Đang DIM UP,Nhả nút tăng,Gửi STOP DIM,Dừng trạng thái đang tăng và giữ giá trị mới,,,Không đảo hướng sau khi nhả,,,,,,,,
+28,,,,Nhấn ngắn dưới ngưỡng hold,Nhấn rồi nhả nút giảm hoặc tăng,Không thực hiện bật/tắt và không bắt đầu dim,Giữ nguyên trạng thái,,Press <500 ms,Bật/tắt bằng touch,,,,,,,,
+29,,,KNX Start/Stop,Giữ nút giảm quá ngưỡng hold,Nhấn giữ nút giảm,Gửi DIM DOWN START,Hiển thị trạng thái đang giảm và giá trị nhận được,Nháy xanh dương 2 lần,Hold >500 ms,,,,,,,,,
+30,,,,Đang DIM DOWN,Nhả nút giảm,Gửi DIM DOWN STOP,Dừng trạng thái đang giảm và giữ giá trị mới,,,,,,,,,,,
+31,,,,Giữ nút tăng quá ngưỡng hold,Nhấn giữ nút tăng,Gửi DIM UP START,Hiển thị trạng thái đang tăng và giá trị nhận được,Nháy đỏ 2 lần,Hold >500 ms,,,,,,,,,
+32,,,,Đang DIM UP,Nhả nút tăng,Gửi DIM UP STOP,Dừng trạng thái đang tăng và giữ giá trị mới,,,,,,,,,,,
+33,,,KNX Step,Không có lệnh dim đang chạy,Nhấn nút giảm một lần,Gửi một lệnh giảm theo step đã cấu hình,Cập nhật Brightness khi nhận trạng thái mới,Nháy xanh dương 2 lần,Step 1.5625%-100%,Không cần gửi STOP,,,,,,,,
+34,,,,Không có lệnh dim đang chạy,Nhấn nút tăng một lần,Gửi một lệnh tăng theo step đã cấu hình,Cập nhật Brightness khi nhận trạng thái mới,Nháy đỏ 2 lần,Step 1.5625%-100%,Không cần gửi STOP,,,,,,,,
+35,,,,Cấu hình gửi lặp được bật,Giữ nút giảm hoặc tăng,Lặp lệnh giảm hoặc tăng theo chu kỳ đã cấu hình,Cập nhật Brightness khi nhận trạng thái mới,,Chu kỳ 100-2500 ms,Nhả nút thì ngừng phát step tiếp theo,,,,,,,,
+36,,CCT,Chung,Khi cấu hình CCT,Gán function vào cặp nút,Nút giảm và nút tăng điều chỉnh tham số đang chọn,Vùng ghép có hai màn con: Brightness và Color temperature,,,Khi chuyển đến màn nào thì giữ ở màn đó(khởi động lại về màn mặc định: brightness),,,,,,,,
+37,,,,Đang ở một trong hai màn con,Vuốt ngang vùng CCT,Chuyển giữa Brightness và Color temperature,Làm nổi bật màn và tham số đang chọn,,,Vuốt theo hai hướng đều thực hiện chuyển màn,,,,,,,,
+38,,,,Thiết bị đang ON hoặc OFF,Chạm ngắn vùng CCT,Đảo trạng thái ON/OFF,Giữ nguyên màn con đang chọn; cập nhật icon ON/OFF,ON: đỏ; OFF: xanh dương,,Không đổi màn khi chạm ngắn,,,,,,,,
+39,,,BLE,Đang chọn Brightness,Giữ nút giảm hoặc tăng,Gửi START DIM DOWN hoặc START DIM UP cho Brightness,Hiển thị chiều điều chỉnh và giá trị nhận được,Giảm: xanh dương 2 lần; tăng: đỏ 2 lần,Hold >500 ms,Nhả nút gửi STOP DIM,,,,,,,,
+40,,,,Đang chọn Color temperature,Giữ nút giảm hoặc tăng,Gửi START DOWN hoặc START UP cho Color temperature,Hiển thị chiều điều chỉnh và giá trị nhận được,Giảm: xanh dương 2 lần; tăng: đỏ 2 lần,Hold >500 ms,Nhả nút gửi STOP,,,,,,,,
+41,,,KNX Start/Stop,Đang chọn Brightness hoặc Color temperature,Giữ nút giảm hoặc tăng,Gửi DOWN START hoặc UP START cho tham số đang chọn,Hiển thị chiều điều chỉnh và giá trị nhận được,Giảm: xanh dương 2 lần; tăng: đỏ 2 lần,Hold >500 ms,Nhả nút gửi lệnh STOP tương ứng,,,,,,,,
+42,,,KNX Step,Đang chọn Brightness hoặc Color temperature,Nhấn nút giảm hoặc tăng,Gửi một step giảm hoặc tăng cho tham số đang chọn,Cập nhật giá trị khi nhận trạng thái mới,Giảm: xanh dương 2 lần; tăng: đỏ 2 lần,Step 1.5625%-100%,Có thể cấu hình lặp step theo chu kỳ 100-2500 ms khi giữ,,,,,,,,
+43,,Curtain,Chung,Khi cấu hình Curtain,Gán function vào cặp nút,Nút đóng và nút mở được xác định theo hướng ghép,Hiển thị tên icon vị trí và trạng thái rèm,,,,,,,,,,,
+44,,,,Rèm đang dừng,Nhấn nút đóng một lần,Gửi lệnh CLOSE,,,,,,,,,,,,
+45,,,,,Nhấn nút mở một lần,Gửi lệnh OPEN,,,,,,,,,,,,
+46,,,,,Chạm ngắn vùng Curtain,Rèm đảo chiều sao với di chuyển trước đó,,,,,,,,,,,,
+47,,,,Rèm đang mở,Nhấn nút đóng một lần,Rèm đảo chiều,,,,,,,,,,,,
+,,,,,Nhấn nút mở một lần,Gửi lệnh STOP,,,,,,,,,,,,
+,,,,,Chạm ngắn vùng Curtain,Rèm đảo chiều,,,,,,,,,,,,
+,,,,Rèm đang đóng,Nhấn nút đóng một lần,Gửi lệnh STOP,,,,,,,,,,,,
+48,,,,,Nhấn nút mở một lần,Rèm đảo chiều,,,,,,,,,,,,
+,,,,,Chạm ngắn vùng Curtain,Rèm đảo chiều,,,,,,,,,,,,
+49,"Hiện diện:
+(Dải cấu hình: 0.2m - 2m
+Step: 0.1m
+Default: 1m)",Tất cả,Chung,Màn hình đang tắt và phát hiện người ở gần,Người đến gần,Xác nhận đủ 3 mẫu rồi bật màn hình và khôi phục độ sáng hoạt động,Hiển thị màn điều khiển gần nhất,,Khoảng cách nhỏ hơn giá trị set,,,,,,,,,
+50,,,,Màn hình đang bật,Touch hoặc nhấn bất kỳ nút nào,Làm mới bộ đếm không hoạt động,Giữ màn hình ở độ sáng hoạt động,,,Thao tác vẫn được xử lý đồng thời,,,,,,,,
+52,,,,Không có thao tác sau khi người dùng rời khỏi vị trí,Không có,Tắt backlight màn hình,Màn hình tắt,,"(Dải cấu hình: 0.2m - 2m
+Step: 0.1m
+Default: 1m)",Trạng thái điều khiển vẫn tiếp tục được đồng bộ ở nền,,,,,,,,
+53,Cảm biến,Nhiệt độ/Độ ẩm,Chung,Nhiệt độ thay đổi đủ ngưỡng,Không có,Cập nhật giá trị cảm biến và báo cáo lên hệ thống,Không có màn hiển thị riêng,,Thay đổi >=1 C,,,,,,,,,
+54,,,,Độ ẩm thay đổi đủ ngưỡng,Không có,Cập nhật giá trị cảm biến và báo cáo lên hệ thống,Không có màn hiển thị riêng,,Thay đổi >=5%,,,,,,,,,
+55,,,,Không đạt ngưỡng thay đổi,Không có,Báo cáo định kỳ cả hai thông số,Không có màn hiển thị riêng,,Chu kỳ <=30 phút,,,,,,,,,
+56,Cấu hình,Tất cả,Chung,Cấu hình từ app hoặc ETS,Đặt tên và chọn icon,Lưu cấu hình cho từng vùng,Hiển thị đúng tên icon và kiểu vùng đã cấu hình,,,Tên tiếng Việt cần được asset/font hỗ trợ,,,,,,,,
+57,,,,Cấu hình độ sáng màn hình,Chọn mức sáng,Lưu và áp dụng độ sáng backlight,Áp dụng độ sáng mới,,"Dải: 1%-100%
+Step: 1%
+Default: 100%",Có thể giới hạn tối thiểu theo phần cứng,,,,,,,,
+58,,,,Cấu hình độ sáng LED,Chọn mức sáng,Lưu và áp dụng cho LED nút,LED phản ánh trạng thái với độ sáng mới,,"Dải: 1%-100%
+Step: 1%
+Default: 50%",,,,,,,,,
+59,Khởi động,Tất cả,BLE,Thiết bị chưa gia nhập Bluetooth Mesh,Cấp nguồn,Khởi động các chức năng thiết bị,Hiển thị logo Lumi trong 5s,NC1 nháy đỏ 3 lần,300 ms bật / 300 ms tắt,,,,,,,,,
+60,,,,Thiết bị đã gia nhập Bluetooth Mesh,Cấp nguồn,Khởi động và khôi phục trạng thái,,NC1 nháy hồng 3 lần,300 ms bật / 300 ms tắt,,,,,,,,,
+61,,,KNX,Thiết bị chưa được cấu hình KNX,Cấp nguồn,Khởi động các chức năng thiết bị,,NC2 nháy đỏ 3 lần,300 ms bật / 300 ms tắt,,,,,,,,,
+62,,,,Thiết bị đã được cấu hình KNX,Cấp nguồn,Khởi động và khôi phục trạng thái,,NC2 nháy hồng 3 lần,300 ms bật / 300 ms tắt,,,,,,,,,
+63,Cấu hình mạng,Tất cả,BLE,Thiết bị chưa gia nhập mạng,Nhấn nút config 2 lần,Bật hoặc tắt chế độ gia nhập Bluetooth Mesh,,Vào mode: NC1 nháy hồng; đang chờ: nháy hồng mỗi 5 giây; thoát: nháy đỏ,Timeout 5 phút,Nếu đã gia nhập mạng thì bỏ qua thao tác vào mode,,,,,,,,
+64,,,KNX,Thiết bị cần cấu hình ETS,Nhấn nút config 1 lần,Bật hoặc tắt KNX Programming Mode,,Vào mode: NC2 nháy hồng; đang chờ: nháy hồng mỗi 5 giây; thoát: nháy đỏ,Timeout 5 phút,Cấu hình thành công có thể làm thiết bị reboot,,,,,,,,
+65,Reset,Tất cả,Chung,Cần xóa cấu hình tại thiết bị,"Bấm giữ nút config 10s để vào mode -> Hiển thị trên màn chọn chức năng:
+Màn 1: Cấu hình
+* Khôi phục cài đặt gốc(Reset factory) -> màn 3
+* Xóa mạng(Delete network) -> màn 2
+* Hủy(Cancel)
+Màn 2: Xóa mạng(Delete network)
+* Xóa BLE(Reset BLE) -> màn 3
+* Xóa KNX(Reset KNX) -> màn 3
+* Xóa toàn bộ(Reset all) -> màn 1
+* Back -> màn 1
+Bấm chọn có xác nhận? Có/Không -> màn hình chính",Vào màn hình menu cài đặt,,Tất cả led nháy hồng 2s rồi sáng hồng,Giữ 10 giây; timeout nhả tay 2 giây,Thoát màn reset nếu quá timeout (update thời gian timeout sau),,,,,,,,
+,Màn mặc định,Tất cả,Chung,Sau khi khôi phục cài đặt gốc,,,"Hiển thị mặc định:
+1. Loại thiết bị là Switch(6 EP)
+2. Icon: @Dương NVconfirm",,,,,,,,,,,

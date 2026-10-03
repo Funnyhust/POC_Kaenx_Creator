@@ -1,1 +1,1 @@
-"""Lumi 6/8-button display product generator."""
+"""Lumi 4/6/8-button display product generator."""

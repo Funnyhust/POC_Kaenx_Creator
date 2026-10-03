@@ -1,0 +1,95 @@
+﻿STT,Nội dung,,,Thao tác,Chi tiết,Led hiển thị,Ghi chú,Hình ảnh demo,,,,,,,,,,,
+1,"Khi bắt đầu cấp nguồn
+",,,Cấp nguồn cho thiết bị,Nếu chưa được cấu hình KNX,"Nháy đỏ 3 lần nút NC2
+(300ms bật/ 300ms tắt)",Led hiển thị trạng thái thiết bị đã được cấu hình vào mạng KNX hay chưa,,,,,,,,,,,,
+,,,,,Nếu đã được cấu hình KNX,"Nháy hồng 3 lần nút NC2
+(300ms bật/ 300ms tắt)",,,,,,,,,,,,,
+2.1,"Cấu hình cho thiết bị không secure
+(Thống số cấu hình:
+- Địa chỉ vật lý(PA)
+- Địa chỉ nhóm(GA)
+- Parameter
+- ComObject)",,,"B1: Thao tác dưới thiết bị:
++Nhấn 1 lần nút config ( sẽ đảo chế độ cấu hình (bật <=> tắt) )","
+- B1: Nhất 1 lần nút config. 
+=> thao tác xong thiết bị sẽ vào chế độ cấu hình KNX","Vào mode:
+- Led NC2 sẽ nháy hồng 1 lần báo vào mode thành công (300ms bật/ 300ms tắt)
+- Led NC2 sẽ nháy hồng liên tục với chu kỳ 5s cho đến khi hết time out
+Thoát mode:
+- Led NC2 nháy đỏ 1 lần báo thoát mode thành công","Time out trong chế độ cấu hình là 5p, nếu không cấu hình cho thiết bị sẽ tự thoát chế độ cấu hình KNX",,,,,,,,,,,,
+,,,,B2: Bấm nút download trên ETS để nạp  cấu hình thiết bị,,"'+ Thành công: khởi động lại(xem trạng thái led khởi động)
++ Thất bại: Led NC2 nháy đỏ 3 lần
+(300ms bật/ 300ms tắt)","- Bấm nút download từ ETS để nạp cấu hình cho thiết bị
+- Sau khi thiết bị vào chế độ cấu hình KNX
+- Sau khi cấu hình xong thiết bị sẽ tiến hành reboot.",,,,,,,,,,,,
+2.2,"Cấu hình cho thiết bị  secure
+(Thống số cấu hình:
+- Địa chỉ vật lý(PA)
+- Địa chỉ nhóm(GA)
+- Parameter
+- ComObject)",,,"B1: (Nếu nạp bằng file .knxprj cũ => bỏ qua bước này)
+Nếu nạp bằng file .knxprj mới => thao tác Xóa cấu hình thiết bị trước",Thao tác xóa cấu hình thiết bị,Thao tác xóa cấu hình thiết bị,,,,,,,,,,,,,
+,,,,"B2: Thao tác dưới thiết bị: 
++ Nhấn 1 lần nút config ( sẽ đảo chế độ cấu hình (bật <=> tắt) )","
+- B1: Nhất 1 lần nút config. 
+
+=> thao tác xong thiết bị sẽ vào chế độ cấu hình KNX","Vào mode:
+- Led NC2 sẽ nháy hồng 1 lần báo vào mode thành công (300ms bật/ 300ms tắt)
+- Led NC2 sẽ nháy hồng liên tục với chu kỳ 5s cho đến khi hết time out
+Thoát mode:
+- Led NC2 nháy đỏ 1 lần báo thoát mode thành công","Time out trong chế độ cấu hình là 5p, nếu không cấu hình cho thiết bị sẽ tự thoát chế độ cấu hình KNX",,,,,,,,,,,,
+,,,,B3: Bấm nút download trên ETS để nạp  cấu hình thiết bị,,"'+ Thành công: khởi động lại(xem trạng thái led khởi động)
++ Thất bại: Led NC2 nháy đỏ 3 lần
+(300ms bật/ 300ms tắt)","- Bấm nút download từ ETS để nạp cấu hình cho thiết bị
+- Sau khi thiết bị vào chế độ cấu hình KNX
+- Sau khi cấu hình xong thiết bị sẽ tiến hành reboot.",,,,,,,,,,,,
+4,Xóa cấu hình thiế bị,Xóa cấu hình KNX,,Nhấn giữ nút config trong 10s (timeout nhả tay 2s) để vào menu cài đặt,Chọn Xóa mạng (Delete Network)>KNX>Xác nhận: Có,"
+- Sau khi nhấn xác nhận: thiết bị khôi phục lại cài đặt gốc và thông báo ""Xóa cấu hình KNX thành công"" trên màn hình sau đó thiết bị sẽ reset và reboot",Các cấu hình của BLE vẫn sẽ được giữ,,,,,,,,,,,,
+,,Khôi phục cái đặt gốc,"Nhấn giữ knob_down khoảng 10s để vào menu cài đặt
+",Nhấn giữ nút config trong 10s (timeout nhả tay 2s) để vào menu cài đặt,"B1. Chọn Khôi phục cài đặt gốc
+B2. Xác nhận khôi phục cài đặt gốc(chọn có/không)
+Lưu ý: thao tác này sẽ xóa thiết bị ra khỏi mạng.","
+- Sau khi nhấn xác nhận: thiết bị khôi phục lại cài đặt gốc và thông báo ""Khôi phục cài đặt gốc thành công"" trên màn hình sau đó thiết bị sẽ reset và reboot","Toàn bộ cài đặt sẽ về mặc định, màn hình hiển thị mặc định",,,,,,,,,,,,
+,Điều khiển,Switch,,Nhấn 1 lần để đảo trạng thái (ON/OFF),"Bước 1: chọn chế độ Switch
+Bước 2: chọn Switch Mode
+- Disable
+- Toggle(nhấn giữ)  ->cần cấu hình trọng thái lúc khởi động
+- Auto On/Off ->cần cấu hình trọng thái lúc khởi động và thời gian tự động On/Off 
+- Momentary","Led của nút thao tác sáng theo trạng thái ON/OFF
+ON: sáng đỏ/ màn hình hiển thị icon bật
+OFF: sáng xanh dương/màn hình hiển thị icon tắt",,,,,,,,,,,,,
+,,Scene(Event Notify),,"Kích hoạt:
+ - Nhấn 1 lần nút cảnh
+ - Chạm vào vùng icon của cảnh trên màn hình
+Đổi cảnh: 
+- Vuốt màn hình trong vùng của cảnh để đổi cảnh (1->2->3->4->5->1)","Lựa chọn cấu hình trên ETS
+Bước 1: chọn hành động
+- No Action
+- Recall scene: gọi lệnh kích hoạt cảnh 1 (duy nhất 1 cảnh)
+- Scene Cycling: gọi xoay vòng các cảnh
+( Khi bấm 1 lần sẽ tự động chuyển lần lượt các cảnh theo thứ tự 1->2->3->4->5-> Lặp lại(Lưu ý: Ko phải luôn luôn là 5 mà số lượng ID tùy thuộc số lượng chọn trên ETS))
+- Store Scene: Gọi lệnh lưu cảnh
+Bước 2: chọn số lượng Scene Objects
+- 1 Object: chỉ 1 Object dùng chung cho cả 3 hành động nhấn 1 lần, nhấn 2 lần, nhấn giữ
+- 3 Objects: tách riêng 3 Objects cho 3 hành động nhấn 1 lần, nhấn 2 lần, nhấn giữ
+",Led của nút thao tác xanh dương 1 lần,,,,,,,,,,,,,
+,,Dimmer,,,,,,,,,,,,,,,,,
+,,CCT,,,,,,,,,,,,,,,,,
+,,Curtain,,,,,,,,,,,,,,,,,
+,Điều khiển,Switch,,,,,,,,,,,,,,,,,
+,,Scene(Event Notify),,,,,,,,,,,,,,,,,
+,,Dimmer,,,,,,,,,,,,,,,,,
+,,CCT,,,,,,,,,,,,,,,,,
+,,Curtain,,,,,,,,,,,,,,,,,
+,Màn hình hiển thị,,,Thay đổi được icon(danh sách Icon xem tại đây) và tên (Vietnamese character conversion table),"- Tên có độ dài tối đa 15 ký tự
+- Icon thiết bị được chọn trong list Icon đưa ra",,"Phần tiếng việt ETS không hỗ trợ, thiết kế thêm tool riêng để convert từ tiếng Việt sang mã (hex hoặc thập phân) để cấu hình",,,,,,,,,,,,
+,,,,"Hiển thị nhiệt độ, độ ẩm trong phòng",,,,,,,,,,,,,,,
+,,,,"Hiển thị trạng thái bật, tắt dựa trên loại icon bật, tắt",,,,,,,,,,,,,,,
+,,,,Cài đăt độ sáng màn hình,Nhập độ sáng cho màn hình(1-100%),,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,"Cập nhật thông số nhiệt độ, độ ẩm",Ngưỡng cập nhật,,"- Nhiệt độ thay đổi >= 1℃
+- Độ ẩm thay đổi >= 5%",,,"- Sai số cảm biến:
+Độ ẩm: ±3% (maximum)
+Nhiệt độ: ±0.4°C
+(maximum)",,,,,,,,,,,,
+,,Cập nhật định kỳ,,"Định kỳ cập nhật cả 2 thông số nhiệt độ, độ ẩm trong <= 30 phút",,,,,,,,,,,,,,,

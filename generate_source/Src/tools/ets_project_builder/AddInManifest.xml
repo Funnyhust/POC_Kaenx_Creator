@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Knxapp AppId="M00FA-A0099" Icon="images\etsapp.png" AddInAssembly="Knx.ProjectBuilder.dll">
+  <Configuration IsSingleInstanceAddIn="true"
+                 AddToContentSwitcher="true"
+                 AddToMainToolbar="true"
+                 HasConfigurationDialog="false"
+                 Is64BitCompatible="true"
+                 SubscribeToProjectClosingEvent="true"
+                 SubscribeToProjectOpenedEvent="true" />
+  <DisplayNames>
+    <DisplayName LanguageId="en-US" Name="KNX Project Builder" />
+    <DisplayName LanguageId="vi-VN" Name="KNX Project Builder" />
+  </DisplayNames>
+  <AddInToolbarButtons>
+    <AddInToolbarButton ButtonId="BuildDemo">
+      <ButtonNames>
+        <ButtonName LanguageId="en-US" Name="Build demo project" />
+        <ButtonName LanguageId="vi-VN" Name="Build demo project" />
+      </ButtonNames>
+    </AddInToolbarButton>
+  </AddInToolbarButtons>
+</Knxapp>

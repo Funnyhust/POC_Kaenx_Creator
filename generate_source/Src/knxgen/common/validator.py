@@ -26,7 +26,7 @@ def validate_internal_references(root: ET.Element) -> None:
     identifiers = {node.attrib["Id"] for node in root.iter() if "Id" in node.attrib}
     missing: set[str] = set()
     for node in root.iter():
-        for attribute in ("RefId", "ParamRefId"):
+        for attribute in ("RefId", "ParamRefId", "TextParameterRefId"):
             reference = node.attrib.get(attribute)
             if node.tag.endswith("Manufacturer") and attribute == "RefId":
                 continue
@@ -117,6 +117,15 @@ def validate_kaenx_creator_import_contract(root: ET.Element, spec: ProductSpec) 
     a generated file fails before it reaches the Kaenx GUI.
     """
     parameter_ids: set[int] = set()
+    parameters_by_id = {
+        node.attrib["Id"]: node for node in _elements(root, "Parameter")
+    }
+    parameter_types_by_id = {
+        node.attrib["Id"]: node for node in _elements(root, "ParameterType")
+    }
+    parameter_refs_by_id = {
+        node.attrib["Id"]: node for node in _elements(root, "ParameterRef")
+    }
     for node in _elements(root, "Parameter"):
         identifier = _kaenx_numeric_suffix(node.attrib["Id"], 2)
         if identifier in parameter_ids:
@@ -149,6 +158,26 @@ def validate_kaenx_creator_import_contract(root: ET.Element, spec: ProductSpec) 
         if ref_identifier in com_ref_ids:
             raise ValueError(f"Kaenx duplicate ComObjectRef numeric ID: {ref_identifier}")
         com_ref_ids.add(ref_identifier)
+        if "TextParameterRefId" in node.attrib:
+            text_parameter_ref_id = node.attrib["TextParameterRefId"]
+            text_parameter_identifier = _kaenx_numeric_suffix(text_parameter_ref_id, 2)
+            if text_parameter_identifier not in parameter_ref_ids:
+                raise ValueError(
+                    "Kaenx ComObjectRef TextParameterRefId is unresolved: "
+                    f"{text_parameter_ref_id}"
+                )
+            text_parameter_ref = parameter_refs_by_id[text_parameter_ref_id]
+            text_parameter = parameters_by_id.get(text_parameter_ref.attrib.get("RefId", ""))
+            text_parameter_type = (
+                parameter_types_by_id.get(text_parameter.attrib.get("ParameterType", ""))
+                if text_parameter is not None
+                else None
+            )
+            if text_parameter_type is None or not _elements(text_parameter_type, "TypeText"):
+                raise ValueError(
+                    "Kaenx ComObjectRef TextParameterRefId must target a TypeText parameter: "
+                    f"{text_parameter_ref_id}"
+                )
 
     for node in _elements(root, "ParameterBlock"):
         if "Id" in node.attrib and "ParamRefId" not in node.attrib:

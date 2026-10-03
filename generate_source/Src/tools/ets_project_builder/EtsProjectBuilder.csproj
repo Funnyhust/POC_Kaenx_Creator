@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Knx.ProjectBuilder</RootNamespace>
+    <AssemblyName>Knx.ProjectBuilder</AssemblyName>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <EtsDir Condition="'$(EtsDir)' == ''">C:\Program Files (x86)\ETS6</EtsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Knx.Ets.Sdk">
+      <HintPath>$(EtsDir)\Knx.Ets.Sdk.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Knx.Ets.Sdk.AddIns.AddInViews">
+      <HintPath>$(EtsDir)\Knx.Ets.Sdk.AddIns.AddInViews.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Knx.Ets.Common">
+      <HintPath>$(EtsDir)\Knx.Ets.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Knx.Ets.Common.Types">
+      <HintPath>$(EtsDir)\Knx.Ets.Common.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.AddIn" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AddInManifest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="images\etsapp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="CreateEtsApp" AfterTargets="Build">
+    <ItemGroup>
+      <EtsAppFiles Include="$(OutputPath)$(AssemblyName).dll" />
+      <EtsAppFiles Include="$(OutputPath)AddInManifest.xml" />
+      <EtsAppFiles Include="$(OutputPath)images\etsapp.png" />
+    </ItemGroup>
+    <RemoveDir Directories="$(OutputPath)deploy" />
+    <MakeDir Directories="$(OutputPath)deploy" />
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll;$(OutputPath)AddInManifest.xml" DestinationFolder="$(OutputPath)deploy" />
+    <MakeDir Directories="$(OutputPath)deploy\images" />
+    <Copy SourceFiles="$(OutputPath)images\etsapp.png" DestinationFolder="$(OutputPath)deploy\images" />
+    <ZipDirectory SourceDirectory="$(OutputPath)deploy" DestinationFile="$(OutputPath)$(AssemblyName).etsapp" Overwrite="true" />
+  </Target>
+</Project>

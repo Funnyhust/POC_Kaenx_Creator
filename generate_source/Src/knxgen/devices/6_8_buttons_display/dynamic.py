@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from xml.etree.ElementTree import Element, SubElement
 
-from .identifiers import COM_OBJECT_IDS, PARAMETER_IDS
+from .identifiers import COM_OBJECT_IDS, COM_OBJECT_REF_IDS, PARAMETER_IDS
+from .translations import labels_for_presentation
 
 
 AREA_ENDPOINTS = {
@@ -21,17 +22,58 @@ def _pref(app: str, key: str) -> str:
     return f"{app}_P-{identifier}_R-{identifier}"
 
 
-def _oref(app: str, key: str) -> str:
-    identifier = COM_OBJECT_IDS[key]
-    return f"{app}_O-{identifier}_R-{identifier}"
+def _oref(app: str, key: str, variant: str | None = None) -> str:
+    object_id = COM_OBJECT_IDS[key]
+    ref_id = object_id if variant is None else COM_OBJECT_REF_IDS[(key, variant)]
+    return f"{app}_O-{object_id}_R-{ref_id}"
 
 
 def _parameter(parent: Element, app: str, key: str) -> None:
     SubElement(parent, "ParameterRefRef", {"RefId": _pref(app, key)})
 
 
-def _object(parent: Element, app: str, key: str) -> None:
-    SubElement(parent, "ComObjectRefRef", {"RefId": _oref(app, key)})
+def _object_ref(parent: Element, app: str, key: str, variant: str | None = None) -> None:
+    SubElement(parent, "ComObjectRefRef", {"RefId": _oref(app, key, variant)})
+
+
+def _vietnamese_name_key(button: int, presentation: str, name_slot: str | None) -> str:
+    if presentation == "button_scene":
+        if name_slot is None:
+            raise ValueError("Scene object presentation requires a scene name slot")
+        return f"NC{button}-{name_slot}VietnameseName"
+    if presentation == "button_switch":
+        return f"NC{button}-VietnameseName"
+    if presentation in {"endpoint_dimmer", "endpoint_cct"}:
+        return f"NC{button}-DimmerVietnameseName"
+    if presentation == "endpoint_curtain":
+        return f"NC{button}-CurtainVietnameseName"
+    raise ValueError(f"Unknown object presentation '{presentation}'")
+
+
+def _object(
+    parent: Element,
+    app: str,
+    key: str,
+    variant: str | None = None,
+    *,
+    name_button: int | None = None,
+    name_slot: str | None = None,
+) -> None:
+    """Add an object, optionally selecting its ETS name by language.
+
+    English ComObjectRef entries carry the ``{{0:...}}`` placeholder and
+    point to the TypeText English name ParameterRef.  Vietnamese names are
+    numeric preset values for the firmware, so the branch selects a static
+    translated ComObjectRef for the selected preset instead of asking ETS to
+    cast an enumeration value through ``TextParameterRefId``.
+    """
+    if variant is None or name_button is None:
+        _object_ref(parent, app, key, variant)
+        return
+    # The object reference must not depend on its label: ETS associates GAs
+    # with that reference. Only the ETS-only text parameter changes.
+    _object_ref(parent, app, key, f"{variant}_en")
+    # ParameterCalculations update the display-only name, including empty text.
 
 
 def _choose(parent: Element, app: str, key: str) -> Element:
@@ -57,17 +99,26 @@ def _name_language(parent: Element, app: str, button: int) -> str:
     return language_key
 
 
-def _name_value(parent: Element, app: str, button: int, language_key: str) -> None:
+def _name_value(parent: Element, app: str, button: int, language_key: str, vietnamese_key: str) -> None:
     language = _choose(parent, app, language_key)
     english = SubElement(language, "when", {"test": "0"})
     _parameter(english, app, f"NC{button}-EnglishName")
     vietnamese = SubElement(language, "when", {"test": "1"})
-    _parameter(vietnamese, app, f"NC{button}-VietnameseName")
+    _parameter(vietnamese, app, vietnamese_key)
 
 
-def _name(parent: Element, app: str, button: int) -> None:
+def _name(parent: Element, app: str, button: int, function_key: str) -> None:
     language_key = _name_language(parent, app, button)
-    _name_value(parent, app, button, language_key)
+    language = _choose(parent, app, language_key)
+    english = SubElement(language, "when", {"test": "0"})
+    _parameter(english, app, f"NC{button}-EnglishName")
+    vietnamese = SubElement(language, "when", {"test": "1"})
+    function = _choose(vietnamese, app, function_key)
+    for test in ("2", "3"):
+        dimmer = SubElement(function, "when", {"test": test})
+        _parameter(dimmer, app, f"NC{button}-DimmerVietnameseName")
+    curtain = SubElement(function, "when", {"test": "4"})
+    _parameter(curtain, app, f"NC{button}-CurtainVietnameseName")
 
 
 def _appearance(parent: Element, app: str, button: int, *, curtain: bool = False) -> None:
@@ -88,41 +139,44 @@ def _scene_branch(parent: Element, app: str, button: int, separator_ids) -> None
     _headline(parent, app, separator_ids, "Single press", bold=False)
     _parameter(parent, app, f"{prefix}-SceneSingleAction")
     single = _choose(parent, app, f"{prefix}-SceneSingleAction")
-    for value in (1, 3):
-        branch = SubElement(single, "when", {"test": str(value)})
-        _parameter(branch, app, f"{prefix}-Scene1")
-        _scene_name(branch, app, button, "Scene1")
+    recall = SubElement(single, "when", {"test": "1"})
+    _parameter(recall, app, f"{prefix}-Scene1")
+    _scene_name(recall, app, button, "Scene1")
     cycle = SubElement(single, "when", {"test": "2"})
     _parameter(cycle, app, f"{prefix}-SceneCycleCount")
-    _headline(cycle, app, separator_ids, "", bold=False)
-    for index in range(1, 3):
-        _parameter(cycle, app, f"{prefix}-Scene{index}")
-        _scene_name(cycle, app, button, f"Scene{index}")
+    _parameter(cycle, app, f"{prefix}-SceneCycleMode")
     count = _choose(cycle, app, f"{prefix}-SceneCycleCount")
-    for value in range(3, 6):
+    for value in range(2, 6):
         count_branch = SubElement(count, "when", {"test": str(value)})
-        for index in range(3, value + 1):
+        for index in range(1, value + 1):
+            _ruler(count_branch, app, separator_ids)
             _parameter(count_branch, app, f"{prefix}-Scene{index}")
             _scene_name(count_branch, app, button, f"Scene{index}")
-
-    for gesture, object_key in (("Double", "SceneDouble"), ("Long", "SceneLong")):
-        _headline(parent, app, separator_ids, f"{gesture} press" if gesture == "Double" else "Long hold", bold=False)
-        action_key = f"{prefix}-Scene{gesture}Action"
-        _parameter(parent, app, action_key)
-        action = _choose(parent, app, action_key)
-        for value in (1, 2):
-            branch = SubElement(action, "when", {"test": str(value)})
-            _parameter(branch, app, f"{prefix}-Scene{gesture}Number")
-            _scene_name(branch, app, button, f"Scene{gesture}")
     _headline(parent, app, separator_ids, "Communications", bold=False)
-    objects_key = f"{prefix}-SceneObjects"
-    _parameter(parent, app, objects_key)
-    objects = _choose(parent, app, objects_key)
-    shared = SubElement(objects, "when", {"test": "1"})
-    _object(shared, app, f"{prefix}-SceneSingle")
-    separate = SubElement(objects, "when", {"test": "3"})
-    for object_key in ("SceneSingle", "SceneDouble", "SceneLong"):
-        _object(separate, app, f"{prefix}-{object_key}")
+    communication_action = _choose(parent, app, f"{prefix}-SceneSingleAction")
+    recall_communication = SubElement(communication_action, "when", {"test": "1"})
+    _object(
+        recall_communication,
+        app,
+        f"{prefix}-Scene1",
+        "button_scene",
+        name_button=button,
+        name_slot="Scene1",
+    )
+    cycle_communication = SubElement(communication_action, "when", {"test": "2"})
+    cycle_count = _choose(cycle_communication, app, f"{prefix}-SceneCycleCount")
+    for value in range(2, 6):
+        count_branch = SubElement(cycle_count, "when", {"test": str(value)})
+        for index in range(1, value + 1):
+            scene_slot = f"Scene{index}"
+            _object(
+                count_branch,
+                app,
+                f"{prefix}-{scene_slot}",
+                "button_scene",
+                name_button=button,
+                name_slot=scene_slot,
+            )
 
 
 def _independent(parent: Element, app: str, button: int, context: str, block_ids, separator_ids) -> None:
@@ -135,12 +189,12 @@ def _independent(parent: Element, app: str, button: int, context: str, block_ids
     language_key = _name_language(block, app, button)
     visible_name = _choose(block, app, function_key)
     switch_name = SubElement(visible_name, "when", {"test": "1"})
-    _name_value(switch_name, app, button, language_key)
+    _name_value(switch_name, app, button, language_key, f"NC{button}-VietnameseName")
     _parameter(block, app, function_key)
     function = _choose(block, app, function_key)
     switch = SubElement(function, "when", {"test": "1"})
-    _object(switch, app, f"NC{button}-SwitchControl")
-    _object(switch, app, f"NC{button}-SwitchStatus")
+    _object(switch, app, f"NC{button}-SwitchControl", "button_switch", name_button=button)
+    _object(switch, app, f"NC{button}-SwitchStatus", "button_switch", name_button=button)
     switch_mode_key = f"NC{button}-SwitchMode"
     _parameter(switch, app, switch_mode_key)
     switch_mode = _choose(switch, app, switch_mode_key)
@@ -158,16 +212,16 @@ def _paired(parent: Element, app: str, anchor: int, partner: int, context: str, 
     block = SubElement(parent, "ParameterBlock", {
         "Id": f"{app}_PB-{next(block_ids)}",
         "Name": f"Button_{anchor}_{partner}_Merged_Settings",
-        "Text": f"Endpoint {anchor} + {partner} settings",
+        "Text": f"Button group {anchor} + {partner} settings",
     })
-    _name(block, app, anchor)
     function_key = f"NC{anchor}-PairedFunction"
+    _name(block, app, anchor, function_key)
     _parameter(block, app, function_key)
     function = _choose(block, app, function_key)
 
     dimmer = SubElement(function, "when", {"test": "3"})
     for key in ("SwitchControl", "SwitchStatus", "BrightnessRelative", "BrightnessStatus"):
-        _object(dimmer, app, f"NC{anchor}-{key}")
+        _object(dimmer, app, f"NC{anchor}-{key}", "endpoint_dimmer", name_button=anchor)
     dimming_mode_key = f"NC{anchor}-DimmingMode"
     _parameter(dimmer, app, dimming_mode_key)
     dimming_mode = _choose(dimmer, app, dimming_mode_key)
@@ -177,15 +231,15 @@ def _paired(parent: Element, app: str, anchor: int, partner: int, context: str, 
     _appearance(dimmer, app, anchor)
 
     cct = SubElement(function, "when", {"test": "2"})
-    for key in ("SwitchControl", "SwitchStatus", "BrightnessRelative", "BrightnessStatus", "CctRelative", "CctStatus"):
-        _object(cct, app, f"NC{anchor}-{key}")
+    for key in ("SwitchControl", "SwitchStatus", "BrightnessRelative", "BrightnessStatus", "ColorTemperature", "ColorTemperatureStatus"):
+        _object(cct, app, f"NC{anchor}-{key}", "endpoint_cct", name_button=anchor)
     _appearance(cct, app, anchor)
 
     curtain = SubElement(function, "when", {"test": "4"})
     _parameter(curtain, app, f"NC{anchor}-CurtainIcon")
     _parameter(curtain, app, f"NC{anchor}-CurtainTravelTime")
     for key in ("CurtainMove", "CurtainStop", "CurtainPosition"):
-        _object(curtain, app, f"NC{anchor}-{key}")
+        _object(curtain, app, f"NC{anchor}-{key}", "endpoint_curtain", name_button=anchor)
 
 
 def _emit_layout(parent: Element, app: str, layout: int, buttons: tuple[int, int, int, int], label: str, block_ids, separator_ids) -> None:
@@ -237,7 +291,9 @@ def build_dynamic(app: str) -> Element:
     })
     _parameter(general, app, "DeviceVariant")
     merge_config = _choose(general, app, "DeviceVariant")
-    _headline(merge_config, app, separator_ids, "Endpoint layout settings", bold=False)
+    _headline(merge_config, app, separator_ids, "Button grouping settings", bold=False)
+    four_config = SubElement(merge_config, "when", {"test": "4"})
+    _area_controls(four_config, app, "Top (Buttons 1-4)", "TopMergeDirection", "TopHorizontalSelection", "TopVerticalSelection", separator_ids)
     six_config = SubElement(merge_config, "when", {"test": "6"})
     _headline(six_config, app, separator_ids, "Button pairs: 1 + 5, 2 + 4 and 6 + 8", bold=False)
     for key in ("SixPair15", "SixPair24", "SixPair68"):
@@ -267,6 +323,9 @@ def build_dynamic(app: str) -> Element:
     _headline(general, app, separator_ids, "Periodic transmission every 5 minutes", bold=False)
 
     variant = _choose(channel, app, "DeviceVariant")
+    four = SubElement(variant, "when", {"test": "4"})
+    _area_pages(four, app, (1, 2, 3, 4), "Top", "TopMergeDirection", "TopHorizontalSelection", "TopVerticalSelection", block_ids, separator_ids)
+
     six = SubElement(variant, "when", {"test": "6"})
     six_pairs = (("SixPair15", 1, 5), ("SixPair24", 2, 4), ("SixPair68", 6, 8))
     for key, a, b in six_pairs:
