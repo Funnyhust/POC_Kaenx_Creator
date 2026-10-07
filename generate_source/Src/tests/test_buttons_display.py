@@ -17,7 +17,7 @@ def test_buttons_display_v4_contract(tmp_path) -> None:
     assert _elements(root, "RelativeSegment")[0].get("Size") == "1697"
     assert not _elements(root, "Channel")
     assert len(_elements(root, "ChannelIndependentBlock")) == 1
-    assert _elements(root, "ApplicationProgram")[0].get("ApplicationVersion") == "12"
+    assert _elements(root, "ApplicationProgram")[0].get("ApplicationVersion") == "20"
     assert sorted(int(o.get("Number")) for o in _elements(root, "ComObject")) == list(range(1, 113)) + [129, 130]
     sentinel = next(node for node in _elements(root, "Parameter") if node.get("Name") == "Fixed_Value_DD")
     assert sentinel.get("Text") is None
@@ -150,9 +150,9 @@ def test_buttons_display_v4_contract(tmp_path) -> None:
     assert any(node.get("Text") == "Button 1 - {{0:...}}" and node.get("FunctionText") == "Scene control" for node in _elements(root, "ComObjectRef"))
 
     parameters_by_name = {node.get("Name"): node for node in _elements(root, "Parameter")}
-    assert parameters_by_name["Screen brightness"].get("Value") == "80"
-    assert parameters_by_name["Led brightness"].get("Value") == "100"
-    assert parameters_by_name["Turn off screen after"].get("Value") == "300"
+    assert parameters_by_name["Screen brightness"].get("Value") == "100"
+    assert parameters_by_name["Led brightness"].get("Value") == "50"
+    assert parameters_by_name["Turn off screen after"].get("Value") == "30"
     assert "Proximity sensor" not in parameters_by_name
     assert parameters_by_name["Proximity wake-up distance"].get("Value") == "50"
     assert all(name not in parameters_by_name for name in (
@@ -166,6 +166,22 @@ def test_buttons_display_v4_contract(tmp_path) -> None:
         and node.get("ParamRefId", "").endswith("_P-1_R-1")
     ]
     assert len(device_variant_chooses) == 2
+    six_branch = next(
+        node for node in device_variant_chooses[-1]
+        if node.tag.rsplit("}", 1)[-1] == "when" and node.get("test") == "6"
+    )
+    six_blocks = {node.get("Name") for node in _elements(six_branch, "ParameterBlock")}
+    assert six_blocks == {
+        *(f"Button_{button}_Settings" for button in (1, 2, 3, 5, 6, 7)),
+        "Button_1_3_Merged_Settings", "Button_5_7_Merged_Settings", "Button_2_6_Merged_Settings",
+    }
+    for pair_id, anchor, partner, offset in ((4, 1, 3, 4), (5, 5, 7, 5), (6, 2, 6, 6)):
+        pair_parameter = params_by_id[refs_by_id[next(
+            node.get("ParamRefId") for node in _elements(six_branch, "choose")
+            if node.get("ParamRefId", "").endswith(f"_P-{pair_id}_R-{pair_id}")
+        )].get("RefId")]
+        assert pair_parameter.get("Text") == f"Operating mode of Button {anchor} + Button {partner}"
+        assert _elements(pair_parameter, "Memory")[0].get("Offset") == str(offset)
     four_general_branch = next(
         node for node in device_variant_chooses[0]
         if node.tag.rsplit("}", 1)[-1] == "when" and node.get("test") == "4"
@@ -218,6 +234,8 @@ def test_buttons_display_v4_contract(tmp_path) -> None:
     assert [(node.get("Value"), node.get("Text")) for node in _elements(scene_action_type, "Enumeration")] == [("1", "Recall scene"), ("2", "Scene cycling")]
     scene_cycle_mode_type = next(node for node in _elements(root, "ParameterType") if node.get("Name") == "Scene cycling after button activation")
     assert [(node.get("Value"), node.get("Text")) for node in _elements(scene_cycle_mode_type, "Enumeration")] == [("0", "Automatic"), ("1", "Manual")]
+    scene_icon_type = next(node for node in _elements(root, "ParameterType") if node.get("Name") == "Scene icon")
+    assert [node.get("Text") for node in _elements(scene_icon_type, "Enumeration")] == [f"Icon {index}" for index in range(1, 37)]
     scene_number_type = next(node for node in _elements(root, "ParameterType") if node.get("Name") == "Scene number")
     assert len(_elements(scene_number_type, "Enumeration")) == 64
 

@@ -295,8 +295,8 @@ def build_dynamic(app: str) -> Element:
     four_config = SubElement(merge_config, "when", {"test": "4"})
     _area_controls(four_config, app, "Top (Buttons 1-4)", "TopMergeDirection", "TopHorizontalSelection", "TopVerticalSelection", separator_ids)
     six_config = SubElement(merge_config, "when", {"test": "6"})
-    _headline(six_config, app, separator_ids, "Button pairs: 1 + 5, 2 + 4 and 6 + 8", bold=False)
-    for key in ("SixPair15", "SixPair24", "SixPair68"):
+    _headline(six_config, app, separator_ids, "Button pairs: 1 + 3, 2 + 6 and 5 + 7", bold=False)
+    for key in ("SixPair13", "SixPair26", "SixPair57"):
         _parameter(six_config, app, key)
     eight_config = SubElement(merge_config, "when", {"test": "8"})
     _area_controls(eight_config, app, "Top (Buttons 1-4)", "TopMergeDirection", "TopHorizontalSelection", "TopVerticalSelection", separator_ids)
@@ -327,7 +327,7 @@ def build_dynamic(app: str) -> Element:
     _area_pages(four, app, (1, 2, 3, 4), "Top", "TopMergeDirection", "TopHorizontalSelection", "TopVerticalSelection", block_ids, separator_ids)
 
     six = SubElement(variant, "when", {"test": "6"})
-    six_pairs = (("SixPair15", 1, 5), ("SixPair24", 2, 4), ("SixPair68", 6, 8))
+    six_pairs = (("SixPair13", 1, 3), ("SixPair26", 2, 6), ("SixPair57", 5, 7))
     for key, a, b in six_pairs:
         pair_mode = _choose(six, app, key)
         independent = SubElement(pair_mode, "when", {"test": "0"})

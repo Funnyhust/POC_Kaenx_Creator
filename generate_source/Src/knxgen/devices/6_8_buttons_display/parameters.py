@@ -13,16 +13,17 @@ class EnumType:
 
 ENUM_TYPES = (
     EnumType("DeviceVariant", "Device variant (4, 6 or 8 buttons)", ((4, "4 buttons"), (6, "6 buttons"), (8, "8 buttons")), 8),
-    EnumType("MergeDirection", "Button grouping direction", ((0, "Keep buttons separate"), (1, "Horizontal"), (2, "Vertical")), 0),
+    EnumType("MergeDirection", "Button grouping direction", ((0, "No grouping"), (1, "Horizontal"), (2, "Vertical")), 0),
     EnumType("TopHorizontalSelection", "Horizontal button grouping in top area", ((1, "Upper row: Button 1 + Button 2"), (2, "Lower row: Button 3 + Button 4"), (3, "Both rows")), 3),
     EnumType("TopVerticalSelection", "Vertical button grouping in top area", ((1, "Left column: Button 1 + Button 3"), (2, "Right column: Button 2 + Button 4"), (3, "Both columns")), 3),
     EnumType("BottomHorizontalSelection", "Horizontal button grouping in bottom area", ((1, "Upper row: Button 5 + Button 6"), (2, "Lower row: Button 7 + Button 8"), (3, "Both rows")), 3),
     EnumType("BottomVerticalSelection", "Vertical button grouping in bottom area", ((1, "Left column: Button 5 + Button 7"), (2, "Right column: Button 6 + Button 8"), (3, "Both columns")), 3),
-    EnumType("PairMode", "Button grouping mode", ((0, "Keep buttons separate"), (1, "Combine as one button group")), 0),
+    EnumType("PairMode", "Button grouping mode", ((0, "No grouping"), (1, "Combine as one button group")), 0),
     EnumType("NameLanguage", "Display name language", ((0, "English (custom text)"), (1, "Vietnamese (preset list)")), 0),
     EnumType("IndependentFunction", "Independent button function", ((0, "Disabled"), (1, "Switch"), (2, "Scene control")), 0),
     EnumType("PairedFunction", "Function of button group", ((0, "Disabled"), (2, "CCT"), (3, "Dimmer"), (4, "Shutter/Curtain")), 3),
     EnumType("Icon", "Light icon", tuple((value, f"Icon {value}") for value in range(1, 21)), 1),
+    EnumType("SceneIcon", "Scene icon", tuple((value, f"Icon {value}") for value in range(1, 37)), 1),
     EnumType("CurtainIcon", "Shutter/Curtain icon", ((1, "Icon 1"), (2, "Icon 2")), 1),
     EnumType("DimmingMode", "Dimming Behavior", ((0, "Start/Stop"), (1, "Step")), 0),
     EnumType("DimmingStep", "Step Size", ((1, "100"), (2, "50"), (3, "25"), (4, "12.5"), (5, "6.25"), (6, "3.125"), (7, "1.5625")), 3),
@@ -30,9 +31,9 @@ ENUM_TYPES = (
     EnumType("SceneCycleMode", "Scene cycling after button activation", ((0, "Automatic"), (1, "Manual")), 0),
     EnumType("SceneNumber1To64", "Scene number", tuple((value, f"Scene No. {value}") for value in range(1, 65)), 1),
     EnumType("SceneCycleCount", "Number of scenes (cycling)", tuple((value, f"{value} Scenes") for value in range(2, 6)), 2),
-    EnumType("SwitchMode", "Switch operating mode", ((0, "Disabled"), (1, "Toggle"), (2, "Auto ON / OFF"), (3, "Momentary")), 1),
-    EnumType("StartupBehavior", "Switch behavior after bus voltage recovery", ((0, "Restore last value"), (1, "Set OFF"), (2, "Set ON")), 0),
-    EnumType("AutoModeType", "Automatic switch timer action", ((0, "Auto OFF"), (1, "Auto ON")), 0),
+    EnumType("SwitchMode", "Switch mode", ((1, "Toggle"), (2, "Auto on/off"), (3, "Momentary")), 1),
+    EnumType("StartupBehavior", "Startup behaviour", ((0, "Restore last value"), (1, "Set off"), (2, "Set on")), 0),
+    EnumType("AutoModeType", "Auto mode type", ((0, "Auto off"), (1, "Auto on")), 0),
 )
 
 

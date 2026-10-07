@@ -13,9 +13,9 @@ GLOBAL = {
     "device_variant": 1,
     "top_layout": 2,
     "bottom_layout": 3,
-    "six_pair_15": 4,
-    "six_pair_24": 5,
-    "six_pair_68": 6,
+    "six_pair_13": 4,
+    "six_pair_57": 5,
+    "six_pair_26": 6,
     # Offset 7 is reserved from V1; name language is configured per button.
     "screen_brightness": 8,
     # Offset 9 is reserved from the first V2 draft.

@@ -122,7 +122,7 @@ def _build_parameter_types(parent: Element) -> None:
     _add_number_type(parent, "ScreenTimeoutSeconds", "Screen timeout in seconds", 10, 3600, 16)
     _add_number_type(parent, "ProximityDistanceCm", "Proximity wake-up distance (30-200 cm)", 30, 200)
     _add_number_type(parent, "Repeat100ms", "Telegram repeat interval (100 ms units)", 0, 25)
-    _add_number_type(parent, "AutoTimeSeconds", "Automatic switch timer in seconds", 1, 10800, 32)
+    _add_number_type(parent, "AutoTimeSeconds", "Time value", 1, 10800, 32)
     _add_number_type(parent, "CurtainTravelTimeSeconds", "Travel time", 1, 300, 16)
     _add_number_type(parent, "FixedValueDD", "Reserved ETS marker byte", 0, 255)
     text_type = SubElement(parent, "ParameterType", {
@@ -177,11 +177,11 @@ def _build_parameters(parent: Element) -> list[str]:
     add("DeviceVariant", "Device variant", "Device selection", "DeviceVariant", 8, GLOBAL["device_variant"])
     add("TopMergeDirection", "Top area button grouping direction", "Button grouping for Buttons 1, 2, 3 and 4", "MergeDirection", 0, GLOBAL["top_layout"])
     add("BottomMergeDirection", "Bottom area button grouping direction", "Button grouping for Buttons 5, 6, 7 and 8", "MergeDirection", 0, GLOBAL["bottom_layout"])
-    for key, field, text in (("SixPair15", "six_pair_15", "Button 1 + Button 5"), ("SixPair24", "six_pair_24", "Button 2 + Button 4"), ("SixPair68", "six_pair_68", "Button 6 + Button 8")):
+    for key, field, text in (("SixPair13", "six_pair_13", "Button 1 + Button 3"), ("SixPair26", "six_pair_26", "Button 2 + Button 6"), ("SixPair57", "six_pair_57", "Button 5 + Button 7")):
         add(key, f"6-button pair {text}", f"Operating mode of {text}", "PairMode", 0, GLOBAL[field])
-    add("ScreenBrightness", "Screen brightness", "Screen brightness", "Percentage1To100", 80, GLOBAL["screen_brightness"], "%")
-    add("LedBrightness", "Led brightness", "Led brightness", "Percentage1To100", 100, GLOBAL["led_brightness"], "%")
-    add("TurnOffScreenAfter", "Turn off screen after", "Turn off screen after", "ScreenTimeoutSeconds", 300, GLOBAL["turn_off_screen_after"], "s")
+    add("ScreenBrightness", "Screen brightness", "Screen brightness", "Percentage1To100", 100, GLOBAL["screen_brightness"], "%")
+    add("LedBrightness", "Led brightness", "Led brightness", "Percentage1To100", 50, GLOBAL["led_brightness"], "%")
+    add("TurnOffScreenAfter", "Turn off screen after", "Turn off screen after", "ScreenTimeoutSeconds", 30, GLOBAL["turn_off_screen_after"], "s")
     add("ProximityDistance", "Proximity wake-up distance", "Wake-up distance", "ProximityDistanceCm", 50, GLOBAL["proximity_distance"], "cm")
     add("TopHorizontalSelection", "Top area horizontal rows", "Select which horizontal rows are merged", "TopHorizontalSelection", 3, GLOBAL["top_horizontal_selection"])
     add("TopVerticalSelection", "Top area vertical columns", "Select which vertical columns are merged", "TopVerticalSelection", 3, GLOBAL["top_vertical_selection"])
@@ -212,7 +212,7 @@ def _build_parameters(parent: Element) -> list[str]:
         add(f"{prefix}-SwitchMode", f"{prefix} switch operating mode", "Switch mode", "SwitchMode", 1, endpoint(button, SWITCH_MODE))
         add(f"{prefix}-SwitchStartup", f"{prefix} switch startup behavior", "Behavior on bus voltage recovery", "StartupBehavior", 0, endpoint(button, SWITCH_STARTUP))
         add(f"{prefix}-AutoModeType", f"{prefix} automatic timer action", "Auto mode type", "AutoModeType", 0, endpoint(button, AUTO_MODE_TYPE))
-        add(f"{prefix}-AutoTime", f"{prefix} automatic timer", "Time value", "AutoTimeSeconds", 60, endpoint(button, AUTO_TIME), "s")
+        add(f"{prefix}-AutoTime", f"{prefix} automatic timer", "Time value (s)", "AutoTimeSeconds", 1, endpoint(button, AUTO_TIME), "s")
         scene_name_slots = tuple(
             (f"Scene{index}", f"  Scene {index} name", "")
             for index in range(1, 6)
@@ -221,7 +221,7 @@ def _build_parameters(parent: Element) -> list[str]:
             slot_index = int(slot.removeprefix("Scene")) - 1
             add(f"{prefix}-{slot}EnglishName", f"{prefix} {slot} English name", text, "EnglishName15", default, endpoint(button, SCENE_ENGLISH_NAME_1 + slot_index * 20))
             add(f"{prefix}-{slot}VietnameseName", f"{prefix} {slot} Vietnamese name", text, "VietnameseSceneName", 0, endpoint(button, SCENE_VIETNAMESE_NAME_1 + slot_index))
-            add(f"{prefix}-{slot}Icon", f"{prefix} {slot} icon", "  Icon", "Icon", 1, endpoint(button, SCENE_ICON_1 + slot_index))
+            add(f"{prefix}-{slot}Icon", f"{prefix} {slot} icon", "  Icon", "SceneIcon", 1, endpoint(button, SCENE_ICON_1 + slot_index))
     for key in DISPLAY_NAME_PARAMETER_KEYS:
         SubElement(parent, "Parameter", {
             "Id": _parameter_id(key), "Name": key, "Text": "Object display name",
